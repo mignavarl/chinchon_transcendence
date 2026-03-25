@@ -1,0 +1,4 @@
+#hacer otro contenedor nginx o lo que sea para tener el servidor:
+
+FROM nginx:alpine
+COPY --from=builder /godotapp /usr/share/nginx/html
