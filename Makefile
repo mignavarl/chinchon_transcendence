@@ -11,6 +11,15 @@ all:
 	docker compose start
 	@echo ${GREEN}"All services are running ✅" $(NC)
 
+setup:
+	@echo $(CYAN)"Generating self-signed SSL certificate... 🔐"$(NC)
+	@mkdir -p ./nginx/certs
+	@openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+		-keyout ./nginx/certs/key.pem \
+		-out ./nginx/certs/cert.pem \
+		-subj "/CN=localhost" 2>/dev/null
+	@echo $(GREEN)"Certificate generated in ./nginx/certs ✅"$(NC)
+
 up-%:
 	docker compose up $* -d
 
@@ -41,4 +50,4 @@ clean:
 
 re: kill all
 
-.PHONY: all down stop restart create_volumes clean re
+.PHONY: all setup down stop restart create_volumes clean re

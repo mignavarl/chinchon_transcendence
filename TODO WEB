@@ -2,3 +2,12 @@
 
 FROM nginx:alpine
 COPY --from=builder /godotapp /usr/share/nginx/html
+
+
+your-project-root/ 
+├── export/ 
+|	└── web/ <— Your Godot web build files go here (index.html, etc.) 
+|	└── infra/ 
+├── docker-compose.yml 
+└── nginx/ 
+	└── default.conf <— Our Nginx configuration

@@ -4,8 +4,8 @@ FROM debian:bookworm-slim
 ENV GODOT_VERSION "4.5.1"
 ENV GODOT_EXPORT_PRESET="Web"
 ENV GODOT_GAME_NAME "Chinchon"
-ENV HTTPS_GIT_REPO "https://github.com/mignavarl/prueba_godotcendece.git"
-
+# ENV HTTPS_GIT_REPO "https://github.com/mignavarl/prueba_godotcendece.git"
+ENV HTTPS_GIT_REPO "https://github.com/david-3lm/BusSnap.git"
 # Updates and installs to the server
 # RUN apk update
 # RUN apk add --no-cache bash
