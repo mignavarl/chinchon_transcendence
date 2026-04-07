@@ -4,7 +4,7 @@ FROM debian:bookworm-slim
 ENV GODOT_VERSION "4.5.1"
 ENV GODOT_EXPORT_PRESET="Web"
 ENV GODOT_GAME_NAME "Chinchon"
-ENV HTTPS_GIT_REPO "https://github.com/mignavarl/prueba_godotcendece.git"
+#ENV HTTPS_GIT_REPO "https://github.com/mignavarl/prueba_godotcendece.git"
 
 # Updates and installs to the server
 # RUN apk update
@@ -44,6 +44,8 @@ RUN wget "https://downloads.godotengine.org/?version=${GODOT_VERSION}&flavor=sta
 # Make needed directories for container
 RUN mkdir /godotapp
 RUN mkdir /godotbuildspace
+
+COPY game_godot/* /godotbuildspace
 
 COPY init_game.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init_game.sh
