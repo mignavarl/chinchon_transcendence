@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://yfoqvekegyne"]
+
+[ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
+[ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://scenes/card.tscn" id="2_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://scenes/card_slot.tscn" id="3_0bbpv"]
+[ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="4_rarhs"]
+[ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scenes/deck.gd" id="5_nxtc6"]
+[ext_resource type="Texture2D" uid="uid://be4xxbpvkcgak" path="res://carta.png" id="6_jlsqs"]
+[ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
+size = Vector2(134, 183)
+
+[node name="Main" type="Node2D"]
+
+[node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("input_manager")]
+script = ExtResource("1_rvslj")
+input_manager = NodePath("../InputManager")
+
+[node name="CardSlot3" parent="." instance=ExtResource("3_0bbpv")]
+position = Vector2(1793, 513)
+
+[node name="CardSlot" parent="." instance=ExtResource("3_0bbpv")]
+position = Vector2(1055, 512)
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("4_rarhs")
+card_scene = ExtResource("2_0bbpv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 526.0
+offset_top = 296.0
+offset_right = 566.0
+offset_bottom = 319.0
+
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("player_hand")]
+position = Vector2(840, 509)
+script = ExtResource("5_nxtc6")
+card_scene = ExtResource("2_0bbpv")
+player_hand = NodePath("../PlayerHand")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+texture = ExtResource("6_jlsqs")
+
+[node name="Area2D" type="Area2D" parent="Deck"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lhr70")
+
+[node name="InputManager" type="Node2D" parent="." node_paths=PackedStringArray("card_manager_reference", "deck_reference")]
+script = ExtResource("7_q8u5g")
+card_manager_reference = NodePath("../CardManager")
+deck_reference = NodePath("../Deck")
