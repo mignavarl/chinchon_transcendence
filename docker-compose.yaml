@@ -1,0 +1,33 @@
+services:
+  godot:
+    build: .
+    ports:
+      - "4141:4141"
+      - "4141:4141/udp"
+    tty: true
+    container_name: godot-server
+    volumes:
+      - godot_data:/godotapp
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /godotapp/index.html || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  godot_webuild_server:
+    image: nginx:latest
+    container_name: godot_webuild_server
+    ports:
+      - "9090:443"
+    restart: unless-stopped
+    depends_on:
+      godot:
+        condition: service_healthy
+    volumes:
+      - godot_data:/usr/share/nginx/html:ro
+      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/nginx/certs:ro
+
+volumes:
+  godot_data:
