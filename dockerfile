@@ -45,7 +45,7 @@ RUN wget "https://downloads.godotengine.org/?version=${GODOT_VERSION}&flavor=sta
 RUN mkdir /godotapp
 RUN mkdir /godotbuildspace
 
-COPY game_godot/* /godotbuildspace
+COPY game_godot/ /godotbuildspace
 
 COPY init_game.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init_game.sh

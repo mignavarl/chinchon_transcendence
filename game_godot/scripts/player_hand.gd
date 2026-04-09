@@ -25,6 +25,8 @@ func add_card_to_hand(card):
 		update_hand_positions()
 	else:
 		animate_card_to_position(card, card.starting_position)
+	card.get_node("Area2D/CollisionShape2D").disabled = false
+
 
 func remove_card_from_hand(card):
 	if card in player_hand:

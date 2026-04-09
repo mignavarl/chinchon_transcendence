@@ -14,12 +14,10 @@ size = Vector2(134, 183)
 
 [node name="Main" type="Node2D"]
 
-[node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("input_manager")]
+[node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("input_manager", "card_slot_reference")]
 script = ExtResource("1_rvslj")
 input_manager = NodePath("../InputManager")
-
-[node name="CardSlot3" parent="." instance=ExtResource("3_0bbpv")]
-position = Vector2(1793, 513)
+card_slot_reference = NodePath("../CardSlot")
 
 [node name="CardSlot" parent="." instance=ExtResource("3_0bbpv")]
 position = Vector2(1055, 512)
@@ -52,7 +50,9 @@ collision_mask = 4
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_lhr70")
 
-[node name="InputManager" type="Node2D" parent="." node_paths=PackedStringArray("card_manager_reference", "deck_reference")]
+[node name="InputManager" type="Node2D" parent="." node_paths=PackedStringArray("card_manager_reference", "deck_reference", "card_slot_reference", "player_hand_reference")]
 script = ExtResource("7_q8u5g")
 card_manager_reference = NodePath("../CardManager")
 deck_reference = NodePath("../Deck")
+card_slot_reference = NodePath("../CardSlot")
+player_hand_reference = NodePath("../PlayerHand")

@@ -9,6 +9,7 @@ var is_hovering_on_card
 var player_hand_reference
 
 @export var input_manager : Node2D
+@export var card_slot_reference : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,14 +38,19 @@ func start_drag(card):
 	card.scale = Vector2(1, 1)
 	card_being_dragged = card
 
+func send_card_to_slot(card):
+	animate_card_to_position(card, card_slot_reference.global_position)
+	player_hand_reference.remove_card_from_hand(card)
+	card_slot_reference.add_card_to_slot(card)
+
 func finish_drag():
 	if card_being_dragged:
 		card_being_dragged.scale = Vector2(1.05, 1.05)
 		var card_slot_found = raycast_check_for_card_slot()
 		if card_slot_found:
 			card_being_dragged.position = card_slot_found.position
+			card_slot_found.add_card_to_slot(card_being_dragged)
 			player_hand_reference.remove_card_from_hand(card_being_dragged)
-			#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 		else:
 			player_hand_reference.add_card_to_hand(card_being_dragged)
 		card_being_dragged = null
@@ -114,3 +120,8 @@ func highlight_card(card, hovered):
 	else:
 		card.scale = Vector2(1, 1)
 		card.z_index = 1
+
+
+func animate_card_to_position(card, new_position):
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "position", new_position, 0.1)

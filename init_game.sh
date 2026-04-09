@@ -13,7 +13,7 @@ echo "Compilo godot4 en "
 pwd 
 # godot4 --path /godotbuildspace --export-pack ${GODOT_EXPORT_PRESET} ${GODOT_GAME_NAME}.pck --headless
 godot4 --headless --path /godotbuildspace --export-release ${GODOT_EXPORT_PRESET} /godotapp/index.html
-mv /godotbuildspace/${GODOT_GAME_NAME}.pck /godotapp/
+#mv /godotbuildspace/${GODOT_GAME_NAME}.pck /godotapp/
 
 
 sleep infinity
