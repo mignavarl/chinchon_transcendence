@@ -19,3 +19,12 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[filesystem]
+
+import/fbx2gltf/enabled.web=true
+import/blender/enabled.web=true
+
+[rendering]
+
+textures/webp_compression/compression_method=0

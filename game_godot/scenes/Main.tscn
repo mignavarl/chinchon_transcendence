@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=10 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://scenes/card.tscn" id="2_0bbpv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scenes/deck.gd" id="5_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://be4xxbpvkcgak" path="res://carta.png" id="6_jlsqs"]
+[ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="6_q8u5g"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
@@ -38,6 +39,7 @@ position = Vector2(840, 509)
 script = ExtResource("5_nxtc6")
 card_scene = ExtResource("2_0bbpv")
 player_hand = NodePath("../PlayerHand")
+card_database = ExtResource("6_q8u5g")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
 texture = ExtResource("6_jlsqs")
