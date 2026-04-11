@@ -5,6 +5,8 @@ var player_deck = []
 
 var card_textures = {}
 
+var deck_selected = "spanish_deck"
+
 @export var card_scene : PackedScene
 @export var player_hand : Node2D
 @export var card_database : Script
@@ -33,7 +35,7 @@ func draw_card():
 func generate_deck():
 	for suit in card_database.SUITS:
 		for number in card_database.NUMBERS:
-			var img_path =  "res://assets/cards/%s_%d.png" % [suit["id"], number["value"]]
+			var img_path =  "res://assets/cards/%s/%s_%d.PNG" % [deck_selected, suit["id"], number["value"]]
 			print("path: %s", img_path)
 			card_textures[img_path] = load(img_path)
 			var card = {
@@ -41,6 +43,7 @@ func generate_deck():
 				"suit": suit,
 				"number": number,
 				"img": img_path,
+				"deck": deck_selected,
 			}
 			print("imagen cargada %s", img_path)
 			player_deck.append(card)

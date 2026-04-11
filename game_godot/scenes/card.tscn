@@ -11,6 +11,7 @@ z_as_relative = false
 script = ExtResource("1_6u4wf")
 
 [node name="CardImage" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_6u4wf")
 
 [node name="Area2D" type="Area2D" parent="."]
