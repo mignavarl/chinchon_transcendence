@@ -5,7 +5,7 @@ var player_deck = []
 
 var card_textures = {}
 
-var deck_selected = "spanish_deck"
+var deck_selected = "española"
 
 @export var card_scene : PackedScene
 @export var player_hand : Node2D

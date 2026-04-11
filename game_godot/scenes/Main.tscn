@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scenes/deck.gd" id="5_nxtc6"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="6_q8u5g"]
-[ext_resource type="Texture2D" uid="uid://b83aavt3hgrr1" path="res://assets/cards/spanish_deck/back.PNG" id="7_jlsqs"]
+[ext_resource type="Texture2D" uid="uid://l2fv3eyy80ro" path="res://española_back.png" id="7_jlsqs"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
@@ -40,8 +40,7 @@ player_hand = NodePath("../PlayerHand")
 card_database = ExtResource("6_q8u5g")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
-texture_filter = 1
-scale = Vector2(1.6712328, 1.671233)
+scale = Vector2(0.9571432, 0.9571433)
 texture = ExtResource("7_jlsqs")
 
 [node name="Area2D" type="Area2D" parent="Deck"]

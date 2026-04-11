@@ -5,7 +5,6 @@ const COLLISION_MASK_CARD_SLOT = 2
 
 var screen_size
 var card_being_dragged
-var is_hovering_on_card
 var player_hand_reference
 
 @export var input_manager : Node2D
@@ -89,37 +88,10 @@ func get_card_with_highest_z_index(cards):
 			highest_z_index = current_card.z_index
 	return highest_z_card
 
-func connect_card_signals(card):
-	card.connect("hovered", on_hovered_over_card)
-	card.connect("hovered_off", on_hovered_off_card)
 
 func on_left_click_release():
 	if card_being_dragged:
 		finish_drag()
-	
-
-
-func on_hovered_over_card(card):
-	if !is_hovering_on_card:
-		is_hovering_on_card = true
-		highlight_card(card, true)
-
-func on_hovered_off_card(card):
-	if !card_being_dragged:
-		highlight_card(card, false)
-		#var new_card_hovered = raycast_check_for_card()
-		#if new_card_hovered:
-			#highlight_card(card, true)
-		#else:
-			#is_hovering_on_card = false
-
-func highlight_card(card, hovered):
-	if hovered:
-		card.scale = Vector2(1.05, 1.05)
-		card.z_index = 2
-	else:
-		card.scale = Vector2(1, 1)
-		card.z_index = 1
 
 
 func animate_card_to_position(card, new_position):
