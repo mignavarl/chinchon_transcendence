@@ -35,7 +35,7 @@ func draw_card():
 func generate_deck():
 	for suit in card_database.SUITS:
 		for number in card_database.NUMBERS:
-			var img_path =  "res://assets/cards/%s/%s_%d.PNG" % [deck_selected, suit["id"], number["value"]]
+			var img_path =  "res://assets/cards/%s/%s_%d.png" % [deck_selected, suit["id"], number["value"]]
 			print("path: %s", img_path)
 			card_textures[img_path] = load(img_path)
 			var card = {
