@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://b32jibwkqcqu0"]
+
+[ext_resource type="Texture2D" uid="uid://crtu6lbv0pa7y" path="res://assets/cards/pixel/oros_1.png" id="1_wj04o"]
+[ext_resource type="Texture2D" uid="uid://tmcwlnkp4y87" path="res://assets/cards/cutre/oros_1.png" id="2_6stev"]
+[ext_resource type="Script" uid="uid://suwbqjto3keq" path="res://scripts/button_select_decks/button_pixel.gd" id="2_esnui"]
+[ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scenes/deck.gd" id="3_buvdd"]
+[ext_resource type="Texture2D" uid="uid://pk2y7faajwuh" path="res://assets/cards/española/oros_1.png" id="3_esnui"]
+[ext_resource type="Script" uid="uid://dsdf12eld3i8n" path="res://scripts/button_select_decks/button_cutre.gd" id="5_buvdd"]
+[ext_resource type="Script" uid="uid://rxiixonn6mwe" path="res://scripts/button_select_decks/button_esp.gd" id="7_puhoh"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pixel" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 798.0
+offset_top = 264.0
+offset_right = 1148.0
+offset_bottom = 728.0
+
+[node name="Control" type="Control" parent="Pixel"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pixel/Control"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 329.0
+texture = ExtResource("1_wj04o")
+stretch_mode = 4
+
+[node name="Control2" type="Control" parent="Pixel"]
+layout_mode = 2
+
+[node name="ButtonPixel" type="Button" parent="Pixel/Control2"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 364.0
+offset_right = 239.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 42
+text = "PIXEL"
+script = ExtResource("2_esnui")
+make_deck = ExtResource("3_buvdd")
+
+[node name="Cutre" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 216.0
+offset_right = 763.0
+offset_bottom = 635.0
+
+[node name="Control" type="Control" parent="Cutre"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Cutre/Control"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 89.0
+offset_right = 319.0
+offset_bottom = 361.0
+texture = ExtResource("2_6stev")
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="Cutre"]
+layout_mode = 2
+
+[node name="ButtonCutre" type="Button" parent="Cutre/Control2"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 408.0
+offset_right = 290.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 42
+text = "CUTRE"
+script = ExtResource("5_buvdd")
+make_deck = ExtResource("3_buvdd")
+
+[node name="Española" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1313.0
+offset_top = 42.0
+offset_right = 1600.0
+offset_bottom = 573.0
+
+[node name="Control" type="Control" parent="Española"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Española/Control"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 237.0
+offset_right = 128.0
+offset_bottom = 535.0
+texture = ExtResource("3_esnui")
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="Española"]
+layout_mode = 2
+
+[node name="ButtonEsp" type="Button" parent="Española/Control2"]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 585.0
+offset_right = 135.0
+offset_bottom = 651.0
+theme_override_font_sizes/font_size = 42
+text = "ESPAÑOLA"
+script = ExtResource("7_puhoh")
+make_deck = ExtResource("3_buvdd")
+
+[connection signal="button_up" from="Pixel/Control2/ButtonPixel" to="Pixel/Control2/ButtonPixel" method="_on_button_up"]
+[connection signal="button_up" from="Cutre/Control2/ButtonCutre" to="Cutre/Control2/ButtonCutre" method="_on_button_up"]
+[connection signal="button_up" from="Española/Control2/ButtonEsp" to="Española/Control2/ButtonEsp" method="_on_button_up"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=11 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://scenes/card.tscn" id="2_0bbpv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="6_q8u5g"]
 [ext_resource type="Texture2D" uid="uid://l2fv3eyy80ro" path="res://española_back.png" id="7_jlsqs"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
+[ext_resource type="Script" uid="uid://bemeudqjrsjy8" path="res://scripts/button_select_decks/button_select_deck.gd" id="9_q8u5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
 size = Vector2(134, 183)
@@ -57,3 +58,14 @@ card_manager_reference = NodePath("../CardManager")
 deck_reference = NodePath("../Deck")
 card_slot_reference = NodePath("../CardSlot")
 player_hand_reference = NodePath("../PlayerHand")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1792.0
+offset_top = 17.0
+offset_right = 1908.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 30
+text = "Barajas"
+script = ExtResource("9_q8u5g")
+
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]

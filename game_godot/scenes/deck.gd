@@ -5,7 +5,7 @@ var player_deck = []
 
 var card_textures = {}
 
-var deck_selected = "española"
+static var deck_selected = "española"
 
 @export var card_scene : PackedScene
 @export var player_hand : Node2D
@@ -33,10 +33,11 @@ func draw_card():
 	player_hand.add_card_to_hand(new_card)
 
 func generate_deck():
+	print("pongo el deck: ", deck_selected)
 	for suit in card_database.SUITS:
 		for number in card_database.NUMBERS:
 			var img_path =  "res://assets/cards/%s/%s_%d.png" % [deck_selected, suit["id"], number["value"]]
-			print("path: %s", img_path)
+			#print("path: %s", img_path)
 			card_textures[img_path] = load(img_path)
 			var card = {
 				"id": "%s_%d" % [suit["id"], number["value"]],
@@ -45,9 +46,12 @@ func generate_deck():
 				"img": img_path,
 				"deck": deck_selected,
 			}
-			print("imagen cargada %s", img_path)
+			#print("imagen cargada %s", img_path)
 			player_deck.append(card)
 	shuffle_deck()
 
 func shuffle_deck():
 	player_deck.shuffle()
+
+static func change_deck(new_deck):
+	deck_selected = new_deck
