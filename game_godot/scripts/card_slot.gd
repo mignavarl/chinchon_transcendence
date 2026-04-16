@@ -23,6 +23,8 @@ func add_card_to_slot(card):
 	
 func get_top_card():
 	var card = cards.pop_front()
+	if !card:
+		return
 	card.visible = true
 	card.get_node("Area2D/CollisionShape2D").disabled = false
 	print("robamos el", card.id)

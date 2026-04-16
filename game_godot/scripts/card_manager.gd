@@ -20,6 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if card_being_dragged:
 		var mouse_pos = get_global_mouse_position()
+		player_hand_reference.remove_card_from_hand(card_being_dragged)
 		card_being_dragged.position = Vector2(clamp(mouse_pos.x, 0, screen_size.x), 
 			clamp(mouse_pos.y, 0, screen_size.y))
 	$"../Label".text = "Cartas en la mano " + str($"../PlayerHand".player_hand.size())

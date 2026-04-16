@@ -23,6 +23,10 @@ var hold_timer = 0.0
 const HOLD_THRESHOLD = 0.15
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("debug_action_D"):
+		player_hand_reference.sort_hand_number()
+	if Input.is_action_just_pressed("debug_action_S"):
+		player_hand_reference.sort_hand_suit()
 	match click_state:
 		ClickState.IDLE:
 			if Input.is_action_just_pressed("mouse_click"):
@@ -65,7 +69,7 @@ func raycast_at_cursor():
 			deck_reference.draw_card()
 		elif result_collision_mask == COLLISION_MASK_SLOT:
 			var card = card_slot_reference.get_top_card()
-			if player_hand_reference.player_hand.size() <= 7:
+			if player_hand_reference.player_hand.size() <= 7 and card:
 				player_hand_reference.add_card_to_hand(card)
 				print("añadimos a la mano %s",  card.id)
 				

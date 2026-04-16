@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=12 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://scenes/card.tscn" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://scenes/card_slot.tscn" id="3_0bbpv"]
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="4_rarhs"]
-[ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scenes/deck.gd" id="5_nxtc6"]
+[ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scripts/deck.gd" id="5_nxtc6"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="6_q8u5g"]
 [ext_resource type="Texture2D" uid="uid://l2fv3eyy80ro" path="res://española_back.png" id="7_jlsqs"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
 [ext_resource type="Script" uid="uid://bemeudqjrsjy8" path="res://scripts/button_select_decks/button_select_deck.gd" id="9_q8u5g"]
+[ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="10_lhr70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
 size = Vector2(134, 183)
@@ -23,6 +24,11 @@ card_slot_reference = NodePath("../CardSlot")
 [node name="CardSlot" parent="." instance=ExtResource("3_0bbpv")]
 position = Vector2(1055, 512)
 
+[node name="OpponentHand" type="Node2D" parent="."]
+script = ExtResource("4_rarhs")
+HAND_Y_POSITION = 10
+card_scene = ExtResource("2_0bbpv")
+
 [node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("4_rarhs")
 card_scene = ExtResource("2_0bbpv")
@@ -33,11 +39,12 @@ offset_top = 296.0
 offset_right = 566.0
 offset_bottom = 319.0
 
-[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("player_hand")]
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("player_hand", "opponent_hand")]
 position = Vector2(840, 509)
 script = ExtResource("5_nxtc6")
 card_scene = ExtResource("2_0bbpv")
 player_hand = NodePath("../PlayerHand")
+opponent_hand = NodePath("../OpponentHand")
 card_database = ExtResource("6_q8u5g")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
@@ -59,7 +66,7 @@ deck_reference = NodePath("../Deck")
 card_slot_reference = NodePath("../CardSlot")
 player_hand_reference = NodePath("../PlayerHand")
 
-[node name="Button" type="Button" parent="."]
+[node name="BarajasButton" type="Button" parent="."]
 offset_left = 1792.0
 offset_top = 17.0
 offset_right = 1908.0
@@ -68,4 +75,17 @@ theme_override_font_sizes/font_size = 30
 text = "Barajas"
 script = ExtResource("9_q8u5g")
 
-[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
+[node name="EndTurnButton" type="Button" parent="."]
+offset_left = 431.0
+offset_top = 482.0
+offset_right = 578.0
+offset_bottom = 551.0
+text = "End Turn"
+
+[node name="ChinchonManager" type="Node" parent="."]
+script = ExtResource("10_lhr70")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="button_up" from="BarajasButton" to="BarajasButton" method="_on_button_up"]
+[connection signal="pressed" from="EndTurnButton" to="ChinchonManager" method="_on_end_turn_button_pressed"]

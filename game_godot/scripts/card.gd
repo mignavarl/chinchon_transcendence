@@ -6,10 +6,16 @@ var suit
 var value
 var img
 
+@export var flipped = false
 
+@export var back_img : Texture2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if img and back_img:
+		if flipped:
+			$CardImage.texture = back_img
+		else:
+			$CardImage.texture = load(img)
 
 func init_values(in_id, in_suit, in_value, in_img):
 	id = in_id

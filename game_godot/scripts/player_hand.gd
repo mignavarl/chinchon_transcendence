@@ -2,9 +2,9 @@ extends Node2D
 
 const HAND_COUNT = 8
 const CARD_SCENE_PATH = "res://scenes/card.tscn"
-const CARD_WIDTH = 150
-const CARD_HEIGHT = 100
-const HAND_Y_POSITION = 500
+@export var CARD_WIDTH = 150
+@export var CARD_HEIGHT = 100
+@export var HAND_Y_POSITION = 1010
 
 @export var card_scene : PackedScene
 
@@ -14,14 +14,21 @@ var hand_y_position
 
 func _ready() -> void:
 	center_screen_x = get_viewport().size.x / 2
-	hand_y_position = get_viewport().size.y - CARD_HEIGHT + 30
+	hand_y_position = HAND_Y_POSITION
 	#var card_scene = preload(CARD_SCENE_PATH)
-	
+
 
 
 func add_card_to_hand(card):
 	if (card not in player_hand):
-		player_hand.insert(0, card)
+		var i = 0
+		while i < player_hand.size():
+			if player_hand[i].position.x > card.position.x:
+				player_hand.insert(i,card)
+				update_hand_positions()
+				return
+			i += 1
+		player_hand.push_back(card)
 		update_hand_positions()
 	else:
 		animate_card_to_position(card, card.starting_position)
@@ -50,3 +57,21 @@ func calculate_card_position(index):
 func animate_card_to_position(card, new_position):
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "position", new_position, 0.1)
+
+func sorting_algorithm(a, b):
+	if a.suit != b.suit:
+		return a.suit["id"] < b.suit["id"]
+	else:
+		return a.value["value"] < b.value["value"]
+
+func sort_card_by_number(a, b):
+	return a.value["value"] < b.value["value"]
+
+func sort_hand_suit():
+	player_hand.sort_custom(sorting_algorithm)
+	player_hand.sort_custom(sorting_algorithm)
+	update_hand_positions()
+
+func sort_hand_number():
+	player_hand.sort_custom(sort_card_by_number)
+	update_hand_positions()
