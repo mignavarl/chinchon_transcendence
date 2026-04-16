@@ -63,15 +63,16 @@ func raycast_at_cursor():
 		print(result_collision_mask)
 		if result_collision_mask == COLLISION_MASK_CARD:
 			var card_found = result[0].collider.get_parent()
-			if card_found:
+			if card_found and deck_reference.card_drawn_this_turn:
 				card_manager_reference.send_card_to_slot(card_found)
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			deck_reference.draw_card()
 		elif result_collision_mask == COLLISION_MASK_SLOT:
-			var card = card_slot_reference.get_top_card()
-			if player_hand_reference.player_hand.size() <= 7 and card:
-				player_hand_reference.add_card_to_hand(card)
-				print("añadimos a la mano %s",  card.id)
+			if !deck_reference.card_drawn_this_turn:
+				var card = card_slot_reference.get_top_card()
+				if card:
+					player_hand_reference.add_card_to_hand(card)
+					deck_reference.card_drawn_this_turn = true
 				
 func raycast_drag():
 	var space_state = get_world_2d().direct_space_state

@@ -76,10 +76,12 @@ text = "Barajas"
 script = ExtResource("9_q8u5g")
 
 [node name="EndTurnButton" type="Button" parent="."]
+visible = false
 offset_left = 431.0
 offset_top = 482.0
 offset_right = 578.0
 offset_bottom = 551.0
+disabled = true
 text = "End Turn"
 
 [node name="ChinchonManager" type="Node" parent="."]

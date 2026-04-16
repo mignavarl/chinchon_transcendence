@@ -2,6 +2,7 @@ extends Node
 
 var timer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer = $"../Timer"
@@ -13,18 +14,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_end_turn_button_pressed() -> void:
+func end_turn():
 	opponent_turn()
 
+func _on_end_turn_button_pressed() -> void:
+	end_turn()
+
 func opponent_turn():
-	$"../EndTurnButton".disabled = true
-	$"../EndTurnButton".visible = false
-	
+	timer.start()
+	await timer.timeout
+	$"../Deck".card_drawn_this_turn = false
 	$"../Deck".draw_card_opponent()
 	timer.start()
 	await timer.timeout
-	
-	$"../EndTurnButton".disabled = false
-	$"../EndTurnButton".visible = true
+	var rand_idx = randi_range(0, $"../OpponentHand".player_hand.size() - 1)
+	$"../CardManager".opponent_card_to_slot($"../OpponentHand".player_hand[rand_idx])
 	$"../Deck".card_drawn_this_turn = false

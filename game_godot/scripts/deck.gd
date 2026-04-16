@@ -49,7 +49,6 @@ func add_card_to_player_idx(card_drawn, idx):
 		var new_card = card_scene.instantiate()
 		new_card.get_child(0).texture = card_textures[card_drawn.img]
 		new_card.init_values(card_drawn.id, card_drawn.suit, card_drawn.number, card_drawn.img)
-		#new_card.position = Vector2(1000, 0)
 		new_card.position = $".".global_position
 		$"../CardManager".add_child(new_card)
 		new_card.name = card_drawn.id
@@ -57,10 +56,9 @@ func add_card_to_player_idx(card_drawn, idx):
 		card_drawn_this_turn = true
 	else:
 		var new_card = card_scene.instantiate()
-		new_card.get_child(0).texture = card_textures[card_drawn.img]
-		new_card.init_values(card_drawn.id, card_drawn.suit, card_drawn.number, card_drawn.img)
 		new_card.flipped = true
-		#new_card.position = Vector2(1000, 0)
+		#new_card.get_child(0).texture = card_textures[card_drawn.img]
+		new_card.init_values(card_drawn.id, card_drawn.suit, card_drawn.number, card_drawn.img)
 		new_card.position = $".".global_position
 		$"../CardManager".add_child(new_card)
 		new_card.name = card_drawn.id
@@ -89,6 +87,3 @@ func generate_deck():
 
 func shuffle_deck():
 	player_deck.shuffle()
-
-static func change_deck(new_deck):
-	deck_selected = new_deck

@@ -27,6 +27,5 @@ func get_top_card():
 		return
 	card.visible = true
 	card.get_node("Area2D/CollisionShape2D").disabled = false
-	print("robamos el", card.id)
 	update_visual()
 	return card
