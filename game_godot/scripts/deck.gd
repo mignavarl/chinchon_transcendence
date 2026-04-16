@@ -87,3 +87,6 @@ func generate_deck():
 
 func shuffle_deck():
 	player_deck.shuffle()
+	
+static func change_deck(new_deck):
+	deck_selected = new_deck
