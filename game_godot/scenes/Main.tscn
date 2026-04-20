@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=13 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
+[ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_wp0k4"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://scenes/card.tscn" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://scenes/card_slot.tscn" id="3_0bbpv"]
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="4_rarhs"]
@@ -16,13 +17,17 @@ size = Vector2(134, 183)
 
 [node name="Main" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_wp0k4")
+
 [node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("input_manager", "card_slot_reference")]
 script = ExtResource("1_rvslj")
 input_manager = NodePath("../InputManager")
 card_slot_reference = NodePath("../CardSlot")
 
 [node name="CardSlot" parent="." instance=ExtResource("3_0bbpv")]
-position = Vector2(1055, 512)
+position = Vector2(1064, 540)
 
 [node name="OpponentHand" type="Node2D" parent="."]
 script = ExtResource("4_rarhs")
@@ -34,13 +39,13 @@ script = ExtResource("4_rarhs")
 card_scene = ExtResource("2_0bbpv")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 526.0
-offset_top = 296.0
-offset_right = 566.0
-offset_bottom = 319.0
+offset_left = 559.0
+offset_top = 551.0
+offset_right = 599.0
+offset_bottom = 574.0
 
 [node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("player_hand", "opponent_hand")]
-position = Vector2(840, 509)
+position = Vector2(855, 540)
 script = ExtResource("5_nxtc6")
 card_scene = ExtResource("2_0bbpv")
 player_hand = NodePath("../PlayerHand")
