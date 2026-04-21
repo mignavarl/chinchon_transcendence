@@ -149,7 +149,8 @@ func raycast_right_click():
 func close_game():
 	raycast_right_click()
 	#TODO: iniciar puntuaciones
-	end_round()
+	if game_ended:
+		end_round()
 
 func end_round():
 	player_hand.show_hand()
@@ -189,7 +190,7 @@ func _on_input_manager_left_mouse_button_release() -> void:
 	pass # Replace with function body.
 
 func _on_input_manager_right_mouse_button_clicked() -> void:
-	if active_player == 0:
+	if active_player == 0 and card_drawn_this_turn:
 		close_game()
 
 static func change_deck(new_deck):
