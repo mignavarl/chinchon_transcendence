@@ -55,13 +55,13 @@ func opponent_card_to_slot(card):
 func finish_drag():
 	if card_being_dragged:
 		card_being_dragged.scale = Vector2(1.05, 1.05)
-		var card_slot_found = raycast_check_for_card_slot()
-		if card_slot_found:
-			card_being_dragged.position = card_slot_found.position
-			card_slot_found.add_card_to_slot(card_being_dragged)
-			player_hand_reference.remove_card_from_hand(card_being_dragged)
-		else:
-			player_hand_reference.add_card_to_hand(card_being_dragged)
+		#var card_slot_found = raycast_check_for_card_slot()
+		#if card_slot_found:
+			#card_being_dragged.position = card_slot_found.position
+			#card_slot_found.add_card_to_slot(card_being_dragged)
+			#player_hand_reference.remove_card_from_hand(card_being_dragged)
+		#else:
+		player_hand_reference.add_card_to_hand(card_being_dragged)
 		card_being_dragged = null
 
 func raycast_check_for_card_slot():
