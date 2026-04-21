@@ -10,6 +10,7 @@ var opponent_hand_reference
 
 @export var input_manager : Node2D
 @export var card_slot_reference : Node2D
+@export var card_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,14 +28,6 @@ func _process(delta: float) -> void:
 			clamp(mouse_pos.y, 0, screen_size.y))
 	$"../Label".text = "Cartas en la mano " + str($"../PlayerHand".player_hand.size())
 
-#func _input(event):
-	#if event is InputEventMouseButton  and event.button_index == MOUSE_BUTTON_LEFT:
-		#if event.pressed:
-			#var card = raycast_check_for_card()
-			#if card:
-				#start_drag(card)
-		#else:
-			#finish_drag()
 
 func start_drag(card):
 	card.scale = Vector2(1, 1)
@@ -43,14 +36,14 @@ func start_drag(card):
 func send_card_to_slot(card):
 	animate_card_to_position(card, card_slot_reference.global_position)
 	player_hand_reference.remove_card_from_hand(card)
-	card_slot_reference.add_card_to_slot(card)
+	card_slot_reference.add_card_to_stack(card)
 	$"../ChinchonManager".end_turn()
 
 func opponent_card_to_slot(card):
 	card.flipped = false
 	animate_card_to_position(card, card_slot_reference.global_position)
 	opponent_hand_reference.remove_card_from_hand(card)
-	card_slot_reference.add_card_to_slot(card)
+	card_slot_reference.add_card_to_stack(card)
 
 func finish_drag():
 	if card_being_dragged:
@@ -58,7 +51,7 @@ func finish_drag():
 		#var card_slot_found = raycast_check_for_card_slot()
 		#if card_slot_found:
 			#card_being_dragged.position = card_slot_found.position
-			#card_slot_found.add_card_to_slot(card_being_dragged)
+			#card_slot_found.add_card_to_stack(card_being_dragged)
 			#player_hand_reference.remove_card_from_hand(card_being_dragged)
 		#else:
 		player_hand_reference.add_card_to_hand(card_being_dragged)
@@ -87,11 +80,17 @@ func get_card_with_highest_z_index(cards):
 			highest_z_index = current_card.z_index
 	return highest_z_card
 
+func instantiate_card(card):
+	var new_card = card_scene.instantiate()
+	new_card.init_values(card.id, card.suit, card.number, card.img)
+	new_card.position = $".".global_position
+	self.add_child(new_card)
+	new_card.name = card.id
+	return new_card
 
 func on_left_click_release():
 	if card_being_dragged:
 		finish_drag()
-
 
 func animate_card_to_position(card, new_position):
 	var tween = get_tree().create_tween()

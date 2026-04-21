@@ -75,3 +75,7 @@ func sort_hand_suit():
 func sort_hand_number():
 	player_hand.sort_custom(sort_card_by_number)
 	update_hand_positions()
+
+func show_hand():
+	for c in player_hand:
+		c.flipped = false

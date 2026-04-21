@@ -1,5 +1,6 @@
 extends Node2D
 
+signal right_mouse_button_clicked
 signal left_mouse_button_clicked
 signal left_mouse_button_release
 signal left_mouse_button_pressed
@@ -33,12 +34,12 @@ func _process(delta: float) -> void:
 				click_state = ClickState.PENDING
 				hold_timer = 0.0
 			if Input.is_action_just_pressed("right_mouse_click"):
-				raycast_right_click()
+				emit_signal("right_mouse_button_clicked")
 		ClickState.PENDING:
 			if Input.is_action_just_released("mouse_click"):
 				print("click")
 				emit_signal("left_mouse_button_clicked")
-				raycast_at_cursor()
+				#raycast_at_cursor()
 				click_state = ClickState.IDLE
 			else:
 				hold_timer += delta
