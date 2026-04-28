@@ -82,7 +82,7 @@ func get_card_with_highest_z_index(cards):
 
 func instantiate_card(card):
 	var new_card = card_scene.instantiate()
-	new_card.init_values(card.id, card.suit, card.number, card.img)
+	new_card.init_values(card.id, card.suit.id, card.number.value, card.img)
 	new_card.position = $".".global_position
 	self.add_child(new_card)
 	new_card.name = card.id

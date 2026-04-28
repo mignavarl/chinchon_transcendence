@@ -60,12 +60,12 @@ func animate_card_to_position(card, new_position):
 
 func sorting_algorithm(a, b):
 	if a.suit != b.suit:
-		return a.suit["id"] < b.suit["id"]
+		return a.suit < b.suit
 	else:
-		return a.value["value"] < b.value["value"]
+		return a.value < b.value
 
 func sort_card_by_number(a, b):
-	return a.value["value"] < b.value["value"]
+	return a.value < b.value
 
 func sort_hand_suit():
 	player_hand.sort_custom(sorting_algorithm)
