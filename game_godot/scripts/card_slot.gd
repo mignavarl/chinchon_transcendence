@@ -1,6 +1,7 @@
 extends Node2D
 
 var cards = []
+var top_card : Node2D
 
 func _ready() -> void:
 	print($Area2D.collision_mask)
@@ -20,6 +21,7 @@ func add_card_to_slot(card):
 	cards.push_front(card)
 	card.z_index = 0
 	update_visual()
+	top_card = card
 	
 func get_top_card():
 	var card = cards.pop_front()

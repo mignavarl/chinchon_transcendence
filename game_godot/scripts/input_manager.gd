@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("mouse_click"):
 				click_state = ClickState.PENDING
 				hold_timer = 0.0
+			if Input.is_action_just_pressed("right_mouse_click"):
+				raycast_right_click()
 		ClickState.PENDING:
 			if Input.is_action_just_released("mouse_click"):
 				print("click")
@@ -51,6 +53,20 @@ func _process(delta: float) -> void:
 				emit_signal("left_mouse_button_pressed")
 				if !card_manager_reference.card_being_dragged:
 					raycast_drag()
+
+func raycast_right_click():
+	var space_state = get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = get_global_mouse_position()
+	params.collide_with_areas = true
+	params.collision_mask = COLLISION_MASK_CARD
+	var result = space_state.intersect_point(params)
+	if result.size() > 0:
+		var card_found = result[0].collider.get_parent()
+		if card_found:
+			card_found.flipped = true
+			card_manager_reference.send_card_to_slot(card_found)
+
 
 func raycast_at_cursor():
 	var space_state = get_world_2d().direct_space_state

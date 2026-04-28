@@ -19,6 +19,7 @@ size = Vector2(134, 183)
 [node name="Main" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -42
 position = Vector2(960, 540)
 texture = ExtResource("1_wp0k4")
 
@@ -28,6 +29,7 @@ input_manager = NodePath("../InputManager")
 card_slot_reference = NodePath("../CardSlot")
 
 [node name="CardSlot" parent="." instance=ExtResource("3_0bbpv")]
+z_index = -10
 position = Vector2(1064, 540)
 
 [node name="OpponentHand" type="Node2D" parent="."]
@@ -89,9 +91,6 @@ offset_right = 578.0
 offset_bottom = 551.0
 disabled = true
 text = "End Turn"
-
-[node name="ChinchonManager" type="Node" parent="."]
-script = ExtResource("10_lhr70")
 
 [node name="Timer" type="Timer" parent="."]
 
