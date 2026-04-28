@@ -1,44 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://b32jibwkqcqu0"]
+[gd_scene load_steps=13 format=3 uid="uid://b32jibwkqcqu0"]
 
+[ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="1_a0yho"]
 [ext_resource type="Texture2D" uid="uid://crtu6lbv0pa7y" path="res://assets/cards/pixel/oros_1.png" id="1_wj04o"]
 [ext_resource type="Texture2D" uid="uid://tmcwlnkp4y87" path="res://assets/cards/cutre/oros_1.png" id="2_6stev"]
-[ext_resource type="Script" uid="uid://suwbqjto3keq" path="res://scripts/button_select_decks/button_pixel.gd" id="2_esnui"]
+[ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="2_7hpki"]
+[ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scripts/deck.gd" id="3_buvdd"]
 [ext_resource type="Texture2D" uid="uid://pk2y7faajwuh" path="res://assets/cards/española/oros_1.png" id="3_esnui"]
-[ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="3_puhoh"]
-[ext_resource type="Script" uid="uid://dsdf12eld3i8n" path="res://scripts/button_select_decks/button_cutre.gd" id="5_buvdd"]
-[ext_resource type="Script" uid="uid://rxiixonn6mwe" path="res://scripts/button_select_decks/button_esp.gd" id="7_puhoh"]
+[ext_resource type="Script" uid="uid://xj4urqoje261" path="res://scripts/button_select_decks/pixel.gd" id="4_vlhy3"]
+[ext_resource type="Script" uid="uid://bln2hrjaqqd5p" path="res://scripts/button_select_decks/cutre.gd" id="7_0qbui"]
+[ext_resource type="Script" uid="uid://bpsjflf1bihtq" path="res://scripts/button_select_decks/luigi_hd.gd" id="8_4fnji"]
+[ext_resource type="Script" uid="uid://bdo5so5vgwfg4" path="res://scripts/button_select_decks/española.gd" id="8_7hpki"]
+[ext_resource type="Texture2D" uid="uid://djkyxw8io7v0c" path="res://assets/cards/luigiHD/oros_1.png" id="8_v6dvc"]
+[ext_resource type="Script" uid="uid://jsxen73u4g4i" path="res://scripts/button_select_decks/exit_button_selector.gd" id="12_7hpki"]
 
-[node name="Control" type="Control"]
+[node name="Selector" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a0yho")
+decks = ExtResource("2_7hpki")
+make_deck = ExtResource("3_buvdd")
 
-[node name="Pixel" type="VBoxContainer" parent="."]
+[node name="pixel" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 798.0
-offset_top = 264.0
-offset_right = 1148.0
-offset_bottom = 728.0
+offset_left = 511.0
+offset_top = 304.0
+offset_right = 861.0
+offset_bottom = 768.0
+script = ExtResource("4_vlhy3")
+make_deck = ExtResource("3_buvdd")
+deck = "pixel"
 
-[node name="Control" type="Control" parent="Pixel"]
+[node name="Control" type="Control" parent="pixel"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Pixel/Control"]
+[node name="TextureRect" type="TextureRect" parent="pixel/Control"]
 layout_mode = 0
 offset_left = 84.0
 offset_top = 32.0
-offset_right = 272.0
-offset_bottom = 329.0
+offset_right = 301.0
+offset_bottom = 330.0
 texture = ExtResource("1_wj04o")
 stretch_mode = 4
 
-[node name="Control2" type="Control" parent="Pixel"]
+[node name="Control2" type="Control" parent="pixel"]
 layout_mode = 2
 
-[node name="ButtonPixel" type="Button" parent="Pixel/Control2"]
+[node name="ButtonPixel" type="Button" parent="pixel/Control2"]
 layout_mode = 0
 offset_left = 120.0
 offset_top = 364.0
@@ -46,32 +58,39 @@ offset_right = 239.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 42
 text = "PIXEL"
+<<<<<<< HEAD
 script = ExtResource("2_esnui")
 make_deck = ExtResource("3_puhoh")
+=======
+>>>>>>> origin/create-nginx
 
-[node name="Cutre" type="VBoxContainer" parent="."]
+[node name="cutre" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 379.0
-offset_top = 216.0
-offset_right = 763.0
-offset_bottom = 635.0
+offset_left = 85.0
+offset_top = 253.0
+offset_right = 469.0
+offset_bottom = 672.0
+script = ExtResource("7_0qbui")
+make_deck = ExtResource("3_buvdd")
+deck = "cutre"
 
-[node name="Control" type="Control" parent="Cutre"]
+[node name="Control" type="Control" parent="cutre"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="Cutre/Control"]
+[node name="TextureRect2" type="TextureRect" parent="cutre/Control"]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 89.0
 offset_right = 319.0
-offset_bottom = 361.0
+offset_bottom = 387.0
 texture = ExtResource("2_6stev")
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="Cutre"]
+[node name="Control2" type="Control" parent="cutre"]
 layout_mode = 2
 
-[node name="ButtonCutre" type="Button" parent="Cutre/Control2"]
+[node name="ButtonCutre" type="Button" parent="cutre/Control2"]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 408.0
@@ -79,20 +98,27 @@ offset_right = 290.0
 offset_bottom = 474.0
 theme_override_font_sizes/font_size = 42
 text = "CUTRE"
+<<<<<<< HEAD
 script = ExtResource("5_buvdd")
 make_deck = ExtResource("3_puhoh")
+=======
+>>>>>>> origin/create-nginx
 
-[node name="Española" type="VBoxContainer" parent="."]
+[node name="española" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 1313.0
-offset_top = 42.0
-offset_right = 1600.0
-offset_bottom = 573.0
+offset_left = 1086.0
+offset_top = 86.0
+offset_right = 1373.0
+offset_bottom = 617.0
+script = ExtResource("8_7hpki")
+make_deck = ExtResource("3_buvdd")
+deck = "española"
 
-[node name="Control" type="Control" parent="Española"]
+[node name="Control" type="Control" parent="española"]
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="Española/Control"]
+[node name="TextureRect3" type="TextureRect" parent="española/Control"]
 layout_mode = 0
 offset_left = -89.0
 offset_top = 237.0
@@ -101,10 +127,10 @@ offset_bottom = 535.0
 texture = ExtResource("3_esnui")
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="Española"]
+[node name="Control2" type="Control" parent="española"]
 layout_mode = 2
 
-[node name="ButtonEsp" type="Button" parent="Española/Control2"]
+[node name="ButtonEsp" type="Button" parent="española/Control2"]
 layout_mode = 0
 offset_left = -90.0
 offset_top = 585.0
@@ -112,9 +138,59 @@ offset_right = 135.0
 offset_bottom = 651.0
 theme_override_font_sizes/font_size = 42
 text = "ESPAÑOLA"
+<<<<<<< HEAD
 script = ExtResource("7_puhoh")
 make_deck = ExtResource("3_puhoh")
+=======
+>>>>>>> origin/create-nginx
 
-[connection signal="button_up" from="Pixel/Control2/ButtonPixel" to="Pixel/Control2/ButtonPixel" method="_on_button_up"]
-[connection signal="button_up" from="Cutre/Control2/ButtonCutre" to="Cutre/Control2/ButtonCutre" method="_on_button_up"]
-[connection signal="button_up" from="Española/Control2/ButtonEsp" to="Española/Control2/ButtonEsp" method="_on_button_up"]
+[node name="luigiHD" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1347.0
+offset_top = 319.0
+offset_right = 1697.0
+offset_bottom = 783.0
+script = ExtResource("8_4fnji")
+make_deck = ExtResource("3_buvdd")
+deck = "luigiHD"
+
+[node name="Control" type="Control" parent="luigiHD"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="luigiHD/Control"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 9.0
+offset_right = 286.0
+offset_bottom = 307.0
+texture = ExtResource("8_v6dvc")
+stretch_mode = 4
+
+[node name="Control2" type="Control" parent="luigiHD"]
+layout_mode = 2
+
+[node name="ButtonLuigiHD" type="Button" parent="luigiHD/Control2"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 351.0
+offset_right = 270.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 42
+text = "LUIGI HD"
+
+[node name="exit_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1780.0
+offset_top = 21.0
+offset_right = 1903.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 45
+text = "Atrás"
+script = ExtResource("12_7hpki")
+
+[connection signal="button_up" from="pixel/Control2/ButtonPixel" to="pixel" method="_on_button_pixel_button_up"]
+[connection signal="button_up" from="cutre/Control2/ButtonCutre" to="cutre" method="_on_button_cutre_button_up"]
+[connection signal="button_up" from="española/Control2/ButtonEsp" to="española" method="_on_button_esp_button_up"]
+[connection signal="button_up" from="luigiHD/Control2/ButtonLuigiHD" to="luigiHD" method="_on_button_luigi_hd_button_up"]
+[connection signal="button_up" from="exit_Button" to="exit_Button" method="_on_button_up"]
