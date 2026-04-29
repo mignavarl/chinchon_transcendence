@@ -68,11 +68,9 @@ func add_card_to_player_idx(card_drawn, idx):
 
 
 func generate_deck():
-	print("pongo el deck: ", deck_selected)
 	for suit in card_database.SUITS:
 		for number in card_database.NUMBERS:
 			var img_path =  "res://assets/cards/%s/%s_%d.png" % [deck_selected, suit["id"], number["value"]]
-			#print("path: %s", img_path)
 			card_textures[img_path] = load(img_path)
 			var card = {
 				"id": "%s_%d" % [suit["id"], number["value"]],
@@ -81,7 +79,6 @@ func generate_deck():
 				"img": img_path,
 				"deck": deck_selected,
 			}
-			#print("imagen cargada %s", img_path)
 			player_deck.append(card)
 	shuffle_deck()
 
@@ -90,3 +87,4 @@ func shuffle_deck():
 	
 static func change_deck(new_deck):
 	deck_selected = new_deck
+	print("Cambio a ", deck_selected)

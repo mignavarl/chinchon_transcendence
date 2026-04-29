@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=11 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_wp0k4"]
@@ -61,10 +61,9 @@ offset_top = 551.0
 offset_right = 599.0
 offset_bottom = 574.0
 
-[node name="InputManager" type="Node2D" parent="." node_paths=PackedStringArray("card_manager_reference", "deck_reference", "card_slot_reference", "player_hand_reference")]
+[node name="InputManager" type="Node2D" parent="." node_paths=PackedStringArray("card_manager_reference", "card_slot_reference", "player_hand_reference")]
 script = ExtResource("7_q8u5g")
 card_manager_reference = NodePath("../CardManager")
-deck_reference = NodePath("")
 card_slot_reference = NodePath("../CardSlot")
 player_hand_reference = NodePath("../PlayerHand")
 
@@ -99,6 +98,7 @@ card_database = ExtResource("6_q8u5g")
 card_manager = NodePath("../CardManager")
 punt_player = NodePath("../Puntuacion jugador")
 punt_oppo = NodePath("../Puntuacion oponente")
+
 [node name="GachaButton" type="Button" parent="."]
 offset_left = 1620.0
 offset_top = 20.0

@@ -77,7 +77,6 @@ func opponent_turn():
 	active_player = 0
 
 func generate_deck():
-	print("pongo el deck: ", deck_selected)
 	for suit in card_database.SUITS:
 		for number in card_database.NUMBERS:
 			var img_path =  "res://assets/cards/%s/%s_%d.png" % [deck_selected, suit["id"], number["value"]]
@@ -120,8 +119,8 @@ func raycast_click():
 			COLLISION_MASK_SLOT:
 				print("slot")
 				if !card_drawn_this_turn:
-					var slot = result[0].collider.get_parent()
-					var card = slot.get_top_card()
+					var sl = result[0].collider.get_parent()
+					var card = sl.get_top_card()
 					add_card_to_player_hand(card, 0)
 					card_drawn_this_turn = true
 				#if !deck_reference.card_drawn_this_turn:
@@ -155,17 +154,51 @@ func close_game():
 func end_round():
 	player_hand.show_hand()
 	opponent_hand.show_hand()
-	opponent_hand.hand_y_position += 100
+	opponent_hand.hand_y_position += 50
 	opponent_hand.update_hand_positions()
-	var ppoints = count_points(player_hand, 0)
-	punt_player.text = str(ppoints)
-	var opoints = count_points(opponent_hand, 1)
-	punt_oppo.text = str(opoints)
 
+	await get_tree().create_timer(0.15).timeout 
 
-func count_points(hand, idx):
-	var result = check_best_hand(hand.player_hand)
-	return result["leftover_points"]
+	_display_combinations(player_hand.player_hand, 0)
+	_display_combinations(opponent_hand.player_hand, 1)
+
+func _display_combinations(hand, idx):
+	var result = check_best_hand(hand)
+	var points_label = punt_player if idx == 0 else punt_oppo
+	points_label.text = str(result["leftover_points"])
+	
+	var base_y = 750 if idx == 0 else 250
+	var CARD_SPACING = 150
+	var GROUP_SPACING = 220
+	var screen_center = get_viewport().size.x / 2.0
+	
+
+	var total_width = 0
+	for group in result["groups"]:
+		total_width += group.size() * CARD_SPACING
+		total_width += GROUP_SPACING 
+	total_width -= GROUP_SPACING
+	
+	var cursor_x = screen_center - total_width / 2.0
+	
+	for group in result["groups"]:
+		for card_data in group:
+			var card_node = _find_card_node(hand, card_data)
+			if card_node:
+				card_node.position = Vector2(cursor_x, base_y)
+				cursor_x += CARD_SPACING
+		cursor_x += GROUP_SPACING
+	
+	for card_data in result["leftover"]:
+		var card_node = _find_card_node(hand, card_data)
+		if card_node:
+			card_node.modulate = Color(1.0, 0.769, 0.758, 1.0)
+
+func _find_card_node(hand, card_data) -> Node:
+	for node in hand:
+		if node.suit == card_data["suit"] and node.value == card_data["value"]:
+			return node
+	return null
 
 func check_best_hand(cards: Array) -> Dictionary:
 	var all_groups = []
@@ -193,6 +226,8 @@ func find_stairs(cards: Array, suit: String) -> Array:
 		if current.is_empty():
 			current.append(card)
 		elif card.value == current.back().value + 1:
+			current.append(card)
+		elif card.value == 10 and card.value == current.back().value + 3:
 			current.append(card)
 		else:
 			if current.size() >= 3:

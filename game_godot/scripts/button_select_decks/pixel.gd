@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_button_up() -> void:
+func _on_button_pixel_button_up() -> void:
 	make_deck.change_deck(deck)
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")

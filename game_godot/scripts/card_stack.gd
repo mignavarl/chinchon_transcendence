@@ -19,7 +19,6 @@ func update_visual():
 
 func add_card_to_stack(card):
 	if putable:
-		print("añadimos: ", card)
 		card.get_node("Area2D/CollisionShape2D").disabled = true
 		cards.push_front(card)
 		card.z_index = 1

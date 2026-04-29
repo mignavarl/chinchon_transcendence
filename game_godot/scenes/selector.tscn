@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b32jibwkqcqu0"]
+[gd_scene load_steps=14 format=3 uid="uid://b32jibwkqcqu0"]
 
 [ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="1_a0yho"]
 [ext_resource type="Texture2D" uid="uid://crtu6lbv0pa7y" path="res://assets/cards/pixel/oros_1.png" id="1_wj04o"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bodov0p22fwoc" path="res://scripts/deck.gd" id="3_buvdd"]
 [ext_resource type="Texture2D" uid="uid://pk2y7faajwuh" path="res://assets/cards/española/oros_1.png" id="3_esnui"]
 [ext_resource type="Script" uid="uid://xj4urqoje261" path="res://scripts/button_select_decks/pixel.gd" id="4_vlhy3"]
+[ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="5_vlhy3"]
 [ext_resource type="Script" uid="uid://bln2hrjaqqd5p" path="res://scripts/button_select_decks/cutre.gd" id="7_0qbui"]
 [ext_resource type="Script" uid="uid://bpsjflf1bihtq" path="res://scripts/button_select_decks/luigi_hd.gd" id="8_4fnji"]
 [ext_resource type="Script" uid="uid://bdo5so5vgwfg4" path="res://scripts/button_select_decks/española.gd" id="8_7hpki"]
@@ -32,7 +33,7 @@ offset_top = 304.0
 offset_right = 861.0
 offset_bottom = 768.0
 script = ExtResource("4_vlhy3")
-make_deck = ExtResource("3_buvdd")
+make_deck = ExtResource("5_vlhy3")
 deck = "pixel"
 
 [node name="Control" type="Control" parent="pixel"]
@@ -58,11 +59,6 @@ offset_right = 239.0
 offset_bottom = 430.0
 theme_override_font_sizes/font_size = 42
 text = "PIXEL"
-<<<<<<< HEAD
-script = ExtResource("2_esnui")
-make_deck = ExtResource("3_puhoh")
-=======
->>>>>>> origin/create-nginx
 
 [node name="cutre" type="VBoxContainer" parent="."]
 visible = false
@@ -72,7 +68,7 @@ offset_top = 253.0
 offset_right = 469.0
 offset_bottom = 672.0
 script = ExtResource("7_0qbui")
-make_deck = ExtResource("3_buvdd")
+make_deck = ExtResource("5_vlhy3")
 deck = "cutre"
 
 [node name="Control" type="Control" parent="cutre"]
@@ -98,11 +94,6 @@ offset_right = 290.0
 offset_bottom = 474.0
 theme_override_font_sizes/font_size = 42
 text = "CUTRE"
-<<<<<<< HEAD
-script = ExtResource("5_buvdd")
-make_deck = ExtResource("3_puhoh")
-=======
->>>>>>> origin/create-nginx
 
 [node name="española" type="VBoxContainer" parent="."]
 visible = false
@@ -112,7 +103,7 @@ offset_top = 86.0
 offset_right = 1373.0
 offset_bottom = 617.0
 script = ExtResource("8_7hpki")
-make_deck = ExtResource("3_buvdd")
+make_deck = ExtResource("5_vlhy3")
 deck = "española"
 
 [node name="Control" type="Control" parent="española"]
@@ -138,11 +129,6 @@ offset_right = 135.0
 offset_bottom = 651.0
 theme_override_font_sizes/font_size = 42
 text = "ESPAÑOLA"
-<<<<<<< HEAD
-script = ExtResource("7_puhoh")
-make_deck = ExtResource("3_puhoh")
-=======
->>>>>>> origin/create-nginx
 
 [node name="luigiHD" type="VBoxContainer" parent="."]
 visible = false
@@ -152,7 +138,7 @@ offset_top = 319.0
 offset_right = 1697.0
 offset_bottom = 783.0
 script = ExtResource("8_4fnji")
-make_deck = ExtResource("3_buvdd")
+make_deck = ExtResource("5_vlhy3")
 deck = "luigiHD"
 
 [node name="Control" type="Control" parent="luigiHD"]

@@ -18,7 +18,6 @@ func _ready() -> void:
 	#var card_scene = preload(CARD_SCENE_PATH)
 
 
-
 func add_card_to_hand(card):
 	if (card not in player_hand):
 		var i = 0
@@ -41,6 +40,7 @@ func remove_card_from_hand(card):
 		update_hand_positions()
 
 func update_hand_positions():
+	print("update hand position")
 	for i in range(player_hand.size()):
 		var new_position = Vector2(calculate_card_position(i), hand_y_position)
 		var card = player_hand[i]
@@ -56,7 +56,7 @@ func calculate_card_position(index):
 
 func animate_card_to_position(card, new_position):
 	var tween = get_tree().create_tween()
-	tween.tween_property(card, "position", new_position, 0.1)
+	tween.parallel().tween_property(card, "position", new_position, 0.1)
 
 func sorting_algorithm(a, b):
 	if a.suit != b.suit:
