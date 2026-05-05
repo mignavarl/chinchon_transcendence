@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0x1rcxw4en4a"
+path="res://.godot/imported/roof-flat-awning-a.obj-59e6c0611a54a6e6d7053fb59dad8b36.mesh"
+
+[deps]
+
+files=["res://.godot/imported/roof-flat-awning-a.obj-59e6c0611a54a6e6d7053fb59dad8b36.mesh"]
+
+source_file="res://assets/Models/OBJ format/roof-flat-awning-a.obj"
+dest_files=["res://.godot/imported/roof-flat-awning-a.obj-59e6c0611a54a6e6d7053fb59dad8b36.mesh", "res://.godot/imported/roof-flat-awning-a.obj-59e6c0611a54a6e6d7053fb59dad8b36.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -51,4 +51,3 @@ right_mouse_click={
 [rendering]
 
 textures/webp_compression/compression_method=0
-environment/defaults/default_clear_color=Color(0.11383156, 0.32778442, 0.11995856, 1)

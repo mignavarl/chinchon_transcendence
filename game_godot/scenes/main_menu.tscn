@@ -1,16 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=10 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
-[ext_resource type="Material" uid="uid://4ys2q4damj0f" path="res://materials/mat_play.tres" id="2_bqqt6"]
-[ext_resource type="Material" uid="uid://b1y2bpvnaw304" path="res://materials/mat_gacha.tres" id="2_ekxnf"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
+[ext_resource type="ArrayMesh" uid="uid://b68013upthxwn" path="res://assets/Models/OBJ format/building-sample-house-c.obj" id="3_wu84c"]
+[ext_resource type="ArrayMesh" uid="uid://imt0ogavv1sx" path="res://assets/Models/OBJ format/building-window-door-window.obj" id="4_oa1go"]
+[ext_resource type="ArrayMesh" uid="uid://0prnslfc5goy" path="res://assets/Models/OBJ format/roof-flat-awning-c.obj" id="5_tbmy8"]
+[ext_resource type="ArrayMesh" uid="uid://lmy8282bfay5" path="res://assets/Models/OBJ format/building-window-wide.obj" id="6_jk1qb"]
+[ext_resource type="ArrayMesh" uid="uid://cvsi1esfgvtdi" path="res://assets/Models/OBJ format/roof-flat-detail-b.obj" id="7_5dd4i"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bqqt6"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_bqqt6"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ekxnf"]
-material = ExtResource("2_ekxnf")
+[sub_resource type="BoxMesh" id="BoxMesh_lgwnu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
 size = Vector3(1.4967041, 2.4413452, 1)
@@ -19,40 +17,54 @@ size = Vector3(1.4967041, 2.4413452, 1)
 script = ExtResource("1_l6cm7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.211445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48952544, 2.211445)
 
 [node name="suelo" type="StaticBody3D" parent="."]
 transform = Transform3D(555.46106, 0, 0, 0, 1, 0, 0, 0, -185.8622, 0, -1.1443539, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="suelo"]
-shape = SubResource("WorldBoundaryShape3D_bqqt6")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="suelo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.5160589, 0)
 material_override = ExtResource("2_wu84c")
-mesh = SubResource("PlaneMesh_bqqt6")
+mesh = SubResource("BoxMesh_lgwnu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.68570405, 0.7278805, 0, -0.7278805, 0.68570405, 0, 1.4108123, 1.7303145)
+transform = Transform3D(0.9944155, -0.076816976, 0.072365895, -0.10157837, -0.882679, 0.45886785, 0.028627025, -0.46365613, -0.8855527, 0, 1.4108123, 1.7303145)
+light_color = Color(0.5981428, 0.36182165, 0.19175944, 1)
+light_energy = 10.402
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
 
 [node name="Play" type="Area3D" parent="."]
 transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.49083245, 0, -0.5635086)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Play"]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, -4.3711385e-08, -0.99999994, 0, 0.9999999, -4.371138e-08, 1.2498139, -0.016173363, 0.31133547)
-material_override = ExtResource("2_bqqt6")
-mesh = SubResource("PlaneMesh_ekxnf")
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 1.2755789, -1.3747457, -0.3779984)
+cast_shadow = 2
+mesh = ExtResource("3_wu84c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Play"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622924, -0.14657593, 1.7881393e-07)
 shape = SubResource("BoxShape3D_l6cm7")
 
 [node name="Gacha" type="Area3D" parent="."]
-transform = Transform3D(0.6229516, 0, 0.7822604, 0, 1, 0, -0.7822604, 0, 0.6229516, -1.5091676, 0, 1.8586963)
+transform = Transform3D(0.6229516, 0, 0.7822604, 0, 1, 0, -0.7822604, 0, 0.6229516, -1.6996281, 0, 2.097864)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Gacha"]
-transform = Transform3D(1, 2.9802322e-08, -1.7763568e-15, 0, -4.3711385e-08, -0.99999994, -2.9802322e-08, 0.9999999, -4.371138e-08, 1.9847944, 0, -0.73767287)
-material_override = ExtResource("2_ekxnf")
-mesh = SubResource("PlaneMesh_ekxnf")
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9999999, 0, -2.9802322e-08, 0, 0.9999999, 1.9847944, -1.1712385, -0.737673)
+mesh = ExtResource("4_oa1go")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gacha/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.41284132, 0.0038766786)
+mesh = ExtResource("5_tbmy8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Gacha/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.53973085, 0.0038766786)
+mesh = ExtResource("6_jk1qb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Gacha/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 1.1543849, 0.0038766786)
+mesh = ExtResource("7_5dd4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha"]
 transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594885, -1.1920929e-07, -0.8179421)
