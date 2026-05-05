@@ -9,6 +9,7 @@ var img
 @export var flipped = false
 
 @export var back_img : Texture2D
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if img and back_img:

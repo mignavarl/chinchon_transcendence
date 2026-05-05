@@ -43,3 +43,7 @@ func suffle_stack():
 	cards.shuffle()
 	top_card = cards[0]
 	update_visual()
+
+func empty_stack():
+	cards.clear()
+	update_visual()

@@ -40,7 +40,6 @@ func remove_card_from_hand(card):
 		update_hand_positions()
 
 func update_hand_positions():
-	print("update hand position")
 	for i in range(player_hand.size()):
 		var new_position = Vector2(calculate_card_position(i), hand_y_position)
 		var card = player_hand[i]

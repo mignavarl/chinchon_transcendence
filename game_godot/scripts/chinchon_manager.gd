@@ -36,6 +36,11 @@ func _ready() -> void:
 	generate_deck()
 	start_game()
 
+func _process(delta: float) -> void:
+	print(deck.cards.size())
+	if deck.cards.size() == 0:
+		reshuffle_deck()
+
 func start_game():
 	#TODO: for each player draw 7 cards
 	for i in 7:
@@ -123,11 +128,7 @@ func raycast_click():
 					var card = sl.get_top_card()
 					add_card_to_player_hand(card, 0)
 					card_drawn_this_turn = true
-				#if !deck_reference.card_drawn_this_turn:
-					#var card = card_slot_reference.get_top_card()
-					#if card:
-						#player_hand_reference.add_card_to_hand(card)
-						#deck_reference.card_drawn_this_turn = true
+
 
 func raycast_right_click():
 	var space_state = get_world_2d().direct_space_state
@@ -263,6 +264,9 @@ func _try_combinations(cards: Array, remaining_groups: Array, chosen: Array, bes
 	var leftover = cards.filter(func(c): return not used.has(c))
 	var points = _sum_values(leftover)
 	
+	if points == 0:
+		points = -10
+	
 	if points < best["leftover_points"]:
 		best["groups"] = chosen.duplicate()
 		best["leftover"] = leftover
@@ -288,7 +292,18 @@ func _sum_values(cards: Array) -> int:
 
 func draw_card():
 	var card = deck.get_top_card()
+	if deck.cards.size() == 0:
+		reshuffle_deck()
 	return card
+
+func reshuffle_deck():
+	slot.suffle_stack()
+	for c in slot.cards:
+		deck.add_card_to_stack(c)
+		c.flipped = true
+		card_manager.animate_card_to_position(c, deck.position)
+		
+	slot.empty_stack()
 
 func add_card_to_player_hand(card, idx):
 	if idx == 0:
