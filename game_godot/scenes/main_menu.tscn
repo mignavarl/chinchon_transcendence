@@ -1,17 +1,44 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=27 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
-[ext_resource type="ArrayMesh" uid="uid://b68013upthxwn" path="res://assets/Models/OBJ format/building-sample-house-c.obj" id="3_wu84c"]
+[ext_resource type="ArrayMesh" uid="uid://c4tua77hrajlc" path="res://assets/Models/OBJ format/building-door-window-narrow.obj" id="3_rcqid"]
+[ext_resource type="ArrayMesh" uid="uid://mjsd186one8s" path="res://assets/Models/OBJ format/door-brown-window.obj" id="4_1ajci"]
 [ext_resource type="ArrayMesh" uid="uid://imt0ogavv1sx" path="res://assets/Models/OBJ format/building-window-door-window.obj" id="4_oa1go"]
+[ext_resource type="ArrayMesh" uid="uid://wscbip0oq22m" path="res://assets/Models/OBJ format/window-brown-detailed.obj" id="5_7b55j"]
 [ext_resource type="ArrayMesh" uid="uid://0prnslfc5goy" path="res://assets/Models/OBJ format/roof-flat-awning-c.obj" id="5_tbmy8"]
+[ext_resource type="ArrayMesh" uid="uid://b4haopph61bjx" path="res://assets/Models/OBJ format/building-window-awnings.obj" id="6_5pajh"]
 [ext_resource type="ArrayMesh" uid="uid://lmy8282bfay5" path="res://assets/Models/OBJ format/building-window-wide.obj" id="6_jk1qb"]
 [ext_resource type="ArrayMesh" uid="uid://cvsi1esfgvtdi" path="res://assets/Models/OBJ format/roof-flat-detail-b.obj" id="7_5dd4i"]
+[ext_resource type="ArrayMesh" uid="uid://cgmg6ufqnugby" path="res://assets/Models/OBJ format/roof-flat-awning-b.obj" id="7_j7ex8"]
+[ext_resource type="ArrayMesh" uid="uid://4x8wuiur5spd" path="res://assets/Models/OBJ format/building-corner-window.obj" id="8_a8gd2"]
+[ext_resource type="ArrayMesh" uid="uid://bkqq6ud3y3geb" path="res://assets/Models/OBJ format/building-corner-window-sill.obj" id="9_hstxw"]
+[ext_resource type="ArrayMesh" uid="uid://cy7nmslcp6y0p" path="res://assets/Models/OBJ format/roof-slanted.obj" id="10_1ajci"]
+[ext_resource type="ArrayMesh" uid="uid://cej1yv5aotny6" path="res://assets/Models/OBJ format/building-sample-tower-b.obj" id="15_7b55j"]
+[ext_resource type="ArrayMesh" uid="uid://dkum4bsibhoa5" path="res://assets/Models/OBJ format/building-sample-house-b.obj" id="16_a8gd2"]
+[ext_resource type="ArrayMesh" uid="uid://n37jad64crga" path="res://assets/Models/OBJ format/building-sample-house-a.obj" id="17_8egab"]
+[ext_resource type="ArrayMesh" uid="uid://ue4obfnn7wf8" path="res://assets/Models/OBJ format/building-sample-tower-c.obj" id="17_hstxw"]
+[ext_resource type="ArrayMesh" uid="uid://dm3pi6j27jpw0" path="res://assets/Models/OBJ format/building-sample-tower-a.obj" id="18_8egab"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lgwnu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
 size = Vector3(1.4967041, 2.4413452, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8egab"]
+
+[sub_resource type="Sky" id="Sky_gw5y6"]
+sky_material = SubResource("ProceduralSkyMaterial_8egab")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_svtp6"]
+background_mode = 2
+sky = SubResource("Sky_gw5y6")
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1dfpl"]
+
+[sub_resource type="Compositor" id="Compositor_qywvv"]
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_l6cm7")
@@ -39,9 +66,49 @@ shadow_bias = 0.0
 transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.49083245, 0, -0.5635086)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Play"]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 1.2755789, -1.3747457, -0.3779984)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.9964342, -1.1610482, 0.08485183)
 cast_shadow = 2
-mesh = ExtResource("3_wu84c")
+mesh = ExtResource("3_rcqid")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 0, 1.0453998, 0, 0, 0, 0.99999994, -0.00061102025, -0.013174146, 0.44099152)
+cast_shadow = 2
+mesh = ExtResource("4_1ajci")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(0.56082594, 0, 2.9802322e-08, 0, 1.1095576, 0, 0, 0, 0.99999994, 0.3143782, 0.07259476, 0.4480535)
+cast_shadow = 2
+mesh = ExtResource("5_7b55j")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 0, 1.0453998, 0, 0, 0, 0.99999994, 0.000733668, 0.6044795, 0.066776425)
+cast_shadow = 2
+mesh = ExtResource("6_5pajh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(1.0000002, 0, 0, 0, 0.7904034, 0, 2.9802322e-08, 0, 1.0000001, -0.0006110072, 0.502906, 0.00011253357)
+cast_shadow = 2
+mesh = ExtResource("7_j7ex8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(0.49018896, 0, -0.8716162, 0, 1.0453999, 0, 0.8716165, 0, 0.490189, -0.7562555, -0.0017482117, 0.06252073)
+cast_shadow = 2
+mesh = ExtResource("8_a8gd2")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(0.49018896, 0, -0.8716162, 0, 1.0453999, 0, 0.8716165, 0, 0.490189, -0.7562555, 0.60884, 0.06252073)
+cast_shadow = 2
+mesh = ExtResource("9_hstxw")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Play/MeshInstance3D"]
+transform = Transform3D(0.9468456, 0, -0.0009931627, 0, 0.66418284, 0, 0.0010411665, 0, 0.9033266, 0.026190992, 1.259135, 0.015133232)
+cast_shadow = 2
+mesh = ExtResource("10_1ajci")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Play/MeshInstance3D/MeshInstance3D7"]
+transform = Transform3D(0.89683586, 0, -0.289693, 0, 0.8221738, 0, 0.30364951, 0, 0.8556155, -0.66563606, -0.018877156, 0.0016724728)
+cast_shadow = 2
+mesh = ExtResource("10_1ajci")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Play"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622924, -0.14657593, 1.7881393e-07)
@@ -55,7 +122,7 @@ transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9999999, 0, -2.9802322e-08, 0,
 mesh = ExtResource("4_oa1go")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Gacha/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.41284132, 0.0038766786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.40928313, 0.0038766786)
 mesh = ExtResource("5_tbmy8")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Gacha/MeshInstance3D"]
@@ -69,6 +136,57 @@ mesh = ExtResource("7_5dd4i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha"]
 transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594885, -1.1920929e-07, -0.8179421)
 shape = SubResource("BoxShape3D_l6cm7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_svtp6")
+camera_attributes = SubResource("CameraAttributesPractical_1dfpl")
+compositor = SubResource("Compositor_qywvv")
+
+[node name="Fondo" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -1.665039, -1.187282, 0.7812357)
+mesh = ExtResource("15_7b55j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.6168573, 0, -0.787075, 0, 1, 0, 0.787075, 0, 0.6168573, 1.9193321, -1.2366409, 0.8207768)
+mesh = ExtResource("16_a8gd2")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.84078413, 0, -0.5413707, 0, 1.5140674, 0, 0.5413707, 0, 0.84078413, 0.39620662, -1.3707881, -26.448954)
+mesh = ExtResource("17_8egab")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Fondo/MeshInstance3D3"]
+transform = Transform3D(0.99999976, 0, 0.00036641955, 0, 0.6296011, 0, -0.00036641955, 0, 0.99999976, -0.006711006, 0.51639843, 0.47765732)
+mesh = ExtResource("5_tbmy8")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.5753419, -1.1781479, -27.119644)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -0.74826825, -1.1781404, -26.58407)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -2.394447, -1.1733826, -27.658815)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.6201351, 0, 0.7844951, 0, 1, 0, -0.7844951, 0, 0.6201351, -1.5840943, -1.0761867, -5.261762)
+mesh = ExtResource("18_8egab")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -3.2299397, -1.1733826, -28.208727)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../MeshInstance3D")
 
 [connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
