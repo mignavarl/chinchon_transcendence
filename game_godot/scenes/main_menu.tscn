@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgohku6dvbnpc"]
+
+[ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
+[ext_resource type="Material" uid="uid://4ys2q4damj0f" path="res://materials/mat_play.tres" id="2_bqqt6"]
+[ext_resource type="Material" uid="uid://b1y2bpvnaw304" path="res://materials/mat_gacha.tres" id="2_ekxnf"]
+[ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bqqt6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bqqt6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ekxnf"]
+material = ExtResource("2_ekxnf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
+size = Vector3(1.4967041, 2.4413452, 1)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_l6cm7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.211445)
+
+[node name="suelo" type="StaticBody3D" parent="."]
+transform = Transform3D(555.46106, 0, 0, 0, 1, 0, 0, 0, -185.8622, 0, -1.1443539, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="suelo"]
+shape = SubResource("WorldBoundaryShape3D_bqqt6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="suelo"]
+material_override = ExtResource("2_wu84c")
+mesh = SubResource("PlaneMesh_bqqt6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.68570405, 0.7278805, 0, -0.7278805, 0.68570405, 0, 1.4108123, 1.7303145)
+
+[node name="Play" type="Area3D" parent="."]
+transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.49083245, 0, -0.5635086)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Play"]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, -4.3711385e-08, -0.99999994, 0, 0.9999999, -4.371138e-08, 1.2498139, -0.016173363, 0.31133547)
+material_override = ExtResource("2_bqqt6")
+mesh = SubResource("PlaneMesh_ekxnf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Play"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622924, -0.14657593, 1.7881393e-07)
+shape = SubResource("BoxShape3D_l6cm7")
+
+[node name="Gacha" type="Area3D" parent="."]
+transform = Transform3D(0.6229516, 0, 0.7822604, 0, 1, 0, -0.7822604, 0, 0.6229516, -1.5091676, 0, 1.8586963)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gacha"]
+transform = Transform3D(1, 2.9802322e-08, -1.7763568e-15, 0, -4.3711385e-08, -0.99999994, -2.9802322e-08, 0.9999999, -4.371138e-08, 1.9847944, 0, -0.73767287)
+material_override = ExtResource("2_ekxnf")
+mesh = SubResource("PlaneMesh_ekxnf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha"]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594885, -1.1920929e-07, -0.8179421)
+shape = SubResource("BoxShape3D_l6cm7")
+
+[connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]
+[connection signal="input_event" from="Gacha" to="." method="_on_gacha_input_event"]
+[connection signal="mouse_entered" from="Gacha" to="." method="_on_gacha_mouse_entered"]
+[connection signal="mouse_exited" from="Gacha" to="." method="_on_gacha_mouse_exited"]
