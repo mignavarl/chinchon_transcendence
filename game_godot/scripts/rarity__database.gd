@@ -1,6 +1,6 @@
 const DECKS = [
-	{"id" : "española", "rarity" : "common"},
 	{"id" : "pixel", "rarity" : "uncommon"},
-	{"id" : "cutre", "rarity" : "legendary"},
+	{"id" : "luigi", "rarity" : "uncommon"},
 	{"id" : "luigiHD", "rarity" : "rare"},
+	{"id" : "cutre", "rarity" : "legendary"},
 ]

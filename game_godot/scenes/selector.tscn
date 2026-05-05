@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b32jibwkqcqu0"]
+[gd_scene load_steps=16 format=3 uid="uid://b32jibwkqcqu0"]
 
 [ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="1_a0yho"]
 [ext_resource type="Texture2D" uid="uid://crtu6lbv0pa7y" path="res://assets/cards/pixel/oros_1.png" id="1_wj04o"]
@@ -11,8 +11,10 @@
 [ext_resource type="Script" uid="uid://bln2hrjaqqd5p" path="res://scripts/button_select_decks/cutre.gd" id="7_0qbui"]
 [ext_resource type="Script" uid="uid://bpsjflf1bihtq" path="res://scripts/button_select_decks/luigi_hd.gd" id="8_4fnji"]
 [ext_resource type="Script" uid="uid://bdo5so5vgwfg4" path="res://scripts/button_select_decks/española.gd" id="8_7hpki"]
-[ext_resource type="Texture2D" uid="uid://djkyxw8io7v0c" path="res://assets/cards/luigiHD/oros_1.png" id="8_v6dvc"]
+[ext_resource type="Texture2D" uid="uid://tvwskk25a1e" path="res://assets/cards/luigiHD/oros_1.png" id="8_v6dvc"]
 [ext_resource type="Script" uid="uid://jsxen73u4g4i" path="res://scripts/button_select_decks/exit_button_selector.gd" id="12_7hpki"]
+[ext_resource type="Script" uid="uid://dyslyhwp1hn5f" path="res://scripts/button_select_decks/luigi.gd" id="14_0qbui"]
+[ext_resource type="Texture2D" uid="uid://pliltm7us73m" path="res://assets/cards/luigi/oros_1.png" id="15_d8gi8"]
 
 [node name="Selector" type="Control"]
 layout_mode = 3
@@ -25,13 +27,23 @@ script = ExtResource("1_a0yho")
 decks = ExtResource("2_7hpki")
 make_deck = ExtResource("3_buvdd")
 
+[node name="exit_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1780.0
+offset_top = 21.0
+offset_right = 1903.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 45
+text = "Atrás"
+script = ExtResource("12_7hpki")
+
 [node name="pixel" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 511.0
-offset_top = 304.0
-offset_right = 861.0
-offset_bottom = 768.0
+offset_left = 373.0
+offset_top = 338.0
+offset_right = 723.0
+offset_bottom = 802.0
 script = ExtResource("4_vlhy3")
 make_deck = ExtResource("5_vlhy3")
 deck = "pixel"
@@ -39,34 +51,34 @@ deck = "pixel"
 [node name="Control" type="Control" parent="pixel"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="pixel/Control"]
+[node name="TextureButton" type="TextureButton" parent="pixel/Control"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 32.0
-offset_right = 301.0
-offset_bottom = 330.0
-texture = ExtResource("1_wj04o")
-stretch_mode = 4
+offset_left = 85.0
+offset_top = 29.0
+offset_right = 302.0
+offset_bottom = 327.0
+texture_normal = ExtResource("1_wj04o")
+stretch_mode = 0
 
 [node name="Control2" type="Control" parent="pixel"]
 layout_mode = 2
 
 [node name="ButtonPixel" type="Button" parent="pixel/Control2"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 364.0
-offset_right = 239.0
-offset_bottom = 430.0
+offset_left = 132.0
+offset_top = 353.0
+offset_right = 251.0
+offset_bottom = 419.0
 theme_override_font_sizes/font_size = 42
 text = "PIXEL"
 
 [node name="cutre" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 85.0
-offset_top = 253.0
-offset_right = 469.0
-offset_bottom = 672.0
+offset_left = -10.0
+offset_top = 283.0
+offset_right = 374.0
+offset_bottom = 702.0
 script = ExtResource("7_0qbui")
 make_deck = ExtResource("5_vlhy3")
 deck = "cutre"
@@ -74,14 +86,14 @@ deck = "cutre"
 [node name="Control" type="Control" parent="cutre"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="cutre/Control"]
+[node name="TextureButton" type="TextureButton" parent="cutre/Control"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 89.0
-offset_right = 319.0
-offset_bottom = 387.0
-texture = ExtResource("2_6stev")
-stretch_mode = 5
+offset_left = 103.0
+offset_top = 86.0
+offset_right = 320.0
+offset_bottom = 384.0
+texture_normal = ExtResource("2_6stev")
+stretch_mode = 0
 
 [node name="Control2" type="Control" parent="cutre"]
 layout_mode = 2
@@ -96,12 +108,11 @@ theme_override_font_sizes/font_size = 42
 text = "CUTRE"
 
 [node name="española" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 1086.0
-offset_top = 86.0
-offset_right = 1373.0
-offset_bottom = 617.0
+offset_left = 882.0
+offset_top = 109.0
+offset_right = 1169.0
+offset_bottom = 640.0
 script = ExtResource("8_7hpki")
 make_deck = ExtResource("5_vlhy3")
 deck = "española"
@@ -109,14 +120,14 @@ deck = "española"
 [node name="Control" type="Control" parent="española"]
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="española/Control"]
+[node name="TextureButton" type="TextureButton" parent="española/Control"]
 layout_mode = 0
-offset_left = -89.0
+offset_left = -90.0
 offset_top = 237.0
-offset_right = 128.0
+offset_right = 127.0
 offset_bottom = 535.0
-texture = ExtResource("3_esnui")
-stretch_mode = 5
+texture_normal = ExtResource("3_esnui")
+stretch_mode = 0
 
 [node name="Control2" type="Control" parent="española"]
 layout_mode = 2
@@ -133,10 +144,10 @@ text = "ESPAÑOLA"
 [node name="luigiHD" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 1347.0
-offset_top = 319.0
-offset_right = 1697.0
-offset_bottom = 783.0
+offset_left = 1110.0
+offset_top = 344.0
+offset_right = 1460.0
+offset_bottom = 808.0
 script = ExtResource("8_4fnji")
 make_deck = ExtResource("5_vlhy3")
 deck = "luigiHD"
@@ -144,14 +155,14 @@ deck = "luigiHD"
 [node name="Control" type="Control" parent="luigiHD"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="luigiHD/Control"]
+[node name="TextureButton" type="TextureButton" parent="luigiHD/Control"]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 9.0
-offset_right = 286.0
-offset_bottom = 307.0
-texture = ExtResource("8_v6dvc")
-stretch_mode = 4
+offset_left = 66.0
+offset_top = 11.0
+offset_right = 283.0
+offset_bottom = 309.0
+texture_normal = ExtResource("8_v6dvc")
+stretch_mode = 0
 
 [node name="Control2" type="Control" parent="luigiHD"]
 layout_mode = 2
@@ -165,18 +176,49 @@ offset_bottom = 417.0
 theme_override_font_sizes/font_size = 42
 text = "LUIGI HD"
 
-[node name="exit_Button" type="Button" parent="."]
+[node name="luigi" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 1780.0
-offset_top = 21.0
-offset_right = 1903.0
-offset_bottom = 92.0
-theme_override_font_sizes/font_size = 45
-text = "Atrás"
-script = ExtResource("12_7hpki")
+offset_left = 1457.0
+offset_top = 340.0
+offset_right = 1807.0
+offset_bottom = 804.0
+script = ExtResource("14_0qbui")
+make_deck = ExtResource("5_vlhy3")
+deck = "luigi"
 
-[connection signal="button_up" from="pixel/Control2/ButtonPixel" to="pixel" method="_on_button_pixel_button_up"]
-[connection signal="button_up" from="cutre/Control2/ButtonCutre" to="cutre" method="_on_button_cutre_button_up"]
-[connection signal="button_up" from="española/Control2/ButtonEsp" to="española" method="_on_button_esp_button_up"]
-[connection signal="button_up" from="luigiHD/Control2/ButtonLuigiHD" to="luigiHD" method="_on_button_luigi_hd_button_up"]
+[node name="Control" type="Control" parent="luigi"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="luigi/Control"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 11.0
+offset_right = 283.0
+offset_bottom = 309.0
+texture_normal = ExtResource("15_d8gi8")
+stretch_mode = 0
+
+[node name="Control2" type="Control" parent="luigi"]
+layout_mode = 2
+
+[node name="ButtonLuigi" type="Button" parent="luigi/Control2"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 351.0
+offset_right = 270.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 42
+text = "LUIGI"
+
 [connection signal="button_up" from="exit_Button" to="exit_Button" method="_on_button_up"]
+[connection signal="button_up" from="pixel/Control/TextureButton" to="pixel" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="pixel/Control2/ButtonPixel" to="pixel" method="_on_button_pixel_button_up"]
+[connection signal="button_up" from="cutre/Control/TextureButton" to="cutre" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="cutre/Control2/ButtonCutre" to="cutre" method="_on_button_cutre_button_up"]
+[connection signal="button_up" from="española/Control/TextureButton" to="española" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="española/Control2/ButtonEsp" to="española" method="_on_button_esp_button_up"]
+[connection signal="button_up" from="luigiHD/Control/TextureButton" to="luigiHD" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="luigiHD/Control2/ButtonLuigiHD" to="luigiHD" method="_on_button_luigi_hd_button_up"]
+[connection signal="button_up" from="luigi/Control/TextureButton" to="luigi" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="luigi/Control2/ButtonLuigi" to="luigi" method="_on_button_luigi_button_up"]
