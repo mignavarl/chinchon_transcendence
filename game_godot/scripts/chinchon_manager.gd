@@ -37,7 +37,6 @@ func _ready() -> void:
 	start_game()
 
 func _process(delta: float) -> void:
-	print(deck.cards.size())
 	if deck.cards.size() == 0:
 		reshuffle_deck()
 
@@ -206,13 +205,20 @@ func check_best_hand(cards: Array) -> Dictionary:
 	
 	for suit in ["oros", "copas", "espadas", "bastos"]:
 		var stairs = find_stairs(cards, suit)
+		for stair in stairs:
+			if stair.size() == cards.size():
+				return {
+					"groups": [stair],
+					"leftover": [],
+					"leftover_points": -25
+				}
 		all_groups.append_array(stairs)
 	
 	for value in [1, 2, 3, 4, 5, 6, 7, 10, 11, 12]:
 		var group = find_group(cards, value)
 		if group.size() >= 3:
 			all_groups.append(group)
-	
+	print(all_groups)
 	return find_best_combination(cards, all_groups)
 
 
@@ -274,15 +280,12 @@ func _try_combinations(cards: Array, remaining_groups: Array, chosen: Array, bes
 	
 	for i in range(remaining_groups.size()):
 		var group = remaining_groups[i]
-		var conflict = false
-		for card in group:
-			if used.has(card):
-				conflict = true
-				break
-		if not conflict:
+		
+		var available = group.filter(func(c): return not used.has(c))
+		
+		if available.size() >= 3:
 			var next_groups = remaining_groups.slice(i + 1)
-			_try_combinations(cards, next_groups, chosen + [group], best)
-
+			_try_combinations(cards, next_groups, chosen + [available], best)
 
 func _sum_values(cards: Array) -> int:
 	var total = 0
