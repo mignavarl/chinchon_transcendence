@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=37 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
@@ -21,6 +21,14 @@
 [ext_resource type="ArrayMesh" uid="uid://dm3pi6j27jpw0" path="res://assets/Models/Buildings/building-sample-tower-a.obj" id="18_8egab"]
 [ext_resource type="ArrayMesh" uid="uid://0ep0hqju15la" path="res://assets/Models/Car Kit/suv.obj" id="20_gw5y6"]
 [ext_resource type="ArrayMesh" uid="uid://uyahlvyuiidc" path="res://assets/Models/Car Kit/taxi.obj" id="21_svtp6"]
+[ext_resource type="ArrayMesh" uid="uid://v0evow4iodij" path="res://assets/Models/Graveyard Kit/bench.obj" id="22_svtp6"]
+[ext_resource type="ArrayMesh" uid="uid://coqca6rbekksh" path="res://assets/Models/Graveyard Kit/lightpost-double.obj" id="23_3wgol"]
+[ext_resource type="ArrayMesh" uid="uid://br5arb0aovya6" path="res://assets/Models/City Kit - Suburban/planter.obj" id="24_1acrt"]
+[ext_resource type="ArrayMesh" uid="uid://cxkastc8xkfdm" path="res://assets/Models/Citi Kit - Roads/road-side.obj" id="25_hl5e0"]
+[ext_resource type="ArrayMesh" uid="uid://bjwbtnlt6gkya" path="res://assets/Models/City Kit - Suburban/tree-small.obj" id="25_vr8o3"]
+[ext_resource type="ArrayMesh" uid="uid://bb72b3h5lajgk" path="res://assets/Models/Citi Kit - Roads/road-roundabout.obj" id="26_engjn"]
+[ext_resource type="ArrayMesh" uid="uid://de84lwhal4nlf" path="res://assets/Models/Citi Kit - Roads/road-crossing.obj" id="27_6h3lr"]
+[ext_resource type="ArrayMesh" uid="uid://daglbh5ylasn6" path="res://assets/Models/Citi Kit - Roads/road-bend.obj" id="28_dj67d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lgwnu"]
 
@@ -65,10 +73,10 @@ shadow_enabled = true
 shadow_bias = 0.0
 
 [node name="Play" type="Area3D" parent="."]
-transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.49083245, 0, -0.5635086)
+transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.32616532, 0, -0.5635086)
 
 [node name="PlantaBaja" type="MeshInstance3D" parent="Play"]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.9964342, -1.1610482, 0.08485183)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 1.1833302, -1.1610482, -0.1702007)
 cast_shadow = 2
 mesh = ExtResource("3_rcqid")
 
@@ -117,7 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622924, -0.14657593, 1.788
 shape = SubResource("BoxShape3D_l6cm7")
 
 [node name="Gacha" type="Area3D" parent="."]
-transform = Transform3D(0.6229516, 0, 0.7822604, 0, 1, 0, -0.7822604, 0, 0.6229516, -1.6996281, 0, 2.097864)
+transform = Transform3D(0.6229516, 0, 0.7822604, 0, 1, 0, -0.7822604, 0, 0.6229516, -2.065387, 0, 2.097864)
 
 [node name="PlantaBaja" type="MeshInstance3D" parent="Gacha"]
 transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9999999, 0, -2.9802322e-08, 0, 0.9999999, 1.9847944, -1.1712385, -0.737673)
@@ -147,56 +155,139 @@ compositor = SubResource("Compositor_qywvv")
 [node name="Fondo" type="Area3D" parent="."]
 
 [node name="EdificioIzquierda" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -1.665039, -1.187282, 0.7812357)
+transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -2.030798, -1.187282, 0.7812357)
 mesh = ExtResource("15_7b55j")
 
 [node name="EdificioDerecha" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.6168573, 0, -0.787075, 0, 1, 0, 0.787075, 0, 0.6168573, 1.9193321, -1.2366409, 0.8207768)
+transform = Transform3D(0.6168573, 0, -0.787075, 0, 1, 0, 0.787075, 0, 0.6168573, 2.0708642, -1.2366409, 0.8207768)
 mesh = ExtResource("16_a8gd2")
 skeleton = NodePath("../EdificioIzquierda")
 
-[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.84078413, 0, -0.5413707, 0, 1.5140674, 0, 0.5413707, 0, 0.84078413, 0.39620662, -1.3707881, -26.448954)
-mesh = ExtResource("17_8egab")
+[node name="CasaAlta1" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.9582524, -1.1733826, -27.604227)
+mesh = ExtResource("17_hstxw")
 skeleton = NodePath("../EdificioIzquierda")
 
-[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasaPequeña"]
+[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0002012, 0, 0.0069732666)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../../EdificioIzquierda")
+
+[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9808092, -0.004765272, 0.013847351)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../../EdificioIzquierda")
+
+[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9661465, -0.004757762, 0.013370514)
+mesh = ExtResource("17_hstxw")
+skeleton = NodePath("../../EdificioIzquierda")
+
+[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+transform = Transform3D(0.99999547, 0, 0.0030718148, 0, 1.5140674, 0, -0.0030718148, 0, 0.99999547, 3.9999914, -0.19740546, -0.49578857)
+mesh = ExtResource("17_8egab")
+skeleton = NodePath("../../EdificioIzquierda")
+
+[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasaAlta1/CasaPequeña"]
 transform = Transform3D(0.99999976, 0, 0.00036641955, 0, 0.6296011, 0, -0.00036641955, 0, 0.99999976, -0.006711006, 0.51639843, 0.47765732)
 mesh = ExtResource("5_tbmy8")
 skeleton = NodePath("../MeshInstance3D")
 
-[node name="CasaAlta1" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -3.2299397, -1.1733826, -28.208727)
-mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../EdificioIzquierda")
-
-[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -2.394447, -1.1733826, -27.658815)
-mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../EdificioIzquierda")
-
-[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.5753419, -1.1781479, -27.119644)
-mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../EdificioIzquierda")
-
-[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -0.74826825, -1.1781404, -26.58407)
-mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../EdificioIzquierda")
-
 [node name="CasaAltaCerca" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.6201351, 0, 0.7844951, 0, 1, 0, -0.7844951, 0, 0.6201351, -1.5840943, -1.0761867, -5.261762)
+transform = Transform3D(0.6201351, 0, 0.7844951, 0, 1, 0, -0.7844951, 0, 0.6201351, -1.8698145, -1.1771796, -4.8639374)
 mesh = ExtResource("18_8egab")
 skeleton = NodePath("../EdificioIzquierda")
 
 [node name="CocheVerde" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.30301026, 0, 0.19266441, 0, 0.45876992, 0, -0.22565126, 0, 0.25871468, -1.2973061, -1.1781473, -10.095809)
+transform = Transform3D(0.30301026, 0, 0.19266441, 0, 0.45876992, 0, -0.22565126, 0, 0.25871468, -1.259356, -1.1781473, -6.4439)
 mesh = ExtResource("20_gw5y6")
 
-[node name="CocheVerde2" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.25317538, 0, -0.23942763, 0, 0.45876992, 0, 0.280421, 0, 0.21616493, 0.032992333, -1.1781478, -2.80713)
+[node name="Taxi" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.25317538, 0, -0.23942763, 0, 0.45876992, 0, 0.280421, 0, 0.21616493, 0.35810152, -1.1781478, -1.2428334)
 mesh = ExtResource("21_svtp6")
+
+[node name="Banco" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.20779052, 0, -0.26940098, 0, 0.45876998, 0, 0.31552622, 0, 0.17741467, 0.3760915, -1.1781478, 0.21538448)
+mesh = ExtResource("22_svtp6")
+
+[node name="Farola" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(-0.29919913, 0, -0.19695857, 0, 0.45876998, 0, 0.2306806, 0, -0.2554607, 0.14624181, -1.1781478, -0.057217598)
+mesh = ExtResource("23_3wgol")
+
+[node name="Farola2" type="MeshInstance3D" parent="Fondo/Farola"]
+transform = Transform3D(-0.09212732, 0, -0.85018396, 0, 0.9999999, 0, 1.1662331, 0, -0.092127204, -2.787345, 0, 12.970329)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="Farola3" type="MeshInstance3D" parent="Fondo/Farola"]
+transform = Transform3D(0.24388579, 0, -0.82803327, 0, 0.99999964, 0, 1.135848, 0, 0.24388593, 4.6984806, 1.66893e-06, 0.094131455)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farola/Farola3"]
+transform = Transform3D(-0.21341543, 0, -2.5370352, 0, 2.1797426, 0, 2.7647235, 0, -0.26864126, 0.0013003424, -1.66893e-06, -0.0025140373)
+mesh = ExtResource("24_1acrt")
+skeleton = NodePath("../../../Arbol")
+
+[node name="Farola4" type="MeshInstance3D" parent="Fondo/Farola"]
+transform = Transform3D(0.9926162, 0, -0.10356572, 0, 0.9999999, 0, 0.14206547, 0, 0.9926162, 0.4459685, 1.1920929e-06, -4.349437)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farola/Farola4"]
+transform = Transform3D(-0.43562615, 0, 2.9957976, 0, 2.1797423, 0, -2.548801, 0, -0.42469043, -0.1413637, -1.4305115e-06, 0.07134218)
+mesh = ExtResource("24_1acrt")
+skeleton = NodePath("../../../Arbol")
+
+[node name="Carretera" type="Node3D" parent="Fondo"]
+
+[node name="Carretera" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(13.011639, 0, -1.2620982, 0, 1, 0, 7.55108, 0, 2.1747835, -1.7147481, -1.1260867, -23.505768)
+mesh = ExtResource("25_hl5e0")
+
+[node name="Carretera2" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(13.011639, 0, -1.2620982, 0, 1, 0, 7.55108, 0, 2.1747835, -2.7835774, -1.1696339, -20.317797)
+mesh = ExtResource("25_hl5e0")
+
+[node name="Carretera3" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(13.011639, 0, -1.2620982, 0, 1, 0, 7.55108, 0, 2.1747835, -4.400542, -1.1655601, -17.587755)
+mesh = ExtResource("25_hl5e0")
+
+[node name="Rotonda" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(1.5302473, 0, -1.4969496, 0, 1, 0, 0.63091, 0, 3.6307929, 1.3288997, -1.1640736, -8.166222)
+mesh = ExtResource("26_engjn")
+
+[node name="Carretera4" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(13.349752, 0, -1.1592634, 0, 1, 0, 6.935824, 0, 2.2312963, -7.6842365, -1.1655601, -12.409323)
+mesh = ExtResource("25_hl5e0")
+
+[node name="PasoCebra" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(-0.5280619, 0, -1.518163, 0, 1, 0, 1.3126682, 0, -0.6107285, -0.9145181, -1.1638302, -2.7156916)
+mesh = ExtResource("27_6h3lr")
+
+[node name="PasoCebra2" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(-0.91196644, 0, -1.518163, 0, 1, 0, 2.2669868, 0, -0.6107285, -1.6373872, -1.152593, -0.8680358)
+mesh = ExtResource("28_dj67d")
+
+[node name="Arbol" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6614208, -1.1781478, -0.21992898)
+mesh = ExtResource("25_vr8o3")
+
+[node name="Arbol" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7500666, 0, -0.2819183)
+mesh = ExtResource("25_vr8o3")
+
+[node name="Arbol2" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(1.1490768, 0, 0, 0, 1.2578107, 0, 0, 0, 1, -0.41073608, 0, -4.7388077)
+mesh = ExtResource("25_vr8o3")
+
+[node name="Arbol3" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, 1.2069591, 0, -24.321892)
+mesh = ExtResource("25_vr8o3")
+
+[node name="Arbol4" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, -2.0069866, 0, -26.205637)
+mesh = ExtResource("25_vr8o3")
 
 [connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]

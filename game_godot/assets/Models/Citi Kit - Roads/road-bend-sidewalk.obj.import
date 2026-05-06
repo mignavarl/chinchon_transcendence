@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnjiofqg00co5"
+path="res://.godot/imported/road-bend-sidewalk.obj-a41e1fece32ad9f25ddb5d9d7d7c19be.mesh"
+
+[deps]
+
+files=["res://.godot/imported/road-bend-sidewalk.obj-a41e1fece32ad9f25ddb5d9d7d7c19be.mesh"]
+
+source_file="res://assets/Models/Citi Kit - Roads/road-bend-sidewalk.obj"
+dest_files=["res://.godot/imported/road-bend-sidewalk.obj-a41e1fece32ad9f25ddb5d9d7d7c19be.mesh", "res://.godot/imported/road-bend-sidewalk.obj-a41e1fece32ad9f25ddb5d9d7d7c19be.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

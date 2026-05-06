@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjwbtnlt6gkya"
+path="res://.godot/imported/tree-small.obj-e6182f0c3ef7fb807031a5079a94373d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tree-small.obj-e6182f0c3ef7fb807031a5079a94373d.mesh"]
+
+source_file="res://assets/Models/City Kit - Suburban/tree-small.obj"
+dest_files=["res://.godot/imported/tree-small.obj-e6182f0c3ef7fb807031a5079a94373d.mesh", "res://.godot/imported/tree-small.obj-e6182f0c3ef7fb807031a5079a94373d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhd2ik847hf2e"
+path="res://.godot/imported/road-end-barrier.obj-e77f9178a5125cf659bd1a95bfac3772.mesh"
+
+[deps]
+
+files=["res://.godot/imported/road-end-barrier.obj-e77f9178a5125cf659bd1a95bfac3772.mesh"]
+
+source_file="res://assets/Models/Citi Kit - Roads/road-end-barrier.obj"
+dest_files=["res://.godot/imported/road-end-barrier.obj-e77f9178a5125cf659bd1a95bfac3772.mesh", "res://.godot/imported/road-end-barrier.obj-e77f9178a5125cf659bd1a95bfac3772.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
