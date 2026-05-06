@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_7dsen"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_s8d4p"]
-[ext_resource type="ArrayMesh" uid="uid://b68013upthxwn" path="res://assets/Models/OBJ format/building-sample-house-c.obj" id="3_hb8b2"]
-[ext_resource type="ArrayMesh" uid="uid://imt0ogavv1sx" path="res://assets/Models/OBJ format/building-window-door-window.obj" id="4_ee2js"]
-[ext_resource type="ArrayMesh" uid="uid://0prnslfc5goy" path="res://assets/Models/OBJ format/roof-flat-awning-c.obj" id="5_ip2p3"]
-[ext_resource type="ArrayMesh" uid="uid://lmy8282bfay5" path="res://assets/Models/OBJ format/building-window-wide.obj" id="6_iba4i"]
-[ext_resource type="ArrayMesh" uid="uid://cvsi1esfgvtdi" path="res://assets/Models/OBJ format/roof-flat-detail-b.obj" id="7_gdclw"]
+[ext_resource type="ArrayMesh" uid="uid://b68013upthxwn" path="res://assets/Models/Buildings/building-sample-house-c.obj" id="3_hb8b2"]
+[ext_resource type="ArrayMesh" uid="uid://imt0ogavv1sx" path="res://assets/Models/Buildings/building-window-door-window.obj" id="4_ee2js"]
+[ext_resource type="ArrayMesh" uid="uid://0prnslfc5goy" path="res://assets/Models/Buildings/roof-flat-awning-c.obj" id="5_ip2p3"]
+[ext_resource type="ArrayMesh" uid="uid://lmy8282bfay5" path="res://assets/Models/Buildings/building-window-wide.obj" id="6_iba4i"]
+[ext_resource type="ArrayMesh" uid="uid://cvsi1esfgvtdi" path="res://assets/Models/Buildings/roof-flat-detail-b.obj" id="7_gdclw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lgwnu"]
 

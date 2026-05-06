@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cej1yv5aotny6"
+path="res://.godot/imported/building-sample-tower-b.obj-b28cd5e2a5a0ddebabf2831bee9e4201.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-sample-tower-b.obj-b28cd5e2a5a0ddebabf2831bee9e4201.mesh"]
+
+source_file="res://assets/Models/Buildings/building-sample-tower-b.obj"
+dest_files=["res://.godot/imported/building-sample-tower-b.obj-b28cd5e2a5a0ddebabf2831bee9e4201.mesh", "res://.godot/imported/building-sample-tower-b.obj-b28cd5e2a5a0ddebabf2831bee9e4201.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

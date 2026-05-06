@@ -13,11 +13,11 @@ func _process(delta: float) -> void:
 
 func _on_play_mouse_entered() -> void:
 	print("entro")
-	$Play/MeshInstance3D.get_active_material(0).albedo_color = Color.DARK_ORCHID
+	$Play/PlantaBaja.get_active_material(0).albedo_color = Color.DARK_ORCHID
 
 func _on_play_mouse_exited() -> void:
 	print("entro")
-	$Play/MeshInstance3D.get_active_material(0).albedo_color = Color.WHITE
+	$Play/PlantaBaja.get_active_material(0).albedo_color = Color.WHITE
 
 
 func _on_play_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -32,9 +32,9 @@ func _on_gacha_input_event(camera: Node, event: InputEvent, event_position: Vect
 
 func _on_gacha_mouse_entered() -> void:
 	print("entro")
-	$Gacha/MeshInstance3D.get_active_material(0).albedo_color = Color.DARK_ORCHID
+	$Gacha/PlantaBaja.get_active_material(0).albedo_color = Color.DARK_ORCHID
 
 
 func _on_gacha_mouse_exited() -> void:
 	print("entro")
-	$Gacha/MeshInstance3D.get_active_material(0).albedo_color = Color.WHITE
+	$Gacha/PlantaBaja.get_active_material(0).albedo_color = Color.WHITE

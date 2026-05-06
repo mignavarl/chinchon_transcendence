@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dfjrge4sigo1a"
+path="res://.godot/imported/door-brown.obj-10b8698335ec781b6a553f72967a7027.mesh"
+
+[deps]
+
+files=["res://.godot/imported/door-brown.obj-10b8698335ec781b6a553f72967a7027.mesh"]
+
+source_file="res://assets/Models/Buildings/door-brown.obj"
+dest_files=["res://.godot/imported/door-brown.obj-10b8698335ec781b6a553f72967a7027.mesh", "res://.godot/imported/door-brown.obj-10b8698335ec781b6a553f72967a7027.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
