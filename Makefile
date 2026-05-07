@@ -6,7 +6,7 @@ CYAN="\033[0;36m"
 YELLOW="\033[0;33m"
 NC="\033[0m"
 
-all: 
+all: setup
 	docker compose up --build -d
 	docker compose start
 	@echo ${GREEN}"All services are running ✅" $(NC)
