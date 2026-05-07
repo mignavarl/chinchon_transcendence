@@ -60,6 +60,7 @@ func get_deck(dic, rarity):
 	print("Añado el deck: ", dic[rk])
 	return true
 
+
 func _on_button_up() -> void:
 	var rarity = randi() % 100 + 1
 	if rarity <= 50:

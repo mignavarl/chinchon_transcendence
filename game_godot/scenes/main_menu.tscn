@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=42 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
@@ -43,12 +43,132 @@ process_mode = 1
 
 [sub_resource type="Environment" id="Environment_svtp6"]
 background_mode = 2
+background_energy_multiplier = 0.53
 sky = SubResource("Sky_gw5y6")
+glow_enabled = true
+glow_bloom = 0.1
+fog_enabled = true
+fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
+fog_light_energy = 2.53
+volumetric_fog_enabled = true
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1dfpl"]
+exposure_multiplier = 2.045
 
 [sub_resource type="Compositor" id="Compositor_qywvv"]
+
+[sub_resource type="Animation" id="Animation_hl5e0"]
+resource_name = "play_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445), Vector3(0.75, -0.827, 0.618)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.83545417, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.8333333, 0.18151131, 1, -0.100000024, -0.19895804, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_engjn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6h3lr"]
+resource_name = "gacha_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445), Vector3(-0.9962455, -0.8555482, 0.36383533)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.9285326, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.8333333, 0.18151131, 1, -0.100000024, -0.19895804, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6h3lr"]
+_data = {
+&"RESET": SubResource("Animation_engjn"),
+&"gacha_animation": SubResource("Animation_6h3lr"),
+&"play_animation": SubResource("Animation_hl5e0")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hl5e0"]
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_l6cm7")
@@ -65,12 +185,10 @@ material_override = ExtResource("2_wu84c")
 mesh = SubResource("BoxMesh_lgwnu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9944155, -0.076816976, 0.072365895, -0.10157837, -0.882679, 0.45886785, 0.028627025, -0.46365613, -0.8855527, 0, 1.4108123, 1.7303145)
-light_color = Color(0.5981428, 0.36182165, 0.19175944, 1)
-light_energy = 10.402
+transform = Transform3D(0.99441546, -0.082854584, 0.06536656, -0.10157837, -0.9194457, 0.37987024, 0.028627025, -0.38438872, -0.92272747, 0, 1.4108123, 1.7303145)
+visible = false
 light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.0
 
 [node name="Play" type="Area3D" parent="."]
 transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.32616532, 0, -0.5635086)
@@ -163,32 +281,34 @@ transform = Transform3D(0.6168573, 0, -0.787075, 0, 1, 0, 0.787075, 0, 0.6168573
 mesh = ExtResource("16_a8gd2")
 skeleton = NodePath("../EdificioIzquierda")
 
-[node name="CasaAlta1" type="MeshInstance3D" parent="Fondo"]
+[node name="CasasFondo" type="Node3D" parent="Fondo"]
+
+[node name="CasaAlta1" type="MeshInstance3D" parent="Fondo/CasasFondo"]
 transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.9582524, -1.1733826, -27.604227)
 mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../EdificioIzquierda")
+skeleton = NodePath("../../EdificioIzquierda")
 
-[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0002012, 0, 0.0069732666)
 mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../../EdificioIzquierda")
+skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9808092, -0.004765272, 0.013847351)
 mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../../EdificioIzquierda")
+skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9661465, -0.004757762, 0.013370514)
 mesh = ExtResource("17_hstxw")
-skeleton = NodePath("../../EdificioIzquierda")
+skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo/CasaAlta1"]
+[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
 transform = Transform3D(0.99999547, 0, 0.0030718148, 0, 1.5140674, 0, -0.0030718148, 0, 0.99999547, 3.9999914, -0.19740546, -0.49578857)
 mesh = ExtResource("17_8egab")
-skeleton = NodePath("../../EdificioIzquierda")
+skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasaAlta1/CasaPequeña"]
+[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1/CasaPequeña"]
 transform = Transform3D(0.99999976, 0, 0.00036641955, 0, 0.6296011, 0, -0.00036641955, 0, 0.99999976, -0.006711006, 0.51639843, 0.47765732)
 mesh = ExtResource("5_tbmy8")
 skeleton = NodePath("../MeshInstance3D")
@@ -210,47 +330,10 @@ mesh = ExtResource("21_svtp6")
 transform = Transform3D(0.20779052, 0, -0.26940098, 0, 0.45876998, 0, 0.31552622, 0, 0.17741467, 0.3760915, -1.1781478, 0.21538448)
 mesh = ExtResource("22_svtp6")
 
-[node name="Farola" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(-0.29919913, 0, -0.19695857, 0, 0.45876998, 0, 0.2306806, 0, -0.2554607, 0.14624181, -1.1781478, -0.057217598)
-mesh = ExtResource("23_3wgol")
-
-[node name="Farola2" type="MeshInstance3D" parent="Fondo/Farola"]
-transform = Transform3D(-0.09212732, 0, -0.85018396, 0, 0.9999999, 0, 1.1662331, 0, -0.092127204, -2.787345, 0, 12.970329)
-mesh = ExtResource("23_3wgol")
-skeleton = NodePath("../..")
-
-[node name="Farola3" type="MeshInstance3D" parent="Fondo/Farola"]
-transform = Transform3D(0.24388579, 0, -0.82803327, 0, 0.99999964, 0, 1.135848, 0, 0.24388593, 4.6984806, 1.66893e-06, 0.094131455)
-mesh = ExtResource("23_3wgol")
-skeleton = NodePath("../..")
-
-[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farola/Farola3"]
-transform = Transform3D(-0.21341543, 0, -2.5370352, 0, 2.1797426, 0, 2.7647235, 0, -0.26864126, 0.0013003424, -1.66893e-06, -0.0025140373)
-mesh = ExtResource("24_1acrt")
-skeleton = NodePath("../../../Arbol")
-
-[node name="Farola4" type="MeshInstance3D" parent="Fondo/Farola"]
-transform = Transform3D(0.9926162, 0, -0.10356572, 0, 0.9999999, 0, 0.14206547, 0, 0.9926162, 0.4459685, 1.1920929e-06, -4.349437)
-mesh = ExtResource("23_3wgol")
-skeleton = NodePath("../..")
-
-[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farola/Farola4"]
-transform = Transform3D(-0.43562615, 0, 2.9957976, 0, 2.1797423, 0, -2.548801, 0, -0.42469043, -0.1413637, -1.4305115e-06, 0.07134218)
-mesh = ExtResource("24_1acrt")
-skeleton = NodePath("../../../Arbol")
-
 [node name="Carretera" type="Node3D" parent="Fondo"]
 
-[node name="Carretera" type="MeshInstance3D" parent="Fondo/Carretera"]
-transform = Transform3D(13.011639, 0, -1.2620982, 0, 1, 0, 7.55108, 0, 2.1747835, -1.7147481, -1.1260867, -23.505768)
-mesh = ExtResource("25_hl5e0")
-
-[node name="Carretera2" type="MeshInstance3D" parent="Fondo/Carretera"]
-transform = Transform3D(13.011639, 0, -1.2620982, 0, 1, 0, 7.55108, 0, 2.1747835, -2.7835774, -1.1696339, -20.317797)
-mesh = ExtResource("25_hl5e0")
-
 [node name="Carretera3" type="MeshInstance3D" parent="Fondo/Carretera"]
-transform = Transform3D(13.011639, 0, -1.2620982, 0, 1, 0, 7.55108, 0, 2.1747835, -4.400542, -1.1655601, -17.587755)
+transform = Transform3D(11.812604, 0, -3.036133, 0, 0.9078491, 0, 6.8552413, 0, 5.23171, -3.0208776, -1.1373445, -20.224676)
 mesh = ExtResource("25_hl5e0")
 
 [node name="Rotonda" type="MeshInstance3D" parent="Fondo/Carretera"]
@@ -266,28 +349,143 @@ transform = Transform3D(-0.5280619, 0, -1.518163, 0, 1, 0, 1.3126682, 0, -0.6107
 mesh = ExtResource("27_6h3lr")
 
 [node name="PasoCebra2" type="MeshInstance3D" parent="Fondo/Carretera"]
-transform = Transform3D(-0.91196644, 0, -1.518163, 0, 1, 0, 2.2669868, 0, -0.6107285, -1.6373872, -1.152593, -0.8680358)
+transform = Transform3D(-0.91196644, 0, -1.518163, 0, 1, 0, 2.2669868, 0, -0.6107285, -1.620815, -1.162175, -0.92883617)
 mesh = ExtResource("28_dj67d")
 
-[node name="Arbol" type="MeshInstance3D" parent="Fondo"]
+[node name="Arbol" type="Node3D" parent="Fondo"]
+
+[node name="Arbol1" type="MeshInstance3D" parent="Fondo/Arbol"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6614208, -1.1781478, -0.21992898)
 mesh = ExtResource("25_vr8o3")
+skeleton = NodePath("../..")
 
 [node name="Arbol" type="MeshInstance3D" parent="Fondo/Arbol"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7500666, 0, -0.2819183)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088645756, -1.1781478, -0.50184727)
 mesh = ExtResource("25_vr8o3")
+skeleton = NodePath("../Arbol1")
 
 [node name="Arbol2" type="MeshInstance3D" parent="Fondo/Arbol"]
-transform = Transform3D(1.1490768, 0, 0, 0, 1.2578107, 0, 0, 0, 1, -0.41073608, 0, -4.7388077)
+transform = Transform3D(1.1490768, 0, 0, 0, 1.2578107, 0, 0, 0, 1, -1.0721569, -1.1781478, -4.9587364)
 mesh = ExtResource("25_vr8o3")
+skeleton = NodePath("../Arbol1")
 
 [node name="Arbol3" type="MeshInstance3D" parent="Fondo/Arbol"]
-transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, 1.2069591, 0, -24.321892)
+transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, 0.5455383, -1.1781478, -24.54182)
 mesh = ExtResource("25_vr8o3")
+skeleton = NodePath("../Arbol1")
 
 [node name="Arbol4" type="MeshInstance3D" parent="Fondo/Arbol"]
-transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, -2.0069866, 0, -26.205637)
+transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, -2.6684074, -1.1781478, -26.425566)
 mesh = ExtResource("25_vr8o3")
+skeleton = NodePath("../Arbol1")
+
+[node name="Farolas" type="Node3D" parent="Fondo"]
+
+[node name="Farola" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.29919913, 0, -0.19695857, 0, 0.45876998, 0, 0.2306806, 0, -0.2554607, 0.14624181, -1.1781478, -0.057217598)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08272234, 1.0668843, -0.34453535)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07188306, 1.0668843, 0.18220711)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola2" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.20213518, 0, 0.27251953, 0, 0.45876992, 0, -0.3191787, 0, -0.17258607, -1.5744046, -1.1781478, -4.0136137)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06598102, 1.0552694, -0.25461513)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06598102, 1.0563908, 0.26131645)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola3" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.29668543, 0, 0.19971141, 0, 0.4587698, 0, -0.23390484, 0, -0.2533145, -1.2780796, -1.1781471, 1.0025839)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farolas/Farola3"]
+transform = Transform3D(-0.21341543, 0, -2.5370352, 0, 2.1797426, 0, 2.7647235, 0, -0.26864126, 0.0013003424, -1.66893e-06, -0.0025140373)
+mesh = ExtResource("24_1acrt")
+skeleton = NodePath("../../../Arbol/Arbol1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06598102, 1.0668843, -0.3061524)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06214913, 1.0668843, 0.19885276)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola4" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.3249709, 0, -0.16451749, 0, 0.45876992, 0, 0.19268516, 0, -0.27746505, 0.8694674, -1.1781472, 1.156769)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farolas/Farola4"]
+transform = Transform3D(-0.43562615, 0, 2.9957976, 0, 2.1797423, 0, -2.548801, 0, -0.42469043, -0.1413637, -1.4305115e-06, 0.07134218)
+mesh = ExtResource("24_1acrt")
+skeleton = NodePath("../../../Arbol/Arbol1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07163814, 1.0540326, -0.2576231)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.068373345, 1.061651, 0.25684285)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola5" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(0.049502492, 0, -0.31979126, 0, 0.45876998, 0, 0.37454394, 0, 0.04226598, -0.4376306, -1.1781479, -25.219946)
+mesh = ExtResource("23_3wgol")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08272234, 1.0668843, -0.34453535)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07188306, 1.0668843, 0.18220711)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Acera" type="Node3D" parent="Fondo"]
+
+[node name="Acera1" type="MeshInstance3D" parent="Fondo/Acera"]
+transform = Transform3D(5.9892758e-05, 3.884521, 0.39191777, 0.018488009, -0.019554745, -1.1605581e-05, -4.437173e-05, -2.9044082, 0.52417344, 0.60421455, -1.1471972, 0.67619854)
+mesh = ExtResource("7_5dd4i")
+
+[node name="Acera2" type="MeshInstance3D" parent="Fondo/Acera"]
+transform = Transform3D(4.0400358e-10, -53.050777, 16.715637, 0.019126302, 4.7987337e-06, -2.6369864e-14, 7.3194223e-10, -96.11324, -9.226384, 5.4443984, -1.1653799, 3.264777)
+mesh = ExtResource("7_5dd4i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6h3lr")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(961.75, 540.75)
+scale = Vector2(2892.5, 1768.5)
+texture = SubResource("CanvasTexture_hl5e0")
 
 [connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
