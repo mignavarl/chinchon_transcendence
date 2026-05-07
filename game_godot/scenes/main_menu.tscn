@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=41 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
@@ -33,7 +33,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_lgwnu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
-size = Vector3(1.4967041, 2.4413452, 1)
+size = Vector3(1.4967041, 1.1081772, 1.123169)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8egab"]
 
@@ -54,47 +54,9 @@ volumetric_fog_enabled = true
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1dfpl"]
-exposure_multiplier = 2.045
+exposure_multiplier = 2.5
 
 [sub_resource type="Compositor" id="Compositor_qywvv"]
-
-[sub_resource type="Animation" id="Animation_hl5e0"]
-resource_name = "play_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.48952544, 2.211445), Vector3(0.75, -0.827, 0.618)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.83545417, 0)]
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.8333333, 0.18151131, 1, -0.100000024, -0.19895804, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="Animation" id="Animation_engjn"]
 length = 0.001
@@ -149,16 +111,32 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.9285326, 0)]
 }
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.8333333, 0.18151131, 1, -0.100000024, -0.19895804, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+
+[sub_resource type="Animation" id="Animation_hl5e0"]
+resource_name = "play_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445), Vector3(0.75, -0.827, 0.618)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.83545417, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6h3lr"]
@@ -167,8 +145,6 @@ _data = {
 &"gacha_animation": SubResource("Animation_6h3lr"),
 &"play_animation": SubResource("Animation_hl5e0")
 }
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_hl5e0"]
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_l6cm7")
@@ -239,7 +215,7 @@ cast_shadow = 2
 mesh = ExtResource("10_1ajci")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Play"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622924, -0.14657593, 1.7881393e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622925, -0.7485504, 2.3841858e-07)
 shape = SubResource("BoxShape3D_l6cm7")
 
 [node name="Gacha" type="Area3D" parent="."]
@@ -262,7 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 1.154384
 mesh = ExtResource("7_5dd4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha"]
-transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594885, -1.1920929e-07, -0.8179421)
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594879, -0.9661981, -0.75635815)
 shape = SubResource("BoxShape3D_l6cm7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -273,7 +249,7 @@ compositor = SubResource("Compositor_qywvv")
 [node name="Fondo" type="Area3D" parent="."]
 
 [node name="EdificioIzquierda" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -2.030798, -1.187282, 0.7812357)
+transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -2.0268457, -1.187282, 0.7812357)
 mesh = ExtResource("15_7b55j")
 
 [node name="EdificioDerecha" type="MeshInstance3D" parent="Fondo"]
@@ -480,12 +456,6 @@ mesh = ExtResource("7_5dd4i")
 libraries = {
 &"": SubResource("AnimationLibrary_6h3lr")
 }
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(961.75, 540.75)
-scale = Vector2(2892.5, 1768.5)
-texture = SubResource("CanvasTexture_hl5e0")
 
 [connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
