@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 
 
 func _on_button_up() -> void:
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	SceneLoader.change_scene( "res://scenes/Main.tscn", $"..".name)

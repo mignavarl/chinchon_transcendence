@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 
 func _on_button_cutre_button_up() -> void:
 	make_deck.change_deck(deck)
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	SceneLoader.change_scene( "res://scenes/Main.tscn", $"..".name)
 
 
 func _on_texture_button_button_up() -> void:
 	make_deck.change_deck(deck)
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	SceneLoader.change_scene( "res://scenes/Main.tscn", $"..".name)
