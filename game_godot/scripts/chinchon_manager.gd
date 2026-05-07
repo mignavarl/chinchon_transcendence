@@ -28,6 +28,12 @@ static var deck_selected = "española"
 @export var punt_player : Label
 @export var punt_oppo : Label
 
+@export_enum("Malo", "Decente", "Imposible") var difficulty
+
+var evaluator := CardEvaluator.new()
+
+var ai := OpponentAI.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer = $"../Timer"
@@ -69,15 +75,28 @@ func opponent_turn():
 	timer.start()
 	await timer.timeout
 	if game_ended:
-		print("OH NO")
 		return
-	var c = draw_card()
+
+	var draw_decision = ai.decide_draw(opponent_hand.player_hand, slot.top_card)
+	var c
+	if draw_decision == "deck":
+		c = draw_card()
+	else:
+		c = draw_discard()
+		
 	c.flipped = true
-	add_card_to_player_hand(c,1)
+	add_card_to_player_hand(c, 1)
+
 	timer.start()
 	await timer.timeout
-	var rand_idx = randi_range(0, opponent_hand.player_hand.size() - 1)
-	card_manager.opponent_card_to_slot(opponent_hand.player_hand[rand_idx])
+
+	var to_discard = ai.decide_discard(opponent_hand.player_hand)
+	if ai.should_close(opponent_hand.player_hand):
+		opponent_close(to_discard)
+		return
+	card_manager.opponent_card_to_slot(to_discard)
+	
+
 	active_player = 0
 
 func generate_deck():
@@ -123,9 +142,13 @@ func raycast_click():
 			COLLISION_MASK_SLOT:
 				print("slot")
 				if !card_drawn_this_turn:
-					var sl = result[0].collider.get_parent()
-					var card = sl.get_top_card()
-					add_card_to_player_hand(card, 0)
+					var sl = result[0].collider.get_parent().name
+					var c
+					if sl == "Deck":
+						c = draw_card()
+					else:
+						c =draw_discard()
+					add_card_to_player_hand(c, 0)
 					card_drawn_this_turn = true
 
 
@@ -145,6 +168,15 @@ func raycast_right_click():
 			player_hand.remove_card_from_hand(card_found)
 			game_ended = true
 
+func opponent_close(card):
+	card.flipped = true
+	card_manager.animate_card_to_position(card, slot.position)
+	slot.add_card_to_stack(card)
+	opponent_hand.remove_card_from_hand(card)
+	game_ended = true
+	await get_tree().create_timer(0.2).timeout
+	end_round()
+
 func close_game():
 	raycast_right_click()
 	#TODO: iniciar puntuaciones
@@ -163,7 +195,7 @@ func end_round():
 	_display_combinations(opponent_hand.player_hand, 1)
 
 func _display_combinations(hand, idx):
-	var result = check_best_hand(hand)
+	var result = evaluator.check_best_hand(hand)
 	var points_label = punt_player if idx == 0 else punt_oppo
 	points_label.text = str(result["leftover_points"])
 	
@@ -200,98 +232,6 @@ func _find_card_node(hand, card_data) -> Node:
 			return node
 	return null
 
-func check_best_hand(cards: Array) -> Dictionary:
-	var all_groups = []
-	
-	for suit in ["oros", "copas", "espadas", "bastos"]:
-		var stairs = find_stairs(cards, suit)
-		for stair in stairs:
-			if stair.size() == cards.size():
-				return {
-					"groups": [stair],
-					"leftover": [],
-					"leftover_points": -25
-				}
-		all_groups.append_array(stairs)
-	
-	for value in [1, 2, 3, 4, 5, 6, 7, 10, 11, 12]:
-		var group = find_group(cards, value)
-		if group.size() >= 3:
-			all_groups.append(group)
-	print(all_groups)
-	return find_best_combination(cards, all_groups)
-
-
-func find_stairs(cards: Array, suit: String) -> Array:
-	var suited = cards.filter(func(c): return c.suit == suit)
-	suited.sort_custom(func(a, b): return a.value < b.value)
-	
-	var stairs = []
-	var current = []
-	
-	for card in suited:
-		if current.is_empty():
-			current.append(card)
-		elif card.value == current.back().value + 1:
-			current.append(card)
-		elif card.value == 10 and card.value == current.back().value + 3:
-			current.append(card)
-		else:
-			if current.size() >= 3:
-				stairs.append(current.duplicate())
-			current = [card]
-	
-	if current.size() >= 3:
-		stairs.append(current.duplicate())
-	
-	return stairs
-
-
-func find_group(cards: Array, value: int) -> Array:
-	return cards.filter(func(c): return c.value == value)
-
-
-func find_best_combination(cards: Array, all_groups: Array) -> Dictionary:
-	var best = {
-		"groups": [],
-		"leftover": cards.duplicate(),
-		"leftover_points": _sum_values(cards)
-	}
-	
-	_try_combinations(cards, all_groups, [], best)
-	return best
-
-
-func _try_combinations(cards: Array, remaining_groups: Array, chosen: Array, best: Dictionary):
-	var used = []
-	for g in chosen:
-		used.append_array(g)
-	
-	var leftover = cards.filter(func(c): return not used.has(c))
-	var points = _sum_values(leftover)
-	
-	if points == 0:
-		points = -10
-	
-	if points < best["leftover_points"]:
-		best["groups"] = chosen.duplicate()
-		best["leftover"] = leftover
-		best["leftover_points"] = points
-	
-	for i in range(remaining_groups.size()):
-		var group = remaining_groups[i]
-		
-		var available = group.filter(func(c): return not used.has(c))
-		
-		if available.size() >= 3:
-			var next_groups = remaining_groups.slice(i + 1)
-			_try_combinations(cards, next_groups, chosen + [available], best)
-
-func _sum_values(cards: Array) -> int:
-	var total = 0
-	for c in cards:
-		total += c.value
-	return total
 
 func draw_card():
 	var card = deck.get_top_card()
@@ -299,13 +239,17 @@ func draw_card():
 		reshuffle_deck()
 	return card
 
+func draw_discard():
+	var card = slot.get_top_card()
+	return card
+
+
 func reshuffle_deck():
 	slot.suffle_stack()
 	for c in slot.cards:
 		deck.add_card_to_stack(c)
 		c.flipped = true
 		card_manager.animate_card_to_position(c, deck.position)
-		
 	slot.empty_stack()
 
 func add_card_to_player_hand(card, idx):

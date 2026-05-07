@@ -86,6 +86,7 @@ disabled = true
 text = "End Turn"
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.917
 
 [node name="ChinchonManager" type="Node2D" parent="." node_paths=PackedStringArray("deck", "slot", "player_hand", "opponent_hand", "card_manager", "punt_player", "punt_oppo")]
 script = ExtResource("10_lhr70")
@@ -98,6 +99,7 @@ card_database = ExtResource("6_q8u5g")
 card_manager = NodePath("../CardManager")
 punt_player = NodePath("../Puntuacion jugador")
 punt_oppo = NodePath("../Puntuacion oponente")
+difficulty = 0
 
 [node name="MenuButton" type="Button" parent="."]
 offset_left = 1687.0
