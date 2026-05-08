@@ -16,9 +16,9 @@ func _process(delta: float) -> void:
 
 func _on_button_esp_button_up() -> void:
 	make_deck.change_deck(deck)
-	SceneLoader.change_scene( "res://scenes/Main.tscn", $"..".name)
+	SceneLoader.change_scene( "res://scenes/bar.tscn", $"..".name)
 
 
 func _on_texture_button_button_up() -> void:
 	make_deck.change_deck(deck)
-	SceneLoader.change_scene( "res://scenes/Main.tscn", $"..".name)
+	SceneLoader.change_scene( "res://scenes/bar.tscn", $"..".name)
