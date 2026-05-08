@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ve0hr88o8og"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ve0hr88o8og"]
 
 [ext_resource type="Script" uid="uid://cyscgxpkao4dx" path="res://scripts/scene_loader.gd" id="1_jtpn2"]
+[ext_resource type="Texture2D" uid="uid://bxygeqcykwsyc" path="res://assets/reverso.png" id="2_m85m7"]
 
 [sub_resource type="Animation" id="Animation_m85m7"]
 length = 0.001
@@ -14,7 +15,85 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-2106, -1221)]
+"values": [Vector2(-3000, -1221)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/TextureRect:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1360, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/TextureRect:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-546, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/TextureRect:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/TextureRect2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/TextureRect2:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1970, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/TextureRect2:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-562, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/TextureRect2:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [100]
 }
 
 [sub_resource type="Animation" id="Animation_jtpn2"]
@@ -26,10 +105,88 @@ tracks/0/path = NodePath("AnimationPlayer/ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5993613),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-2106, -1221), Vector2(581, -1221)]
+"values": [Vector2(-2793, -145), Vector2(-419, -145)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/TextureRect:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(-1360, -0.25, 0, 0.26666668, -662.6592, 4, -0.1269239, -2116.7214, 0.13333333, 2223.6118, 695, -0.325, 335.6709, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/TextureRect:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0, 0, 0, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/TextureRect:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/TextureRect2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/TextureRect2:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(1970, -0.25, 0, 0.23333333, 818.67773, 631, -0.1426458, 2042.4155, 0.13666672, -1956.8063, 348.7999, -0.23333335, 45.996216, 0, 0),
+"times": PackedFloat32Array(0, 0.53, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/TextureRect2:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.08833333, 0, 0, 0, 0, -0.07833334, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.53, 1)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/TextureRect2:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.77497035),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [100, 101]
 }
 
 [sub_resource type="Animation" id="Animation_js0ie"]
@@ -41,10 +198,66 @@ tracks/0/path = NodePath("AnimationPlayer/ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.56666666, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(521, -1130), Vector2(3201, -1130)]
+"values": [Vector2(-525, -170), Vector2(-224, -151), Vector2(3201, -151)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/TextureRect2:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(348.7999, 0, 0, 0.23333333, -402.85657, 1108, -0.23391658, 2.2104204, 0.2667056, -2.5202637, -1443.4812, -0.100000024, -181.5603, 0, 0),
+"times": PackedFloat32Array(0, 0.49996105, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/TextureRect2:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.08332685, 0, 0, 0, 0, -0.08333983, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.49996105, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/TextureRect:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(695, 0, 0, 0.2, 335.6709, -241, -0.13329437, -37.483093, 0.16666251, 46.86639, 2438, -0.08333983, -446.50003, 0, 0),
+"times": PackedFloat32Array(0, 0.49996105, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/TextureRect:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.08332685, 0, 0, 0, 0, -0.08333983, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.49996105, 1)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/TextureRect2:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.58409095),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [101, 100]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m85m7"]
@@ -62,14 +275,34 @@ animation_player = NodePath("AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_m85m7")
 }
-speed_scale = 2.5
+speed_scale = 1.5
 
 [node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
 top_level = true
 z_index = 100
-offset_left = -2106.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3000.0
 offset_top = -1221.0
-offset_right = 244.1831
-offset_bottom = 1505.9497
-rotation = 0.5235988
-color = Color(0.18872672, 0.4133796, 0.3251959, 1)
+offset_right = -2179.3203
+offset_bottom = 291.90332
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.55, 0.17416663, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="AnimationPlayer"]
+z_index = 100
+offset_left = 1970.0
+offset_top = -562.0
+offset_right = 2764.212
+offset_bottom = 515.8417
+texture = ExtResource("2_m85m7")
+
+[node name="TextureRect" type="TextureRect" parent="AnimationPlayer"]
+z_index = 100
+offset_left = -1360.0
+offset_top = -546.0
+offset_right = -531.0105
+offset_bottom = 532.3489
+texture = ExtResource("2_m85m7")
