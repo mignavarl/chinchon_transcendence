@@ -107,7 +107,7 @@ offset_top = 11.0
 offset_right = 1912.0
 offset_bottom = 61.0
 theme_override_font_sizes/font_size = 30
-text = "Menú Principal"
+text = "Volver"
 script = ExtResource("12_bjd11")
 
 [connection signal="left_mouse_button_clicked" from="InputManager" to="ChinchonManager" method="_on_input_manager_left_mouse_button_clicked"]

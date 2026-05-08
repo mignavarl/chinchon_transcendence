@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cqarjvyn2atn4"
+path="res://.godot/imported/pillowLong.obj-212d3e0347d9183843b5be4c9395159f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pillowLong.obj-212d3e0347d9183843b5be4c9395159f.mesh"]
+
+source_file="res://assets/Models/Furniture Kit/pillowLong.obj"
+dest_files=["res://.godot/imported/pillowLong.obj-212d3e0347d9183843b5be4c9395159f.mesh", "res://.godot/imported/pillowLong.obj-212d3e0347d9183843b5be4c9395159f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 
 
 func _on_button_up() -> void:
-	SceneLoader.change_scene( "res://scenes/Main.tscn", $"..".name)
+	SceneLoader.change_scene( "res://scenes/bar.tscn", $"..".name)
