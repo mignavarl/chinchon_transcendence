@@ -19,9 +19,11 @@ func _on_play_table_input_event(camera: Node, event: InputEvent, event_position:
 
 func _on_puerta_salida_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
+		$AnimationPlayer.play("exit")
 		SceneLoader.change_scene( "res://scenes/main_menu.tscn", self.name)
 
 
 func _on_cambio_barajas_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
+		$AnimationPlayer.play("change_deck")
 		SceneLoader.change_scene( "res://scenes/selector.tscn", self.name)

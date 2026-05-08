@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbknwrjcb8c"]
+[gd_scene load_steps=29 format=3 uid="uid://cbknwrjcb8c"]
 
 [ext_resource type="Script" uid="uid://b7aptgmd2p25l" path="res://scripts/bar.gd" id="1_bwlfd"]
 [ext_resource type="ArrayMesh" uid="uid://c1q82gs0nr3h8" path="res://assets/Models/Furniture Kit/tableCross.obj" id="2_x848m"]
@@ -107,9 +107,65 @@ tracks/1/keys = {
 "values": [Vector3(0, 0.2507864, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_i5gm6"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-3.4283726, 0.27505186, -0.54064536)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2507864, 0), Vector3(0, 1.268837, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7uitc"]
+resource_name = "change_deck"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(1.2611322, 0.102164716, 0.017447174)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2507864, 0), Vector3(0, -0.05192351, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmq8q"]
 _data = {
 &"RESET": SubResource("Animation_cmq8q"),
+&"change_deck": SubResource("Animation_7uitc"),
+&"exit": SubResource("Animation_i5gm6"),
 &"play_table": SubResource("Animation_5qaxt")
 }
 
