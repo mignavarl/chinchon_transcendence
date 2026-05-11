@@ -64,10 +64,9 @@ func _on_solo_button_up() -> void:
 	$"../JugarModo".visible = false
 	$"../SoloDificultadIA".visible = true
 
-func _on_facil_button_up() -> void:
+func _on_única_button_up() -> void:
 	$"../SoloDificultadIA".visible = false
 	start_game()
-
 
 func end_turn():
 	card_drawn_this_turn = false

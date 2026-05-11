@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cbknwrjcb8c"]
+[gd_scene load_steps=35 format=3 uid="uid://cbknwrjcb8c"]
 
 [ext_resource type="Script" uid="uid://b7aptgmd2p25l" path="res://scripts/bar.gd" id="1_bwlfd"]
 [ext_resource type="ArrayMesh" uid="uid://c1q82gs0nr3h8" path="res://assets/Models/Furniture Kit/tableCross.obj" id="2_x848m"]
@@ -12,6 +12,11 @@
 [ext_resource type="ArrayMesh" uid="uid://b1o813i6ymno3" path="res://assets/Models/Furniture Kit/coatRack.obj" id="9_v67d5"]
 [ext_resource type="ArrayMesh" uid="uid://wfe2qcicn88r" path="res://assets/Models/Furniture Kit/bookcaseOpen.obj" id="10_5qaxt"]
 [ext_resource type="ArrayMesh" uid="uid://cpgifgth0e7o8" path="res://assets/Models/Furniture Kit/bookcaseClosed.obj" id="10_rrntp"]
+[ext_resource type="ArrayMesh" uid="uid://dlrmuf1hwopw6" path="res://assets/Models/Furniture Kit/paneling.obj" id="11_i5gm6"]
+[ext_resource type="ArrayMesh" uid="uid://bjcod64i6qfw4" path="res://assets/Models/Furniture Kit/floorFull.obj" id="12_i5gm6"]
+[ext_resource type="ArrayMesh" uid="uid://d0okbw1bj6oe0" path="res://assets/Models/Furniture Kit/bathroomCabinet.obj" id="13_7uitc"]
+[ext_resource type="ArrayMesh" uid="uid://b50i6w173trfg" path="res://assets/Models/Furniture Kit/ceilingFan.obj" id="14_b7mdb"]
+[ext_resource type="ArrayMesh" uid="uid://4ag4w71d4idr" path="res://assets/Models/Furniture Kit/bathroomCabinetDrawer.obj" id="17_pbi2s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2j1ym"]
 
@@ -53,33 +58,6 @@ size = Vector3(0.6347046, 1.8766403, 1.1072998)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r073"]
 size = Vector3(1.6630859, 0.8109741, 0.58496094)
 
-[sub_resource type="Animation" id="Animation_5qaxt"]
-resource_name = "play_table"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-0.55559593, -0.21489479, 1.0685935)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.2507864, 0), Vector3(-0.38936555, 0.2507864, -8.053375e-09)]
-}
-
 [sub_resource type="Animation" id="Animation_cmq8q"]
 length = 0.001
 tracks/0/type = "value"
@@ -106,32 +84,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0.2507864, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_i5gm6"]
-resource_name = "exit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-3.4283726, 0.27505186, -0.54064536)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.2507864, 0), Vector3(0, 1.268837, 0)]
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_7uitc"]
@@ -161,8 +124,79 @@ tracks/1/keys = {
 "values": [Vector3(0, 0.2507864, 0), Vector3(0, -0.05192351, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_i5gm6"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-3.4283726, 0.27505186, -0.54064536)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2507864, 0), Vector3(0, 1.268837, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5qaxt"]
+resource_name = "play_table"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-0.55559593, -0.21489479, 1.0685935)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2507864, 0), Vector3(-0.38936555, 0.2507864, -8.053375e-09)]
+}
+
+[sub_resource type="Animation" id="Animation_onlfy"]
+resource_name = "Fan_move"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, 6.3006387]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmq8q"]
 _data = {
+&"Fan_move": SubResource("Animation_onlfy"),
 &"RESET": SubResource("Animation_cmq8q"),
 &"change_deck": SubResource("Animation_7uitc"),
 &"exit": SubResource("Animation_i5gm6"),
@@ -198,7 +232,7 @@ compositor = SubResource("Compositor_v67d5")
 transform = Transform3D(555.46106, 0, 0, 0, 1, 0, 0, 0, -185.8622, 0, -0.9780128, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="suelo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.5160589, 0)
+transform = Transform3D(0.0161056, 0, 0, 0, 1, 0, 0, 0, 0.035385314, 0, -0.5160589, 0)
 material_override = ExtResource("4_efgdo")
 mesh = SubResource("BoxMesh_rrntp")
 
@@ -289,8 +323,27 @@ mesh = ExtResource("8_nqcov")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Atrezo/Paredes"]
-transform = Transform3D(-1.4883368, 0, -8.742277e-08, 0, 1.3393061, 0, 1.3011453e-07, 0, -0.9999999, -2.930444, 0.19856536, -2.2342436)
+transform = Transform3D(-1.4883368, 0, -8.742277e-08, 0, 1.3393061, 0, 1.3011453e-07, 0, -0.9999999, -3.0958521, 0.3684379, -2.2342436)
 mesh = ExtResource("9_v67d5")
+
+[node name="Techo" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(20.1694, 0, 0, 0, -2.9399317e-07, -0.9999999, 0, 6.7257795, -4.3711385e-08, 5.185533, 1.6959897, -2.4461722)
+mesh = ExtResource("11_i5gm6")
+skeleton = NodePath("../..")
+
+[node name="Suelo" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(9.257499, 0, 0, 0, 0.49999982, 0, 0, 0, 4.685734, 5.16913, -1.0177906, -2.402248)
+visible = false
+mesh = ExtResource("12_i5gm6")
+skeleton = NodePath("../..")
+
+[node name="BathroomCabinet" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.7779155, 0.395991, -2.186915)
+mesh = ExtResource("13_7uitc")
+
+[node name="BathroomCabinet2" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5511419, 0.395991, -2.186915)
+mesh = ExtResource("13_7uitc")
 
 [node name="Barra" type="Node3D" parent="Atrezo"]
 transform = Transform3D(1, 0, 0, 0, 1.3504783, 0, 0, 0, 1, -0.52327895, 0.3555647, 0)
@@ -313,6 +366,11 @@ mesh = ExtResource("7_7r073")
 
 [node name="Fondo" type="Node3D" parent="Atrezo"]
 
+[node name="CeilingFan" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(1.9999994, 0, 0, 0, 2, 0, 0, 0, 1.9999994, -0.06589997, 1.6813451, 0.10142964)
+mesh = ExtResource("14_b7mdb")
+skeleton = NodePath("../../..")
+
 [node name="Estanteria" type="MeshInstance3D" parent="Atrezo/Fondo"]
 transform = Transform3D(-3.4180045, 0, -0.028228682, 0, 1.5824457, 0, 0.09069747, 0, -1.0638198, 0.54043305, -0.8235001, -2.0922666)
 mesh = ExtResource("10_5qaxt")
@@ -323,7 +381,12 @@ mesh = ExtResource("10_rrntp")
 
 [node name="Estanteria3" type="MeshInstance3D" parent="Atrezo/Fondo"]
 transform = Transform3D(-3.4180045, 0, -0.028228682, 0, 1.5824457, 0, 0.09069747, 0, -1.0638198, -0.69778275, -0.8235001, -2.0922666)
+visible = false
 mesh = ExtResource("10_5qaxt")
+
+[node name="BathroomCabinetDrawer" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-1.6338266, 0, -8.7422784e-08, 0, 2.3454132, 0, 1.4283366e-07, 0, -1.0000001, -0.7921382, -1.2428299, -1.9211738)
+mesh = ExtResource("17_pbi2s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
