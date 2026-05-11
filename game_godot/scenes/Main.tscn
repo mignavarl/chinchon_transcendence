@@ -68,7 +68,6 @@ card_slot_reference = NodePath("../CardSlot")
 player_hand_reference = NodePath("../PlayerHand")
 
 [node name="BarajasButton" type="Button" parent="."]
-visible = false
 offset_left = 1795.0
 offset_top = 70.0
 offset_right = 1911.0
@@ -111,6 +110,90 @@ theme_override_font_sizes/font_size = 30
 text = "Volver"
 script = ExtResource("12_bjd11")
 
+[node name="JugarModo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="JugarModo"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 193.0
+offset_right = 1490.0
+offset_bottom = 889.0
+color = Color(0.1882353, 0.24705882, 0.1882353, 0.85882354)
+
+[node name="Solo" type="Button" parent="JugarModo"]
+layout_mode = 0
+offset_left = 783.0
+offset_top = 344.0
+offset_right = 1132.0
+offset_bottom = 483.0
+theme_override_font_sizes/font_size = 72
+text = "SOLO"
+
+[node name="Gente" type="Button" parent="JugarModo"]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 590.0
+offset_right = 1135.0
+offset_bottom = 729.0
+theme_override_font_sizes/font_size = 58
+text = "CON GENTE
+(WIP)"
+
+[node name="SoloDificultadIA" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="SoloDificultadIA"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 193.0
+offset_right = 1490.0
+offset_bottom = 889.0
+color = Color(0.1882353, 0.24705882, 0.1882353, 0.85882354)
+
+[node name="Facil" type="Button" parent="SoloDificultadIA"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 603.0
+offset_right = 768.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 60
+text = "FÁCIL"
+
+[node name="Normal" type="Button" parent="SoloDificultadIA"]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 606.0
+offset_right = 1100.0
+offset_bottom = 723.0
+theme_override_font_sizes/font_size = 60
+text = "NORMAL"
+
+[node name="Dificil" type="Button" parent="SoloDificultadIA"]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 605.0
+offset_right = 1432.0
+offset_bottom = 722.0
+theme_override_font_sizes/font_size = 60
+text = "DIFÍCIL"
+
+[node name="Label" type="Label" parent="SoloDificultadIA"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 358.0
+offset_right = 1181.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 77
+text = "DIFICULTAD"
+
 [connection signal="left_mouse_button_clicked" from="InputManager" to="ChinchonManager" method="_on_input_manager_left_mouse_button_clicked"]
 [connection signal="left_mouse_button_pressed" from="InputManager" to="ChinchonManager" method="_on_input_manager_left_mouse_button_pressed"]
 [connection signal="left_mouse_button_release" from="InputManager" to="ChinchonManager" method="_on_input_manager_left_mouse_button_release"]
@@ -118,3 +201,5 @@ script = ExtResource("12_bjd11")
 [connection signal="button_up" from="BarajasButton" to="BarajasButton" method="_on_button_up"]
 [connection signal="pressed" from="EndTurnButton" to="ChinchonManager" method="_on_end_turn_button_pressed"]
 [connection signal="button_up" from="MenuButton" to="MenuButton" method="_on_button_up"]
+[connection signal="button_up" from="JugarModo/Solo" to="ChinchonManager" method="_on_solo_button_up"]
+[connection signal="button_up" from="SoloDificultadIA/Facil" to="ChinchonManager" method="_on_facil_button_up"]

@@ -40,7 +40,7 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.wait_time = 1.0
 	generate_deck()
-	start_game()
+	#start_game()
 
 func _process(delta: float) -> void:
 	if deck.cards.size() == 0:
@@ -59,6 +59,14 @@ func start_game():
 	var c = draw_card()
 	card_manager.animate_card_to_position(c, slot.position)
 	slot.add_card_to_stack(c)
+
+func _on_solo_button_up() -> void:
+	$"../JugarModo".visible = false
+	$"../SoloDificultadIA".visible = true
+
+func _on_facil_button_up() -> void:
+	$"../SoloDificultadIA".visible = false
+	start_game()
 
 
 func end_turn():
