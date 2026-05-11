@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b32jibwkqcqu0"]
+[gd_scene load_steps=22 format=3 uid="uid://b32jibwkqcqu0"]
 
 [ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="1_a0yho"]
 [ext_resource type="Texture2D" uid="uid://crtu6lbv0pa7y" path="res://assets/cards/pixel/oros_1.png" id="1_wj04o"]
@@ -15,6 +15,12 @@
 [ext_resource type="Script" uid="uid://jsxen73u4g4i" path="res://scripts/button_select_decks/exit_button_selector.gd" id="12_7hpki"]
 [ext_resource type="Script" uid="uid://dyslyhwp1hn5f" path="res://scripts/button_select_decks/luigi.gd" id="14_0qbui"]
 [ext_resource type="Texture2D" uid="uid://pliltm7us73m" path="res://assets/cards/luigi/oros_1.png" id="15_d8gi8"]
+[ext_resource type="Script" uid="uid://be88uyiieu3i6" path="res://scripts/button_select_decks/deck_42.gd" id="16_1xs27"]
+[ext_resource type="Texture2D" uid="uid://bbt2y68ngcj55" path="res://assets/cards/deck_42/espadas_1.png" id="17_2y8gx"]
+[ext_resource type="Script" uid="uid://ccwlf8a44kte1" path="res://scripts/button_select_decks/pajaros.gd" id="18_kbrhm"]
+[ext_resource type="Texture2D" uid="uid://yvy1uqcl1mtw" path="res://assets/cards/pajaros/espadas_1.png" id="19_3yb40"]
+[ext_resource type="Script" uid="uid://jsirbuv0q7qf" path="res://scripts/button_select_decks/pop_stars.gd" id="20_2y8gx"]
+[ext_resource type="Texture2D" uid="uid://cwufdgiglso4m" path="res://assets/cards/pop_stars/oros_1.png" id="21_kbrhm"]
 
 [node name="Selector" type="Control"]
 layout_mode = 3
@@ -37,13 +43,46 @@ theme_override_font_sizes/font_size = 45
 text = "Atrás"
 script = ExtResource("12_7hpki")
 
-[node name="pixel" type="VBoxContainer" parent="."]
-visible = false
+[node name="española" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 373.0
-offset_top = 338.0
-offset_right = 723.0
-offset_bottom = 802.0
+offset_left = 645.0
+offset_top = 40.0
+offset_right = 961.0
+offset_bottom = 587.0
+script = ExtResource("8_7hpki")
+make_deck = ExtResource("5_vlhy3")
+deck = "española"
+
+[node name="Control" type="Control" parent="española"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="española/Control"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 76.0
+offset_right = 248.0
+offset_bottom = 374.0
+texture_normal = ExtResource("3_esnui")
+stretch_mode = 0
+
+[node name="Control2" type="Control" parent="española"]
+layout_mode = 2
+
+[node name="ButtonEsp" type="Button" parent="española/Control2"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 409.0
+offset_right = 259.0
+offset_bottom = 475.0
+theme_override_font_sizes/font_size = 42
+text = "ESPAÑOLA"
+
+[node name="pixel" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 76.0
+offset_right = 660.0
+offset_bottom = 540.0
 script = ExtResource("4_vlhy3")
 make_deck = ExtResource("5_vlhy3")
 deck = "pixel"
@@ -73,12 +112,11 @@ theme_override_font_sizes/font_size = 42
 text = "PIXEL"
 
 [node name="cutre" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
-offset_left = -10.0
-offset_top = 283.0
-offset_right = 374.0
-offset_bottom = 702.0
+offset_left = 3.0
+offset_top = 11.0
+offset_right = 387.0
+offset_bottom = 430.0
 script = ExtResource("7_0qbui")
 make_deck = ExtResource("5_vlhy3")
 deck = "cutre"
@@ -107,47 +145,12 @@ offset_bottom = 474.0
 theme_override_font_sizes/font_size = 42
 text = "CUTRE"
 
-[node name="española" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 882.0
-offset_top = 109.0
-offset_right = 1169.0
-offset_bottom = 640.0
-script = ExtResource("8_7hpki")
-make_deck = ExtResource("5_vlhy3")
-deck = "española"
-
-[node name="Control" type="Control" parent="española"]
-layout_mode = 2
-
-[node name="TextureButton" type="TextureButton" parent="española/Control"]
-layout_mode = 0
-offset_left = -90.0
-offset_top = 237.0
-offset_right = 127.0
-offset_bottom = 535.0
-texture_normal = ExtResource("3_esnui")
-stretch_mode = 0
-
-[node name="Control2" type="Control" parent="española"]
-layout_mode = 2
-
-[node name="ButtonEsp" type="Button" parent="española/Control2"]
-layout_mode = 0
-offset_left = -90.0
-offset_top = 585.0
-offset_right = 135.0
-offset_bottom = 651.0
-theme_override_font_sizes/font_size = 42
-text = "ESPAÑOLA"
-
 [node name="luigiHD" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 1110.0
-offset_top = 344.0
-offset_right = 1460.0
-offset_bottom = 808.0
+offset_left = 897.0
+offset_top = 106.0
+offset_right = 1247.0
+offset_bottom = 570.0
 script = ExtResource("8_4fnji")
 make_deck = ExtResource("5_vlhy3")
 deck = "luigiHD"
@@ -177,12 +180,11 @@ theme_override_font_sizes/font_size = 42
 text = "LUIGI HD"
 
 [node name="luigi" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 1457.0
-offset_top = 340.0
-offset_right = 1807.0
-offset_bottom = 804.0
+offset_left = 1172.0
+offset_top = 111.0
+offset_right = 1522.0
+offset_bottom = 575.0
 script = ExtResource("14_0qbui")
 make_deck = ExtResource("5_vlhy3")
 deck = "luigi"
@@ -211,14 +213,122 @@ offset_bottom = 417.0
 theme_override_font_sizes/font_size = 42
 text = "LUIGI"
 
+[node name="deck_42" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1444.0
+offset_top = 108.0
+offset_right = 1794.0
+offset_bottom = 572.0
+script = ExtResource("16_1xs27")
+make_deck = ExtResource("5_vlhy3")
+deck = "deck_42"
+
+[node name="Control" type="Control" parent="deck_42"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="deck_42/Control"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 11.0
+offset_right = 283.0
+offset_bottom = 309.0
+texture_normal = ExtResource("17_2y8gx")
+stretch_mode = 0
+
+[node name="Control2" type="Control" parent="deck_42"]
+layout_mode = 2
+
+[node name="Button42" type="Button" parent="deck_42/Control2"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 351.0
+offset_right = 270.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 42
+text = "DECK 42"
+
+[node name="pajaros" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 630.0
+offset_right = 409.0
+offset_bottom = 1094.0
+script = ExtResource("18_kbrhm")
+make_deck = ExtResource("5_vlhy3")
+deck = "pajaros"
+
+[node name="Control" type="Control" parent="pajaros"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="pajaros/Control"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 11.0
+offset_right = 283.0
+offset_bottom = 309.0
+texture_normal = ExtResource("19_3yb40")
+stretch_mode = 0
+
+[node name="Control2" type="Control" parent="pajaros"]
+layout_mode = 2
+
+[node name="ButtonPajaros" type="Button" parent="pajaros/Control2"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 351.0
+offset_right = 270.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 42
+text = "PÁJAROS"
+
+[node name="pop_stars" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 633.0
+offset_right = 689.0
+offset_bottom = 1097.0
+script = ExtResource("20_2y8gx")
+make_deck = ExtResource("5_vlhy3")
+deck = "pop_stars"
+
+[node name="Control" type="Control" parent="pop_stars"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="pop_stars/Control"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 11.0
+offset_right = 283.0
+offset_bottom = 309.0
+texture_normal = ExtResource("21_kbrhm")
+stretch_mode = 0
+
+[node name="Control2" type="Control" parent="pop_stars"]
+layout_mode = 2
+
+[node name="ButtonPopStars" type="Button" parent="pop_stars/Control2"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 351.0
+offset_right = 270.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 42
+text = "POP STARS"
+
 [connection signal="button_up" from="exit_Button" to="exit_Button" method="_on_button_up"]
+[connection signal="button_up" from="española/Control/TextureButton" to="española" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="española/Control2/ButtonEsp" to="española" method="_on_button_esp_button_up"]
 [connection signal="button_up" from="pixel/Control/TextureButton" to="pixel" method="_on_texture_button_button_up"]
 [connection signal="button_up" from="pixel/Control2/ButtonPixel" to="pixel" method="_on_button_pixel_button_up"]
 [connection signal="button_up" from="cutre/Control/TextureButton" to="cutre" method="_on_texture_button_button_up"]
 [connection signal="button_up" from="cutre/Control2/ButtonCutre" to="cutre" method="_on_button_cutre_button_up"]
-[connection signal="button_up" from="española/Control/TextureButton" to="española" method="_on_texture_button_button_up"]
-[connection signal="button_up" from="española/Control2/ButtonEsp" to="española" method="_on_button_esp_button_up"]
 [connection signal="button_up" from="luigiHD/Control/TextureButton" to="luigiHD" method="_on_texture_button_button_up"]
 [connection signal="button_up" from="luigiHD/Control2/ButtonLuigiHD" to="luigiHD" method="_on_button_luigi_hd_button_up"]
 [connection signal="button_up" from="luigi/Control/TextureButton" to="luigi" method="_on_texture_button_button_up"]
 [connection signal="button_up" from="luigi/Control2/ButtonLuigi" to="luigi" method="_on_button_luigi_button_up"]
+[connection signal="button_up" from="deck_42/Control/TextureButton" to="deck_42" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="deck_42/Control2/Button42" to="deck_42" method="_on_button_42_button_up"]
+[connection signal="button_up" from="pajaros/Control/TextureButton" to="pajaros" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="pajaros/Control2/ButtonPajaros" to="pajaros" method="_on_button_pajaros_button_up"]
+[connection signal="button_up" from="pop_stars/Control/TextureButton" to="pop_stars" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="pop_stars/Control2/ButtonPopStars" to="pop_stars" method="_on_button_pop_stars_button_up"]

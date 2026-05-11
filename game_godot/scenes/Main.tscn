@@ -68,6 +68,7 @@ card_slot_reference = NodePath("../CardSlot")
 player_hand_reference = NodePath("../PlayerHand")
 
 [node name="BarajasButton" type="Button" parent="."]
+visible = false
 offset_left = 1795.0
 offset_top = 70.0
 offset_right = 1911.0
