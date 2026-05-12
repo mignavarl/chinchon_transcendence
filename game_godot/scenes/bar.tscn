@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cbknwrjcb8c"]
+[gd_scene load_steps=61 format=3 uid="uid://cbknwrjcb8c"]
 
 [ext_resource type="Script" uid="uid://b7aptgmd2p25l" path="res://scripts/bar.gd" id="1_bwlfd"]
 [ext_resource type="ArrayMesh" uid="uid://c1q82gs0nr3h8" path="res://assets/Models/Furniture Kit/tableCross.obj" id="2_x848m"]
@@ -7,16 +7,42 @@
 [ext_resource type="ArrayMesh" uid="uid://bhlrq3idg66u2" path="res://assets/Models/Furniture Kit/wall.obj" id="5_2j1ym"]
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="5_5qaxt"]
 [ext_resource type="ArrayMesh" uid="uid://mjsd186one8s" path="res://assets/Models/Buildings/door-brown-window.obj" id="6_7r073"]
+[ext_resource type="ArrayMesh" uid="uid://djsakwiende4i" path="res://assets/Models/Food Kit/glass.obj" id="6_53o4m"]
 [ext_resource type="ArrayMesh" uid="uid://dl4p88ojy7tq0" path="res://assets/Models/Furniture Kit/kitchenBar.obj" id="7_7r073"]
+[ext_resource type="ArrayMesh" uid="uid://cpli5qo516ly3" path="res://assets/Models/Food Kit/cup-coffee.obj" id="7_sgjit"]
+[ext_resource type="ArrayMesh" uid="uid://dhvq5p575jdjt" path="res://assets/Models/Food Kit/cup-saucer.obj" id="8_iw8av"]
 [ext_resource type="ArrayMesh" uid="uid://dbiwye2efcgbd" path="res://assets/Models/Furniture Kit/wallWindowSlide.obj" id="8_nqcov"]
 [ext_resource type="ArrayMesh" uid="uid://b1o813i6ymno3" path="res://assets/Models/Furniture Kit/coatRack.obj" id="9_v67d5"]
 [ext_resource type="ArrayMesh" uid="uid://wfe2qcicn88r" path="res://assets/Models/Furniture Kit/bookcaseOpen.obj" id="10_5qaxt"]
-[ext_resource type="ArrayMesh" uid="uid://cpgifgth0e7o8" path="res://assets/Models/Furniture Kit/bookcaseClosed.obj" id="10_rrntp"]
 [ext_resource type="ArrayMesh" uid="uid://dlrmuf1hwopw6" path="res://assets/Models/Furniture Kit/paneling.obj" id="11_i5gm6"]
 [ext_resource type="ArrayMesh" uid="uid://bjcod64i6qfw4" path="res://assets/Models/Furniture Kit/floorFull.obj" id="12_i5gm6"]
-[ext_resource type="ArrayMesh" uid="uid://d0okbw1bj6oe0" path="res://assets/Models/Furniture Kit/bathroomCabinet.obj" id="13_7uitc"]
+[ext_resource type="ArrayMesh" uid="uid://dxuihdpl8bsw4" path="res://assets/Models/Furniture Kit/kitchenCabinetUpperDouble.obj" id="13_ma3n4"]
+[ext_resource type="ArrayMesh" uid="uid://cpemghelhk0lc" path="res://assets/Models/Furniture Kit/kitchenCoffeeMachine.obj" id="14_a3xti"]
 [ext_resource type="ArrayMesh" uid="uid://b50i6w173trfg" path="res://assets/Models/Furniture Kit/ceilingFan.obj" id="14_b7mdb"]
-[ext_resource type="ArrayMesh" uid="uid://4ag4w71d4idr" path="res://assets/Models/Furniture Kit/bathroomCabinetDrawer.obj" id="17_pbi2s"]
+[ext_resource type="ArrayMesh" uid="uid://d12ym6rggh2tc" path="res://assets/Models/Furniture Kit/lampWall.obj" id="15_a6y52"]
+[ext_resource type="ArrayMesh" uid="uid://lnwyyqqb2yqc" path="res://assets/Models/Furniture Kit/radio.obj" id="16_taqye"]
+[ext_resource type="ArrayMesh" uid="uid://c7tn504xc8816" path="res://assets/Models/Furniture Kit/bear.obj" id="18_e1ndh"]
+[ext_resource type="ArrayMesh" uid="uid://b3m75sb8dw66o" path="res://assets/Models/Furniture Kit/kitchenSink.obj" id="18_xt7r6"]
+[ext_resource type="ArrayMesh" uid="uid://cpnxbuboajep3" path="res://assets/Models/Furniture Kit/books.obj" id="19_7wijt"]
+[ext_resource type="ArrayMesh" uid="uid://blk07x3pbwdqu" path="res://assets/Models/Furniture Kit/kitchenCabinet.obj" id="19_pjll2"]
+[ext_resource type="ArrayMesh" uid="uid://dj1ey5vclmxqf" path="res://assets/Models/Furniture Kit/kitchenFridgeLarge.obj" id="20_53o4m"]
+[ext_resource type="ArrayMesh" uid="uid://dhmw5mdsbslk" path="res://assets/Models/Furniture Kit/stoolBar.obj" id="20_xdg8r"]
+[ext_resource type="ArrayMesh" uid="uid://dhvn0m2tw4ady" path="res://assets/Models/Furniture Kit/rugRectangle.obj" id="21_smgt1"]
+[ext_resource type="ArrayMesh" uid="uid://b3u7dbebtoujq" path="res://assets/Models/Furniture Kit/lampSquareCeiling.obj" id="22_w1n10"]
+[ext_resource type="ArrayMesh" uid="uid://bh0ic1jpc4nei" path="res://assets/Models/Food Kit/mug.obj" id="25_iwn1s"]
+[ext_resource type="ArrayMesh" uid="uid://cctwjflv15ibj" path="res://assets/Models/Food Kit/barrel.obj" id="26_ggpxt"]
+[ext_resource type="ArrayMesh" uid="uid://fo70el3s5rkp" path="res://assets/Models/Food Kit/bottle-oil.obj" id="26_iw8av"]
+[ext_resource type="ArrayMesh" uid="uid://c08vn6a3ejux6" path="res://assets/Models/Food Kit/honey.obj" id="27_iwn1s"]
+[ext_resource type="ArrayMesh" uid="uid://cxkqbw0xvq8" path="res://assets/Models/Furniture Kit/pottedPlant.obj" id="28_8gvtx"]
+[ext_resource type="ArrayMesh" uid="uid://b2fe1ynum4n8r" path="res://assets/Models/Food Kit/wine-red.obj" id="28_ggpxt"]
+[ext_resource type="ArrayMesh" uid="uid://bniyjrickprxv" path="res://assets/Models/Furniture Kit/tableCoffee.obj" id="29_2rb1f"]
+[ext_resource type="ArrayMesh" uid="uid://3ao3p6nylue5" path="res://assets/Models/Food Kit/wine-white.obj" id="29_47wy2"]
+[ext_resource type="ArrayMesh" uid="uid://dylhhpfqow54o" path="res://assets/Models/Furniture Kit/bookcaseClosedDoors.obj" id="30_smgt1"]
+[ext_resource type="ArrayMesh" uid="uid://c3lcxgdun0s1a" path="res://assets/Models/Furniture Kit/plantSmall1.obj" id="31_2rb1f"]
+[ext_resource type="ArrayMesh" uid="uid://dl26npcw44jy7" path="res://assets/Models/Furniture Kit/plantSmall3.obj" id="31_exttu"]
+[ext_resource type="ArrayMesh" uid="uid://d0dxt353sf85d" path="res://assets/Models/Food Kit/pancakes.obj" id="31_ko5ko"]
+[ext_resource type="ArrayMesh" uid="uid://c5oi6cwfcoc63" path="res://assets/Models/Food Kit/plate.obj" id="32_cast6"]
+[ext_resource type="ArrayMesh" uid="uid://bgbuyl4dar5bo" path="res://assets/Models/Furniture Kit/plantSmall2.obj" id="32_jx408"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2j1ym"]
 
@@ -34,6 +60,8 @@ fog_enabled = true
 fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
 fog_light_energy = 2.53
 volumetric_fog_enabled = true
+volumetric_fog_density = 1.0
+volumetric_fog_length = 1024.0
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_nqcov"]
@@ -56,7 +84,43 @@ albedo_texture = ExtResource("5_5qaxt")
 size = Vector3(0.6347046, 1.8766403, 1.1072998)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r073"]
-size = Vector3(1.6630859, 0.8109741, 0.58496094)
+size = Vector3(1.6630859, 1.1868591, 0.58496094)
+
+[sub_resource type="Animation" id="Animation_onlfy"]
+resource_name = "Fan_move"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0.33333334, 2.0492904, 6.2831855, -0.16666667, -1.0471976, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
 
 [sub_resource type="Animation" id="Animation_cmq8q"]
 length = 0.001
@@ -84,17 +148,38 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0.2507864, 0)]
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:y")
+tracks/2/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_7uitc"]
@@ -178,22 +263,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0.2507864, 0), Vector3(-0.38936555, 0.2507864, -8.053375e-09)]
 }
 
-[sub_resource type="Animation" id="Animation_onlfy"]
-resource_name = "Fan_move"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Atrezo/Fondo/CeilingFan:rotation:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.56666666, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 3.1415927, 6.3006387]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmq8q"]
 _data = {
 &"Fan_move": SubResource("Animation_onlfy"),
@@ -207,12 +276,18 @@ _data = {
 script = ExtResource("1_bwlfd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250547, 0.5572236, -0.051690515, 0.8287521, 0, 1.3142107, 0)
+transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250543, 0.5572236, -0.051690515, 0.8287521, -0.046176672, 1.2538521, 0.14345884)
 light_color = Color(1, 0.7092379, 0.44074774, 1)
 light_energy = 0.114
+light_size = 0.15
 light_specular = 3.357
 shadow_enabled = true
 shadow_normal_bias = 0.024
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.94538784, 1.4901161e-08, 0.32594773, -0.28321016, -0.49501905, 0.82143056, 0.16135034, -0.8688821, -0.46798497, -0.024521556, 1.3020824, 0.12240127)
+light_bake_mode = 1
+shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9687176, 0, 0.24816582, 0, 1, 0, -0.24816583, 0, 0.9687175, -0.10875368, 0.2750521, 2.6150036)
@@ -264,6 +339,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i5gm6")
 transform = Transform3D(0.9709593, 0, -0.23924538, 0, 1, 0, 0.23924527, 0, 0.97095984, -0.29654273, 0.5314796, -0.0587897)
 text = "JUGAR"
 
+[node name="Vaso" type="MeshInstance3D" parent="Play_table"]
+transform = Transform3D(0.16594183, 0, -0.39674392, 0, 0.50587934, 0, 0.49025217, 0, 0.20715924, 0.05101332, 0.32846072, 0.13080516)
+mesh = ExtResource("6_53o4m")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Taza" type="MeshInstance3D" parent="Play_table"]
+transform = Transform3D(-0.0921786, 0, -0.44744083, 0, 0.50587934, 0, 0.50930053, 0, -0.010839529, -0.6841669, 0.33509848, 0.14051759)
+mesh = ExtResource("7_sgjit")
+skeleton = NodePath("../../Atrezo/Comida")
+
 [node name="Salida" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.179163, 0, 0, 0, 1, 0, 0.17424381, 0)
 
@@ -283,7 +368,7 @@ text = "SALIR"
 transform = Transform3D(1, 0, 0, 0, 1.3573688, 0, 0, 0, 1, 0, 0.35826778, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CambioBarajas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8747005, -0.54810524, -0.8073858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8747005, -0.36016273, -0.8073858)
 shape = SubResource("BoxShape3D_7r073")
 
 [node name="BarraBarajas2" type="MeshInstance3D" parent="CambioBarajas"]
@@ -300,7 +385,7 @@ transform = Transform3D(2.0111332, 0, 0, 0, 1.3404381, 0, 0, 0, 1.3248775, 3.478
 mesh = ExtResource("7_7r073")
 
 [node name="Label3D" type="Label3D" parent="CambioBarajas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6927646, -0.6862011, -0.66645217)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5472089, -0.15524551, -0.66645217)
 text = "BARAJAS"
 
 [node name="Atrezo" type="Area3D" parent="."]
@@ -322,8 +407,8 @@ transform = Transform3D(-6.5049655e-08, 0, 1, 0, 2.1210139, 0, -1.4881626, 0, -4
 mesh = ExtResource("8_nqcov")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Atrezo/Paredes"]
-transform = Transform3D(-1.4883368, 0, -8.742277e-08, 0, 1.3393061, 0, 1.3011453e-07, 0, -0.9999999, -3.0958521, 0.3684379, -2.2342436)
+[node name="Perchero" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-6.505727e-08, 0, -0.9999999, 0, 1.3393061, 0, 1.4883369, 0, -4.3711385e-08, -3.807816, 0.3684379, -1.391585)
 mesh = ExtResource("9_v67d5")
 
 [node name="Techo" type="MeshInstance3D" parent="Atrezo/Paredes"]
@@ -337,13 +422,49 @@ visible = false
 mesh = ExtResource("12_i5gm6")
 skeleton = NodePath("../..")
 
-[node name="BathroomCabinet" type="MeshInstance3D" parent="Atrezo/Paredes"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.7779155, 0.395991, -2.186915)
-mesh = ExtResource("13_7uitc")
+[node name="ArmarioPared" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-1.807019, 0, -8.7422784e-08, 0, 1.5585351, 0, 1.5797461e-07, 0, -1.0000001, -0.9013196, 0.279748, -2.186915)
+mesh = ExtResource("13_ma3n4")
 
-[node name="BathroomCabinet2" type="MeshInstance3D" parent="Atrezo/Paredes"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5511419, 0.395991, -2.186915)
-mesh = ExtResource("13_7uitc")
+[node name="KitchenCoffeeMachine" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-1.5878682, 0, -8.742278e-08, 0, 2.0213597, 0, 1.3881585e-07, 0, -1, -0.14989218, -0.2572324, -2.1017985)
+mesh = ExtResource("14_a3xti")
+
+[node name="LampWall" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-2.031153, 0, -8.742278e-08, 0, 2.5867054, 0, 1.7756902e-07, 0, -1, -1.4857286, 0.70487446, -2.4372427)
+mesh = ExtResource("15_a6y52")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Atrezo/Paredes/LampWall"]
+transform = Transform3D(0.49233118, -3.907985e-14, 4.2351647e-21, 0, -4.371139e-08, -0.38659212, 7.81597e-14, 0.99999994, -1.1306849e-07, 0, 0.058871508, -0.082276344)
+shadow_enabled = true
+spot_range = 0.841
+spot_angle = 56.58
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Atrezo/Paredes/LampWall"]
+transform = Transform3D(0.49233118, 7.1054274e-15, 4.2351647e-22, 0, -4.3711385e-08, 0.38659212, 1.4210855e-14, -0.99999994, -1.13068474e-07, 0, 0.015289158, -0.082276344)
+light_energy = 0.1
+spot_range = 0.149
+spot_angle = 78.16
+
+[node name="LampWall2" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-2.031153, 0, -8.742278e-08, 0, 2.5867054, 0, 1.7756902e-07, 0, -1, 1.6178865, 0.70487446, -2.4372427)
+mesh = ExtResource("15_a6y52")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Atrezo/Paredes/LampWall2"]
+transform = Transform3D(0.49233118, -4.6185278e-14, 5.0821977e-21, 0, -4.371139e-08, -0.38659212, 9.2370556e-14, 0.99999994, -1.1306849e-07, 0, 0.081526935, -0.082276344)
+shadow_enabled = true
+spot_range = 0.7
+spot_angle = 56.58
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Atrezo/Paredes/LampWall2"]
+transform = Transform3D(0.49233118, 7.1054274e-15, 4.2351647e-22, 0, -4.3711385e-08, 0.38659212, 1.4210855e-14, -0.99999994, -1.13068474e-07, 0, 0.015289158, -0.082276344)
+light_energy = 0.1
+spot_range = 0.149
+spot_angle = 78.16
+
+[node name="ArmarioPared2" type="MeshInstance3D" parent="Atrezo/Paredes"]
+transform = Transform3D(-1.807019, 0, -8.7422784e-08, 0, 1.5585351, 0, 1.5797461e-07, 0, -1.0000001, -3.0157404, 0.59349287, -2.142592)
+mesh = ExtResource("18_e1ndh")
 
 [node name="Barra" type="Node3D" parent="Atrezo"]
 transform = Transform3D(1, 0, 0, 0, 1.3504783, 0, 0, 0, 1, -0.52327895, 0.3555647, 0)
@@ -364,7 +485,46 @@ mesh = ExtResource("7_7r073")
 transform = Transform3D(-8.790943e-08, 0, 1.3248775, 0, 1.3404381, 0, -2.0111332, 0, -5.7912235e-08, -1.1333606, -0.99107146, -1.7454791)
 mesh = ExtResource("7_7r073")
 
+[node name="Taburete" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26552677, -0.9922106, -0.5124357)
+mesh = ExtResource("20_xdg8r")
+
+[node name="Taburete2" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(0.9157257, 0, 0.40180394, 0, 1, 0, -0.40180394, 0, 0.9157257, 0.5058474, -0.9922106, -0.6205034)
+mesh = ExtResource("20_xdg8r")
+
+[node name="Taburete3" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3702427, -0.9922106, -0.5605871)
+mesh = ExtResource("20_xdg8r")
+
+[node name="Taburete4" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0975816, -0.9922106, -0.5163091)
+mesh = ExtResource("20_xdg8r")
+
+[node name="Taburete5" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0667965, -0.9922106, -0.6015646)
+mesh = ExtResource("20_xdg8r")
+
+[node name="Taburete6" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0667965, -0.9922106, -0.6015646)
+mesh = ExtResource("20_xdg8r")
+
+[node name="Taburete7" type="MeshInstance3D" parent="Atrezo/Barra"]
+transform = Transform3D(0.71387404, 0, -0.7002741, 0, 1, 0, 0.7002741, 0, 0.71387404, -1.2799442, -0.9922106, -1.2726142)
+mesh = ExtResource("20_xdg8r")
+
 [node name="Fondo" type="Node3D" parent="Atrezo"]
+
+[node name="Felpudo" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-2.5706713e-08, 0, 0.6847232, 0, 1, 0, -0.5881011, 0, -2.9930202e-08, -3.8782043, -0.999691, -1.2252136)
+mesh = ExtResource("21_smgt1")
+skeleton = NodePath("../../Paredes")
+
+[node name="LáaparaTecho" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(1.9999988, 0, 0, 0, 0.86985445, 0, 0, 0, 1.9999988, 0.071001604, 1.2826027, -0.010718316)
+visible = false
+mesh = ExtResource("22_w1n10")
+skeleton = NodePath("../CeilingFan")
 
 [node name="CeilingFan" type="MeshInstance3D" parent="Atrezo/Fondo"]
 transform = Transform3D(1.9999994, 0, 0, 0, 2, 0, 0, 0, 1.9999994, -0.06589997, 1.6813451, 0.10142964)
@@ -372,23 +532,271 @@ mesh = ExtResource("14_b7mdb")
 skeleton = NodePath("../../..")
 
 [node name="Estanteria" type="MeshInstance3D" parent="Atrezo/Fondo"]
-transform = Transform3D(-3.4180045, 0, -0.028228682, 0, 1.5824457, 0, 0.09069747, 0, -1.0638198, 0.54043305, -0.8235001, -2.0922666)
+transform = Transform3D(-3.4180045, 0, -0.028228682, 0, 1.5824457, 0, 0.09069747, 0, -1.0638198, 1.6337645, -0.8235001, -2.0922666)
 mesh = ExtResource("10_5qaxt")
-
-[node name="Estanteria2" type="MeshInstance3D" parent="Atrezo/Fondo"]
-transform = Transform3D(-3.4180045, 0, -0.028228682, 0, 1.6493244, 0, 0.09069747, 0, -1.0638198, 1.8940214, -0.8235001, -2.0922666)
-mesh = ExtResource("10_rrntp")
 
 [node name="Estanteria3" type="MeshInstance3D" parent="Atrezo/Fondo"]
 transform = Transform3D(-3.4180045, 0, -0.028228682, 0, 1.5824457, 0, 0.09069747, 0, -1.0638198, -0.69778275, -0.8235001, -2.0922666)
 visible = false
 mesh = ExtResource("10_5qaxt")
 
-[node name="BathroomCabinetDrawer" type="MeshInstance3D" parent="Atrezo/Fondo"]
-transform = Transform3D(-1.6338266, 0, -8.7422784e-08, 0, 2.3454132, 0, 1.4283366e-07, 0, -1.0000001, -0.7921382, -1.2428299, -1.9211738)
-mesh = ExtResource("17_pbi2s")
+[node name="KitchenCabinet" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-1.6338266, 0, -8.7422784e-08, 0, 2.3454132, 0, 1.4283366e-07, 0, -1.0000001, -0.9930955, -1.2428299, -1.9211738)
+mesh = ExtResource("18_xt7r6")
+
+[node name="KitchenCabinetDrawer2" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-2.9017496, 0, -8.7422784e-08, 0, 2.3454132, 0, 2.53679e-07, 0, -1.0000001, -0.3061748, -1.2428299, -1.9211738)
+mesh = ExtResource("19_pjll2")
+
+[node name="KitchenFridgeLarge" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-1.2818321, 0, -1.03722485e-07, 0, 1.6182375, 0, 1.12061315e-07, 0, -1.1864469, 0.9428333, -0.8672241, -1.9804409)
+mesh = ExtResource("20_53o4m")
+
+[node name="Radio" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-1.3697683, 0, -0.17805208, 0, 1.579578, 0, 0.24243937, 0, -1.0059838, 1.7754173, 0.51543003, -2.1294012)
+mesh = ExtResource("16_taqye")
+skeleton = NodePath("../..")
+
+[node name="Mesa" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(0.9955602, 0, 0.09412572, 0, 1, 0, -0.09412572, 0, 0.9955602, 1.4649494, -0.99016565, 0.24683559)
+mesh = ExtResource("2_x848m")
+
+[node name="Silla1" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-1.2323442, 0, 0.4472146, 0, 1.3045882, 0, -0.4405396, 0, -1.2510166, 1.1365981, -0.99417275, 0.2655806)
+mesh = ExtResource("3_qdsxc")
+
+[node name="Silla2" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(0.9774981, 0, 0.33521825, 0, 0.9521047, 0, -0.29516137, 0, 1.1101562, 1.2370263, -0.99417275, 0.6826943)
+mesh = ExtResource("3_qdsxc")
+
+[node name="Silla3" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(0.6533898, 0, -0.89115715, 0, 0.9521047, 0, 0.7846683, 0, 0.74206257, 0.72018486, -1.01106, 0.8456068)
+mesh = ExtResource("3_qdsxc")
+
+[node name="Mesa2" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-0.5906015, 0, -0.9700072, 0, 1.3443835, 0, 0.924031, 0, -0.61998755, -2.8250506, -0.99016565, 1.7678336)
+mesh = ExtResource("2_x848m")
+
+[node name="Silla4" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(1.0856131, 0, 0.34641367, 0, 1.1706374, 0, -0.32780734, 0, 1.1472325, -2.2641637, -0.99417275, 1.288855)
+mesh = ExtResource("3_qdsxc")
+
+[node name="Silla5" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-0.91958165, 0, -0.7012805, 0, 1.1706372, 0, 0.66361374, 0, -0.97177714, -3.0515585, -0.99417275, 0.93401754)
+mesh = ExtResource("3_qdsxc")
+
+[node name="Planta" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(2.068503, 0, -0.7159238, 0, 3.3599477, 0, 0.87951916, 0, 1.6837503, -3.646245, -1.5018277, -2.1505594)
+mesh = ExtResource("28_8gvtx")
+
+[node name="MesaFondo" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(1.2682883, 0, 0, 0, 2.4637363, 0, 0, 0, 1, -3.0655537, -0.95973605, -2.269383)
+mesh = ExtResource("29_2rb1f")
+
+[node name="Libros" type="MeshInstance3D" parent="Atrezo/Fondo/MesaFondo"]
+transform = Transform3D(-2.093659, 0, -2.1153367e-07, 0, 0.78328097, 0, 4.0094864e-07, 0, -1.7767757, -0.14876795, 0.23277377, 0.0888319)
+mesh = ExtResource("19_7wijt")
+skeleton = NodePath("../../../Paredes")
+
+[node name="Cactus" type="MeshInstance3D" parent="Atrezo/Fondo/MesaFondo"]
+transform = Transform3D(1.4720663, 0, 8.902108e-09, 0, 0.708585, 0, -6.9703026e-09, 0, 1.8800464, 0.31538916, 0.2319975, 0.023008347)
+mesh = ExtResource("31_exttu")
+
+[node name="Estanteria2" type="MeshInstance3D" parent="Atrezo/Fondo"]
+transform = Transform3D(-2.5139406, 0, -0.028030558, 0, 2.0913963, 0, 0.06670794, 0, -1.0563533, 3.0128171, -0.8235001, -2.0922666)
+mesh = ExtResource("30_smgt1")
+
+[node name="Cactus" type="MeshInstance3D" parent="Atrezo/Fondo/Estanteria2"]
+transform = Transform3D(0.7867483, 0, 0, 0, 1, 0, -3.7252903e-09, 0, 2.3650725, -0.09086549, 0.8348719, 0.12569654)
+mesh = ExtResource("31_2rb1f")
+
+[node name="Cactus2" type="MeshInstance3D" parent="Atrezo/Fondo/Estanteria2"]
+transform = Transform3D(0.78674823, 0, 0, 0, 1, 0, -7.450581e-09, 0, 2.3650725, -0.19872582, 0.8348719, 0.1188854)
+mesh = ExtResource("32_jx408")
+
+[node name="Comida" type="Node3D" parent="Atrezo"]
+
+[node name="Barril" type="MeshInstance3D" parent="Atrezo/Comida"]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.57867974, -0.25602636, -2.2262096)
+mesh = ExtResource("26_ggpxt")
+
+[node name="Taza" type="MeshInstance3D" parent="Atrezo/Comida"]
+transform = Transform3D(-0.18090266, 0, -0.4384513, 0, 0.5058793, 0, 0.4849311, 0, -0.0898955, 1.2191864, -0.64265084, 0.3640129)
+mesh = ExtResource("7_sgjit")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Plato" type="MeshInstance3D" parent="Atrezo/Comida/Taza"]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999998, 0, 2.9802322e-08, 0, 0.9999998, -0.00042909384, 0, -0.002314806)
+mesh = ExtResource("8_iw8av")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Taza2" type="MeshInstance3D" parent="Atrezo/Comida"]
+transform = Transform3D(-0.15992276, 0, 0.3992523, 0, 0.5058792, 0, -0.49224854, 0, -0.20228279, 0.74322563, -0.64265084, 0.6419952)
+mesh = ExtResource("7_sgjit")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Plato" type="MeshInstance3D" parent="Atrezo/Comida/Taza2"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 0.99999994, 0, -2.9802322e-08, 0, 1, 0, 0, 0)
+mesh = ExtResource("8_iw8av")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Taza3" type="MeshInstance3D" parent="Atrezo/Comida"]
+transform = Transform3D(-0.0071356744, 0, -0.4431275, 0, 0.50587916, 0, 0.51752585, 0, 0.062918335, 1.2527523, -0.64265084, 0.61777556)
+mesh = ExtResource("7_sgjit")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Plato" type="MeshInstance3D" parent="Atrezo/Comida/Taza3"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 0.99999994, 0, -2.9802322e-08, 0, 1, 0, 0, 0)
+mesh = ExtResource("8_iw8av")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Botellas" type="Node3D" parent="Atrezo/Comida"]
+
+[node name="Botella" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0034993123, 0, -0.53452694, 0, 0.6843551, 0, 0.5318021, 0, 0.003517242, 2.79338, 0.5232761, -2.2389889)
+mesh = ExtResource("26_iw8av")
+skeleton = NodePath("../..")
+
+[node name="Botella2" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(-2.3246312e-08, 0, -0.53453857, 0, 0.6843551, 0, 0.5318136, 0, -2.3365423e-08, 2.698827, 0.5232761, -2.2262096)
+mesh = ExtResource("26_iw8av")
+skeleton = NodePath("../..")
+
+[node name="Botella3" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(-2.3246312e-08, 0, -0.53453857, 0, 0.6843551, 0, 0.5318136, 0, -2.3365423e-08, 2.6057353, 0.5232761, -2.2262096)
+mesh = ExtResource("26_iw8av")
+skeleton = NodePath("../..")
+
+[node name="JarraMiel" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(-2.3246312e-08, 0, -0.53453857, 0, 0.6843551, 0, 0.5318136, 0, -2.3365423e-08, 2.2719195, 0.51913345, -2.2262096)
+mesh = ExtResource("27_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="JarraMiel2" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(-2.3246312e-08, 0, -0.53453857, 0, 0.6843551, 0, 0.5318136, 0, -2.3365423e-08, 2.4519467, 0.51913345, -2.2262096)
+mesh = ExtResource("27_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino1" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0034993123, 0, -0.53452694, 0, 0.46300164, 0, 0.5318021, 0, 0.003517242, 2.79338, 0.13447005, -2.2389889)
+mesh = ExtResource("28_ggpxt")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino2" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0034993123, 0, -0.53452694, 0, 0.46300164, 0, 0.5318021, 0, 0.003517242, 2.6980143, 0.13447005, -2.2389889)
+mesh = ExtResource("28_ggpxt")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino3" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0034993123, 0, -0.53452694, 0, 0.46300164, 0, 0.5318021, 0, 0.003517242, 2.59566, 0.13447005, -2.2389889)
+mesh = ExtResource("28_ggpxt")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino4" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0034993123, 0, -0.53452694, 0, 0.46300164, 0, 0.5318021, 0, 0.003517242, 2.4863756, 0.13447005, -2.2389889)
+mesh = ExtResource("28_ggpxt")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino5" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0035008946, 0, -0.4977983, 0, 0.5124042, 0, 0.53204256, 0, 0.0032755637, 2.2640738, 0.13447005, -2.2389889)
+mesh = ExtResource("29_47wy2")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino6" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0035008946, 0, -0.4977983, 0, 0.5124042, 0, 0.53204256, 0, 0.0032755637, 2.159836, 0.13447005, -2.2389889)
+mesh = ExtResource("29_47wy2")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino7" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0035008946, 0, -0.4977983, 0, 0.5124042, 0, 0.53204256, 0, 0.0032755637, 2.0468607, 0.13447005, -2.2389889)
+mesh = ExtResource("29_47wy2")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino8" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0035008946, 0, -0.4977983, 0, 0.5124042, 0, 0.53204256, 0, 0.0032755637, 1.934006, 0.13447005, -2.2389889)
+mesh = ExtResource("29_47wy2")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino9" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0035008946, 0, -0.4977983, 0, 0.5124042, 0, 0.53204256, 0, 0.0032755637, 1.8170929, 0.13447005, -2.2389889)
+mesh = ExtResource("29_47wy2")
+skeleton = NodePath("../..")
+
+[node name="BotellaVino10" type="MeshInstance3D" parent="Atrezo/Comida/Botellas"]
+transform = Transform3D(0.0034993123, 0, -0.53452694, 0, 0.46300164, 0, 0.5318021, 0, 0.003517242, 2.3838453, 0.13447005, -2.2389889)
+mesh = ExtResource("28_ggpxt")
+skeleton = NodePath("../..")
+
+[node name="Jarras" type="Node3D" parent="Atrezo/Comida"]
+
+[node name="Jarra" type="MeshInstance3D" parent="Atrezo/Comida/Jarras"]
+transform = Transform3D(0.28080216, 0, -0.453951, 0, 0.68435514, 0, 0.45163685, 0, 0.28224093, 2.0639403, -0.2349681, -2.2204347)
+mesh = ExtResource("25_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="Jarra2" type="MeshInstance3D" parent="Atrezo/Comida/Jarras"]
+transform = Transform3D(0.26000124, 0, -0.46630064, 0, 0.68435514, 0, 0.46392354, 0, 0.2613334, 1.8949094, -0.2392139, -2.239351)
+mesh = ExtResource("25_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="Jarra3" type="MeshInstance3D" parent="Atrezo/Comida/Jarras"]
+transform = Transform3D(0.26000124, 0, -0.46630064, 0, 0.68435514, 0, 0.46392354, 0, 0.2613334, 2.223281, -0.235993, -2.2345536)
+mesh = ExtResource("25_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="Jarra4" type="MeshInstance3D" parent="Atrezo/Comida/Jarras"]
+transform = Transform3D(0.285383, 0, -0.4510556, 0, 0.684355, 0, 0.44875613, 0, 0.28684524, 2.3823922, -0.23842324, -2.2349544)
+mesh = ExtResource("25_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="Jarra5" type="MeshInstance3D" parent="Atrezo/Comida/Jarras"]
+transform = Transform3D(0.018142568, 0, 0.5342273, 0, 0.684355, 0, -0.5315039, 0, 0.018235566, -2.6828225, -0.52090585, 0.99336684)
+mesh = ExtResource("25_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="Jarra6" type="MeshInstance3D" parent="Atrezo/Comida/Jarras"]
+transform = Transform3D(0.1982135, 0, -0.4960233, 0, 0.684355, 0, 0.49349466, 0, 0.19922909, -2.6921613, -0.52090585, 1.2197393)
+mesh = ExtResource("25_iwn1s")
+skeleton = NodePath("../..")
+
+[node name="Vasos" type="Node3D" parent="Atrezo/Comida"]
+
+[node name="Vaso2" type="MeshInstance3D" parent="Atrezo/Comida/Vasos"]
+transform = Transform3D(0.28080216, 0, -0.453951, 0, 0.68435514, 0, 0.45163685, 0, 0.28224093, 2.5070279, -0.22730559, -2.2262096)
+mesh = ExtResource("6_53o4m")
+skeleton = NodePath("../..")
+
+[node name="Vaso3" type="MeshInstance3D" parent="Atrezo/Comida/Vasos"]
+transform = Transform3D(0.28080216, 0, -0.453951, 0, 0.68435514, 0, 0.45163685, 0, 0.28224093, 2.6045842, -0.22730559, -2.2262096)
+mesh = ExtResource("6_53o4m")
+skeleton = NodePath("../..")
+
+[node name="Vaso4" type="MeshInstance3D" parent="Atrezo/Comida/Vasos"]
+transform = Transform3D(0.28080216, 0, -0.453951, 0, 0.68435514, 0, 0.45163685, 0, 0.28224093, 2.6951938, -0.22730559, -2.2262096)
+mesh = ExtResource("6_53o4m")
+skeleton = NodePath("../..")
+
+[node name="Vaso5" type="MeshInstance3D" parent="Atrezo/Comida/Vasos"]
+transform = Transform3D(0.28080216, 0, -0.453951, 0, 0.68435514, 0, 0.45163685, 0, 0.28224093, 2.790828, -0.22730559, -2.2262096)
+mesh = ExtResource("6_53o4m")
+skeleton = NodePath("../..")
+
+[node name="Tortitas" type="MeshInstance3D" parent="Atrezo/Comida"]
+transform = Transform3D(-0.18090266, 0, -0.4384513, 0, 0.5058793, 0, 0.4849311, 0, -0.0898955, 0.95780945, -0.61663115, 0.5030002)
+mesh = ExtResource("31_ko5ko")
+skeleton = NodePath("../../Atrezo/Comida")
+
+[node name="Plato" type="MeshInstance3D" parent="Atrezo/Comida/Tortitas"]
+transform = Transform3D(0.6287102, 0, -7.450581e-09, 0, 0.9999988, 0, 2.9802322e-08, 0, 0.6003507, -0.004707575, -0.08420253, -0.02539444)
+mesh = ExtResource("32_cast6")
+skeleton = NodePath("../../Atrezo/Comida")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cmq8q")
+}
+
+[node name="AnimationFan" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_cmq8q")
 }

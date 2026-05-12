@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8nn7t12hoq0n"
+path="res://.godot/imported/can-small.obj-c38ef0e05a4da248b077412019c39cdf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/can-small.obj-c38ef0e05a4da248b077412019c39cdf.mesh"]
+
+source_file="res://assets/Models/Food Kit/can-small.obj"
+dest_files=["res://.godot/imported/can-small.obj-c38ef0e05a4da248b077412019c39cdf.mesh", "res://.godot/imported/can-small.obj-c38ef0e05a4da248b077412019c39cdf.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

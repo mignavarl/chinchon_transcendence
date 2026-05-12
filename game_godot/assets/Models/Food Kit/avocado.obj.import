@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://crtaktfmi8ghy"
+path="res://.godot/imported/avocado.obj-561a24da07d0ad9e6a617fd417b149bc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/avocado.obj-561a24da07d0ad9e6a617fd417b149bc.mesh"]
+
+source_file="res://assets/Models/Food Kit/avocado.obj"
+dest_files=["res://.godot/imported/avocado.obj-561a24da07d0ad9e6a617fd417b149bc.mesh", "res://.godot/imported/avocado.obj-561a24da07d0ad9e6a617fd417b149bc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

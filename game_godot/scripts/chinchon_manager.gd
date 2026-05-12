@@ -40,6 +40,7 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.wait_time = 1.0
 	generate_deck()
+	#generate_deck()
 	#start_game()
 
 func _process(delta: float) -> void:
@@ -268,7 +269,7 @@ func add_card_to_player_hand(card, idx):
 func _on_input_manager_left_mouse_button_clicked() -> void:
 	if active_player == 0:
 		raycast_click()
-
+ 
 func _on_input_manager_left_mouse_button_pressed() -> void:
 	pass # Replace with function body.
 

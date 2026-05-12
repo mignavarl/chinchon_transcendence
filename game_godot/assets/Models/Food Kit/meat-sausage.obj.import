@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://4aui0rnnuh6i"
+path="res://.godot/imported/meat-sausage.obj-79fcaf87be431786f3b79fe7c7aebcfc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/meat-sausage.obj-79fcaf87be431786f3b79fe7c7aebcfc.mesh"]
+
+source_file="res://assets/Models/Food Kit/meat-sausage.obj"
+dest_files=["res://.godot/imported/meat-sausage.obj-79fcaf87be431786f3b79fe7c7aebcfc.mesh", "res://.godot/imported/meat-sausage.obj-79fcaf87be431786f3b79fe7c7aebcfc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
