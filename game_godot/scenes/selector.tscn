@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b32jibwkqcqu0"]
+[gd_scene load_steps=24 format=3 uid="uid://b32jibwkqcqu0"]
 
 [ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="1_a0yho"]
 [ext_resource type="Texture2D" uid="uid://crtu6lbv0pa7y" path="res://assets/cards/pixel/oros_1.png" id="1_wj04o"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://yvy1uqcl1mtw" path="res://assets/cards/pajaros/espadas_1.png" id="19_3yb40"]
 [ext_resource type="Script" uid="uid://jsirbuv0q7qf" path="res://scripts/button_select_decks/pop_stars.gd" id="20_2y8gx"]
 [ext_resource type="Texture2D" uid="uid://cwufdgiglso4m" path="res://assets/cards/pop_stars/oros_1.png" id="21_kbrhm"]
+[ext_resource type="Script" uid="uid://cft603ld37n2e" path="res://scripts/button_select_decks/dark_indie.gd" id="22_bo8nd"]
+[ext_resource type="Texture2D" uid="uid://cctqhv3qg12po" path="res://assets/cards/dark_indie/oros_1.png" id="23_lovl1"]
 
 [node name="Selector" type="Control"]
 layout_mode = 3
@@ -253,7 +255,6 @@ theme_override_font_sizes/font_size = 42
 text = "DECK 42"
 
 [node name="pajaros" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 59.0
 offset_top = 630.0
@@ -288,7 +289,6 @@ theme_override_font_sizes/font_size = 42
 text = "PÁJAROS"
 
 [node name="pop_stars" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 339.0
 offset_top = 633.0
@@ -322,6 +322,40 @@ offset_bottom = 417.0
 theme_override_font_sizes/font_size = 42
 text = "POP STARS"
 
+[node name="dark_indie" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 633.0
+offset_right = 989.0
+offset_bottom = 1097.0
+script = ExtResource("22_bo8nd")
+make_deck = ExtResource("5_vlhy3")
+deck = "dark_indie"
+
+[node name="Control" type="Control" parent="dark_indie"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="dark_indie/Control"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 11.0
+offset_right = 283.0
+offset_bottom = 309.0
+texture_normal = ExtResource("23_lovl1")
+stretch_mode = 0
+
+[node name="Control2" type="Control" parent="dark_indie"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="dark_indie/Control2"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 351.0
+offset_right = 270.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 42
+text = "DARK INDIE"
+
 [connection signal="button_up" from="exit_Button" to="exit_Button" method="_on_button_up"]
 [connection signal="button_up" from="española/Control/TextureButton" to="española" method="_on_texture_button_button_up"]
 [connection signal="button_up" from="española/Control2/ButtonEsp" to="española" method="_on_button_esp_button_up"]
@@ -339,3 +373,5 @@ text = "POP STARS"
 [connection signal="button_up" from="pajaros/Control2/ButtonPajaros" to="pajaros" method="_on_button_pajaros_button_up"]
 [connection signal="button_up" from="pop_stars/Control/TextureButton" to="pop_stars" method="_on_texture_button_button_up"]
 [connection signal="button_up" from="pop_stars/Control2/ButtonPopStars" to="pop_stars" method="_on_button_pop_stars_button_up"]
+[connection signal="button_up" from="dark_indie/Control/TextureButton" to="dark_indie" method="_on_texture_button_button_up"]
+[connection signal="button_up" from="dark_indie/Control2/Button" to="dark_indie" method="_on_button_button_up"]
