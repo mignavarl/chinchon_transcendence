@@ -2,24 +2,12 @@ extends Button
 
 @export var decks : Script
 @export var selector : Script
+@export var dic_decks : Script
 
-var dic_common = {}
-var dic_uncommon = {}
-var dic_rare = {}
-var dic_legen = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Label.visible = false # Replace with function body.
-	for i in decks.DECKS:
-		if i["rarity"] == "common":
-			dic_common.get_or_add(i["id"])
-		elif  i["rarity"] == "uncommon":
-			dic_uncommon.get_or_add(i["id"])
-		elif  i["rarity"] == "rare":
-			dic_rare.get_or_add(i["id"])
-		elif  i["rarity"] == "legendary":
-			dic_legen.get_or_add(i["id"])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,25 +55,25 @@ func _on_button_up() -> void:
 		$Label.text = "Común"
 		$Label.set("theme_override_colors/font_color", Color(0.399, 1.582, 1.454, 1.0))
 		$Label.visible = true
-		if get_deck(dic_common, "comunes"):
+		if get_deck(dic_decks.dic_common, "comunes"):
 			return
 	if rarity <= 75:
 		$Label.text = "Infrecuente"
 		$Label.set("theme_override_colors/font_color", Color(0.0, 1.582, 0.192, 1.0))
 		$Label.visible = true
-		if get_deck(dic_uncommon, "Infrecuentes"):
+		if get_deck(dic_decks.dic_uncommon, "Infrecuentes"):
 			return
 	if rarity <= 93:
 		$Label.text = "Raro"
 		$Label.set("theme_override_colors/font_color", Color(0.69, 0.168, 0.394, 1.0))
 		$Label.visible = true
-		if get_deck(dic_rare, "raras"):
+		if get_deck(dic_decks.dic_rare, "raras"):
 			return
 	if rarity <= 100:
 		$Label.text = "Legendario"
 		$Label.set("theme_override_colors/font_color", Color(1.582, 0.794, 0.049, 1.0))
 		$Label.visible = true
-		if get_deck(dic_legen, "legendarias"):
+		if get_deck(dic_decks.dic_legen, "legendarias"):
 			return
 	$Label.text = "Todas conseguidas"
 	$Label.set("theme_override_colors/font_color", Color(0.0, 0.0, 0.0, 1.0))

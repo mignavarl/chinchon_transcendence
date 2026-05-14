@@ -255,6 +255,7 @@ theme_override_font_sizes/font_size = 42
 text = "DECK 42"
 
 [node name="pajaros" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 59.0
 offset_top = 630.0
@@ -289,6 +290,7 @@ theme_override_font_sizes/font_size = 42
 text = "PÁJAROS"
 
 [node name="pop_stars" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 339.0
 offset_top = 633.0
@@ -323,6 +325,7 @@ theme_override_font_sizes/font_size = 42
 text = "POP STARS"
 
 [node name="dark_indie" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 639.0
 offset_top = 633.0

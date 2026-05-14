@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhnbnj5mlfo4x"]
+[gd_scene load_steps=11 format=3 uid="uid://bhnbnj5mlfo4x"]
 
 [ext_resource type="Texture2D" uid="uid://82bp1j8ntyvs" path="res://assets/pruebas/tienda.jpg" id="1_a4x6o"]
 [ext_resource type="Script" uid="uid://we7jm6b6r31p" path="res://scripts/open_deck_gacha_button.gd" id="2_hv4x1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="3_rhqrp"]
 [ext_resource type="Script" uid="uid://do06adlqia1xe" path="res://scripts/exit_button.gd" id="4_auf3x"]
 [ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="4_t2fv0"]
+[ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="6_75o03"]
 [ext_resource type="Texture2D" uid="uid://disinrqoi4038" path="res://assets/pruebas/deck_box.png" id="6_x5v3x"]
 [ext_resource type="Texture2D" uid="uid://o45onhyflogx" path="res://assets/frentecarta.png" id="7_t2fv0"]
 
@@ -48,6 +49,7 @@ text = "Abrir sobre"
 script = ExtResource("2_hv4x1")
 decks = ExtResource("3_rhqrp")
 selector = ExtResource("4_t2fv0")
+dic_decks = ExtResource("6_75o03")
 
 [node name="Label" type="Label" parent="open_deck_Button"]
 layout_mode = 0

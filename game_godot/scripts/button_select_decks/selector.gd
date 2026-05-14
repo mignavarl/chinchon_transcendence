@@ -12,6 +12,8 @@ static var my_decks = []
 func _ready() -> void:
 	# funcion para poner visible las barajas
 	var own_keys = get_keys_owned()
+	print("size own = ", own_keys.size())
+	print("size my = ", my_decks.size())
 	for i in own_keys.size():
 		var name = own_keys[i]
 		var d = "$%s" % [name]

@@ -1,0 +1,167 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj4nwd2o254ou"]
+
+[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://scripts/new_selector.gd" id="1_bdcqn"]
+[ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="2_bjpxk"]
+[ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="3_5nvva"]
+[ext_resource type="Texture2D" uid="uid://o45onhyflogx" path="res://assets/frentecarta.png" id="4_l0h4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnxpo"]
+bg_color = Color(0.60784316, 0.09411765, 0.14117648, 0.78039217)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.40530974, 0.047826767, 0.0808989, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="new_selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bdcqn")
+dic_decks = ExtResource("2_bjpxk")
+chinchon_man = ExtResource("3_5nvva")
+
+[node name="FondoMenu" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -671.5
+offset_top = -451.5
+offset_right = 671.5
+offset_bottom = 451.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.41568628, 0.21960784, 0.38039216)
+
+[node name="FondoCartas" type="ColorRect" parent="FondoMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -219.5
+offset_right = 572.0
+offset_bottom = 219.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4509804, 0.4509804, 0.4509804, 0.54901963)
+
+[node name="Oros" type="TextureRect" parent="FondoMenu/FondoCartas"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 93.0
+offset_top = -117.0
+offset_right = 267.0
+offset_bottom = 118.0
+grow_vertical = 2
+texture = ExtResource("4_l0h4h")
+
+[node name="Copas" type="TextureRect" parent="FondoMenu/FondoCartas"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 351.0
+offset_top = -117.0
+offset_right = 525.0
+offset_bottom = 118.0
+grow_vertical = 2
+texture = ExtResource("4_l0h4h")
+
+[node name="Espadas" type="TextureRect" parent="FondoMenu/FondoCartas"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 618.0
+offset_top = -117.0
+offset_right = 792.0
+offset_bottom = 118.0
+grow_vertical = 2
+texture = ExtResource("4_l0h4h")
+
+[node name="Bastos" type="TextureRect" parent="FondoMenu/FondoCartas"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 881.0
+offset_top = -117.0
+offset_right = 1055.0
+offset_bottom = 118.0
+grow_vertical = 2
+texture = ExtResource("4_l0h4h")
+
+[node name="Nombre" type="Button" parent="FondoMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -185.0
+offset_right = 213.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_pnxpo")
+text = "NOMBRE BARAJA"
+icon_alignment = 1
+
+[node name="Izquierda" type="Button" parent="FondoMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -184.5
+offset_right = -357.0
+offset_bottom = -106.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_pnxpo")
+text = "<"
+icon_alignment = 1
+
+[node name="Derecha" type="Button" parent="FondoMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 359.0
+offset_top = -184.5
+offset_right = 438.0
+offset_bottom = -106.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 51
+theme_override_styles/normal = SubResource("StyleBoxFlat_pnxpo")
+text = ">
+"
+icon_alignment = 1
+
+[connection signal="button_up" from="FondoMenu/Nombre" to="." method="_on_nombre_button_up"]
+[connection signal="button_up" from="FondoMenu/Izquierda" to="." method="_on_izquierda_button_up"]
+[connection signal="button_up" from="FondoMenu/Derecha" to="." method="_on_derecha_button_up"]

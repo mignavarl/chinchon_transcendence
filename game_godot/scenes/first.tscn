@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqufyn764fwj0"]
+
+[ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="1_pquk8"]
+[ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="2_ilill"]
+[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://scripts/new_selector.gd" id="3_ilill"]
+
+[node name="First" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pquk8")
+decks = ExtResource("2_ilill")
+selector = ExtResource("3_ilill")
