@@ -34,15 +34,21 @@ func start_drag(card):
 	card_being_dragged = card
 
 func send_card_to_slot(card):
-	animate_card_to_position(card, card_slot_reference.global_position)
+	animate_card_to_position(card, card_slot_reference.global_position, card_slot_reference.global_rotation)
 	player_hand_reference.remove_card_from_hand(card)
 	card_slot_reference.add_card_to_stack(card)
 	$"../ChinchonManager".end_turn()
 
 func opponent_card_to_slot(card):
 	card.flipped = false
-	animate_card_to_position(card, card_slot_reference.global_position)
+	animate_card_to_position(card, card_slot_reference.global_position, card_slot_reference.global_rotation)
 	opponent_hand_reference.remove_card_from_hand(card)
+	card_slot_reference.add_card_to_stack(card)
+	
+func hand_card_to_slot(hand, card):
+	card.flipped = false
+	animate_card_to_position(card, card_slot_reference.global_position, card_slot_reference.global_rotation)
+	hand.remove_card_from_hand(card)
 	card_slot_reference.add_card_to_stack(card)
 
 func finish_drag():
@@ -92,6 +98,7 @@ func on_left_click_release():
 	if card_being_dragged:
 		finish_drag()
 
-func animate_card_to_position(card, new_position):
+func animate_card_to_position(card, new_position: Vector2, new_rotation: float) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(card, "position", new_position, 0.1)
+	tween.parallel().tween_property(card, "position", new_position, 0.1)
+	tween.parallel().tween_property(card, "rotation", new_rotation, 0.1)

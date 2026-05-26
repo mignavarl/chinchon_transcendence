@@ -32,9 +32,19 @@ position = Vector2(854, 540)
 z_index = -10
 position = Vector2(1064, 540)
 
-[node name="OpponentHand" type="Node2D" parent="."]
+[node name="LeftHand" type="Node2D" parent="."]
 script = ExtResource("4_rarhs")
-HAND_Y_POSITION = 10
+hand_position = 2
+card_scene = ExtResource("2_0bbpv")
+
+[node name="RightHand" type="Node2D" parent="."]
+script = ExtResource("4_rarhs")
+hand_position = 3
+card_scene = ExtResource("2_0bbpv")
+
+[node name="TopHand" type="Node2D" parent="."]
+script = ExtResource("4_rarhs")
+hand_position = 1
 card_scene = ExtResource("2_0bbpv")
 
 [node name="PlayerHand" type="Node2D" parent="."]
@@ -89,13 +99,14 @@ text = "End Turn"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.917
 
-[node name="ChinchonManager" type="Node2D" parent="." node_paths=PackedStringArray("deck", "slot", "player_hand", "opponent_hand", "card_manager", "punt_player", "punt_oppo")]
+[node name="ChinchonManager" type="Node2D" parent="." node_paths=PackedStringArray("deck", "slot", "player_hand", "opponent_hand", "player_hands", "card_manager", "punt_player", "punt_oppo")]
 script = ExtResource("10_lhr70")
 deck = NodePath("../Deck")
 slot = NodePath("../CardSlot")
 card_scene = ExtResource("2_0bbpv")
 player_hand = NodePath("../PlayerHand")
-opponent_hand = NodePath("../OpponentHand")
+opponent_hand = NodePath("../TopHand")
+player_hands = [NodePath("../PlayerHand"), NodePath("../LeftHand"), NodePath("../TopHand"), NodePath("../RightHand")]
 card_database = ExtResource("6_q8u5g")
 card_manager = NodePath("../CardManager")
 punt_player = NodePath("../Puntuacion jugador")

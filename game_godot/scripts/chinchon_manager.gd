@@ -7,7 +7,7 @@ const COLLISION_MASK_DECK = 4
 var timer
 var game_ended := false
 
-var players = []
+var players : int = 4
 var active_player = 0
 var card_drawn_this_turn := false
 
@@ -19,9 +19,11 @@ var card_textures = {}
 
 static var deck_selected = "española"
 
+
 @export var card_scene : PackedScene
 @export var player_hand : Node2D
 @export var opponent_hand : Node2D
+@export var player_hands : Array[Node2D]
 @export var card_database : Script
 @export var card_manager : Node2D
 
@@ -40,6 +42,7 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.wait_time = 1.0
 	generate_deck()
+	player_hand.set_visibility(true)
 	#generate_deck()
 	#start_game()
 
@@ -50,15 +53,12 @@ func _process(delta: float) -> void:
 func start_game():
 	#TODO: for each player draw 7 cards
 	for i in 7:
-		var c = draw_card()
-		add_card_to_player_hand(c,0)
-		await get_tree().create_timer(0.1).timeout
-		c = draw_card()
-		c.flipped = true
-		add_card_to_player_hand(c,1)
-		await get_tree().create_timer(0.1).timeout
+		for j in players:
+			var c = draw_card()
+			add_card_to_player_hand(c, j)
+			await get_tree().create_timer(0.05).timeout
 	var c = draw_card()
-	card_manager.animate_card_to_position(c, slot.position)
+	card_manager.animate_card_to_position(c, slot.position, slot.rotation)
 	slot.add_card_to_stack(c)
 
 func _on_solo_button_up() -> void:
@@ -71,8 +71,10 @@ func _on_única_button_up() -> void:
 
 func end_turn():
 	card_drawn_this_turn = false
-	active_player = 1
-	#TODO: active_player++
+	active_player += 1
+	if active_player >= players:
+		active_player = 0
+		return
 	opponent_turn()
 
 func get_card_in_slot() -> Node2D:
@@ -85,27 +87,26 @@ func opponent_turn():
 	if game_ended:
 		return
 
-	var draw_decision = ai.decide_draw(opponent_hand.player_hand, slot.top_card)
+	var draw_decision = ai.decide_draw(player_hands[active_player].player_hand, slot.top_card)
 	var c
 	if draw_decision == "deck":
 		c = draw_card()
 	else:
 		c = draw_discard()
-		
+	
 	c.flipped = true
-	add_card_to_player_hand(c, 1)
+	add_card_to_player_hand(c, active_player)
 
 	timer.start()
 	await timer.timeout
 
-	var to_discard = ai.decide_discard(opponent_hand.player_hand)
-	if ai.should_close(opponent_hand.player_hand):
+	var to_discard = ai.decide_discard(player_hands[active_player].player_hand)
+	if ai.should_close(player_hands[active_player].player_hand):
 		opponent_close(to_discard)
 		return
-	card_manager.opponent_card_to_slot(to_discard)
+	card_manager.hand_card_to_slot(player_hands[active_player], to_discard)
 	
-
-	active_player = 0
+	end_turn()
 
 func generate_deck():
 	for suit in card_database.SUITS:
@@ -140,7 +141,7 @@ func raycast_click():
 			COLLISION_MASK_CARD:
 				var card_found = result[0].collider.get_parent()
 				if card_found and card_drawn_this_turn:
-					card_manager.animate_card_to_position(card_found, slot.position)
+					card_manager.animate_card_to_position(card_found, slot.position, slot.rotation)
 					slot.add_card_to_stack(card_found)
 					player_hand.remove_card_from_hand(card_found)
 					end_turn()
@@ -171,16 +172,16 @@ func raycast_right_click():
 		var card_found = result[0].collider.get_parent()
 		if card_found:
 			card_found.flipped = true
-			card_manager.animate_card_to_position(card_found, slot.position)
+			card_manager.animate_card_to_position(card_found, slot.position, slot.rotation)
 			slot.add_card_to_stack(card_found)
 			player_hand.remove_card_from_hand(card_found)
 			game_ended = true
 
 func opponent_close(card):
 	card.flipped = true
-	card_manager.animate_card_to_position(card, slot.position)
+	card_manager.animate_card_to_position(card, slot.position, slot.rotation)
 	slot.add_card_to_stack(card)
-	opponent_hand.remove_card_from_hand(card)
+	player_hands[active_player].remove_card_from_hand(card)
 	game_ended = true
 	await get_tree().create_timer(0.2).timeout
 	end_round()
@@ -192,46 +193,54 @@ func close_game():
 		end_round()
 
 func end_round():
-	player_hand.show_hand()
-	opponent_hand.show_hand()
-	opponent_hand.hand_y_position += 50
-	opponent_hand.update_hand_positions()
+	for i in player_hands:
+		i.show_hand()
+	#player_hand.show_hand()
+	#opponent_hand.show_hand()
+	#opponent_hand.hand_y_position += 50
+	#opponent_hand.update_hand_positions()
 
 	await get_tree().create_timer(0.15).timeout 
 
-	_display_combinations(player_hand.player_hand, 0)
-	_display_combinations(opponent_hand.player_hand, 1)
+	for i in player_hands:
+		_display_combinations(i, i.player_hand)
 
-func _display_combinations(hand, idx):
+
+func _display_combinations(hand_node, hand):
 	var result = evaluator.check_best_hand(hand)
-	var points_label = punt_player if idx == 0 else punt_oppo
-	points_label.text = str(result["leftover_points"])
-	
-	var base_y = 750 if idx == 0 else 250
+
 	var CARD_SPACING = 150
 	var GROUP_SPACING = 220
-	var screen_center = get_viewport().size.x / 2.0
-	
 
-	var total_width = 0
+	var origin = hand_node.get_hand_origin()
+	var rot    = hand_node.get_card_rotation()
+	var is_vertical = hand_node.hand_position == hand_node.HandPosition.LEFT or \
+	 hand_node.hand_position == hand_node.HandPosition.RIGHT
+
+	var total_span = 0.0
+	for i in range(result["groups"].size()):
+		var group = result["groups"][i]
+		total_span += max(group.size() - 1, 0) * CARD_SPACING
+		if i < result["groups"].size() - 1:
+			total_span += GROUP_SPACING
+
+	var cursor = -total_span / 2.0 
+
 	for group in result["groups"]:
-		total_width += group.size() * CARD_SPACING
-		total_width += GROUP_SPACING 
-	total_width -= GROUP_SPACING
-	
-	var cursor_x = screen_center - total_width / 2.0
-	
-	for group in result["groups"]:
-		for card_data in group:
-			var card_node = _find_card_node(hand, card_data)
+		for i in range(group.size()):
+			var card_node = _find_card_node(hand, group[i])
 			if card_node:
-				card_node.position = Vector2(cursor_x, base_y)
-				cursor_x += CARD_SPACING
-		cursor_x += GROUP_SPACING
-	
+				var offset = cursor + i * CARD_SPACING
+				var target = origin + (Vector2(0, offset) if is_vertical else Vector2(offset, 0))
+				var tween = get_tree().create_tween()
+				tween.parallel().tween_property(card_node, "position", target, 0.15)
+				tween.parallel().tween_property(card_node, "rotation", rot, 0.15)
+		cursor += max(group.size() - 1, 0) * CARD_SPACING + GROUP_SPACING
+
 	for card_data in result["leftover"]:
 		var card_node = _find_card_node(hand, card_data)
 		if card_node:
+			card_node.position.y -= 10
 			card_node.modulate = Color(1.0, 0.769, 0.758, 1.0)
 
 func _find_card_node(hand, card_data) -> Node:
@@ -257,14 +266,11 @@ func reshuffle_deck():
 	for c in slot.cards:
 		deck.add_card_to_stack(c)
 		c.flipped = true
-		card_manager.animate_card_to_position(c, deck.position)
+		card_manager.animate_card_to_position(c, deck.position, deck.rotation)
 	slot.empty_stack()
 
 func add_card_to_player_hand(card, idx):
-	if idx == 0:
-		player_hand.add_card_to_hand(card)
-	else:
-		opponent_hand.add_card_to_hand(card)
+	player_hands[idx].add_card_to_hand(card)
 
 func _on_input_manager_left_mouse_button_clicked() -> void:
 	if active_player == 0:

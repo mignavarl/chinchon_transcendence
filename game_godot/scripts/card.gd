@@ -1,6 +1,7 @@
 extends Node2D
 
 var starting_position
+var starting_rotation: float = 0.0
 var id
 var suit
 var value
