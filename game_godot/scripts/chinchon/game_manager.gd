@@ -48,6 +48,7 @@ func start_game() -> void:
 	game_ended = false
 	current_round += 1
 	_generate_deck()
+	_generate_deck()
 	await _deal_cards()
 	var c = draw_card()
 	card_manager.animate_card_to_position(c, slot.position, slot.rotation)
@@ -271,7 +272,7 @@ func _on_gente_button_up() -> void:
 	cfg.players.append(human)
 	cfg.players.append(create_bot("Paco"))
 	cfg.players.append(create_bot("Manolo"))
-	#cfg.players.append(create_bot("El Anemias"))
+	cfg.players.append(create_bot("El Anemias"))
 	setup(cfg)
 	$"../JugarModo".visible = false
 	start_game()
