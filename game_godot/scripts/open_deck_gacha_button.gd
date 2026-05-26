@@ -44,10 +44,14 @@ func get_deck(dic, rarity):
 	$"../Deck_win".position = new_position
 	$"../Deck_box".visible = false
 	dic[rk] = 1
-	selector.my_decks.push_back(rk)
+	selector.my_decks.push_back(get_dictionary_of_id(rk))
 	print("Añado el deck: ", dic[rk])
 	return true
 
+func get_dictionary_of_id(id):
+	for d in decks.DECKS:
+		if d["id"] == id:
+			return d
 
 func _on_button_up() -> void:
 	var rarity = randi() % 100 + 1

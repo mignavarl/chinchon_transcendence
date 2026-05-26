@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c5pj36qanhhjv" path="res://assets/pruebas/Morshu_2.png" id="3_auf3x"]
 [ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="3_rhqrp"]
 [ext_resource type="Script" uid="uid://do06adlqia1xe" path="res://scripts/exit_button.gd" id="4_auf3x"]
-[ext_resource type="Script" uid="uid://b7k6bj8rofmiw" path="res://scripts/button_select_decks/selector.gd" id="4_t2fv0"]
+[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://scripts/new_selector.gd" id="5_75o03"]
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="6_75o03"]
 [ext_resource type="Texture2D" uid="uid://disinrqoi4038" path="res://assets/pruebas/deck_box.png" id="6_x5v3x"]
 [ext_resource type="Texture2D" uid="uid://o45onhyflogx" path="res://assets/frentecarta.png" id="7_t2fv0"]
@@ -48,7 +48,7 @@ theme_override_font_sizes/font_size = 40
 text = "Abrir sobre"
 script = ExtResource("2_hv4x1")
 decks = ExtResource("3_rhqrp")
-selector = ExtResource("4_t2fv0")
+selector = ExtResource("5_75o03")
 dic_decks = ExtResource("6_75o03")
 
 [node name="Label" type="Label" parent="open_deck_Button"]
