@@ -13,6 +13,7 @@ func update_visual():
 	if cards.size() <= 0:
 		return
 	for card in cards:
+		card.rotation = rotation
 		card.visible = false
 	cards[0].visible = true
 	cards[0].z_index = 0
