@@ -22,8 +22,7 @@ static var deck_selected := "española"
 
 # ── Setup (llamado desde el lobby) ───────────────────────────────────────────
 func setup(cfg: GameConfig) -> void:
-	config       = cfg
-	deck_selected = cfg.deck_name
+	config = cfg
 	_build_agents()
 	turn_controller.setup(config.players)
 	turn_controller.turn_started.connect(_on_turn_started)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://scripts/new_selector.gd" id="1_bdcqn"]
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="2_bjpxk"]
-[ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="3_5nvva"]
+[ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://scripts/chinchon/game_manager.gd" id="3_bdcqn"]
 [ext_resource type="Texture2D" uid="uid://o45onhyflogx" path="res://assets/frentecarta.png" id="4_l0h4h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnxpo"]
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bdcqn")
 dic_decks = ExtResource("2_bjpxk")
-chinchon_man = ExtResource("3_5nvva")
+chinchon_man = ExtResource("3_bdcqn")
 
 [node name="FondoMenu" type="ColorRect" parent="."]
 layout_mode = 1
