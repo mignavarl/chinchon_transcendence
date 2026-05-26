@@ -27,3 +27,28 @@ func _on_cambio_barajas_input_event(camera: Node, event: InputEvent, event_posit
 	if event.is_action_pressed("mouse_click"):
 		$AnimationPlayer.play("change_deck")
 		SceneLoader.change_scene( "res://scenes/new_selector.tscn", self.name)
+
+
+func _on_salida_mouse_entered() -> void:
+	$AnimationPlayer.play("hover_exit")
+
+
+func _on_salida_mouse_exited() -> void:
+	$AnimationPlayer.play_backwards("hover_exit")
+
+
+func _on_play_table_mouse_entered() -> void:
+	$Play_AnimationPlayer.play("hover_play")
+
+
+func _on_play_table_mouse_exited() -> void:
+	$Play_AnimationPlayer.play_backwards("hover_play")
+
+
+func _on_cambio_barajas_mouse_entered() -> void:
+	$Deck_AnimationPlayer.play("hover_deck")
+
+
+
+func _on_cambio_barajas_mouse_exited() -> void:
+	$Deck_AnimationPlayer.play_backwards("hover_deck")

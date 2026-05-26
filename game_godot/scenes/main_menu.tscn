@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=47 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
@@ -57,6 +57,166 @@ adjustment_enabled = true
 exposure_multiplier = 2.5
 
 [sub_resource type="Compositor" id="Compositor_qywvv"]
+
+[sub_resource type="Animation" id="Animation_dj67d"]
+resource_name = "tokyo_drift"
+length = 33.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 0),
+"points": PackedFloat32Array(-4.154039, -0.25, 0, 0.25, 0, -0.35403895, -0.64228237, -0.78854823, 0.42666674, 0.5238308, 0.24719322, -0.4422222, 0, 0.8111112, 0, -0.8146423, -0.75865424, 1.0132413, 1.2333331, -1.6472117, -9.711781, -1.1333332, 0.5160084, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 10)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(-1.1781478, -0.25, 0, 0.25, 0, -1.1781478, -0.34, 0, 0, 0, -1.1781478, -0.33833337, 0, 0, 0, -1.1781478, -0.28833336, 0, 0, 0, -1.1781478, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(-10.201989, -0.25, 0, 0.25, 0, -7.601989, -0.34, -0.43333343, 0, 0, -5.96373, -0.33833337, -0.27304316, 0, 0, -2.2732058, -0.28833336, -0.6150874, 0, 0, -2.0704496, -0.6933333, -0.033792693, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.34, 0, 0, 0, 0, -0.33833337, 0, 0, 0, 0, -0.28833336, 0, 0, 0, 0, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2),
+"points": PackedFloat32Array(1.1031528, -0.25, 0, 0.25, 0, -0.31080833, -0.7066666, 0.42899925, 0.4358277, -0.26457986, -1.1976321, -0.46666646, 0.2713877, 0.80032915, -0.4654277, -1.7394415, -0.8111112, 0, 1.3866667, 0, -1.6767029, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3333333, 5.8, 9.96)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.34, 0, 0, 0, 0, -0.33833337, 0, 0, 0, 0, -0.28833336, 0, 0, 0, 0, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+
+[sub_resource type="Animation" id="Animation_6vcge"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4.154039, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.1781478, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-10.201989, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.1031528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vcge"]
+_data = {
+&"RESET": SubResource("Animation_6vcge"),
+&"tokyo_drift": SubResource("Animation_dj67d")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl5e0"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.26, 0.26, 0.26, 0.29411766)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hl5e0"]
+material = SubResource("StandardMaterial3D_hl5e0")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_engjn"]
+_data = [Vector2(0, 0.23701298), 0.0, 0.05329155, 0, 0, Vector2(0.5777311, 1), 1.545453, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_engjn"]
 length = 0.001
@@ -295,8 +455,61 @@ mesh = ExtResource("18_8egab")
 skeleton = NodePath("../EdificioIzquierda")
 
 [node name="CocheVerde" type="MeshInstance3D" parent="Fondo"]
-transform = Transform3D(0.30301026, 0, 0.19266441, 0, 0.45876992, 0, -0.22565126, 0, 0.25871468, -1.259356, -1.1781473, -6.4439)
+transform = Transform3D(0.17030674, 0, 0.28793862, 0, 0.45876992, 0, -0.33723775, 0, 0.14541043, -4.154039, -1.1781478, -10.201989)
 mesh = ExtResource("20_gw5y6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fondo/CocheVerde"]
+libraries = {
+&"": SubResource("AnimationLibrary_6vcge")
+}
+autoplay = "tokyo_drift"
+speed_scale = 6.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(-2.6468952, 0, 0, 0, 2.1797419, 0, -1.1920929e-07, 0, -3.100081, -0.44183365, 0.5988333, 1.1133264)
+light_color = Color(1, 1, 0.41960785, 1)
+light_energy = 2.004
+spot_range = 1.3450084
+spot_angle = 41.29603
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(-2.6468952, 0, 0, 0, 2.1797419, 0, -1.1920929e-07, 0, -3.100081, 0.4164832, 0.5988333, 1.1133264)
+light_color = Color(1, 1, 0.41960785, 1)
+light_energy = 2.004
+spot_range = 1.3450084
+spot_angle = 41.29603
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(2.6468952, 0, 0, 0, 0.97559094, 2.772241, 0, -1.9492298, 1.3875087, -0.44183373, 0.5988333, -1.440714)
+light_color = Color(1, 0.19, 0.19, 1)
+light_energy = 0.5
+spot_range = 0.36522546
+spot_angle = 64.28212
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(2.6468952, 0, 0, 0, 0.97559094, 2.772241, 0, -1.9492298, 1.3875087, 0.51290864, 0.5988333, -1.440714)
+light_color = Color(1, 0.19, 0.19, 1)
+light_energy = 0.5
+spot_range = 0.36522546
+spot_angle = 64.28212
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74008507, 0.2620526, -1.1882238)
+amount = 20
+lifetime = 0.3
+mesh = SubResource("SphereMesh_hl5e0")
+gravity = Vector3(0, 0.5, 0)
+scale_amount_curve = SubResource("Curve_engjn")
+color = Color(0.8720317, 0.52383447, 0.4392867, 1)
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38658422, 0.2620526, -1.1882238)
+amount = 20
+lifetime = 0.3
+mesh = SubResource("SphereMesh_hl5e0")
+gravity = Vector3(0, 0.5, 0)
+scale_amount_curve = SubResource("Curve_engjn")
+color = Color(0.8720317, 0.52383447, 0.4392867, 1)
 
 [node name="Taxi" type="MeshInstance3D" parent="Fondo"]
 transform = Transform3D(0.25317538, 0, -0.23942763, 0, 0.45876992, 0, 0.280421, 0, 0.21616493, 0.35810152, -1.1781478, -1.2428334)
@@ -451,6 +664,10 @@ mesh = ExtResource("7_5dd4i")
 [node name="Acera2" type="MeshInstance3D" parent="Fondo/Acera"]
 transform = Transform3D(4.0400358e-10, -53.050777, 16.715637, 0.019126302, 4.7987337e-06, -2.6369864e-14, 7.3194223e-10, -96.11324, -9.226384, 5.4443984, -1.1653799, 3.264777)
 mesh = ExtResource("7_5dd4i")
+
+[node name="CocheVerde2" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.17030673, 0, 0.28793862, 0, 0.45876992, 0, -0.33723772, 0, 0.14541043, -1.0856805, -1.1781478, -5.4062576)
+mesh = ExtResource("20_gw5y6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
