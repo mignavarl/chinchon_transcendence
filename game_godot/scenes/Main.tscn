@@ -99,18 +99,30 @@ text = "End Turn"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.917
 
-[node name="ChinchonManager" type="Node2D" parent="." node_paths=PackedStringArray("deck", "slot", "player_hand", "opponent_hand", "player_hands", "card_manager", "punt_player", "punt_oppo")]
+[node name="ChinchonManager" type="Node2D" parent="." node_paths=PackedStringArray("deck", "slot", "player_hand", "player_hands", "card_manager", "punt_player", "punt_oppo")]
 script = ExtResource("10_lhr70")
 deck = NodePath("../Deck")
 slot = NodePath("../CardSlot")
 card_scene = ExtResource("2_0bbpv")
 player_hand = NodePath("../PlayerHand")
-opponent_hand = NodePath("../TopHand")
 player_hands = [NodePath("../PlayerHand"), NodePath("../LeftHand"), NodePath("../TopHand"), NodePath("../RightHand")]
 card_database = ExtResource("6_q8u5g")
 card_manager = NodePath("../CardManager")
 punt_player = NodePath("../Puntuacion jugador")
 punt_oppo = NodePath("../Puntuacion oponente")
+difficulty = 0
+
+[node name="ChinchonManager" type="Node2D" parent="ChinchonManager" node_paths=PackedStringArray("deck", "slot", "player_hand", "player_hands", "card_manager", "punt_player", "punt_oppo")]
+script = ExtResource("10_lhr70")
+deck = NodePath("../../Deck")
+slot = NodePath("../../CardSlot")
+card_scene = ExtResource("2_0bbpv")
+player_hand = NodePath("../../PlayerHand")
+player_hands = [NodePath("../../PlayerHand"), NodePath("../../LeftHand"), NodePath("../../TopHand"), NodePath("../../RightHand")]
+card_database = ExtResource("6_q8u5g")
+card_manager = NodePath("../../CardManager")
+punt_player = NodePath("../../Puntuacion jugador")
+punt_oppo = NodePath("../../Puntuacion oponente")
 difficulty = 0
 
 [node name="MenuButton" type="Button" parent="."]

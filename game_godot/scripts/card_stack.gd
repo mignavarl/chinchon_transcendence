@@ -48,3 +48,7 @@ func suffle_stack():
 func empty_stack():
 	cards.clear()
 	update_visual()
+
+func set_collision_mask(i):
+	$Area2D.collision_layer = i
+	$Area2D.collision_mask = i

@@ -11,6 +11,8 @@ var players : int = 4
 var active_player = 0
 var card_drawn_this_turn := false
 
+var player_idx := 0
+
 @export var deck : Node2D
 @export var slot : Node2D
 @export var card_in_slot : Node2D
@@ -22,7 +24,6 @@ static var deck_selected = "española"
 
 @export var card_scene : PackedScene
 @export var player_hand : Node2D
-@export var opponent_hand : Node2D
 @export var player_hands : Array[Node2D]
 @export var card_database : Script
 @export var card_manager : Node2D
@@ -43,15 +44,13 @@ func _ready() -> void:
 	timer.wait_time = 1.0
 	generate_deck()
 	player_hand.set_visibility(true)
-	#generate_deck()
-	#start_game()
+
 
 func _process(delta: float) -> void:
 	if deck.cards.size() == 0:
 		reshuffle_deck()
 
 func start_game():
-	#TODO: for each player draw 7 cards
 	for i in 7:
 		for j in players:
 			var c = draw_card()
@@ -60,6 +59,8 @@ func start_game():
 	var c = draw_card()
 	card_manager.animate_card_to_position(c, slot.position, slot.rotation)
 	slot.add_card_to_stack(c)
+	active_player = randi_range(0, players - 1)
+	end_turn()
 
 func _on_solo_button_up() -> void:
 	$"../JugarModo".visible = false
@@ -74,6 +75,7 @@ func end_turn():
 	active_player += 1
 	if active_player >= players:
 		active_player = 0
+	if active_player == 0:
 		return
 	opponent_turn()
 
@@ -240,7 +242,6 @@ func _display_combinations(hand_node, hand):
 	for card_data in result["leftover"]:
 		var card_node = _find_card_node(hand, card_data)
 		if card_node:
-			card_node.position.y -= 10
 			card_node.modulate = Color(1.0, 0.769, 0.758, 1.0)
 
 func _find_card_node(hand, card_data) -> Node:
