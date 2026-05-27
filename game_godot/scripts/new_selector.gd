@@ -11,9 +11,7 @@ var own_keys
 func _ready() -> void:
 	own_keys = get_keys_owned()
 	deck = search_deck_in_use(chinchon_man.deck_selected)
-	change_deck(deck.id)
-	print("size own = ", own_keys.size())
-	print("size my = ", my_decks.size())
+	change_deck(deck)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,8 +22,9 @@ func search_deck_in_use(name_deck):
 		if i.id == name_deck:
 			return i
 
-func change_deck(d):
-	$FondoMenu/Nombre.text = d
+func change_deck(deck):
+	var d = deck.id
+	$FondoMenu/Nombre.text = deck.name
 	var img_path = "res://assets/cards/%s/oros_1.png" % [d]
 	var card = load(img_path)
 	$FondoMenu/FondoCartas/Oros.texture = card
@@ -56,34 +55,28 @@ func _on_izquierda_button_up() -> void:
 	if own_keys.size() == 1:
 		return
 	var i = search_key(deck.id) - 1
-	print ("izquierda <-- i = ", i, " - deck = ", i)
 	if i < 0:
-		print("MU PEQUEÑO")
 		deck = own_keys[own_keys.size() - 1]
 	else:
 		deck = own_keys[i]
 	#print("cambiamos a deck ", deck)
-	change_deck(deck.id)
+	change_deck(deck)
 
 
 func _on_derecha_button_up() -> void:
 	if own_keys.size() == 1:
 		return
 	var i = search_key(deck.id) + 1
-	print ("derecha --> i = ", i, " - deck = ", i)
 	if i >= own_keys.size():
-		print("MU GRANDE")
 		deck = own_keys[0]
 	else:
 		deck = own_keys[i]
-	change_deck(deck.id)
+	change_deck(deck)
 
 func search_key(key):
 	var n = 0
 	for i in own_keys:
 		if i.id == key:
-			print("encuentro = ", key)
 			return n
 		n = n + 1
-	print("----NO ENCUENTRO NADA----")
 	return own_keys.size()

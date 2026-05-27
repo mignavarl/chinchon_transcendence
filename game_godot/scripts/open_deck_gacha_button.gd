@@ -53,27 +53,44 @@ func get_dictionary_of_id(id):
 		if d["id"] == id:
 			return d
 
-func _on_button_up() -> void:
+func randomizador():
 	var rarity = randi() % 100 + 1
+	var elegible
 	if rarity <= 50:
+		elegible = get_keys_unowned(dic_decks.dic_common)
+		if elegible.size() == 0:
+			randomizador()
+			return
 		$Label.text = "Común"
 		$Label.set("theme_override_colors/font_color", Color(0.399, 1.582, 1.454, 1.0))
 		$Label.visible = true
 		if get_deck(dic_decks.dic_common, "comunes"):
 			return
 	if rarity <= 75:
+		elegible = get_keys_unowned(dic_decks.dic_uncommon)
+		if elegible.size() == 0:
+			randomizador()
+			return
 		$Label.text = "Infrecuente"
 		$Label.set("theme_override_colors/font_color", Color(0.0, 1.582, 0.192, 1.0))
 		$Label.visible = true
 		if get_deck(dic_decks.dic_uncommon, "Infrecuentes"):
 			return
 	if rarity <= 93:
+		elegible = get_keys_unowned(dic_decks.dic_rare)
+		if elegible.size() == 0:
+			randomizador()
+			return
 		$Label.text = "Raro"
 		$Label.set("theme_override_colors/font_color", Color(0.69, 0.168, 0.394, 1.0))
 		$Label.visible = true
 		if get_deck(dic_decks.dic_rare, "raras"):
 			return
 	if rarity <= 100:
+		elegible = get_keys_unowned(dic_decks.dic_legen)
+		if elegible.size() == 0:
+			randomizador()
+			return
 		$Label.text = "Legendario"
 		$Label.set("theme_override_colors/font_color", Color(1.582, 0.794, 0.049, 1.0))
 		$Label.visible = true
@@ -83,3 +100,28 @@ func _on_button_up() -> void:
 	$Label.set("theme_override_colors/font_color", Color(0.0, 0.0, 0.0, 1.0))
 	$Label.visible = true
 	$"../Deck_win".visible = false
+
+func have_all():
+	for i in dic_decks.dic_common:
+		if !dic_decks.dic_common[i]:
+			return true
+	for i in dic_decks.dic_uncommon:
+		if !dic_decks.dic_uncommon[i]:
+			return true
+	for i in dic_decks.dic_rare:
+		if !dic_decks.dic_rare[i]:
+			return true
+	for i in dic_decks.dic_legen:
+		if !dic_decks.dic_legen[i]:
+			return true
+	return false
+
+func _on_button_up() -> void:
+	if !have_all():
+		$Label.text = "Todas conseguidas"
+		$Label.set("theme_override_colors/font_color", Color(0.0, 0.0, 0.0, 1.0))
+		$Label.visible = true
+		$"../Deck_win".visible = false
+		return
+	randomizador()
+	

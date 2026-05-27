@@ -73,7 +73,7 @@ exposure_multiplier = 2.5
 [sub_resource type="BoxMesh" id="BoxMesh_rrntp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qdsxc"]
-size = Vector3(1.0290031, 0.40863037, 0.5526123)
+size = Vector3(1.0329342, 0.5865936, 0.5526123)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cmq8q"]
 
@@ -86,6 +86,31 @@ size = Vector3(0.6347046, 1.8766403, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r073"]
 size = Vector3(1.6630859, 1.1868591, 0.58496094)
+
+[sub_resource type="Animation" id="Animation_hv8ns"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D2:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_ckrjd"]
 resource_name = "exit_blink"
@@ -112,31 +137,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2, 2, 2, 2, 2, 2, 2, 2, 2),
 "points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0, -0.7002391, 0.033333335, 0, 0, 0.2, -0.13933334, -0.033333335, 0, 0, 0.1, -0.1714871, 0.016666668, 0, 0, 0.3, -0.4394359, -0.03333334, 0, 0, 0.2, -0.63235873, 0.016666668, 0, 0, 0, -0.47158974, 0.033333335, 0, 0, 0.2, -0.30367517, -0.033333335, 0, 0, 0.1, -0.2107862, 0.016666668, 0, 0, 0.2, -0.26442814, -0.016666666, 0, 0),
 "times": PackedFloat32Array(0, 4.2014346, 5.0374346, 6.066357, 8.702972, 12.497125, 15.326663, 17.148714, 18.413431, 20)
-}
-
-[sub_resource type="Animation" id="Animation_hv8ns"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D2:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpotLight3D:light_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ic2t"]
@@ -607,7 +607,7 @@ mesh = SubResource("BoxMesh_rrntp")
 transform = Transform3D(1.2264946, 0, 0.1576238, 0, 1.3528031, 0, -0.19577202, 0, 0.98749924, -0.3794483, -0.98906344, 0.3957169)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Play_table"]
-transform = Transform3D(1.0000013, 0, 4.4703484e-08, 0, 1, 0, -7.003546e-07, 0, 1.0000012, -0.2863758, 0.22140509, 0.25815266)
+transform = Transform3D(1.0000013, 0, 4.4703484e-08, 0, 1, 0, -7.003546e-07, 0, 1.0000012, -0.28441033, 0.31038675, 0.25815254)
 shape = SubResource("BoxShape3D_qdsxc")
 
 [node name="Mesa" type="MeshInstance3D" parent="Play_table"]
@@ -685,6 +685,8 @@ text = "BARAJAS"
 transform = Transform3D(0.1564082, 0, 0, 0, 0.15640819, 0, 0, 0, 0.9655244, 1.4951813, -0.68293047, -1.1775024)
 texture = ExtResource("10_2fx7c")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CambioBarajas"]
+
 [node name="Atrezo" type="Area3D" parent="."]
 
 [node name="Paredes" type="Node3D" parent="Atrezo"]
@@ -724,12 +726,12 @@ mesh = ExtResource("11_exttu")
 skeleton = NodePath("../..")
 
 [node name="ParedVentana" type="MeshInstance3D" parent="Atrezo/Paredes"]
-transform = Transform3D(-6.5049655e-08, 0, 1, 0, 2.1210139, 0, -1.4881626, 0, -4.371139e-08, -4.0589986, -1.0468086, -0.10825539)
+transform = Transform3D(-6.5049655e-08, 0, 1, 0, 2.1210139, 0, -1.4881626, 0, -4.371139e-08, -4.0589986, -1.0468086, 0.090750754)
 mesh = ExtResource("8_nqcov")
 skeleton = NodePath("../..")
 
 [node name="Perchero" type="MeshInstance3D" parent="Atrezo/Paredes"]
-transform = Transform3D(-6.505727e-08, 0, -0.9999999, 0, 1.3393061, 0, 1.4883369, 0, -4.3711385e-08, -3.807816, 0.3684379, 0.19920981)
+transform = Transform3D(-6.505727e-08, 0, -0.9999999, 0, 1.3393061, 0, 1.4883369, 0, -4.3711385e-08, -3.807816, 0.3684379, 0.3571095)
 mesh = ExtResource("9_v67d5")
 
 [node name="Techo" type="MeshInstance3D" parent="Atrezo/Paredes"]

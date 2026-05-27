@@ -20,9 +20,7 @@ func _ready() -> void:
 		elif  i["rarity"] == "legendary":
 			dic_legen.get_or_add(i["id"])
 		if i["id"] == "española":
-			print("GUARDO LA ESPAÑOLA")
 			selector.my_decks.push_back(i)
-	print("TODO HECHO")
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 

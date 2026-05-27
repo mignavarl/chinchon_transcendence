@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=10 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_wp0k4"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="6_q8u5g"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
-[ext_resource type="Script" uid="uid://bemeudqjrsjy8" path="res://scripts/button_select_decks/button_select_deck.gd" id="9_q8u5g"]
 [ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="10_lhr70"]
 [ext_resource type="Script" uid="uid://dhyn2q00ki1cf" path="res://scripts/gacha_button.gd" id="12_bjd11"]
 
@@ -76,16 +75,6 @@ script = ExtResource("7_q8u5g")
 card_manager_reference = NodePath("../CardManager")
 card_slot_reference = NodePath("../CardSlot")
 player_hand_reference = NodePath("../PlayerHand")
-
-[node name="BarajasButton" type="Button" parent="."]
-visible = false
-offset_left = 1795.0
-offset_top = 70.0
-offset_right = 1911.0
-offset_bottom = 120.0
-theme_override_font_sizes/font_size = 30
-text = "Barajas"
-script = ExtResource("9_q8u5g")
 
 [node name="EndTurnButton" type="Button" parent="."]
 visible = false
@@ -234,7 +223,6 @@ text = "DIFICULTAD"
 [connection signal="left_mouse_button_pressed" from="InputManager" to="ChinchonManager" method="_on_input_manager_left_mouse_button_pressed"]
 [connection signal="left_mouse_button_release" from="InputManager" to="ChinchonManager" method="_on_input_manager_left_mouse_button_release"]
 [connection signal="right_mouse_button_clicked" from="InputManager" to="ChinchonManager" method="_on_input_manager_right_mouse_button_clicked"]
-[connection signal="button_up" from="BarajasButton" to="BarajasButton" method="_on_button_up"]
 [connection signal="pressed" from="EndTurnButton" to="ChinchonManager" method="_on_end_turn_button_pressed"]
 [connection signal="button_up" from="MenuButton" to="MenuButton" method="_on_button_up"]
 [connection signal="button_up" from="JugarModo/Solo" to="ChinchonManager" method="_on_solo_button_up"]
