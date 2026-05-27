@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cbknwrjcb8c"]
+[gd_scene load_steps=70 format=3 uid="uid://cbknwrjcb8c"]
 
 [ext_resource type="Script" uid="uid://b7aptgmd2p25l" path="res://scripts/bar.gd" id="1_bwlfd"]
 [ext_resource type="ArrayMesh" uid="uid://c1q82gs0nr3h8" path="res://assets/Models/Furniture Kit/tableCross.obj" id="2_x848m"]
@@ -45,6 +45,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d0dxt353sf85d" path="res://assets/Models/Food Kit/pancakes.obj" id="31_ko5ko"]
 [ext_resource type="ArrayMesh" uid="uid://c5oi6cwfcoc63" path="res://assets/Models/Food Kit/plate.obj" id="32_cast6"]
 [ext_resource type="ArrayMesh" uid="uid://bgbuyl4dar5bo" path="res://assets/Models/Furniture Kit/plantSmall2.obj" id="32_jx408"]
+[ext_resource type="PackedScene" uid="uid://d12e885wbka7r" path="res://assets/Models/CartelSalida.fbx" id="46_ckrjd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2j1ym"]
 
@@ -61,9 +62,7 @@ glow_bloom = 0.1
 fog_enabled = true
 fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
 fog_light_energy = 2.53
-volumetric_fog_enabled = true
-volumetric_fog_density = 1.0
-volumetric_fog_length = 1024.0
+volumetric_fog_density = 0.1955
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_nqcov"]
@@ -87,6 +86,64 @@ size = Vector3(0.6347046, 1.8766403, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r073"]
 size = Vector3(1.6630859, 1.1868591, 0.58496094)
+
+[sub_resource type="Animation" id="Animation_ckrjd"]
+resource_name = "exit_blink"
+length = 50.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D2:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0, -0.7002391, 0.033333335, 0, 0, 0.2, -0.13933334, -0.033333335, 0, 0, 0.1, -0.1714871, 0.016666668, 0, 0, 0.3, -0.4394359, -0.03333334, 0, 0, 0.2, -0.63235873, 0.016666668, 0, 0, 0, -0.47158974, 0.033333335, 0, 0, 0.2, -0.30367517, -0.033333335, 0, 0, 0.1, -0.2107862, 0.016666668, 0, 0, 0.2, -0.26442814, -0.016666666, 0, 0),
+"times": PackedFloat32Array(0, 4.2014346, 5.0374346, 6.066357, 8.702972, 12.497125, 15.326663, 17.148714, 18.413431, 20)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0, -0.7002391, 0.033333335, 0, 0, 0.2, -0.13933334, -0.033333335, 0, 0, 0.1, -0.1714871, 0.016666668, 0, 0, 0.3, -0.4394359, -0.03333334, 0, 0, 0.2, -0.63235873, 0.016666668, 0, 0, 0, -0.47158974, 0.033333335, 0, 0, 0.2, -0.30367517, -0.033333335, 0, 0, 0.1, -0.2107862, 0.016666668, 0, 0, 0.2, -0.26442814, -0.016666666, 0, 0),
+"times": PackedFloat32Array(0, 4.2014346, 5.0374346, 6.066357, 8.702972, 12.497125, 15.326663, 17.148714, 18.413431, 20)
+}
+
+[sub_resource type="Animation" id="Animation_hv8ns"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D2:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpotLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ic2t"]
+_data = {
+&"RESET": SubResource("Animation_hv8ns"),
+&"exit_blink": SubResource("Animation_ckrjd")
+}
 
 [sub_resource type="Animation" id="Animation_onlfy"]
 resource_name = "Fan_move"
@@ -348,31 +405,40 @@ tracks/1/keys = {
 "values": [Vector3(0, 0.2507864, 0), Vector3(0, 1.268837, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_5qaxt"]
-resource_name = "play_table"
-tracks/0/type = "value"
+[sub_resource type="Animation" id="Animation_2fx7c"]
+resource_name = "hover_deck"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("CambioBarajas/Sprite3D:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-0.55559593, -0.21489479, 1.0685935)]
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1.4951813, -0.25, 0, 0.25, 0, 1.4951813, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
-tracks/1/type = "value"
+tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/path = NodePath("CambioBarajas/Sprite3D:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.2507864, 0), Vector3(-0.38936555, 0.2507864, -8.053375e-09)]
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-0.68293047, -0.25, 0, 0.23333333, 0.52673066, -0.16722688, -0.36666667, -0.002281785, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CambioBarajas/Sprite3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-1.1775024, -0.25, 0, 0.25, 0, -1.1775024, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="Animation" id="Animation_w1n10"]
@@ -458,40 +524,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.9666666)
 }
 
-[sub_resource type="Animation" id="Animation_2fx7c"]
-resource_name = "hover_deck"
-tracks/0/type = "bezier"
+[sub_resource type="Animation" id="Animation_5qaxt"]
+resource_name = "play_table"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CambioBarajas/Sprite3D:position:x")
+tracks/0/path = NodePath("Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1.4951813, -0.25, 0, 0.25, 0, 1.4951813, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.10875368, 0.2750521, 2.6150036), Vector3(-0.55559593, -0.21489479, 1.0685935)]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CambioBarajas/Sprite3D:position:y")
+tracks/1/path = NodePath("Camera3D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-0.68293047, -0.25, 0, 0.23333333, 0.52673066, -0.16722688, -0.36666667, -0.002281785, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CambioBarajas/Sprite3D:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-1.1775024, -0.25, 0, 0.25, 0, -1.1775024, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2507864, 0), Vector3(-0.38936555, 0.2507864, -8.053375e-09)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmq8q"]
@@ -597,6 +654,7 @@ shape = SubResource("BoxShape3D_l1w72")
 
 [node name="Label3D" type="Label3D" parent="Salida"]
 transform = Transform3D(0.3051303, 0, 0.9523106, -0.05530003, 0.9983125, 0.01771871, -0.9507036, -0.058069326, 0.3046154, -3.817128, 1.0117817, -0.627499)
+visible = false
 text = "SALIR"
 
 [node name="CambioBarajas" type="Area3D" parent="."]
@@ -630,6 +688,30 @@ texture = ExtResource("10_2fx7c")
 [node name="Atrezo" type="Area3D" parent="."]
 
 [node name="Paredes" type="Node3D" parent="Atrezo"]
+
+[node name="CartelSalida" parent="Atrezo/Paredes" instance=ExtResource("46_ckrjd")]
+transform = Transform3D(0.54019916, 0, 0, 0, 0.2820508, 0, 0, 0, 0.33679947, -4.064987, 1.284549, -1.1281817)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Atrezo/Paredes/CartelSalida"]
+transform = Transform3D(-1.7907585, 0, 0.46905354, 0, 3.5454607, 0, -0.75232404, 0, -2.872232, 0.38423347, 0, -0.9673996)
+light_energy = 0.2
+shadow_enabled = true
+spot_range = 1.0798519
+spot_angle = 65.30737
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Atrezo/Paredes/CartelSalida"]
+transform = Transform3D(1.6392843, 0, 0.859985, 0, 3.5454607, 0, -1.3793465, 0, 2.6292794, 0.38423347, 0, 0.8614464)
+light_energy = 0.2
+shadow_enabled = true
+spot_range = 0.65439403
+spot_angle = 70.60942
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Atrezo/Paredes/CartelSalida"]
+libraries = {
+&"": SubResource("AnimationLibrary_0ic2t")
+}
+autoplay = "exit_blink"
+speed_scale = 20.0
 
 [node name="ParedFondo" type="MeshInstance3D" parent="Atrezo/Paredes"]
 transform = Transform3D(14.986379, 0, 0, 0, 2.1210139, 0, 0, 0, 1, 10.506385, -1.0468086, -2.4461722)
