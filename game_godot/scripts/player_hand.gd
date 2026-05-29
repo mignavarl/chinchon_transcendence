@@ -105,3 +105,6 @@ func show_hand() -> void:
 
 func set_visibility(visible):
 	is_visible = visible
+
+func is_card_in_hand(card):
+	return card in player_hand

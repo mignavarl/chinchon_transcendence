@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbnjphvfqof6n"]
+[gd_scene load_steps=12 format=3 uid="uid://cbnjphvfqof6n"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_pi1jn"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="2_huv64"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://scenes/card_slot.tscn" id="4_e4qjk"]
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://scripts/player_hand.gd" id="5_pddc6"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="6_cughx"]
-[ext_resource type="Script" uid="uid://bemeudqjrsjy8" path="res://scripts/button_select_decks/button_select_deck.gd" id="7_wlwxd"]
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://scripts/chinchon/game_manager.gd" id="8_huv64"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="9_m1vig"]
 [ext_resource type="Script" uid="uid://dhyn2q00ki1cf" path="res://scripts/gacha_button.gd" id="10_7hj1w"]
@@ -87,7 +86,6 @@ offset_right = 1911.0
 offset_bottom = 120.0
 theme_override_font_sizes/font_size = 30
 text = "Barajas"
-script = ExtResource("7_wlwxd")
 
 [node name="EndTurnButton" type="Button" parent="."]
 visible = false

@@ -164,7 +164,7 @@ func _on_input_manager_left_mouse_button_clicked() -> void:
 
 	match result[0].collider.collision_mask:
 		1:  # CARD
-			if card_drawn_this_turn:
+			if card_drawn_this_turn and !result[0].collider.get_parent().flipped:
 				agent.notify_discard(result[0].collider.get_parent())
 		4:  # DECK
 			if not card_drawn_this_turn:

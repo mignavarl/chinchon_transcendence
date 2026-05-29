@@ -30,8 +30,9 @@ func _process(delta: float) -> void:
 
 
 func start_drag(card):
-	card.scale = Vector2(1, 1)
-	card_being_dragged = card
+	if !card.flipped:
+		card.scale = Vector2(1, 1)
+		card_being_dragged = card
 
 func send_card_to_slot(card):
 	animate_card_to_position(card, card_slot_reference.global_position, card_slot_reference.global_rotation)
