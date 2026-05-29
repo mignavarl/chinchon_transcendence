@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=48 format=3 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://scripts/main_menu_manager.gd" id="1_l6cm7"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_wu84c"]
@@ -17,6 +17,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cej1yv5aotny6" path="res://assets/Models/Buildings/building-sample-tower-b.obj" id="15_7b55j"]
 [ext_resource type="ArrayMesh" uid="uid://dkum4bsibhoa5" path="res://assets/Models/Buildings/building-sample-house-b.obj" id="16_a8gd2"]
 [ext_resource type="ArrayMesh" uid="uid://n37jad64crga" path="res://assets/Models/Buildings/building-sample-house-a.obj" id="17_8egab"]
+[ext_resource type="Texture2D" uid="uid://c4woh04y7eqfr" path="res://assets/BAR CHINCHÍN.png" id="17_engjn"]
 [ext_resource type="ArrayMesh" uid="uid://ue4obfnn7wf8" path="res://assets/Models/Buildings/building-sample-tower-c.obj" id="17_hstxw"]
 [ext_resource type="ArrayMesh" uid="uid://dm3pi6j27jpw0" path="res://assets/Models/Buildings/building-sample-tower-a.obj" id="18_8egab"]
 [ext_resource type="ArrayMesh" uid="uid://0ep0hqju15la" path="res://assets/Models/Car Kit/suv.obj" id="20_gw5y6"]
@@ -57,6 +58,75 @@ adjustment_enabled = true
 exposure_multiplier = 2.5
 
 [sub_resource type="Compositor" id="Compositor_qywvv"]
+
+[sub_resource type="Animation" id="Animation_6vcge"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4.154039, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.1781478, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-10.201989, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.1031528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_dj67d"]
 resource_name = "tokyo_drift"
@@ -127,75 +197,6 @@ tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.34, 0, 0, 0, 0, -0.33833337, 0, 0, 0, 0, -0.28833336, 0, 0, 0, 0, -0.6933333, 0, 0, 0),
 "times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
-}
-
-[sub_resource type="Animation" id="Animation_6vcge"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-4.154039, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1.1781478, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-10.201989, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1.1031528, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6vcge"]
@@ -416,6 +417,11 @@ mesh = ExtResource("15_7b55j")
 transform = Transform3D(0.6168573, 0, -0.787075, 0, 1, 0, 0.787075, 0, 0.6168573, 2.0708642, -1.2366409, 0.8207768)
 mesh = ExtResource("16_a8gd2")
 skeleton = NodePath("../EdificioIzquierda")
+
+[node name="Sprite3D" type="Sprite3D" parent="Fondo/EdificioDerecha"]
+transform = Transform3D(0.091538124, 0, -0.05190022, 0, 0.091661654, 0, 0.00475726, 0, 0.9986523, -1.0119147, 0.86521465, 1.0818789)
+pixel_size = 0.002
+texture = ExtResource("17_engjn")
 
 [node name="CasasFondo" type="Node3D" parent="Fondo"]
 
