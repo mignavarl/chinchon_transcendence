@@ -14,7 +14,7 @@ extends Node2D
 # ── Estado ───────────────────────────────────────────────────────────────────
 var config: GameConfig
 var agents: Dictionary = {}
-var game_ended  := false
+var game_ended  := true
 var card_drawn_this_turn := false
 var current_round := 0
 
@@ -147,6 +147,8 @@ func _display_combinations(hand_node: Node2D, result: Dictionary) -> void:
 
 # ── Input humano (desde raycasts) ────────────────────────────────────────────
 func _on_input_manager_left_mouse_button_clicked() -> void:
+	if game_ended:
+		return
 	var local_player = _get_local_player()
 	if turn_controller.current_player != local_player:
 		return
