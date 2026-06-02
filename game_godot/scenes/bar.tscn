@@ -49,14 +49,14 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2j1ym"]
 
-[sub_resource type="Sky" id="Sky_7r073"]
+[sub_resource type="Sky" id="Sky_ckrjd"]
 sky_material = SubResource("ProceduralSkyMaterial_2j1ym")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_l1w72"]
 background_mode = 2
 background_energy_multiplier = 0.53
-sky = SubResource("Sky_7r073")
+sky = SubResource("Sky_ckrjd")
 glow_enabled = true
 glow_bloom = 0.1
 fog_enabled = true

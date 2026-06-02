@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxfakc65efyny"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhlrq3idg66u2" path="res://assets/Models/Furniture Kit/wall.obj" id="1_qispd"]
+[ext_resource type="ArrayMesh" uid="uid://bjcod64i6qfw4" path="res://assets/Models/Furniture Kit/floorFull.obj" id="2_6rhx6"]
+[ext_resource type="ArrayMesh" uid="uid://bndwhib8idyf" path="res://assets/Models/Furniture Kit/tableGlass.obj" id="3_lfv8h"]
+[ext_resource type="ArrayMesh" uid="uid://vs2vx2g5g6qg" path="res://assets/Models/Furniture Kit/tableCoffeeGlass.obj" id="4_ukcyk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qispd"]
+
+[sub_resource type="Sky" id="Sky_7r073"]
+sky_material = SubResource("ProceduralSkyMaterial_qispd")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_krwwm"]
+background_mode = 2
+background_energy_multiplier = 0.53
+sky = SubResource("Sky_7r073")
+glow_enabled = true
+glow_bloom = 0.1
+fog_enabled = true
+fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
+fog_light_energy = 2.53
+volumetric_fog_density = 0.1955
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_shc6l"]
+exposure_multiplier = 2.5
+
+[sub_resource type="Compositor" id="Compositor_6rhx6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krwwm"]
+albedo_color = Color(0.52872366, 0.5149564, 0.54253656, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_shc6l"]
+material = SubResource("StandardMaterial3D_krwwm")
+
+[node name="Bazar" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250547, 0.5572236, -0.051690515, 0.8287521, -0.046176672, 2.0980835, 1.4956797)
+light_color = Color(1, 0.7092379, 0.44074774, 1)
+light_energy = 0.114
+light_size = 0.15
+light_specular = 3.357
+shadow_enabled = true
+shadow_normal_bias = 0.024
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_krwwm")
+camera_attributes = SubResource("CameraAttributesPractical_shc6l")
+compositor = SubResource("Compositor_6rhx6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0525534, 3.8434281)
+
+[node name="Suelo" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.5384655, 0, 0, 0, 1, 0, 0, 0, 4.7282925, 0, 0, -1)
+mesh = SubResource("PlaneMesh_shc6l")
+
+[node name="Paredes" type="Node3D" parent="."]
+
+[node name="Izquierda" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(-3.954524e-07, 0, -0.9999999, 0, 1.8, 0, 9.046895, 0, -4.371138e-08, -3, 0, 3.7035227)
+mesh = ExtResource("1_qispd")
+
+[node name="Fondo" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(-5.997443, 0, -8.742278e-08, 0, 1.8, 0, 5.2431307e-07, 0, -0.99999994, -3, 0, -1.2964773)
+mesh = ExtResource("1_qispd")
+
+[node name="Derecha" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(-3.9545228e-07, 0, 0.9999999, 0, 1.8, 0, -9.046895, 0, -4.371139e-08, 3, 0, -5.2964773)
+mesh = ExtResource("1_qispd")
+
+[node name="Techo" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(-6.4032474, 0, -4.3991142e-07, -4.263255e-14, -4.296166, 0, -5.597895e-07, 0, 5.0319996, -3.2995408, 2.292169, -2.2964773)
+visible = false
+mesh = ExtResource("2_6rhx6")
+
+[node name="Gacha" type="Node3D" parent="."]
+
+[node name="Esquina" type="MeshInstance3D" parent="Gacha"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.29689705, 0.44064927, -0.12936473)
+mesh = ExtResource("3_lfv8h")
+
+[node name="Barra" type="MeshInstance3D" parent="Gacha"]
+transform = Transform3D(1.2433885, 0, 0, 0, 1, 0, 0, 0, 1, -0.87494534, 0.21603712, -0.10921699)
+mesh = ExtResource("4_ukcyk")
