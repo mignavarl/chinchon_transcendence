@@ -33,15 +33,30 @@ func get_deck(dic, rarity):
 	var r = randi() % elegible_keys.size()
 	var rk = elegible_keys[r]
 	print("rk = ", rk)
+	
 	var img_path = "res://assets/cards/%s/oros_1.png" % [rk]
 	var card_win = load(img_path)
-	
-	var material_one = $"Gacha/Mostrador Gacha/Caja/Baraja".get_surface_override_material(0)
+	var material_one = $"Gacha/Mostrador Gacha/Caja/Baraja/Oros".get_surface_override_material(0)
 	material_one.albedo_texture = card_win
-	$"Gacha/Mostrador Gacha/Caja/Baraja".set_surface_override_material(0, material_one)
+	$"Gacha/Mostrador Gacha/Caja/Baraja/Oros".set_surface_override_material(0, material_one)
 	
-	#$"Gacha/Mostrador Gacha/Caja/Baraja".set_surface_override_material()
-	#$"../Deck_win".texture = card_win
+	img_path = "res://assets/cards/%s/copas_1.png" % [rk]
+	card_win = load(img_path)
+	material_one = $"Gacha/Mostrador Gacha/Caja/Baraja/Copas".get_surface_override_material(0)
+	material_one.albedo_texture = card_win
+	$"Gacha/Mostrador Gacha/Caja/Baraja/Copas".set_surface_override_material(0, material_one)
+	
+	img_path = "res://assets/cards/%s/espadas_1.png" % [rk]
+	card_win = load(img_path)
+	material_one = $"Gacha/Mostrador Gacha/Caja/Baraja/Espadas".get_surface_override_material(0)
+	material_one.albedo_texture = card_win
+	$"Gacha/Mostrador Gacha/Caja/Baraja/Espadas".set_surface_override_material(0, material_one)
+	
+	img_path = "res://assets/cards/%s/bastos_1.png" % [rk]
+	card_win = load(img_path)
+	material_one = $"Gacha/Mostrador Gacha/Caja/Baraja/Bastos".get_surface_override_material(0)
+	material_one.albedo_texture = card_win
+	$"Gacha/Mostrador Gacha/Caja/Baraja/Bastos".set_surface_override_material(0, material_one)
 	
 	dic[rk] = 1
 	selector.my_decks.push_back(get_dictionary_of_id(rk))
@@ -127,3 +142,18 @@ func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position
 		randomizador()
 		$"Gacha/Mostrador Gacha/Caja".visible = true
 		$AnimationPlayer.play("Gacha")
+		await get_tree().create_timer(3.0).timeout
+		
+
+func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("mouse_click"):
+		$AnimationPlayer.play("Exit")
+		SceneLoader.change_scene( "res://scenes/main_menu.tscn", self.name)
+
+
+func _on_puerta_mouse_entered() -> void:
+	$AnimationPlayer.play("Exit_hover")
+
+
+func _on_puerta_mouse_exited() -> void:
+	$AnimationPlayer.play_backwards("Exit_hover")
