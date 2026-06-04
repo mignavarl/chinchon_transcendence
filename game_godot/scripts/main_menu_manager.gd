@@ -36,7 +36,7 @@ func _on_play_input_event(camera: Node, event: InputEvent, event_position: Vecto
 func _on_gacha_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
 		$AnimationPlayer.play("gacha_animation")
-		SceneLoader.change_scene( "res://scenes/gachapon.tscn", self.name)
+		SceneLoader.change_scene( "res://scenes/bazar.tscn", self.name)
 
 
 func _on_gacha_mouse_entered() -> void:

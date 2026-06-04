@@ -1,13 +1,17 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxfakc65efyny"]
+[gd_scene load_steps=34 format=3 uid="uid://dxfakc65efyny"]
 
 [ext_resource type="Script" uid="uid://dog0herjaa64c" path="res://scripts/bazar.gd" id="1_nuofq"]
 [ext_resource type="ArrayMesh" uid="uid://bhlrq3idg66u2" path="res://assets/Models/Furniture Kit/wall.obj" id="1_qispd"]
+[ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="2_mwvnm"]
 [ext_resource type="ArrayMesh" uid="uid://cwnli1aadqf5j" path="res://assets/Models/Buildings/door-white-window.obj" id="2_ukcyk"]
 [ext_resource type="ArrayMesh" uid="uid://c53xwjknl74cr" path="res://assets/Models/Buildings/door-white-glass.obj" id="3_6rhx6"]
+[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://scripts/new_selector.gd" id="3_fr4ia"]
 [ext_resource type="ArrayMesh" uid="uid://cvbfu2xf64u71" path="res://assets/Models/Furniture Kit/wallDoorway.obj" id="3_nuofq"]
 [ext_resource type="ArrayMesh" uid="uid://badrowc2ad7th" path="res://assets/Models/Furniture Kit/stairsOpenSingle.obj" id="4_lfv8h"]
+[ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="4_ubr08"]
 [ext_resource type="ArrayMesh" uid="uid://vs2vx2g5g6qg" path="res://assets/Models/Furniture Kit/tableCoffeeGlass.obj" id="4_ukcyk"]
 [ext_resource type="ArrayMesh" uid="uid://dco805exysbdr" path="res://assets/Models/Furniture Kit/cardboardBoxOpen.obj" id="7_xdx7c"]
+[ext_resource type="Texture2D" uid="uid://be4xxbpvkcgak" path="res://carta.png" id="10_3ghji"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qispd"]
 
@@ -44,7 +48,14 @@ material = SubResource("StandardMaterial3D_krwwm")
 material = SubResource("StandardMaterial3D_ukcyk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xdx7c"]
-size = Vector3(1.75, 1, 1)
+size = Vector3(1.1493225, 0.9145508, 0.08508301)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ond6j"]
+
+[sub_resource type="Skin" id="Skin_ea5vf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwvnm"]
+albedo_texture = ExtResource("10_3ghji")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ailqb"]
 
@@ -57,9 +68,36 @@ albedo_color = Color(0.86036915, 0.8603692, 0.8603692, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_mwvnm"]
 material = SubResource("StandardMaterial3D_ea5vf")
 
+[sub_resource type="Animation" id="Animation_ea5vf"]
+resource_name = "Exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.0454686, 3.9665766), Vector3(1.9516525, 1.0454686, 2.413789)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.11264356, 0), Vector3(0, -0.8736769, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ailqb"]
 resource_name = "Gacha"
-length = 1.5
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,10 +129,22 @@ tracks/2/path = NodePath("Gacha/Mostrador Gacha/Caja:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.93333334, 1.5),
+"times": PackedFloat32Array(0, 0.3, 0.93333334, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.7113959, 0.22881973, -0.37797308), Vector3(-0.7113959, 0.22881971, -0.37797308), Vector3(-0.7113959, 0.5615607, -0.37797308), Vector3(-0.7113959, 0.5615607, -0.07509494)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gacha/Mostrador Gacha/Caja/Baraja:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5333333, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.7113959, 0.22881971, -0.37797308), Vector3(-0.7113959, 0.5615607, -0.37797308), Vector3(-0.7113959, 0.5615607, -0.013505578)]
+"values": [Vector3(-0.007881664, -0.12857515, 0.065526485), Vector3(-0.007881664, -0.12857515, 0.065526485), Vector3(-0.0038838014, 0.089429975, 0.084886074)]
 }
 
 [sub_resource type="Animation" id="Animation_ond6j"]
@@ -135,32 +185,17 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-0.7113959, 0.5615607, -0.013505578)]
 }
-
-[sub_resource type="Animation" id="Animation_ea5vf"]
-resource_name = "Exit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gacha/Mostrador Gacha/Caja/Baraja:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.0454686, 3.9665766), Vector3(1.9516525, 1.0454686, 2.413789)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.11264356, 0), Vector3(0, -0.8736769, 0)]
+"values": [Vector3(-0.0050155967, -0.12782952, 0.065526485)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mwvnm"]
@@ -172,6 +207,9 @@ _data = {
 
 [node name="Bazar" type="Node3D"]
 script = ExtResource("1_nuofq")
+decks = ExtResource("2_mwvnm")
+selector = ExtResource("3_fr4ia")
+dic_decks = ExtResource("4_ubr08")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250543, 0.5572236, -0.051690515, 0.8287521, -0.046176672, 2.1379442, 1.9303211)
@@ -260,7 +298,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18432546, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha/Mostrador Gacha"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7935111, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6886551, 0.18579102, 0.970958)
 shape = SubResource("BoxShape3D_xdx7c")
 
 [node name="Top" type="MeshInstance3D" parent="Gacha/Mostrador Gacha"]
@@ -274,7 +312,13 @@ mesh = ExtResource("3_6rhx6")
 skeleton = NodePath("../..")
 
 [node name="Caja" type="Node3D" parent="Gacha/Mostrador Gacha"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7113959, 0.5615607, -0.013505578)
+transform = Transform3D(1.8035188, 0, 0, 0, 1, 0, 0, 0, 1.8334755, -0.7113959, 0.5615607, -0.013505578)
+
+[node name="Baraja" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja"]
+transform = Transform3D(0.018965086, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022479, 0.028318528, -0.0050155967, -0.12782952, 0.065526485)
+mesh = SubResource("PlaneMesh_ond6j")
+skin = SubResource("Skin_ea5vf")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwvnm")
 
 [node name="Exterior" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja"]
 transform = Transform3D(0.39403766, 0, 0, 0, 0.27583456, 0, 0, 0, 0.5750808, 0.033145458, -0.11026151, 0.00069856644)
@@ -283,6 +327,7 @@ mesh = ExtResource("7_xdx7c")
 [node name="Interior" type="Node3D" parent="Gacha/Mostrador Gacha/Caja"]
 
 [node name="Espuma" type="Node3D" parent="Gacha/Mostrador Gacha/Caja/Interior"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -0.0054965615, 0)
 
 [node name="Espuma" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja/Interior/Espuma"]
 transform = Transform3D(-0.0006133213, 0.0037841538, 0.004900415, 0.0031346828, -0.006772641, 0.002399003, -0.0068045566, -0.0034610583, 0.0006634652, 0.02666074, -0.08140528, 0.01224041)
