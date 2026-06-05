@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dxfakc65efyny"]
+[gd_scene load_steps=62 format=3 uid="uid://dxfakc65efyny"]
 
 [ext_resource type="Script" uid="uid://dog0herjaa64c" path="res://scripts/bazar.gd" id="1_nuofq"]
 [ext_resource type="ArrayMesh" uid="uid://bhlrq3idg66u2" path="res://assets/Models/Furniture Kit/wall.obj" id="1_qispd"]
@@ -11,7 +11,15 @@
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="4_ubr08"]
 [ext_resource type="ArrayMesh" uid="uid://vs2vx2g5g6qg" path="res://assets/Models/Furniture Kit/tableCoffeeGlass.obj" id="4_ukcyk"]
 [ext_resource type="ArrayMesh" uid="uid://dco805exysbdr" path="res://assets/Models/Furniture Kit/cardboardBoxOpen.obj" id="7_xdx7c"]
-[ext_resource type="Texture2D" uid="uid://be4xxbpvkcgak" path="res://carta.png" id="10_3ghji"]
+[ext_resource type="ArrayMesh" uid="uid://wfe2qcicn88r" path="res://assets/Models/Furniture Kit/bookcaseOpen.obj" id="12_fr4ia"]
+[ext_resource type="ArrayMesh" uid="uid://cpnxbuboajep3" path="res://assets/Models/Furniture Kit/books.obj" id="13_ubr08"]
+[ext_resource type="ArrayMesh" uid="uid://cmu6clgijhtxt" path="res://assets/Models/Furniture Kit/cardboardBoxClosed.obj" id="14_ut4pm"]
+[ext_resource type="ArrayMesh" uid="uid://df837plqsc0lu" path="res://assets/Models/Food Kit/peanut-butter.obj" id="15_asfwt"]
+[ext_resource type="ArrayMesh" uid="uid://ba463k8sm02f" path="res://assets/Models/Food Kit/can.obj" id="16_ehlil"]
+[ext_resource type="ArrayMesh" uid="uid://b8nn7t12hoq0n" path="res://assets/Models/Food Kit/can-small.obj" id="17_ipc0q"]
+[ext_resource type="ArrayMesh" uid="uid://3ao3p6nylue5" path="res://assets/Models/Food Kit/wine-white.obj" id="18_3o21i"]
+[ext_resource type="ArrayMesh" uid="uid://b2fe1ynum4n8r" path="res://assets/Models/Food Kit/wine-red.obj" id="19_g5450"]
+[ext_resource type="ArrayMesh" uid="uid://dylhhpfqow54o" path="res://assets/Models/Furniture Kit/bookcaseClosedDoors.obj" id="20_uhmxb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qispd"]
 
@@ -51,14 +59,22 @@ material = SubResource("StandardMaterial3D_ukcyk")
 size = Vector3(0.7783203, 1.5421143, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xdx7c"]
-size = Vector3(1.1493225, 0.9145508, 0.08508301)
+size = Vector3(1.1493225, 0.6906128, 0.08508301)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ut4pm"]
+size = Vector3(0.29882813, 0.053771973, 0.087768555)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ond6j"]
 
 [sub_resource type="Skin" id="Skin_ea5vf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwvnm"]
-albedo_texture = ExtResource("10_3ghji")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr4ia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubr08"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ghji"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ailqb"]
 
@@ -70,6 +86,47 @@ albedo_color = Color(0.86036915, 0.8603692, 0.8603692, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mwvnm"]
 material = SubResource("StandardMaterial3D_ea5vf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpstj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2komo"]
+albedo_color = Color(0.8678088, 0.109360285, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tl1n0"]
+albedo_color = Color(0.423505, 0.6303311, 0.33432275, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfwgw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gi86t"]
+albedo_color = Color(0.6064895, 0.26104698, 1.92523e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epkrd"]
+albedo_color = Color(0.739253, 0.41826493, 5.7756904e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkcgk"]
+albedo_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wani2"]
+albedo_color = Color(0, 0.83445865, 0.9602961, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4qc4"]
+albedo_color = Color(0.6770819, 0.089863054, 0.4165536, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eri61"]
+albedo_color = Color(0.20734954, 0.61776274, 0.3940503, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fwu4"]
+albedo_color = Color(0.7093993, 0.92692095, 0.9234633, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hi3c"]
+transparency = 1
+blend_mode = 3
+albedo_color = Color(0.75527596, 0.99999994, 0.9700605, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbhwb"]
+transparency = 1
+blend_mode = 3
+albedo_color = Color(0.75527596, 0.99999994, 0.9700605, 1)
 
 [sub_resource type="Animation" id="Animation_ea5vf"]
 resource_name = "Exit"
@@ -96,6 +153,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -0.11264356, 0), Vector3(0, -0.8736769, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mwvnm"]
+resource_name = "Exit_hover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paredes/Puerta/Puerta:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.085216045, -0.62301284, 0.5351205), Vector3(-0.085216045, -0.62301284, 0.05178702)]
 }
 
 [sub_resource type="Animation" id="Animation_ailqb"]
@@ -184,6 +256,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.007881664, -0.12857515, 0.065526485), Vector3(-0.007881664, -0.12857515, 0.065526485), Vector3(-0.027133904, 0.089429975, 0.084886074)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Gacha/Mostrador Gacha/Boton_guardar:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.4666667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.71956515, -0.06772251, -0.020087719), Vector3(-0.71956515, 0.21344975, 0.08682454)]
 }
 
 [sub_resource type="Animation" id="Animation_ond6j"]
@@ -284,24 +368,122 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector3(-0.027133904, 0.089429975, 0.084886074)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Gacha/Mostrador Gacha/Boton_guardar:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.71956515, 0.21344975, 0.08682454)]
+}
 
-[sub_resource type="Animation" id="Animation_mwvnm"]
-resource_name = "Exit_hover"
+[sub_resource type="Animation" id="Animation_ut4pm"]
+resource_name = "Back_gacha"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Paredes/Puerta/Puerta:position")
+tracks/0/path = NodePath("Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(1.5333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.15926903, 0.9192304, 1.3264463), Vector3(0, 1.0454686, 3.9665766)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.3650568, 0, 0), Vector3(0, -0.11264356, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gacha/Mostrador Gacha/Caja/Baraja/Oros:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.085216045, -0.62301284, 0.5351205), Vector3(-0.085216045, -0.62301284, 0.05178702)]
+"values": [Vector3(-0.077967875, 0.089429975, 0.084886074), Vector3(-0.0025330782, 0.089429975, 0.18929589)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gacha/Mostrador Gacha/Caja/Baraja/Copas:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.027133904, 0.089429975, 0.084886074), Vector3(-0.003800407, 0.089429975, 0.19210589)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gacha/Mostrador Gacha/Caja/Baraja/Espadas:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.023047782, 0.089429975, 0.084886074), Vector3(-0.0041366816, 0.089429975, 0.19054258)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Gacha/Mostrador Gacha/Caja/Baraja/Bastos:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.07325216, 0.089429975, 0.084886074), Vector3(-0.0035941005, 0.089429975, 0.19313079)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Gacha/Mostrador Gacha/Caja:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.1333333, 2.1333334, 2.7666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.7113959, 0.5615607, -0.07509494), Vector3(-0.7113959, 0.5615607, -0.51478463), Vector3(-0.7113959, 0.061731216, -0.51478463)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Gacha/Mostrador Gacha/Boton_guardar:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.71956515, 0.21344975, 0.08682454), Vector3(-0.71956515, -0.06772251, -0.020087719)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mwvnm"]
 _data = {
+&"Back_gacha": SubResource("Animation_ut4pm"),
 &"Exit": SubResource("Animation_ea5vf"),
 &"Exit_hover": SubResource("Animation_mwvnm"),
 &"Gacha": SubResource("Animation_ailqb"),
@@ -405,7 +587,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18432546, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha/Mostrador Gacha"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6886551, 0.18579102, 0.970958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6886551, 0.32888788, 0.970958)
 shape = SubResource("BoxShape3D_xdx7c")
 
 [node name="Top" type="MeshInstance3D" parent="Gacha/Mostrador Gacha"]
@@ -418,6 +600,20 @@ transform = Transform3D(7.9397196e-08, 1.6425807, -1.7484554e-07, -1.8163961, 7.
 mesh = ExtResource("3_6rhx6")
 skeleton = NodePath("../..")
 
+[node name="Boton_guardar" type="Area3D" parent="Gacha/Mostrador Gacha"]
+transform = Transform3D(1.8035194, 0, 0, 0, 1, 0, 0, 0, 1.8334748, -0.71956515, 0.21344975, 0.08682454)
+
+[node name="Label3D" type="Label3D" parent="Gacha/Mostrador Gacha/Boton_guardar"]
+transform = Transform3D(1.0000004, 0, 0, 0, -4.3711395e-08, 0.9999998, 0, -1.0000001, -4.371139e-08, 0, 0.2422344, 0.06213206)
+pixel_size = 0.0005
+text = "GUARDAR  BARAJA"
+font_size = 46
+outline_size = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha/Mostrador Gacha/Boton_guardar"]
+transform = Transform3D(1.0000004, 0, 0, 0, -4.371139e-08, 0.08263151, 0, -0.9999996, -3.6119385e-09, -0.0046812966, 0.2455038, 0.066111505)
+shape = SubResource("BoxShape3D_ut4pm")
+
 [node name="Caja" type="Node3D" parent="Gacha/Mostrador Gacha"]
 transform = Transform3D(1.8035188, 0, 0, 0, 1, 0, 0, 0, 1.8334755, -0.7113959, 0.5615607, -0.013505578)
 
@@ -425,32 +621,32 @@ transform = Transform3D(1.8035188, 0, 0, 0, 1, 0, 0, 0, 1.8334755, -0.7113959, 0
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="Oros" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja/Baraja"]
-transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.100224786, 0.028318524, -0.0050155967, -0.12782952, 0.065526485)
+transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022477, 0.028318517, -0.0050155967, -0.12782952, 0.065526485)
 mesh = SubResource("PlaneMesh_ond6j")
 skin = SubResource("Skin_ea5vf")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mwvnm")
 
 [node name="Copas" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja/Baraja"]
-transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022476, 0.028318515, -0.027133904, 0.089429975, 0.084886074)
+transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022473, 0.028318511, -0.027133904, 0.089429975, 0.084886074)
 mesh = SubResource("PlaneMesh_ond6j")
 skin = SubResource("Skin_ea5vf")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_mwvnm")
+surface_material_override/0 = SubResource("StandardMaterial3D_fr4ia")
 
 [node name="Espadas" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja/Baraja"]
-transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022478, 0.02831852, 0.023047782, 0.089429975, 0.084886074)
+transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022476, 0.028318515, 0.023047782, 0.089429975, 0.084886074)
 mesh = SubResource("PlaneMesh_ond6j")
 skin = SubResource("Skin_ea5vf")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_mwvnm")
+surface_material_override/0 = SubResource("StandardMaterial3D_ubr08")
 
 [node name="Bastos" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja/Baraja"]
-transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.100224786, 0.028318524, 0.07325216, 0.089429975, 0.084886074)
+transform = Transform3D(0.018965082, 0, 0, 0, 0.85575074, -0.0033166409, 0, 0.10022477, 0.028318517, 0.07325216, 0.089429975, 0.084886074)
 mesh = SubResource("PlaneMesh_ond6j")
 skin = SubResource("Skin_ea5vf")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_mwvnm")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ghji")
 
 [node name="Exterior" type="MeshInstance3D" parent="Gacha/Mostrador Gacha/Caja"]
 transform = Transform3D(0.39403766, 0, 0, 0, 0.27583456, 0, 0, 0, 0.5750808, 0.033145458, -0.11026151, 0.00069856644)
@@ -1334,6 +1530,159 @@ skeleton = NodePath("../..")
 transform = Transform3D(-3.623172e-08, 0, 1.1063664, 0, 1, 0, -0.8288852, 0, -4.836081e-08, -2.606556, 0, 1.6175342)
 mesh = ExtResource("4_lfv8h")
 
+[node name="Estanteria" type="Node3D" parent="Atrezo"]
+
+[node name="Estanteria" type="MeshInstance3D" parent="Atrezo/Estanteria"]
+transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.5583515, 0, 2.1313534e-07, 0, -1.2932827, -2.0349782, 0, 0.30536914)
+mesh = ExtResource("12_fr4ia")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpstj")
+
+[node name="Libros" type="MeshInstance3D" parent="Atrezo/Estanteria/Estanteria"]
+transform = Transform3D(1.3018657, 0, 7.1054274e-15, 0, 1.3200389, 0, -1.7053026e-13, 0, 1, -0.16723442, 0.61254543, 0.048220545)
+mesh = ExtResource("13_ubr08")
+
+[node name="Libros2" type="MeshInstance3D" parent="Atrezo/Estanteria/Estanteria"]
+transform = Transform3D(1.3018659, 0, 1.7763568e-14, 0, 1.3851491, 0, -1.8474111e-13, 0, 1, -0.031416, 0.6125455, 0.04822059)
+mesh = ExtResource("13_ubr08")
+surface_material_override/0 = SubResource("StandardMaterial3D_2komo")
+surface_material_override/1 = SubResource("StandardMaterial3D_tl1n0")
+surface_material_override/2 = SubResource("StandardMaterial3D_sfwgw")
+surface_material_override/3 = SubResource("StandardMaterial3D_gi86t")
+
+[node name="Libros3" type="MeshInstance3D" parent="Atrezo/Estanteria/Estanteria"]
+transform = Transform3D(-1.4973118, 0, 4.973799e-14, 0, 1.8110565, 0, 3.126388e-13, 0, 0.9999998, -0.27457637, 0.3664512, 0.048220575)
+mesh = ExtResource("13_ubr08")
+surface_material_override/0 = SubResource("StandardMaterial3D_epkrd")
+surface_material_override/1 = SubResource("StandardMaterial3D_wkcgk")
+surface_material_override/2 = SubResource("StandardMaterial3D_wani2")
+
+[node name="Caja" type="MeshInstance3D" parent="Atrezo/Estanteria/Estanteria"]
+transform = Transform3D(0.43987545, 0, 5.684342e-14, 0, 0.634259, 0, 0, 0, 0.7599803, -0.053269804, 0.14698428, 0.024320453)
+mesh = ExtResource("14_ut4pm")
+
+[node name="Caja2" type="MeshInstance3D" parent="Atrezo/Estanteria/Estanteria"]
+transform = Transform3D(0.114006914, 0, -0.74003375, 0, 0.6342591, 0, 0.53447926, 0, 0.15785258, -0.16015738, 0.14698428, 0.09027934)
+mesh = ExtResource("14_ut4pm")
+
+[node name="Estanteria2" type="Node3D" parent="Atrezo"]
+
+[node name="Estanteria" type="MeshInstance3D" parent="Atrezo/Estanteria2"]
+transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.5583515, 0, 2.1313534e-07, 0, -1.2932827, -1.0720842, 0, 0.30536914)
+mesh = ExtResource("12_fr4ia")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpstj")
+
+[node name="Libros2" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
+transform = Transform3D(1.7303771, 0, 8.881784e-14, 0, 1.7478998, 0, -3.9790393e-13, 0, 1, 0.045082927, 0.6125455, 0.04822071)
+mesh = ExtResource("13_ubr08")
+surface_material_override/0 = SubResource("StandardMaterial3D_l4qc4")
+surface_material_override/1 = SubResource("StandardMaterial3D_tl1n0")
+surface_material_override/2 = SubResource("StandardMaterial3D_sfwgw")
+surface_material_override/3 = SubResource("StandardMaterial3D_gi86t")
+
+[node name="Libros3" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
+transform = Transform3D(1.7303773, 0, 9.2370556e-14, 0, 1.7478998, 0, -3.9790393e-13, 0, 1, -0.1305781, 0.6125455, 0.04822068)
+mesh = ExtResource("13_ubr08")
+surface_material_override/0 = SubResource("StandardMaterial3D_l4qc4")
+surface_material_override/1 = SubResource("StandardMaterial3D_tl1n0")
+surface_material_override/2 = SubResource("StandardMaterial3D_sfwgw")
+surface_material_override/3 = SubResource("StandardMaterial3D_eri61")
+
+[node name="Bote" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
+transform = Transform3D(0.27838692, 0, 8.526513e-14, 0, 0.5332896, 0, -3.907985e-14, 0, 0.49450168, -0.07022709, 0.3746562, 0.11698431)
+mesh = ExtResource("15_asfwt")
+
+[node name="Bote2" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
+transform = Transform3D(0.27838692, 0, 8.881784e-14, 0, 0.5332896, 0, -4.6185278e-14, 0, 0.49450168, -0.1364798, 0.3746562, 0.116984315)
+mesh = ExtResource("15_asfwt")
+
+[node name="Bote3" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
+transform = Transform3D(0.27838692, 0, 9.2370556e-14, 0, 0.5332896, 0, -5.3290705e-14, 0, 0.49450168, -0.20305677, 0.3746562, 0.11698431)
+mesh = ExtResource("15_asfwt")
+
+[node name="Bote4" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
+transform = Transform3D(0.27838692, 0, 1.0125234e-13, 0, 0.5332896, 0, -7.1054274e-14, 0, 0.49450168, -0.27023616, 0.3746562, 0.11698432)
+mesh = ExtResource("15_asfwt")
+
+[node name="Estanteria3" type="Node3D" parent="Atrezo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9651092, 0, 0)
+
+[node name="Estanteria" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.5583515, 0, 2.1313534e-07, 0, -1.2932827, -1.0720842, 0, 0.30536914)
+mesh = ExtResource("12_fr4ia")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wpstj")
+
+[node name="Bote" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.47780028, 0, -4.3070436e-08, 0, 0.56702423, 0, 4.177068e-08, 0, -0.49266613, -0.9008717, 0.58384603, 0.15407525)
+mesh = ExtResource("16_ehlil")
+skeleton = NodePath("../Estanteria")
+
+[node name="Bote2" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.4778003, 0, -4.307044e-08, 0, 0.5670243, 0, 4.1770686e-08, 0, -0.49266613, -0.754622, 0.58384603, 0.15407524)
+mesh = ExtResource("16_ehlil")
+skeleton = NodePath("../Estanteria")
+
+[node name="Bote3" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.47780034, 0, -4.3070443e-08, 0, 0.5670243, 0, 4.177069e-08, 0, -0.49266613, -0.61047846, 0.58384603, 0.13582385)
+mesh = ExtResource("16_ehlil")
+skeleton = NodePath("../Estanteria")
+
+[node name="Bote4" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.47780034, 0, -4.3070443e-08, 0, 0.5670243, 0, 4.177069e-08, 0, -0.49266613, -0.47590554, 0.58384603, 0.17173)
+mesh = ExtResource("16_ehlil")
+skeleton = NodePath("../Estanteria")
+
+[node name="Bote5" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.4778003, 0, -4.307044e-08, 0, 0.5670243, 0, 4.1770686e-08, 0, -0.49266613, -0.2986523, 0.58384603, 0.15407524)
+mesh = ExtResource("17_ipc0q")
+skeleton = NodePath("../Estanteria")
+
+[node name="Bote6" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.47780037, 0, -4.307045e-08, 0, 0.5670243, 0, 4.1770697e-08, 0, -0.49266613, -0.2986521, 0.66256326, 0.15407518)
+mesh = ExtResource("17_ipc0q")
+skeleton = NodePath("../Estanteria")
+
+[node name="Bote7" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.47780034, 0, -4.3070443e-08, 0, 0.5670243, 0, 4.177069e-08, 0, -0.49266613, -0.29865217, 0.74203897, 0.1540752)
+mesh = ExtResource("17_ipc0q")
+skeleton = NodePath("../Estanteria")
+
+[node name="Botella" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(0.587273, 0, 0, 0, 0.5239006, 0, 0, 0, 0.6901566, -0.89654374, 0.9455517, 0.1502851)
+mesh = ExtResource("18_3o21i")
+
+[node name="Botella2" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(0.587273, 0, 0, 0, 0.5239006, 0, 0, 0, 0.6901566, -0.7722783, 0.9455517, 0.1502851)
+mesh = ExtResource("18_3o21i")
+
+[node name="Botella3" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(0.587273, 0, 0, 0, 0.5239006, 0, 0, 0, 0.6901566, -0.6520096, 0.9455517, 0.1502851)
+mesh = ExtResource("18_3o21i")
+
+[node name="Botella4" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.06796785, 0, -0.6855188, 0, 0.5239006, 0, 0.58332664, 0, -0.07987505, -0.51426995, 0.9455517, 0.1502851)
+mesh = ExtResource("19_g5450")
+
+[node name="Botella5" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.15740606, 0, -0.66490436, 0, 0.5239006, 0, 0.5657852, 0, -0.18498184, -0.39000452, 0.9455517, 0.1502851)
+mesh = ExtResource("19_g5450")
+
+[node name="Botella6" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
+transform = Transform3D(-0.02339421, 0, -0.6896087, 0, 0.5239006, 0, 0.58680683, 0, -0.027492613, -0.2697358, 0.9455517, 0.1502851)
+mesh = ExtResource("19_g5450")
+
+[node name="Estanteria4" type="Node3D" parent="Atrezo"]
+
+[node name="Estanteria" type="MeshInstance3D" parent="Atrezo/Estanteria4"]
+transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.8180008, 0, 2.1313534e-07, 0, -1.2932827, 1.6472927, -0.18028873, 0.45624328)
+mesh = ExtResource("20_uhmxb")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8fwu4")
+surface_material_override/2 = SubResource("StandardMaterial3D_1hi3c")
+surface_material_override/5 = SubResource("StandardMaterial3D_xbhwb")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mwvnm")
@@ -1343,3 +1692,4 @@ libraries = {
 [connection signal="mouse_entered" from="Paredes/Puerta" to="." method="_on_puerta_mouse_entered"]
 [connection signal="mouse_exited" from="Paredes/Puerta" to="." method="_on_puerta_mouse_exited"]
 [connection signal="input_event" from="Gacha/Mostrador Gacha" to="." method="_on_mostrador_2_input_event"]
+[connection signal="input_event" from="Gacha/Mostrador Gacha/Boton_guardar" to="." method="_on_boton_guardar_input_event"]
