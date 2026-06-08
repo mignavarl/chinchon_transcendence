@@ -683,6 +683,8 @@ text = "BARAJAS"
 
 [node name="Sprite3D" type="Sprite3D" parent="CambioBarajas"]
 transform = Transform3D(0.1564082, 0, 0, 0, 0.15640819, 0, 0, 0, 0.9655244, 1.4951813, -0.68293047, -1.1775024)
+alpha_cut = 1
+alpha_scissor_threshold = 0.51
 texture = ExtResource("10_2fx7c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CambioBarajas"]

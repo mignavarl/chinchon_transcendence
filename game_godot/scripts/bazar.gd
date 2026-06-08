@@ -13,6 +13,54 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+# The Konami Code sequence using Godot 4 Key constants
+const KONAMI_CODE = [
+	KEY_UP, KEY_UP,
+	KEY_DOWN, KEY_DOWN,
+	KEY_LEFT, KEY_RIGHT,
+	KEY_LEFT, KEY_RIGHT,
+	KEY_B, KEY_A
+]
+
+var code_index: int = 0
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Only process when a key is pressed (prevents firing twice per keystroke)
+	if event is InputEventKey and event.pressed:
+		var current_key = event.keycode
+		
+		# Check if the pressed key matches the current step in the sequence
+		if current_key == KONAMI_CODE[code_index]:
+			code_index += 1
+			
+			# Check if we reached the end of the code
+			if code_index == KONAMI_CODE.size():
+				_trigger_konami_code()
+				code_index = 0 # Reset after triggering
+		else:
+			# Incorrect input resets the sequence
+			code_index = 0
+
+func _trigger_konami_code() -> void:
+	for i in dic_decks.dic_common.keys():
+		if !dic_decks.dic_common[i]:
+			dic_decks.dic_common[i] = 1
+			selector.my_decks.push_back(get_dictionary_of_id(i))
+	for i in dic_decks.dic_uncommon.keys():
+		if !dic_decks.dic_uncommon[i]:
+			dic_decks.dic_uncommon[i] = 1
+			selector.my_decks.push_back(get_dictionary_of_id(i))
+	for i in dic_decks.dic_rare.keys():
+		if !dic_decks.dic_rare[i]:
+			dic_decks.dic_rare[i] = 1
+			selector.my_decks.push_back(get_dictionary_of_id(i))
+	for i in dic_decks.dic_legen.keys():
+		if !dic_decks.dic_legen[i]:
+			dic_decks.dic_legen[i] = 1
+			selector.my_decks.push_back(get_dictionary_of_id(i))
+
+
+
 func get_keys_unowned(dict):
 	var keys = []
 	for d in dict.keys():
@@ -21,7 +69,7 @@ func get_keys_unowned(dict):
 			keys.push_back(d)
 	return keys
 
-func get_deck(dic, rarity):
+func get_deck(dic):
 	var elegible_keys = get_keys_unowned(dic)
 	if elegible_keys.size() <= 0:
 		print("Tengo todas")
@@ -76,40 +124,36 @@ func randomizador():
 		if elegible.size() == 0:
 			randomizador()
 			return
-		#$Label.text = "Común"
-		#$Label.set("theme_override_colors/font_color", Color(0.399, 1.582, 1.454, 1.0))
-		#$Label.visible = true
-		if get_deck(dic_decks.dic_common, "comunes"):
+		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		light_effeccts.albedo_color = Color(0.35, 0.903, 1.0, 0.18)
+		if get_deck(dic_decks.dic_common):
 			return
 	if rarity <= 75:
 		elegible = get_keys_unowned(dic_decks.dic_uncommon)
 		if elegible.size() == 0:
 			randomizador()
 			return
-		#$Label.text = "Infrecuente"
-		#$Label.set("theme_override_colors/font_color", Color(0.0, 1.582, 0.192, 1.0))
-		#$Label.visible = true
-		if get_deck(dic_decks.dic_uncommon, "Infrecuentes"):
+		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		light_effeccts.albedo_color = Color(0.0, 0.752, 0.48, 0.161)
+		if get_deck(dic_decks.dic_uncommon):
 			return
 	if rarity <= 93:
 		elegible = get_keys_unowned(dic_decks.dic_rare)
 		if elegible.size() == 0:
 			randomizador()
 			return
-		#$Label.text = "Raro"
-		#$Label.set("theme_override_colors/font_color", Color(0.69, 0.168, 0.394, 1.0))
-		#$Label.visible = true
-		if get_deck(dic_decks.dic_rare, "raras"):
+		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		light_effeccts.albedo_color = Color(1.0, 0.349, 0.354, 0.2)
+		if get_deck(dic_decks.dic_rare):
 			return
 	if rarity <= 100:
 		elegible = get_keys_unowned(dic_decks.dic_legen)
 		if elegible.size() == 0:
 			randomizador()
 			return
-		#$Label.text = "Legendario"
-		#$Label.set("theme_override_colors/font_color", Color(1.582, 0.794, 0.049, 1.0))
-		#$Label.visible = true
-		if get_deck(dic_decks.dic_legen, "legendarias"):
+		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		light_effeccts.albedo_color = Color(2.432, 2.077, 0.499, 0.184)
+		if get_deck(dic_decks.dic_legen):
 			return
 	#$Label.text = "Todas conseguidas"
 	#$Label.set("theme_override_colors/font_color", Color(0.0, 0.0, 0.0, 1.0))
@@ -165,8 +209,14 @@ func _on_puerta_mouse_exited() -> void:
 func _on_boton_guardar_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
 		$AnimationPlayer.play("Back_gacha")
+		$"Gacha/Mostrador Gacha/CollisionShape3D".disabled = true
 		await get_tree().create_timer(1.0).timeout
 		$"Gacha/Mostrador Gacha/Caja/Baraja".visible = false
 		await get_tree().create_timer(2.0).timeout
 		$"Gacha/Mostrador Gacha/Caja".visible = false
 		$"Gacha/Mostrador Gacha/Boton_guardar".visible = false
+		$"Gacha/Mostrador Gacha/CollisionShape3D".disabled = false
+
+
+func _on_caja_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	pass # Replace with function body.
