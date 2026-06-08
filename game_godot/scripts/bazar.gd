@@ -144,7 +144,8 @@ func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position
 		$"Gacha/Mostrador Gacha/Boton_guardar".visible = true
 		$AnimationPlayer.play("Gacha")
 		$"Gacha/Mostrador Gacha/Caja/Baraja".visible = true
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(1.5).timeout
+		$"Gacha/Mostrador Gacha/Caja/CPUParticles3D".emitting = true
 		
 
 func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
