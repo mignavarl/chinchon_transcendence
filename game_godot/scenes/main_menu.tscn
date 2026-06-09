@@ -38,14 +38,14 @@ size = Vector3(1.4967041, 1.1081772, 1.123169)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8egab"]
 
-[sub_resource type="Sky" id="Sky_gw5y6"]
+[sub_resource type="Sky" id="Sky_engjn"]
 sky_material = SubResource("ProceduralSkyMaterial_8egab")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_svtp6"]
 background_mode = 2
 background_energy_multiplier = 0.53
-sky = SubResource("Sky_gw5y6")
+sky = SubResource("Sky_engjn")
 glow_enabled = true
 glow_bloom = 0.1
 fog_enabled = true
@@ -668,7 +668,7 @@ transform = Transform3D(5.9892758e-05, 3.884521, 0.39191777, 0.018488009, -0.019
 mesh = ExtResource("7_5dd4i")
 
 [node name="Acera2" type="MeshInstance3D" parent="Fondo/Acera"]
-transform = Transform3D(4.0400358e-10, -53.050777, 16.715637, 0.019126302, 4.7987337e-06, -2.6369864e-14, 7.3194223e-10, -96.11324, -9.226384, 5.4443984, -1.1653799, 3.264777)
+transform = Transform3D(4.0400358e-10, -53.050777, 16.715637, 0.019126302, 4.7987337e-06, -2.6369864e-14, 7.3194223e-10, -96.11324, -9.226384, 5.442564, -1.163489, 3.2638962)
 mesh = ExtResource("7_5dd4i")
 
 [node name="CocheVerde2" type="MeshInstance3D" parent="Fondo"]

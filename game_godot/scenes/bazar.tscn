@@ -10,6 +10,7 @@
 [ext_resource type="ArrayMesh" uid="uid://badrowc2ad7th" path="res://assets/Models/Furniture Kit/stairsOpenSingle.obj" id="4_lfv8h"]
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="4_ubr08"]
 [ext_resource type="ArrayMesh" uid="uid://vs2vx2g5g6qg" path="res://assets/Models/Furniture Kit/tableCoffeeGlass.obj" id="4_ukcyk"]
+[ext_resource type="Material" uid="uid://b2rr1s4m1aapd" path="res://materials/mat_shader.tres" id="5_ehlil"]
 [ext_resource type="ArrayMesh" uid="uid://dco805exysbdr" path="res://assets/Models/Furniture Kit/cardboardBoxOpen.obj" id="7_xdx7c"]
 [ext_resource type="Texture2D" uid="uid://c5pj36qanhhjv" path="res://assets/pruebas/Morshu_2.png" id="11_asfwt"]
 [ext_resource type="ArrayMesh" uid="uid://wfe2qcicn88r" path="res://assets/Models/Furniture Kit/bookcaseOpen.obj" id="12_fr4ia"]
@@ -22,34 +23,30 @@
 [ext_resource type="ArrayMesh" uid="uid://b2fe1ynum4n8r" path="res://assets/Models/Food Kit/wine-red.obj" id="19_g5450"]
 [ext_resource type="ArrayMesh" uid="uid://dylhhpfqow54o" path="res://assets/Models/Furniture Kit/bookcaseClosedDoors.obj" id="20_uhmxb"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qispd"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ehlil"]
 
-[sub_resource type="Sky" id="Sky_7r073"]
-sky_material = SubResource("ProceduralSkyMaterial_qispd")
+[sub_resource type="Sky" id="Sky_gw5y6"]
+sky_material = SubResource("ProceduralSkyMaterial_ehlil")
 process_mode = 1
 
-[sub_resource type="Environment" id="Environment_krwwm"]
+[sub_resource type="Environment" id="Environment_ipc0q"]
 background_mode = 2
 background_energy_multiplier = 0.53
-sky = SubResource("Sky_7r073")
+sky = SubResource("Sky_gw5y6")
 glow_enabled = true
 glow_bloom = 0.1
 fog_enabled = true
 fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
 fog_light_energy = 2.53
-volumetric_fog_density = 0.1955
+volumetric_fog_enabled = true
 adjustment_enabled = true
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_shc6l"]
-exposure_multiplier = 2.5
-
-[sub_resource type="Compositor" id="Compositor_6rhx6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krwwm"]
-albedo_color = Color(0.52872366, 0.5149564, 0.54253656, 1)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_shc6l"]
-material = SubResource("StandardMaterial3D_krwwm")
+material = ExtResource("5_ehlil")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehlil"]
+metallic_specular = 1.0
+normal_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukcyk"]
 
@@ -102,8 +99,6 @@ _limits = [-35.37, 3.5373077, 0.0, 1.0]
 _data = [Vector2(0.019379847, 3.5373077), 0.0, 0.0, 0, 0, Vector2(1, -4.301276), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpstj"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2komo"]
 albedo_color = Color(0.8678088, 0.109360285, 0, 1)
 
@@ -131,17 +126,15 @@ albedo_color = Color(0.6770819, 0.089863054, 0.4165536, 1)
 albedo_color = Color(0.20734954, 0.61776274, 0.3940503, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fwu4"]
-albedo_color = Color(0.7093993, 0.92692095, 0.9234633, 1)
+albedo_color = Color(0.99999994, 0.25951153, 0.205378, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hi3c"]
 transparency = 1
-blend_mode = 3
-albedo_color = Color(0.75527596, 0.99999994, 0.9700605, 1)
+albedo_color = Color(0.76, 1, 0.972, 0.41568628)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbhwb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipc0q"]
 transparency = 1
-blend_mode = 3
-albedo_color = Color(0.75527596, 0.99999994, 0.9700605, 1)
+albedo_color = Color(0.76, 1, 0.972, 0.41568628)
 
 [sub_resource type="Animation" id="Animation_ut4pm"]
 resource_name = "Back_gacha"
@@ -379,7 +372,7 @@ tracks/7/path = NodePath("Gacha/Mostrador Gacha/Boton_guardar:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.2, 3.5),
+"times": PackedFloat32Array(0, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.71956515, -0.06772251, -0.020087719), Vector3(-0.71956515, 0.21344975, 0.08682454)]
@@ -407,6 +400,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.0028292984, 0, 0), Vector3(0, 0, 0), Vector3(-0.0033359602, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Gacha/Mostrador Gacha/Boton_guardar:input_ray_pickable")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.00999999, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_ond6j"]
@@ -543,6 +548,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Gacha/Mostrador Gacha/Boton_guardar:input_ray_pickable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mwvnm"]
 _data = {
@@ -553,6 +570,11 @@ _data = {
 &"RESET": SubResource("Animation_ond6j")
 }
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3o21i"]
+exposure_multiplier = 2.5
+
+[sub_resource type="Compositor" id="Compositor_g5450"]
+
 [node name="Bazar" type="Node3D"]
 script = ExtResource("1_nuofq")
 decks = ExtResource("2_mwvnm")
@@ -561,18 +583,15 @@ dic_decks = ExtResource("4_ubr08")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250543, 0.5572236, -0.051690515, 0.8287521, -0.046176672, 2.1379442, 1.9303211)
-light_energy = 0.114
+light_color = Color(1, 1, 0.7254902, 1)
+light_energy = 0.1
 light_size = 0.15
 shadow_enabled = true
 shadow_normal_bias = 0.024
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_krwwm")
-camera_attributes = SubResource("CameraAttributesPractical_shc6l")
-compositor = SubResource("Compositor_6rhx6")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9936624, 0, -0.112405516, 0, 1.0000001, 0, 0.1124055, 0, 0.99366254, 0, 1.0454686, 3.9665766)
+environment = SubResource("Environment_ipc0q")
 
 [node name="Suelo" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.7466924, 0, 0, 0, 1, 0, 0, 0, 4.7282925, 0, 0, -1)
@@ -587,6 +606,7 @@ mesh = ExtResource("1_qispd")
 [node name="Fondo" type="MeshInstance3D" parent="Paredes"]
 transform = Transform3D(-5.997443, 0, -8.742278e-08, 0, 1.8, 0, 5.2431307e-07, 0, -0.99999994, -3, 0, 0.032730818)
 mesh = ExtResource("1_qispd")
+surface_material_override/1 = SubResource("StandardMaterial3D_ehlil")
 
 [node name="Techo" type="MeshInstance3D" parent="Paredes"]
 transform = Transform3D(-6.403247, 0, -6.3099964e-07, -4.2632547e-14, -0.0868264, 0, -5.5978944e-07, 0, 7.217794, -0.0195148, 2.2921689, 0.28330708)
@@ -1633,7 +1653,6 @@ mesh = ExtResource("4_lfv8h")
 transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.5583515, 0, 2.1313534e-07, 0, -1.2932827, -2.0349782, 0, 0.30536914)
 mesh = ExtResource("12_fr4ia")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wpstj")
 
 [node name="Libros" type="MeshInstance3D" parent="Atrezo/Estanteria/Estanteria"]
 transform = Transform3D(1.3018657, 0, 7.1054274e-15, 0, 1.3200389, 0, -1.7053026e-13, 0, 1, -0.16723442, 0.61254543, 0.048220545)
@@ -1668,7 +1687,6 @@ mesh = ExtResource("14_ut4pm")
 transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.5583515, 0, 2.1313534e-07, 0, -1.2932827, -1.0720842, 0, 0.30536914)
 mesh = ExtResource("12_fr4ia")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wpstj")
 
 [node name="Libros2" type="MeshInstance3D" parent="Atrezo/Estanteria2/Estanteria"]
 transform = Transform3D(1.7303771, 0, 8.881784e-14, 0, 1.7478998, 0, -3.9790393e-13, 0, 1, 0.045082927, 0.6125455, 0.04822071)
@@ -1709,7 +1727,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9651092, 0, 0)
 transform = Transform3D(-2.437984, 0, -1.1306237e-07, 0, 1.5583515, 0, 2.1313534e-07, 0, -1.2932827, -1.0720842, 0, 0.30536914)
 mesh = ExtResource("12_fr4ia")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_wpstj")
 
 [node name="Bote" type="MeshInstance3D" parent="Atrezo/Estanteria3"]
 transform = Transform3D(-0.47780028, 0, -4.3070436e-08, 0, 0.56702423, 0, 4.177068e-08, 0, -0.49266613, -0.9008717, 0.58384603, 0.15407525)
@@ -1778,7 +1795,7 @@ mesh = ExtResource("20_uhmxb")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8fwu4")
 surface_material_override/2 = SubResource("StandardMaterial3D_1hi3c")
-surface_material_override/5 = SubResource("StandardMaterial3D_xbhwb")
+surface_material_override/5 = SubResource("StandardMaterial3D_ipc0q")
 
 [node name="Caja" type="MeshInstance3D" parent="Atrezo"]
 transform = Transform3D(-2.4051359, 0, -0.03147453, 0, 1.9346104, 0, 0.035515785, 0, -2.1314657, -2.589699, 0, 0.5721113)
@@ -1788,6 +1805,11 @@ mesh = ExtResource("14_ut4pm")
 libraries = {
 &"": SubResource("AnimationLibrary_mwvnm")
 }
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ipc0q")
+camera_attributes = SubResource("CameraAttributesPractical_3o21i")
+compositor = SubResource("Compositor_g5450")
 
 [connection signal="input_event" from="Paredes/Puerta" to="." method="_on_puerta_input_event"]
 [connection signal="mouse_entered" from="Paredes/Puerta" to="." method="_on_puerta_mouse_entered"]
