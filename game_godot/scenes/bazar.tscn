@@ -657,12 +657,12 @@ mesh = ExtResource("4_ukcyk")
 skeleton = NodePath("../..")
 
 [node name="Frente" type="MeshInstance3D" parent="Gacha/Mostrador 1"]
-transform = Transform3D(7.9397196e-08, 1.6425807, -1.7484554e-07, -1.8163961, 7.179948e-08, -3.8213705e-15, 6.9411233e-15, 2.871979e-07, 0.9999999, -1.1210687, 0.21928236, 0.2031286)
+transform = Transform3D(7.9397196e-08, 4.927742, -1.7484554e-07, -1.8163961, 2.1539843e-07, -3.8213705e-15, 6.9411233e-15, 8.615937e-07, 0.9999999, -1.1364135, 0.21928236, 0.2031286)
 mesh = ExtResource("3_6rhx6")
 skeleton = NodePath("../..")
 
 [node name="Lado" type="MeshInstance3D" parent="Gacha/Mostrador 1"]
-transform = Transform3D(-3.958551e-15, -1.896373e-07, -0.99999994, -1.816396, 3.792746e-08, -3.8213705e-15, 7.939719e-08, 0.8676794, -2.1855693e-07, -1.1210687, 0.21928236, -0.20868686)
+transform = Transform3D(-3.958551e-15, -1.896373e-07, -0.99999994, -1.816396, 3.792746e-08, -3.8213705e-15, 7.939719e-08, 0.8676794, -2.1855693e-07, -1.1070489, 0.21928236, -0.20868686)
 mesh = ExtResource("3_6rhx6")
 skeleton = NodePath("../..")
 
@@ -680,6 +680,7 @@ skeleton = NodePath("../..")
 
 [node name="Frente" type="MeshInstance3D" parent="Gacha/Mostrador Gacha"]
 transform = Transform3D(7.9397196e-08, 1.6425807, -1.7484554e-07, -1.8163961, 7.179948e-08, -3.8213705e-15, 6.9411233e-15, 2.871979e-07, 0.9999999, -1.1210687, 0.21928236, 0.2031286)
+visible = false
 mesh = ExtResource("3_6rhx6")
 skeleton = NodePath("../..")
 
@@ -1615,6 +1616,7 @@ skeleton = NodePath("../..")
 
 [node name="Frente" type="MeshInstance3D" parent="Gacha/Mostrador 3"]
 transform = Transform3D(7.9397196e-08, 1.6425807, -1.7484554e-07, -1.8163961, 7.179948e-08, -3.8213705e-15, 6.9411233e-15, 2.871979e-07, 0.9999999, -1.1210687, 0.21928236, 0.2031286)
+visible = false
 mesh = ExtResource("3_6rhx6")
 skeleton = NodePath("../..")
 
