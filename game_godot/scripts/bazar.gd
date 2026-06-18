@@ -6,8 +6,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"Gacha/Mostrador Gacha/Caja".visible = false
-	$"Gacha/Mostrador Gacha/Boton_guardar".visible = false
+	$Gacha/MostradorGacha/Caja.visible = false
+	$Gacha/MostradorGacha/Boton_guardar.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -84,27 +84,27 @@ func get_deck(dic):
 	
 	var img_oro = "res://assets/cards/%s/oros_1.png" % [rk]
 	var card_oro = load(img_oro)
-	var material_oro = $"Gacha/Mostrador Gacha/Caja/Baraja/Oros".get_surface_override_material(0)
+	var material_oro = $Gacha/MostradorGacha/Caja/Baraja/Oros.get_surface_override_material(0)
 	material_oro.albedo_texture = card_oro
-	$"Gacha/Mostrador Gacha/Caja/Baraja/Oros".set_surface_override_material(0, material_oro)
+	$Gacha/MostradorGacha/Caja/Baraja/Oros.set_surface_override_material(0, material_oro)
 	
 	var img_copa = "res://assets/cards/%s/copas_1.png" % [rk]
 	var card_copa = load(img_copa)
-	var material_copa = $"Gacha/Mostrador Gacha/Caja/Baraja/Copas".get_surface_override_material(0)
+	var material_copa = $Gacha/MostradorGacha/Caja/Baraja/Copas.get_surface_override_material(0)
 	material_copa.albedo_texture = card_copa
-	$"Gacha/Mostrador Gacha/Caja/Baraja/Copas".set_surface_override_material(0, material_copa)
+	$Gacha/MostradorGacha/Caja/Baraja/Copas.set_surface_override_material(0, material_copa)
 	
 	var img_esp = "res://assets/cards/%s/espadas_1.png" % [rk]
 	var card_esp = load(img_esp)
-	var material_esp = $"Gacha/Mostrador Gacha/Caja/Baraja/Espadas".get_surface_override_material(0)
+	var material_esp = $Gacha/MostradorGacha/Caja/Baraja/Espadas.get_surface_override_material(0)
 	material_esp.albedo_texture = card_esp
-	$"Gacha/Mostrador Gacha/Caja/Baraja/Espadas".set_surface_override_material(0, material_esp)
+	$Gacha/MostradorGacha/Caja/Baraja/Espadas.set_surface_override_material(0, material_esp)
 	
 	var img_basto = "res://assets/cards/%s/bastos_1.png" % [rk]
 	var card_basto = load(img_basto)
-	var material_basto = $"Gacha/Mostrador Gacha/Caja/Baraja/Bastos".get_surface_override_material(0)
+	var material_basto = $Gacha/MostradorGacha/Caja/Baraja/Bastos.get_surface_override_material(0)
 	material_basto.albedo_texture = card_basto
-	$"Gacha/Mostrador Gacha/Caja/Baraja/Bastos".set_surface_override_material(0, material_basto)
+	$Gacha/MostradorGacha/Caja/Baraja/Bastos.set_surface_override_material(0, material_basto)
 	
 	dic[rk] = 1
 	selector.my_decks.push_back(get_dictionary_of_id(rk))
@@ -124,7 +124,7 @@ func randomizador():
 		if elegible.size() == 0:
 			randomizador()
 			return
-		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(0.35, 0.903, 1.0, 0.18)
 		if get_deck(dic_decks.dic_common):
 			return
@@ -133,7 +133,7 @@ func randomizador():
 		if elegible.size() == 0:
 			randomizador()
 			return
-		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(0.0, 0.752, 0.48, 0.161)
 		if get_deck(dic_decks.dic_uncommon):
 			return
@@ -142,7 +142,7 @@ func randomizador():
 		if elegible.size() == 0:
 			randomizador()
 			return
-		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(1.0, 0.349, 0.354, 0.2)
 		if get_deck(dic_decks.dic_rare):
 			return
@@ -151,7 +151,7 @@ func randomizador():
 		if elegible.size() == 0:
 			randomizador()
 			return
-		var light_effeccts = $"Gacha/Mostrador Gacha/Caja/CPUParticles3D".mesh.get_material()
+		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(2.432, 2.077, 0.499, 0.184)
 		if get_deck(dic_decks.dic_legen):
 			return
@@ -184,12 +184,12 @@ func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position
 			print("tengo todas")
 			return
 		randomizador()
-		$"Gacha/Mostrador Gacha/Caja".visible = true
-		$"Gacha/Mostrador Gacha/Boton_guardar".visible = true
+		$Gacha/MostradorGacha/Caja.visible = true
+		$Gacha/MostradorGacha/Boton_guardar.visible = true
 		$AnimationPlayer.play("Gacha")
-		$"Gacha/Mostrador Gacha/Caja/Baraja".visible = true
+		$Gacha/MostradorGacha/Caja/Baraja.visible = true
 		await get_tree().create_timer(1.5).timeout
-		$"Gacha/Mostrador Gacha/Caja/CPUParticles3D".emitting = true
+		$Gacha/MostradorGacha/Caja/CPUParticles3D.emitting = true
 		
 
 func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -209,13 +209,13 @@ func _on_puerta_mouse_exited() -> void:
 func _on_boton_guardar_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
 		$AnimationPlayer.play("Back_gacha")
-		$"Gacha/Mostrador Gacha/CollisionShape3D".disabled = true
+		$Gacha/MostradorGacha/CollisionShape3D.disabled = true
 		await get_tree().create_timer(1.0).timeout
-		$"Gacha/Mostrador Gacha/Caja/Baraja".visible = false
+		$Gacha/MostradorGacha/Caja/Baraja.visible = false
 		await get_tree().create_timer(2.0).timeout
-		$"Gacha/Mostrador Gacha/Caja".visible = false
-		$"Gacha/Mostrador Gacha/Boton_guardar".visible = false
-		$"Gacha/Mostrador Gacha/CollisionShape3D".disabled = false
+		$Gacha/MostradorGacha/Caja.visible = false
+		$Gacha/MostradorGacha/Boton_guardar.visible = false
+		$Gacha/MostradorGacha/CollisionShape3D.disabled = false
 
 
 func _on_caja_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
