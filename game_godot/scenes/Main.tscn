@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://yfoqvekegyne"]
+[gd_scene load_steps=14 format=3 uid="uid://yfoqvekegyne"]
 
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_wp0k4"]
@@ -8,7 +8,13 @@
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="6_q8u5g"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://scripts/input_manager.gd" id="7_q8u5g"]
 [ext_resource type="Script" uid="uid://d0sngye5jp0yj" path="res://scripts/chinchon_manager.gd" id="10_lhr70"]
+[ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="10_wp0k4"]
+[ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="11_wp0k4"]
 [ext_resource type="Script" uid="uid://dhyn2q00ki1cf" path="res://scripts/gacha_button.gd" id="12_bjd11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjd11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmy6f"]
 
 [node name="Main" type="Node2D"]
 
@@ -130,6 +136,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="JugarModo"]
+visible = false
 layout_mode = 0
 offset_left = 424.0
 offset_top = 193.0
@@ -137,22 +144,39 @@ offset_right = 1490.0
 offset_bottom = 889.0
 color = Color(0.1882353, 0.24705882, 0.1882353, 0.85882354)
 
+[node name="TextureRect" type="TextureRect" parent="JugarModo"]
+layout_mode = 0
+offset_left = 637.00006
+offset_top = 136.0
+offset_right = 1321.0
+offset_bottom = 915.0
+rotation = 0.06981317
+texture = ExtResource("10_wp0k4")
+
 [node name="Solo" type="Button" parent="JugarModo"]
 layout_mode = 0
-offset_left = 783.0
-offset_top = 344.0
-offset_right = 1132.0
-offset_bottom = 483.0
-theme_override_font_sizes/font_size = 72
+offset_left = 804.99994
+offset_top = 293.99997
+offset_right = 1154.0
+offset_bottom = 432.99997
+rotation = 0.061086524
+theme_override_colors/font_color = Color(0.23392594, 0.23392525, 0.2339254, 1)
+theme_override_fonts/font = ExtResource("11_wp0k4")
+theme_override_font_sizes/font_size = 93
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bjd11")
 text = "SOLO"
 
 [node name="Gente" type="Button" parent="JugarModo"]
 layout_mode = 0
-offset_left = 786.0
-offset_top = 590.0
-offset_right = 1135.0
-offset_bottom = 729.0
-theme_override_font_sizes/font_size = 58
+offset_left = 781.0
+offset_top = 538.99994
+offset_right = 1161.0
+offset_bottom = 728.99994
+rotation = 0.05235988
+theme_override_colors/font_color = Color(0.23392594, 0.23392525, 0.2339254, 1)
+theme_override_fonts/font = ExtResource("11_wp0k4")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qmy6f")
 text = "CON GENTE
 (WIP)"
 
