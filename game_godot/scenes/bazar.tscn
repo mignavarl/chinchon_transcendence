@@ -75,7 +75,6 @@ size = Vector3(0.7783203, 1.5421143, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y3id"]
 albedo_texture = ExtResource("9_1hi3c")
-metallic_specular = 0.0
 grow_amount = 0.738
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qx5ko"]
