@@ -1,0 +1,296 @@
+[gd_scene load_steps=24 format=3 uid="uid://dh2wnui7vwvy3"]
+
+[ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_je7ib"]
+[ext_resource type="Script" uid="uid://diq61mhi5ewt8" path="res://scripts/mode_selector/modo_juego.gd" id="2_dfsd6"]
+[ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="3_8r4om"]
+[ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="4_q4cr1"]
+[ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="5_65knd"]
+[ext_resource type="Script" uid="uid://dc18p7cw5xer3" path="res://scripts/mode_selector/menu_solo_dificultad.gd" id="6_8g3us"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtpj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn5gk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmi2i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6blfc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egeuh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fruxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsckq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tn1v6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5086"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bji0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_br441"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j6rt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f8vf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xn58r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_djjhx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwsl0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4slxe"]
+
+[node name="ModeSelector" type="Node2D"]
+
+[node name="rug" type="Sprite2D" parent="."]
+z_index = -42
+position = Vector2(960, 540)
+texture = ExtResource("1_je7ib")
+
+[node name="atrezzo_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 424.0
+offset_top = 193.0
+offset_right = 1490.0
+offset_bottom = 889.0
+
+[node name="pencil" type="TextureRect" parent="atrezzo_menu"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = -133.99998
+offset_right = 850.00024
+offset_bottom = 122.000015
+rotation = 1.282817
+texture = ExtResource("3_8r4om")
+
+[node name="bloc" type="TextureRect" parent="atrezzo_menu"]
+layout_mode = 0
+offset_left = 213.00006
+offset_top = -57.0
+offset_right = 897.0
+offset_bottom = 722.0
+rotation = 0.06981317
+texture = ExtResource("4_q4cr1")
+
+[node name="play_mode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_dfsd6")
+
+[node name="play" type="Button" parent="play_mode"]
+layout_mode = 0
+offset_left = 806.99994
+offset_top = 310.00003
+offset_right = 1156.0
+offset_bottom = 449.00003
+rotation = 0.061086524
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_hover_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 93
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dtpj7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rn5gk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wmi2i")
+text = "SOLO"
+
+[node name="Label" type="Label" parent="play_mode/play"]
+visible = false
+layout_mode = 0
+offset_left = 309.4555
+offset_top = 96.28776
+offset_right = 370.4555
+offset_bottom = 340.28778
+rotation = 1.5707964
+scale = Vector2(0.7, 1.1)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="online" type="Button" parent="play_mode"]
+layout_mode = 0
+offset_left = 772.99994
+offset_top = 552.99994
+offset_right = 1153.0
+offset_bottom = 742.99994
+rotation = 0.05235988
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6blfc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_egeuh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fruxs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qsckq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tn1v6")
+text = "CON GENTE"
+
+[node name="Label" type="Label" parent="play_mode/online"]
+visible = false
+layout_mode = 0
+offset_left = 413.08463
+offset_top = 124.55158
+offset_right = 474.08463
+offset_bottom = 368.55157
+rotation = 1.5707964
+scale = Vector2(0.7, 1.7)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="ia_difficult" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_8g3us")
+
+[node name="Única" type="Button" parent="ia_difficult"]
+layout_mode = 0
+offset_left = 1414.0
+offset_top = 409.0
+offset_right = 1706.0
+offset_bottom = 526.0
+theme_override_font_sizes/font_size = 60
+text = "LA ÚNICA"
+
+[node name="easy" type="Button" parent="ia_difficult"]
+layout_mode = 0
+offset_left = 869.99994
+offset_top = 362.0
+offset_right = 1075.0
+offset_bottom = 457.0
+rotation = 0.061086524
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h5086")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bji0f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_br441")
+text = "FÁCIL"
+
+[node name="Label" type="Label" parent="ia_difficult/easy"]
+visible = false
+layout_mode = 0
+offset_left = 188.41867
+offset_top = 66.621574
+offset_right = 249.41867
+offset_bottom = 310.6216
+rotation = 1.5707964
+scale = Vector2(0.7, 0.8)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="normal" type="Button" parent="ia_difficult"]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 509.0
+offset_right = 1106.0
+offset_bottom = 604.0
+rotation = 0.06981317
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0j6rt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2f8vf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xn58r")
+text = "NORMAL"
+
+[node name="Label" type="Label" parent="ia_difficult/normal"]
+visible = false
+layout_mode = 0
+offset_left = 314.87418
+offset_top = 73.21385
+offset_right = 375.87418
+offset_bottom = 317.21387
+rotation = 1.5707964
+scale = Vector2(0.7, 1.4)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="hard" type="Button" parent="ia_difficult"]
+layout_mode = 0
+offset_left = 819.00006
+offset_top = 688.00006
+offset_right = 1080.0
+offset_bottom = 788.00006
+rotation = 0.07853982
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_hover_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_djjhx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pwsl0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4slxe")
+text = "DIFÍCIL
+"
+
+[node name="Label" type="Label" parent="ia_difficult/hard"]
+visible = false
+layout_mode = 0
+offset_left = 252.93054
+offset_top = 78.39687
+offset_right = 313.93054
+offset_bottom = 322.3969
+rotation = 1.5707964
+scale = Vector2(0.7, 1.1)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="DificultadText" type="Label" parent="ia_difficult"]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 193.0
+offset_right = 1237.0
+offset_bottom = 309.0
+rotation = 0.08726646
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 92
+text = "DIFICULTAD"
+
+[connection signal="button_up" from="play_mode/play" to="play_mode" method="_on_solo_button_up"]
+[connection signal="mouse_entered" from="play_mode/play" to="play_mode" method="_on_solo_mouse_entered"]
+[connection signal="mouse_exited" from="play_mode/play" to="play_mode" method="_on_solo_mouse_exited"]
+[connection signal="button_up" from="ia_difficult/Única" to="ia_difficult" method="_on_única_button_up"]
+[connection signal="button_up" from="ia_difficult/easy" to="ia_difficult" method="_on_easy_button_up"]
+[connection signal="mouse_entered" from="ia_difficult/easy" to="ia_difficult/easy/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/easy" to="ia_difficult/easy/Label" method="hide"]
+[connection signal="button_up" from="ia_difficult/normal" to="ia_difficult" method="_on_normal_button_up"]
+[connection signal="mouse_entered" from="ia_difficult/normal" to="ia_difficult/normal/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/normal" to="ia_difficult/normal/Label" method="hide"]
+[connection signal="button_up" from="ia_difficult/hard" to="ia_difficult" method="_on_dificil_button_up"]
+[connection signal="mouse_entered" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="hide"]

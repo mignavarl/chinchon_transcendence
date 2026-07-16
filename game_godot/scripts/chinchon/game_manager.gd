@@ -20,6 +20,7 @@ var current_round := 0
 
 static var deck_selected := "española"
 
+
 # ── Setup (llamado desde el lobby) ───────────────────────────────────────────
 func setup(cfg: GameConfig) -> void:
 	config = cfg
@@ -44,6 +45,22 @@ func _build_agents() -> void:
 		agents[player.id] = agent
 
 # ── Inicio de partida ────────────────────────────────────────────────────────
+func _ready() -> void:
+	var cfg = GameConfig.new()
+	var human = PlayerData.new()
+	human.id = num_players
+	human.display_name = "Tú"
+	human.type = PlayerData.Type.HUMAN
+	human.hand_idx = num_players
+	human.is_local = true
+	num_players += 1
+	cfg.players.append(human)
+	cfg.players.append(create_bot("Paco"))
+	cfg.players.append(create_bot("Manolo"))
+	cfg.players.append(create_bot("El Anemias"))
+	setup(cfg)
+	start_game()
+
 func start_game() -> void:
 	game_ended = false
 	current_round += 1
@@ -280,11 +297,10 @@ func _on_gente_button_up() -> void:
 	start_game()
 
 
-
-func _on_solo_button_up() -> void:
-	$"../JugarModo".visible = false
-	$"../SoloDificultadIA".visible = true
-
-func _on_única_button_up() -> void:
-	$"../SoloDificultadIA".visible = false
-	start_game()
+#func _on_solo_button_up() -> void:
+	#$"../JugarModo".visible = false
+	#$"../SoloDificultadIA".visible = true
+#
+#func _on_única_button_up() -> void:
+	#$"../SoloDificultadIA".visible = false
+	#start_game()

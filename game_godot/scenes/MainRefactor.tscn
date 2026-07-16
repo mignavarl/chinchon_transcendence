@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cbnjphvfqof6n"]
+[gd_scene load_steps=32 format=3 uid="uid://cbnjphvfqof6n"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_pi1jn"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://scripts/card_manager.gd" id="2_huv64"]
@@ -10,12 +10,10 @@
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://scripts/card_database.gd" id="9_m1vig"]
 [ext_resource type="Script" uid="uid://dhyn2q00ki1cf" path="res://scripts/gacha_button.gd" id="10_7hj1w"]
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="10_e4qjk"]
-[ext_resource type="Script" uid="uid://diq61mhi5ewt8" path="res://scripts/modo_juego.gd" id="10_pddc6"]
 [ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="11_cughx"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="11_pddc6"]
 [ext_resource type="Script" uid="uid://4vlf2qnevda5" path="res://scripts/chinchon/turn_controller.gd" id="11_ykixw"]
 [ext_resource type="Script" uid="uid://j4ub65m4pykc" path="res://scripts/chinchon/round_controller.gd" id="12_ykixw"]
-[ext_resource type="Script" uid="uid://dc18p7cw5xer3" path="res://scripts/menu_solo_dificultad.gd" id="14_wlwxd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cughx"]
 
@@ -159,11 +157,11 @@ text = "Volver"
 script = ExtResource("10_7hj1w")
 
 [node name="JugarModo" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("10_pddc6")
 
 [node name="FondoMenu" type="Control" parent="JugarModo"]
 anchors_preset = 0
@@ -262,7 +260,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("14_wlwxd")
 
 [node name="FondoMenu" type="Control" parent="SoloDificultadIA"]
 anchors_preset = 0

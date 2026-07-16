@@ -65,19 +65,11 @@ func get_keys_unowned(dict):
 	var keys = []
 	for d in dict.keys():
 		if !dict[d]:
-			print("Elegible: ", d)
 			keys.push_back(d)
 	return keys
 
 func get_deck(dic):
 	var elegible_keys = get_keys_unowned(dic)
-	if elegible_keys.size() <= 0:
-		print("Tengo todas")
-		#$Label.text = "Todas las %s conseguidas" % rarity
-		#$Label.set("theme_override_colors/font_color", Color(0.594, 0.004, 1.309, 1.0))
-		#$Label.visible = true
-		#$"../Deck_win".visible = false
-		return false
 	var r = randi() % elegible_keys.size()
 	var rk = elegible_keys[r]
 	print("rk = ", rk)
@@ -108,7 +100,6 @@ func get_deck(dic):
 	
 	dic[rk] = 1
 	selector.my_decks.push_back(get_dictionary_of_id(rk))
-	print("Añado el deck: ", dic[rk])
 	return true
 
 func get_dictionary_of_id(id):
@@ -126,39 +117,31 @@ func randomizador():
 			return
 		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(0.35, 0.903, 1.0, 0.18)
-		if get_deck(dic_decks.dic_common):
-			return
-	if rarity <= 75:
+		get_deck(dic_decks.dic_common)
+	elif rarity <= 75:
 		elegible = get_keys_unowned(dic_decks.dic_uncommon)
 		if elegible.size() == 0:
 			randomizador()
 			return
 		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(0.0, 0.752, 0.48, 0.161)
-		if get_deck(dic_decks.dic_uncommon):
-			return
-	if rarity <= 93:
+		get_deck(dic_decks.dic_uncommon)
+	elif rarity <= 93:
 		elegible = get_keys_unowned(dic_decks.dic_rare)
 		if elegible.size() == 0:
 			randomizador()
 			return
 		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(1.0, 0.349, 0.354, 0.2)
-		if get_deck(dic_decks.dic_rare):
-			return
-	if rarity <= 100:
+		get_deck(dic_decks.dic_rare)
+	elif rarity <= 100:
 		elegible = get_keys_unowned(dic_decks.dic_legen)
 		if elegible.size() == 0:
 			randomizador()
 			return
 		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
 		light_effeccts.albedo_color = Color(2.432, 2.077, 0.499, 0.184)
-		if get_deck(dic_decks.dic_legen):
-			return
-	#$Label.text = "Todas conseguidas"
-	#$Label.set("theme_override_colors/font_color", Color(0.0, 0.0, 0.0, 1.0))
-	#$Label.visible = true
-	#$"../Deck_win".visible = false
+		get_deck(dic_decks.dic_legen)
 
 
 func have_all():
@@ -179,7 +162,6 @@ func have_all():
 
 func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
-		print("cliko")
 		if !have_all():
 			print("tengo todas")
 			return
@@ -188,8 +170,6 @@ func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position
 		$Gacha/MostradorGacha/Boton_guardar.visible = true
 		$AnimationPlayer.play("Gacha")
 		$Gacha/MostradorGacha/Caja/Baraja.visible = true
-		await get_tree().create_timer(1.5).timeout
-		$Gacha/MostradorGacha/Caja/CPUParticles3D.emitting = true
 		
 
 func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -209,14 +189,3 @@ func _on_puerta_mouse_exited() -> void:
 func _on_boton_guardar_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
 		$AnimationPlayer.play("Back_gacha")
-		$Gacha/MostradorGacha/CollisionShape3D.disabled = true
-		await get_tree().create_timer(1.0).timeout
-		$Gacha/MostradorGacha/Caja/Baraja.visible = false
-		await get_tree().create_timer(2.0).timeout
-		$Gacha/MostradorGacha/Caja.visible = false
-		$Gacha/MostradorGacha/Boton_guardar.visible = false
-		$Gacha/MostradorGacha/CollisionShape3D.disabled = false
-
-
-func _on_caja_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	pass # Replace with function body.
