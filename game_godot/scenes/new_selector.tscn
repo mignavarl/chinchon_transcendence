@@ -29,6 +29,11 @@ script = ExtResource("1_bdcqn")
 dic_decks = ExtResource("2_bjpxk")
 chinchon_man = ExtResource("3_bdcqn")
 
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="FondoMenu" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8

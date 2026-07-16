@@ -13,21 +13,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_gente_mouse_entered() -> void:
-	$online/Label.visible = true
 
-
-func _on_gente_mouse_exited() -> void:
-	$online/Label.visible = false
-
-
-func _on_solo_mouse_entered() -> void:
-	$play/Label.visible = true
-
-
-func _on_solo_mouse_exited() -> void:
-	$play/Label.visible = false
-
-func _on_solo_button_up() -> void:
-	$".".visible = false
-	$"../ia_difficult".visible = true
+func _on_online_button_up() -> void:
+	get_tree().change_scene_to_file("res://scenes/online_menu.tscn")

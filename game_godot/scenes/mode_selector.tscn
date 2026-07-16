@@ -281,9 +281,13 @@ theme_override_fonts/font = ExtResource("5_65knd")
 theme_override_font_sizes/font_size = 92
 text = "DIFICULTAD"
 
-[connection signal="button_up" from="play_mode/play" to="play_mode" method="_on_solo_button_up"]
-[connection signal="mouse_entered" from="play_mode/play" to="play_mode" method="_on_solo_mouse_entered"]
-[connection signal="mouse_exited" from="play_mode/play" to="play_mode" method="_on_solo_mouse_exited"]
+[connection signal="button_up" from="play_mode/play" to="play_mode" method="hide"]
+[connection signal="button_up" from="play_mode/play" to="ia_difficult" method="show"]
+[connection signal="mouse_entered" from="play_mode/play" to="play_mode/play/Label" method="show"]
+[connection signal="mouse_exited" from="play_mode/play" to="play_mode/play/Label" method="hide"]
+[connection signal="button_up" from="play_mode/online" to="play_mode" method="_on_online_button_up"]
+[connection signal="mouse_entered" from="play_mode/online" to="play_mode/online/Label" method="show"]
+[connection signal="mouse_exited" from="play_mode/online" to="play_mode/online/Label" method="hide"]
 [connection signal="button_up" from="ia_difficult/Única" to="ia_difficult" method="_on_única_button_up"]
 [connection signal="button_up" from="ia_difficult/easy" to="ia_difficult" method="_on_easy_button_up"]
 [connection signal="mouse_entered" from="ia_difficult/easy" to="ia_difficult/easy/Label" method="show"]
