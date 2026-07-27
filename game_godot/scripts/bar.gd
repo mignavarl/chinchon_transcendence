@@ -58,6 +58,5 @@ func _on_tutorial_input_event(camera: Node, event: InputEvent, event_position: V
 	if event.is_action_pressed("mouse_click"):
 		SceneLoader.change_scene( "res://scenes/tutorial.tscn", self.name)
 
-
 func _on_tutorial_mouse_entered() -> void:
 	$Tutorial/Anim_tuto.play("tutorial")
