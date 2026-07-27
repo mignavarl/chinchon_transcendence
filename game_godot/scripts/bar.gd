@@ -52,3 +52,12 @@ func _on_cambio_barajas_mouse_entered() -> void:
 
 func _on_cambio_barajas_mouse_exited() -> void:
 	$Deck_AnimationPlayer.play_backwards("hover_deck")
+
+
+func _on_tutorial_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("mouse_click"):
+		SceneLoader.change_scene( "res://scenes/tutorial.tscn", self.name)
+
+
+func _on_tutorial_mouse_entered() -> void:
+	$Tutorial/Anim_tuto.play("tutorial")
