@@ -1,0 +1,688 @@
+[gd_scene load_steps=48 format=3 uid="uid://cgohku6dvbnpc"]
+
+[ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://src/managers/main_menu_manager.gd" id="1_vry62"]
+[ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_le3na"]
+[ext_resource type="ArrayMesh" uid="uid://c4tua77hrajlc" path="res://assets/Models/Buildings/building-door-window-narrow.obj" id="3_vko1u"]
+[ext_resource type="ArrayMesh" uid="uid://mjsd186one8s" path="res://assets/Models/Buildings/door-brown-window.obj" id="4_ag4oh"]
+[ext_resource type="ArrayMesh" uid="uid://wscbip0oq22m" path="res://assets/Models/Buildings/window-brown-detailed.obj" id="5_qul63"]
+[ext_resource type="ArrayMesh" uid="uid://b4haopph61bjx" path="res://assets/Models/Buildings/building-window-awnings.obj" id="6_s8t8s"]
+[ext_resource type="ArrayMesh" uid="uid://cgmg6ufqnugby" path="res://assets/Models/Buildings/roof-flat-awning-b.obj" id="7_k0wae"]
+[ext_resource type="ArrayMesh" uid="uid://4x8wuiur5spd" path="res://assets/Models/Buildings/building-corner-window.obj" id="8_kowa0"]
+[ext_resource type="ArrayMesh" uid="uid://bkqq6ud3y3geb" path="res://assets/Models/Buildings/building-corner-window-sill.obj" id="9_fuwgv"]
+[ext_resource type="ArrayMesh" uid="uid://cy7nmslcp6y0p" path="res://assets/Models/Buildings/roof-slanted.obj" id="10_x7s35"]
+[ext_resource type="ArrayMesh" uid="uid://imt0ogavv1sx" path="res://assets/Models/Buildings/building-window-door-window.obj" id="11_cmwgl"]
+[ext_resource type="ArrayMesh" uid="uid://0prnslfc5goy" path="res://assets/Models/Buildings/roof-flat-awning-c.obj" id="12_sofhu"]
+[ext_resource type="ArrayMesh" uid="uid://lmy8282bfay5" path="res://assets/Models/Buildings/building-window-wide.obj" id="13_cumol"]
+[ext_resource type="ArrayMesh" uid="uid://cvsi1esfgvtdi" path="res://assets/Models/Buildings/roof-flat-detail-b.obj" id="14_m3wot"]
+[ext_resource type="ArrayMesh" uid="uid://cej1yv5aotny6" path="res://assets/Models/Buildings/building-sample-tower-b.obj" id="15_k51ye"]
+[ext_resource type="ArrayMesh" uid="uid://dkum4bsibhoa5" path="res://assets/Models/Buildings/building-sample-house-b.obj" id="16_2iecb"]
+[ext_resource type="Texture2D" uid="uid://c4woh04y7eqfr" path="res://assets/BAR CHINCHÍN.png" id="17_f43ey"]
+[ext_resource type="ArrayMesh" uid="uid://ue4obfnn7wf8" path="res://assets/Models/Buildings/building-sample-tower-c.obj" id="18_0j3ad"]
+[ext_resource type="ArrayMesh" uid="uid://n37jad64crga" path="res://assets/Models/Buildings/building-sample-house-a.obj" id="19_fhqxm"]
+[ext_resource type="ArrayMesh" uid="uid://dm3pi6j27jpw0" path="res://assets/Models/Buildings/building-sample-tower-a.obj" id="20_c3fvj"]
+[ext_resource type="ArrayMesh" uid="uid://0ep0hqju15la" path="res://assets/Models/Car Kit/suv.obj" id="21_x3w1u"]
+[ext_resource type="ArrayMesh" uid="uid://uyahlvyuiidc" path="res://assets/Models/Car Kit/taxi.obj" id="22_3tstu"]
+[ext_resource type="ArrayMesh" uid="uid://v0evow4iodij" path="res://assets/Models/Graveyard Kit/bench.obj" id="23_ni3a0"]
+[ext_resource type="ArrayMesh" uid="uid://cxkastc8xkfdm" path="res://assets/Models/Citi Kit - Roads/road-side.obj" id="24_6fs5b"]
+[ext_resource type="ArrayMesh" uid="uid://bb72b3h5lajgk" path="res://assets/Models/Citi Kit - Roads/road-roundabout.obj" id="25_q34tf"]
+[ext_resource type="ArrayMesh" uid="uid://de84lwhal4nlf" path="res://assets/Models/Citi Kit - Roads/road-crossing.obj" id="26_x8cbd"]
+[ext_resource type="ArrayMesh" uid="uid://daglbh5ylasn6" path="res://assets/Models/Citi Kit - Roads/road-bend.obj" id="27_oeqab"]
+[ext_resource type="ArrayMesh" uid="uid://bjwbtnlt6gkya" path="res://assets/Models/City Kit - Suburban/tree-small.obj" id="28_cdweg"]
+[ext_resource type="ArrayMesh" uid="uid://coqca6rbekksh" path="res://assets/Models/Graveyard Kit/lightpost-double.obj" id="29_7mrvs"]
+[ext_resource type="ArrayMesh" uid="uid://br5arb0aovya6" path="res://assets/Models/City Kit - Suburban/planter.obj" id="30_k4vgl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lgwnu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
+size = Vector3(1.4967041, 1.1081772, 1.123169)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8egab"]
+
+[sub_resource type="Sky" id="Sky_engjn"]
+sky_material = SubResource("ProceduralSkyMaterial_8egab")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_svtp6"]
+background_mode = 2
+background_energy_multiplier = 0.53
+sky = SubResource("Sky_engjn")
+glow_enabled = true
+glow_bloom = 0.1
+fog_enabled = true
+fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
+fog_light_energy = 2.53
+volumetric_fog_enabled = true
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1dfpl"]
+exposure_multiplier = 2.5
+
+[sub_resource type="Compositor" id="Compositor_qywvv"]
+
+[sub_resource type="Animation" id="Animation_6vcge"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4.154039, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.1781478, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-10.201989, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.1031528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_dj67d"]
+resource_name = "tokyo_drift"
+length = 33.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 0),
+"points": PackedFloat32Array(-4.154039, -0.25, 0, 0.25, 0, -0.35403895, -0.64228237, -0.78854823, 0.42666674, 0.5238308, 0.24719322, -0.4422222, 0, 0.8111112, 0, -0.8146423, -0.75865424, 1.0132413, 1.2333331, -1.6472117, -9.711781, -1.1333332, 0.5160084, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 10)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(-1.1781478, -0.25, 0, 0.25, 0, -1.1781478, -0.34, 0, 0, 0, -1.1781478, -0.33833337, 0, 0, 0, -1.1781478, -0.28833336, 0, 0, 0, -1.1781478, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(-10.201989, -0.25, 0, 0.25, 0, -7.601989, -0.34, -0.43333343, 0, 0, -5.96373, -0.33833337, -0.27304316, 0, 0, -2.2732058, -0.28833336, -0.6150874, 0, 0, -2.0704496, -0.6933333, -0.033792693, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.34, 0, 0, 0, 0, -0.33833337, 0, 0, 0, 0, -0.28833336, 0, 0, 0, 0, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2),
+"points": PackedFloat32Array(1.1031528, -0.25, 0, 0.25, 0, -0.31080833, -0.7066666, 0.42899925, 0.4358277, -0.26457986, -1.1976321, -0.46666646, 0.2713877, 0.80032915, -0.4654277, -1.7394415, -0.8111112, 0, 1.3866667, 0, -1.6767029, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3333333, 5.8, 9.96)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.34, 0, 0, 0, 0, -0.33833337, 0, 0, 0, 0, -0.28833336, 0, 0, 0, 0, -0.6933333, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.04, 3.3666666, 5.8, 9.96)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vcge"]
+_data = {
+&"RESET": SubResource("Animation_6vcge"),
+&"tokyo_drift": SubResource("Animation_dj67d")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl5e0"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.26, 0.26, 0.26, 0.29411766)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hl5e0"]
+material = SubResource("StandardMaterial3D_hl5e0")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_engjn"]
+_data = [Vector2(0, 0.23701298), 0.0, 0.05329155, 0, 0, Vector2(0.5777311, 1), 1.545453, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_engjn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6h3lr"]
+resource_name = "gacha_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445), Vector3(-0.9962455, -0.8555482, 0.36383533)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.9285326, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hl5e0"]
+resource_name = "play_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.48952544, 2.211445), Vector3(0.75, -0.827, 0.618)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.83545417, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6h3lr"]
+_data = {
+&"RESET": SubResource("Animation_engjn"),
+&"gacha_animation": SubResource("Animation_6h3lr"),
+&"play_animation": SubResource("Animation_hl5e0")
+}
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_vry62")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48952544, 2.211445)
+
+[node name="suelo" type="StaticBody3D" parent="."]
+transform = Transform3D(555.46106, 0, 0, 0, 1, 0, 0, 0, -185.8622, 0, -1.1443539, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="suelo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.5160589, 0)
+material_override = ExtResource("2_le3na")
+mesh = SubResource("BoxMesh_lgwnu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99441546, -0.082854584, 0.06536656, -0.10157837, -0.9194457, 0.37987024, 0.028627025, -0.38438872, -0.92272747, 0, 1.4108123, 1.7303145)
+visible = false
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="Play" type="Area3D" parent="."]
+transform = Transform3D(0.5910705, 0, -0.80662006, 0, 1, 0, 0.80662006, 0, 0.5910705, 0.32616532, 0, -0.5635086)
+
+[node name="PlantaBaja" type="MeshInstance3D" parent="Play"]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 1.1833302, -1.1610482, -0.1702007)
+cast_shadow = 2
+mesh = ExtResource("3_vko1u")
+
+[node name="Puerta" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 0, 1.0453998, 0, 0, 0, 0.99999994, -0.00061102025, -0.013174146, 0.44099152)
+cast_shadow = 2
+mesh = ExtResource("4_ag4oh")
+
+[node name="Ventana" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(0.56082594, 0, 2.9802322e-08, 0, 1.1095576, 0, 0, 0, 0.99999994, 0.3143782, 0.07259476, 0.4480535)
+cast_shadow = 2
+mesh = ExtResource("5_qul63")
+
+[node name="PlantaAlta" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 0, 1.0453998, 0, 0, 0, 0.99999994, 0.000733668, 0.6044795, 0.066776425)
+cast_shadow = 2
+mesh = ExtResource("6_s8t8s")
+
+[node name="Toldo" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(1.0000002, 0, 0, 0, 0.7904034, 0, 2.9802322e-08, 0, 1.0000001, -0.0006110072, 0.502906, 0.00011253357)
+cast_shadow = 2
+mesh = ExtResource("7_k0wae")
+
+[node name="EsquinaBaja" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(0.49018896, 0, -0.8716162, 0, 1.0453999, 0, 0.8716165, 0, 0.490189, -0.7562555, -0.0017482117, 0.06252073)
+cast_shadow = 2
+mesh = ExtResource("8_kowa0")
+
+[node name="EsquinaAlta" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(0.49018896, 0, -0.8716162, 0, 1.0453999, 0, 0.8716165, 0, 0.490189, -0.7562555, 0.60884, 0.06252073)
+cast_shadow = 2
+mesh = ExtResource("9_fuwgv")
+
+[node name="Tejado" type="MeshInstance3D" parent="Play/PlantaBaja"]
+transform = Transform3D(0.9468456, 0, -0.0009931627, 0, 0.66418284, 0, 0.0010411665, 0, 0.9033266, 0.026190992, 1.259135, 0.015133232)
+cast_shadow = 2
+mesh = ExtResource("10_x7s35")
+
+[node name="EsquinaTejado" type="MeshInstance3D" parent="Play/PlantaBaja/Tejado"]
+transform = Transform3D(0.89683586, 0, -0.289693, 0, 0.8221738, 0, 0.30364951, 0, 0.8556155, -0.66563606, -0.018877156, 0.0016724728)
+cast_shadow = 2
+mesh = ExtResource("10_x7s35")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Play"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622925, -0.7485504, 2.3841858e-07)
+shape = SubResource("BoxShape3D_l6cm7")
+
+[node name="Gacha" type="Area3D" parent="."]
+transform = Transform3D(0.6229516, 0, 0.7822604, 0, 1, 0, -0.7822604, 0, 0.6229516, -2.065387, 0, 2.097864)
+
+[node name="PlantaBaja" type="MeshInstance3D" parent="Gacha"]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9999999, 0, -2.9802322e-08, 0, 0.9999999, 1.9847944, -1.1712385, -0.737673)
+mesh = ExtResource("11_cmwgl")
+
+[node name="Toldo" type="MeshInstance3D" parent="Gacha/PlantaBaja"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.40928313, 0.0038766786)
+mesh = ExtResource("12_sofhu")
+
+[node name="PlantaAlta" type="MeshInstance3D" parent="Gacha/PlantaBaja"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.53973085, 0.0038766786)
+mesh = ExtResource("13_cumol")
+
+[node name="Tejado" type="MeshInstance3D" parent="Gacha/PlantaBaja"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 1.1543849, 0.0038766786)
+mesh = ExtResource("14_m3wot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha"]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594879, -0.9661981, -0.75635815)
+shape = SubResource("BoxShape3D_l6cm7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_svtp6")
+camera_attributes = SubResource("CameraAttributesPractical_1dfpl")
+compositor = SubResource("Compositor_qywvv")
+
+[node name="Fondo" type="Area3D" parent="."]
+
+[node name="EdificioIzquierda" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -2.0268457, -1.187282, 0.7812357)
+mesh = ExtResource("15_k51ye")
+
+[node name="EdificioDerecha" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.6168573, 0, -0.787075, 0, 1, 0, 0.787075, 0, 0.6168573, 2.0708642, -1.2366409, 0.8207768)
+mesh = ExtResource("16_2iecb")
+skeleton = NodePath("../EdificioIzquierda")
+
+[node name="Sprite3D" type="Sprite3D" parent="Fondo/EdificioDerecha"]
+transform = Transform3D(0.091538124, 0, -0.05190022, 0, 0.091661654, 0, 0.00475726, 0, 0.9986523, -1.0119147, 0.86521465, 1.0818789)
+pixel_size = 0.002
+texture = ExtResource("17_f43ey")
+
+[node name="CasasFondo" type="Node3D" parent="Fondo"]
+
+[node name="CasaAlta1" type="MeshInstance3D" parent="Fondo/CasasFondo"]
+transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.9582524, -1.1733826, -27.604227)
+mesh = ExtResource("18_0j3ad")
+skeleton = NodePath("../../EdificioIzquierda")
+
+[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0002012, 0, 0.0069732666)
+mesh = ExtResource("18_0j3ad")
+skeleton = NodePath("../../../EdificioIzquierda")
+
+[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9808092, -0.004765272, 0.013847351)
+mesh = ExtResource("18_0j3ad")
+skeleton = NodePath("../../../EdificioIzquierda")
+
+[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9661465, -0.004757762, 0.013370514)
+mesh = ExtResource("18_0j3ad")
+skeleton = NodePath("../../../EdificioIzquierda")
+
+[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+transform = Transform3D(0.99999547, 0, 0.0030718148, 0, 1.5140674, 0, -0.0030718148, 0, 0.99999547, 3.9999914, -0.19740546, -0.49578857)
+mesh = ExtResource("19_fhqxm")
+skeleton = NodePath("../../../EdificioIzquierda")
+
+[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1/CasaPequeña"]
+transform = Transform3D(0.99999976, 0, 0.00036641955, 0, 0.6296011, 0, -0.00036641955, 0, 0.99999976, -0.006711006, 0.51639843, 0.47765732)
+mesh = ExtResource("12_sofhu")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="CasaAltaCerca" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.6201351, 0, 0.7844951, 0, 1, 0, -0.7844951, 0, 0.6201351, -1.8698145, -1.1771796, -4.8639374)
+mesh = ExtResource("20_c3fvj")
+skeleton = NodePath("../EdificioIzquierda")
+
+[node name="CocheVerde" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.17030674, 0, 0.28793862, 0, 0.45876992, 0, -0.33723775, 0, 0.14541043, -4.154039, -1.1781478, -10.201989)
+mesh = ExtResource("21_x3w1u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fondo/CocheVerde"]
+libraries = {
+&"": SubResource("AnimationLibrary_6vcge")
+}
+autoplay = "tokyo_drift"
+speed_scale = 6.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(-2.6468952, 0, 0, 0, 2.1797419, 0, -1.1920929e-07, 0, -3.100081, -0.44183365, 0.5988333, 1.1133264)
+light_color = Color(1, 1, 0.41960785, 1)
+light_energy = 2.004
+spot_range = 1.3450084
+spot_angle = 41.29603
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(-2.6468952, 0, 0, 0, 2.1797419, 0, -1.1920929e-07, 0, -3.100081, 0.4164832, 0.5988333, 1.1133264)
+light_color = Color(1, 1, 0.41960785, 1)
+light_energy = 2.004
+spot_range = 1.3450084
+spot_angle = 41.29603
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(2.6468952, 0, 0, 0, 0.97559094, 2.772241, 0, -1.9492298, 1.3875087, -0.44183373, 0.5988333, -1.440714)
+light_color = Color(1, 0.19, 0.19, 1)
+light_energy = 0.5
+spot_range = 0.36522546
+spot_angle = 64.28212
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(2.6468952, 0, 0, 0, 0.97559094, 2.772241, 0, -1.9492298, 1.3875087, 0.51290864, 0.5988333, -1.440714)
+light_color = Color(1, 0.19, 0.19, 1)
+light_energy = 0.5
+spot_range = 0.36522546
+spot_angle = 64.28212
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74008507, 0.2620526, -1.1882238)
+amount = 20
+lifetime = 0.3
+mesh = SubResource("SphereMesh_hl5e0")
+gravity = Vector3(0, 0.5, 0)
+scale_amount_curve = SubResource("Curve_engjn")
+color = Color(0.8720317, 0.52383447, 0.4392867, 1)
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="Fondo/CocheVerde"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38658422, 0.2620526, -1.1882238)
+amount = 20
+lifetime = 0.3
+mesh = SubResource("SphereMesh_hl5e0")
+gravity = Vector3(0, 0.5, 0)
+scale_amount_curve = SubResource("Curve_engjn")
+color = Color(0.8720317, 0.52383447, 0.4392867, 1)
+
+[node name="Taxi" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.25317538, 0, -0.23942763, 0, 0.45876992, 0, 0.280421, 0, 0.21616493, 0.35810152, -1.1781478, -1.2428334)
+mesh = ExtResource("22_3tstu")
+
+[node name="Banco" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.20779052, 0, -0.26940098, 0, 0.45876998, 0, 0.31552622, 0, 0.17741467, 0.3760915, -1.1781478, 0.21538448)
+mesh = ExtResource("23_ni3a0")
+
+[node name="Carretera" type="Node3D" parent="Fondo"]
+
+[node name="Carretera3" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(11.812604, 0, -3.036133, 0, 0.9078491, 0, 6.8552413, 0, 5.23171, -3.0208776, -1.1373445, -20.224676)
+mesh = ExtResource("24_6fs5b")
+
+[node name="Rotonda" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(1.5302473, 0, -1.4969496, 0, 1, 0, 0.63091, 0, 3.6307929, 1.3288997, -1.1640736, -8.166222)
+mesh = ExtResource("25_q34tf")
+
+[node name="Carretera4" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(13.349752, 0, -1.1592634, 0, 1, 0, 6.935824, 0, 2.2312963, -7.6842365, -1.1655601, -12.409323)
+mesh = ExtResource("24_6fs5b")
+
+[node name="PasoCebra" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(-0.5280619, 0, -1.518163, 0, 1, 0, 1.3126682, 0, -0.6107285, -0.9145181, -1.1638302, -2.7156916)
+mesh = ExtResource("26_x8cbd")
+
+[node name="PasoCebra2" type="MeshInstance3D" parent="Fondo/Carretera"]
+transform = Transform3D(-0.91196644, 0, -1.518163, 0, 1, 0, 2.2669868, 0, -0.6107285, -1.620815, -1.162175, -0.92883617)
+mesh = ExtResource("27_oeqab")
+
+[node name="Arbol" type="Node3D" parent="Fondo"]
+
+[node name="Arbol1" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6614208, -1.1781478, -0.21992898)
+mesh = ExtResource("28_cdweg")
+skeleton = NodePath("../..")
+
+[node name="Arbol" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088645756, -1.1781478, -0.50184727)
+mesh = ExtResource("28_cdweg")
+skeleton = NodePath("../Arbol1")
+
+[node name="Arbol2" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(1.1490768, 0, 0, 0, 1.2578107, 0, 0, 0, 1, -1.0721569, -1.1781478, -4.9587364)
+mesh = ExtResource("28_cdweg")
+skeleton = NodePath("../Arbol1")
+
+[node name="Arbol3" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, 0.5455383, -1.1781478, -24.54182)
+mesh = ExtResource("28_cdweg")
+skeleton = NodePath("../Arbol1")
+
+[node name="Arbol4" type="MeshInstance3D" parent="Fondo/Arbol"]
+transform = Transform3D(2.6272433, 0, 0, 0, 1.6023804, 0, 0, 0, 3.8419933, -2.6684074, -1.1781478, -26.425566)
+mesh = ExtResource("28_cdweg")
+skeleton = NodePath("../Arbol1")
+
+[node name="Farolas" type="Node3D" parent="Fondo"]
+
+[node name="Farola" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.29919913, 0, -0.19695857, 0, 0.45876998, 0, 0.2306806, 0, -0.2554607, 0.14624181, -1.1781478, -0.057217598)
+mesh = ExtResource("29_7mrvs")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08272234, 1.0668843, -0.34453535)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07188306, 1.0668843, 0.18220711)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola2" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.20213518, 0, 0.27251953, 0, 0.45876992, 0, -0.3191787, 0, -0.17258607, -1.5744046, -1.1781478, -4.0136137)
+mesh = ExtResource("29_7mrvs")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06598102, 1.0552694, -0.25461513)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06598102, 1.0563908, 0.26131645)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola3" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.29668543, 0, 0.19971141, 0, 0.4587698, 0, -0.23390484, 0, -0.2533145, -1.2780796, -1.1781471, 1.0025839)
+mesh = ExtResource("29_7mrvs")
+skeleton = NodePath("../..")
+
+[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farolas/Farola3"]
+transform = Transform3D(-0.21341543, 0, -2.5370352, 0, 2.1797426, 0, 2.7647235, 0, -0.26864126, 0.0013003424, -1.66893e-06, -0.0025140373)
+mesh = ExtResource("30_k4vgl")
+skeleton = NodePath("../../../Arbol/Arbol1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06598102, 1.0668843, -0.3061524)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06214913, 1.0668843, 0.19885276)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola4" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(-0.3249709, 0, -0.16451749, 0, 0.45876992, 0, 0.19268516, 0, -0.27746505, 0.8694674, -1.1781472, 1.156769)
+mesh = ExtResource("29_7mrvs")
+skeleton = NodePath("../..")
+
+[node name="Parterre" type="MeshInstance3D" parent="Fondo/Farolas/Farola4"]
+transform = Transform3D(-0.43562615, 0, 2.9957976, 0, 2.1797423, 0, -2.548801, 0, -0.42469043, -0.1413637, -1.4305115e-06, 0.07134218)
+mesh = ExtResource("30_k4vgl")
+skeleton = NodePath("../../../Arbol/Arbol1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07163814, 1.0540326, -0.2576231)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.068373345, 1.061651, 0.25684285)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Farola5" type="MeshInstance3D" parent="Fondo/Farolas"]
+transform = Transform3D(0.049502492, 0, -0.31979126, 0, 0.45876998, 0, 0.37454394, 0, 0.04226598, -0.4376306, -1.1781479, -25.219946)
+mesh = ExtResource("29_7mrvs")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fondo/Farolas/Farola5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08272234, 1.0668843, -0.34453535)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Fondo/Farolas/Farola5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07188306, 1.0668843, 0.18220711)
+light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
+light_energy = 0.1
+
+[node name="Acera" type="Node3D" parent="Fondo"]
+
+[node name="Acera1" type="MeshInstance3D" parent="Fondo/Acera"]
+transform = Transform3D(5.9892758e-05, 3.884521, 0.39191777, 0.018488009, -0.019554745, -1.1605581e-05, -4.437173e-05, -2.9044082, 0.52417344, 0.60421455, -1.1471972, 0.67619854)
+mesh = ExtResource("14_m3wot")
+
+[node name="Acera2" type="MeshInstance3D" parent="Fondo/Acera"]
+transform = Transform3D(4.0400358e-10, -53.050777, 16.715637, 0.019126302, 4.7987337e-06, -2.6369864e-14, 7.3194223e-10, -96.11324, -9.226384, 5.442564, -1.163489, 3.2638962)
+mesh = ExtResource("14_m3wot")
+
+[node name="CocheVerde2" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(0.17030673, 0, 0.28793862, 0, 0.45876992, 0, -0.33723772, 0, 0.14541043, -1.0856805, -1.1781478, -5.4062576)
+mesh = ExtResource("21_x3w1u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6h3lr")
+}
+
+[connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]
+[connection signal="input_event" from="Gacha" to="." method="_on_gacha_input_event"]
+[connection signal="mouse_entered" from="Gacha" to="." method="_on_gacha_mouse_entered"]
+[connection signal="mouse_exited" from="Gacha" to="." method="_on_gacha_mouse_exited"]

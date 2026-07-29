@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneLoader="*res://scenes/scene_loader.tscn"
+SceneLoader="*res://src/scene_loader/scene_loader.tscn"
 
 [display]
 

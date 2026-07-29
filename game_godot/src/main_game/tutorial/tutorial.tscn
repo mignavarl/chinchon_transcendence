@@ -1,0 +1,158 @@
+[gd_scene load_steps=9 format=3 uid="uid://2gvxywmi8ae7"]
+
+[ext_resource type="Script" uid="uid://d2ri335crhsui" path="res://src/main_game/tutorial/tutorial.gd" id="1_4kmhl"]
+[ext_resource type="Texture2D" uid="uid://cj7cr8soh3b20" path="res://assets/Tutorial_chinchon/1.png" id="1_ph3nu"]
+[ext_resource type="Texture2D" uid="uid://bb0qeroaltw5a" path="res://assets/Tutorial_chinchon/2.png" id="2_4kmhl"]
+[ext_resource type="Texture2D" uid="uid://c71qy40gfxkgk" path="res://assets/Tutorial_chinchon/3.png" id="3_cq4me"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3nu"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kmhl"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cq4me"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yjpi"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_4kmhl")
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_ph3nu")
+
+[node name="Next" type="Button" parent="1"]
+offset_left = 651.0
+offset_top = -431.0
+offset_right = 934.0
+offset_bottom = -334.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
+text = "Siguiente"
+
+[node name="Exit" type="Button" parent="1"]
+offset_left = -933.0
+offset_top = -433.0
+offset_right = -656.0
+offset_bottom = -336.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
+text = "Salir"
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_4kmhl")
+
+[node name="Next" type="Button" parent="2"]
+offset_left = 651.0
+offset_top = -431.0
+offset_right = 934.0
+offset_bottom = -334.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
+text = "Siguiente"
+
+[node name="Prev" type="Button" parent="2"]
+offset_left = -933.0
+offset_top = -433.0
+offset_right = -656.0
+offset_bottom = -336.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
+text = "Atrás"
+
+[node name="3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_cq4me")
+
+[node name="Exit" type="Button" parent="3"]
+offset_left = 651.0
+offset_top = -431.0
+offset_right = 934.0
+offset_bottom = -334.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
+text = "Salir"
+
+[node name="Prev" type="Button" parent="3"]
+offset_left = -933.0
+offset_top = -433.0
+offset_right = -656.0
+offset_bottom = -336.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
+text = "Atrás"
+
+[connection signal="button_up" from="1/Next" to="1" method="hide"]
+[connection signal="button_up" from="1/Next" to="2" method="show"]
+[connection signal="button_up" from="1/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="2/Next" to="2" method="hide"]
+[connection signal="button_up" from="2/Next" to="3" method="show"]
+[connection signal="button_up" from="2/Prev" to="1" method="show"]
+[connection signal="button_up" from="2/Prev" to="2" method="hide"]
+[connection signal="button_up" from="3/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="3/Prev" to="2" method="show"]
+[connection signal="button_up" from="3/Prev" to="3" method="hide"]

@@ -21,7 +21,7 @@ func _ready() -> void:
 			dic_legen.get_or_add(i["id"])
 		if i["id"] == "española":
 			selector.my_decks.push_back(i)
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://src/menus/main_menu.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
