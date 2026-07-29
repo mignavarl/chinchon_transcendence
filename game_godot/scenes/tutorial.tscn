@@ -61,7 +61,6 @@ corner_radius_bottom_left = 8
 script = ExtResource("1_4kmhl")
 
 [node name="1" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(960, 540)
 texture = ExtResource("1_ph3nu")
 
@@ -90,6 +89,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
 text = "Salir"
 
 [node name="2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("2_4kmhl")
 
