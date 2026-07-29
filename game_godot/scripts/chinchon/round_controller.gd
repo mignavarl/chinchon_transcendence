@@ -33,11 +33,17 @@ func evaluate_round(players: Array[PlayerData], hands_map: Dictionary) -> Array[
 
 	# Marcar ganadores (mínimo de puntos)
 	for r in results:
+		debug_results(r)
 		r["won"] = (r["points"] == min_points)
-
 	# Acumular score en PlayerData
 	for r in results:
 		r["player"].score += r["points"]
 
 	round_ended.emit(results)
 	return results
+
+func debug_results(results):
+	print("Player results ", results["player"].id ," :")
+	print("Points: ", results["points"])
+	print("Groups: ", results["groups"])
+	print("Sobras: ", results["leftover"])
