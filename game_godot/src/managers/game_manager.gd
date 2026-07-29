@@ -74,6 +74,14 @@ func start_game() -> void:
 	slot.add_card_to_stack(c)
 	turn_controller.start_first_turn()
 
+func restart_game() -> void:
+	for h in player_hands:
+		h.clear_hand()
+	deck.empty_stack()
+	slot.empty_stack()
+	card_manager.clear_cards_in_scene()
+	start_game()
+
 # ── Turno ────────────────────────────────────────────────────────────────────
 func _on_turn_started(player: PlayerData) -> void:
 	card_drawn_this_turn = false
@@ -306,3 +314,7 @@ func _on_gente_button_up() -> void:
 #func _on_única_button_up() -> void:
 	#$"../SoloDificultadIA".visible = false
 	#start_game()
+
+
+func _on_restart_pressed() -> void:
+	restart_game()

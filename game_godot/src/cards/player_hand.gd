@@ -72,6 +72,9 @@ func remove_card_from_hand(card) -> void:
 		player_hand.erase(card)
 		update_hand_positions()
 
+func clear_hand():
+	player_hand.clear()
+
 func update_hand_positions() -> void:
 	var rot = get_card_rotation()
 	for i in range(player_hand.size()):

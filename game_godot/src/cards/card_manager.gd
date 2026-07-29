@@ -12,6 +12,8 @@ var card_being_dragged
 @export var card_slot_reference : CardSlot
 @export var card_scene : PackedScene
 
+var list_cards : Array[Node2D]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -84,7 +86,13 @@ func instantiate_card(card):
 	new_card.position = $".".global_position
 	self.add_child(new_card)
 	new_card.name = card.id
+	list_cards.append(new_card)
 	return new_card
+
+func clear_cards_in_scene():
+	for i in list_cards.size():
+		list_cards[i].queue_free()
+	list_cards.clear()
 
 func on_left_click_release():
 	if card_being_dragged:
