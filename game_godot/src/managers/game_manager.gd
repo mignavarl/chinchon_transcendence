@@ -1,4 +1,6 @@
 extends Node2D
+class_name GameManager
+
 
 # ── Exports de escena ────────────────────────────────────────────────────────
 @export var deck:         CardSlot

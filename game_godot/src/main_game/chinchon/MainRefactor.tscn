@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cbnjphvfqof6n"]
+[gd_scene load_steps=34 format=3 uid="uid://cbnjphvfqof6n"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_pi1jn"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://src/cards/card_manager.gd" id="2_huv64"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://src/cards/player_hand.gd" id="5_pddc6"]
 [ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://src/managers/input_manager.gd" id="6_cughx"]
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="8_huv64"]
+[ext_resource type="Script" uid="uid://bpl7oioqdhiik" path="res://src/managers/ui_manager.gd" id="8_oqeio"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://src/cards/card_database.gd" id="9_m1vig"]
 [ext_resource type="Script" uid="uid://dhyn2q00ki1cf" path="res://scripts/gacha_button.gd" id="10_7hj1w"]
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="10_e4qjk"]
@@ -14,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="11_pddc6"]
 [ext_resource type="Script" uid="uid://4vlf2qnevda5" path="res://src/managers/turn_controller.gd" id="11_ykixw"]
 [ext_resource type="Script" uid="uid://j4ub65m4pykc" path="res://src/managers/round_controller.gd" id="12_ykixw"]
+[ext_resource type="Script" uid="uid://6rvvof3mgrsq" path="res://src/main_game/chinchon/ui_ingame.gd" id="16_srxia"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cughx"]
 
@@ -83,6 +85,11 @@ script = ExtResource("11_ykixw")
 [node name="RoundController" type="Node" parent="Systems"]
 script = ExtResource("12_ykixw")
 
+[node name="UIManager" type="Node" parent="Systems" node_paths=PackedStringArray("chinchon_manager", "canvas")]
+script = ExtResource("8_oqeio")
+chinchon_manager = NodePath("../ChinchonManager")
+canvas = NodePath("../../UI_Ingame")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -42
 position = Vector2(960, 540)
@@ -114,26 +121,6 @@ card_scene = ExtResource("3_ykixw")
 [node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("5_pddc6")
 card_scene = ExtResource("3_ykixw")
-
-[node name="Puntuacion oponente" type="Label" parent="."]
-offset_left = 293.0
-offset_top = 30.0
-offset_right = 333.0
-offset_bottom = 53.0
-text = "0"
-
-[node name="Puntuacion jugador" type="Label" parent="."]
-offset_left = 1523.0
-offset_top = 1019.0
-offset_right = 1563.0
-offset_bottom = 1042.0
-text = "0"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 559.0
-offset_top = 551.0
-offset_right = 599.0
-offset_bottom = 574.0
 
 [node name="BarajasButton" type="Button" parent="."]
 visible = false
@@ -413,7 +400,12 @@ theme_override_fonts/font = ExtResource("11_pddc6")
 theme_override_font_sizes/font_size = 92
 text = "DIFICULTAD"
 
-[node name="UI_Ingame" type="CanvasLayer" parent="."]
+[node name="UI_Ingame" type="CanvasLayer" parent="." node_paths=PackedStringArray("names", "scores", "scoresbg")]
+layer = 100
+script = ExtResource("16_srxia")
+names = [NodePath("Control/PlayerName0"), NodePath("Control/PlayerName1"), NodePath("Control/PlayerName2"), NodePath("Control/PlayerName3")]
+scores = NodePath("Control/Scoreboard/RichTextLabel")
+scoresbg = NodePath("Control/Scoreboard/Panel")
 
 [node name="Control" type="Control" parent="UI_Ingame"]
 layout_mode = 3
@@ -422,6 +414,102 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayerName0" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -282.0
+offset_right = 174.0
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerName1" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 94.0
+offset_top = -16.5
+offset_right = 442.0
+offset_bottom = 16.5
+grow_vertical = 2
+rotation = 1.5707964
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerName2" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_top = 193.0
+offset_right = 174.0
+offset_bottom = 226.0
+grow_horizontal = 2
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerName3" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -16.0
+offset_right = -107.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scoreboard" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 67.0
+mouse_filter = 0
+text = "Scoreboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
+layout_mode = 0
+offset_left = 64.60216
+offset_top = 58.0
+offset_right = 371.0
+offset_bottom = 214.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI_Ingame/Control/Scoreboard"]
+layout_mode = 0
+offset_left = 64.60216
+offset_top = 58.0
+offset_right = 231.60216
+offset_bottom = 150.0
+text = "- Player 1 : 40 puntos
+- Player 1 : 40 puntos
+- Player 1 : 40 puntos
+- Player 1 : 40 puntos"
 
 [connection signal="left_mouse_button_clicked" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_clicked"]
 [connection signal="left_mouse_button_pressed" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_pressed"]
@@ -443,3 +531,5 @@ grow_vertical = 2
 [connection signal="mouse_exited" from="SoloDificultadIA/Normal" to="SoloDificultadIA" method="_on_normal_mouse_exited"]
 [connection signal="mouse_entered" from="SoloDificultadIA/Dificil" to="SoloDificultadIA" method="_on_dificil_mouse_entered"]
 [connection signal="mouse_exited" from="SoloDificultadIA/Dificil" to="SoloDificultadIA" method="_on_dificil_mouse_exited"]
+[connection signal="mouse_entered" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_entered"]
+[connection signal="mouse_exited" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_exited"]

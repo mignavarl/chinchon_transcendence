@@ -14,5 +14,8 @@ var data: PlayerData
 func _init(player_data: PlayerData) -> void:
 	data = player_data
 
+func get_display_name() -> String:
+	return data.display_name
+
 func request_action(game_state: Dictionary) -> void:
 	pass
