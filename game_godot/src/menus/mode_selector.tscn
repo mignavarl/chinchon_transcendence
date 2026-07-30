@@ -75,6 +75,7 @@ rotation = 0.06981317
 texture = ExtResource("4_q4cr1")
 
 [node name="play_mode" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -148,7 +149,6 @@ theme_override_font_sizes/font_size = 195
 text = "|"
 
 [node name="ia_difficult" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -280,6 +280,49 @@ theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
 theme_override_fonts/font = ExtResource("5_65knd")
 theme_override_font_sizes/font_size = 92
 text = "DIFICULTAD"
+
+[node name="Control" type="Control" parent="ia_difficult"]
+anchors_preset = 0
+offset_left = 1351.0
+offset_top = 176.0
+offset_right = 1402.0
+offset_bottom = 223.0
+
+[node name="Label" type="Label" parent="ia_difficult/Control"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = -40.0
+offset_right = 238.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 45
+text = "BOTS"
+
+[node name="2" type="Button" parent="ia_difficult/Control"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 31.0
+offset_right = 84.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 40
+text = "2"
+
+[node name="3" type="Button" parent="ia_difficult/Control"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 33.0
+offset_right = 179.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="4" type="Button" parent="ia_difficult/Control"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 33.0
+offset_right = 272.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 40
+text = "4"
 
 [connection signal="button_up" from="play_mode/play" to="play_mode" method="hide"]
 [connection signal="button_up" from="play_mode/play" to="ia_difficult" method="show"]
