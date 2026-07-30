@@ -417,3 +417,4 @@ text = "VOLVER"
 [connection signal="toggled" from="ia_difficult/Control/1" to="ia_difficult" method="_on__toggled" binds= [1]]
 [connection signal="toggled" from="ia_difficult/Control/2" to="ia_difficult" method="_on__toggled" binds= [2]]
 [connection signal="toggled" from="ia_difficult/Control/3" to="ia_difficult" method="_on__toggled" binds= [3]]
+[connection signal="button_up" from="Exit" to="play_mode" method="_on_exit_button_up"]

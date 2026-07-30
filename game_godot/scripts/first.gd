@@ -22,6 +22,7 @@ func _ready() -> void:
 		if i["id"] == "española":
 			selector.my_decks.push_back(i)
 	get_tree().change_scene_to_file("res://src/menus/main_menu.tscn")
+	TranslationServer.set_locale("es")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

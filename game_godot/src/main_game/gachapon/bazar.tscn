@@ -1183,7 +1183,7 @@ transform = Transform3D(1.8035194, 0, 0, 0, 1, 0, 0, 0, 1.8334748, -0.71956515, 
 [node name="Label3D" type="Label3D" parent="Gacha/MostradorGacha/Boton_guardar"]
 transform = Transform3D(1.0000004, 0, 0, 0, -4.3711395e-08, 0.9999998, 0, -1.0000001, -4.371139e-08, 0, 0.2422344, 0.06213206)
 pixel_size = 0.0005
-text = "GUARDAR  BARAJA"
+text = "GUARDAR_BARAJA"
 font_size = 46
 outline_size = 8
 

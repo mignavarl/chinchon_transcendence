@@ -105,7 +105,7 @@ func has_value(section: String, key: String) -> bool:
 
 func set_language(language_code: String) -> void:
 	"""Establece el idioma ("es" o "en")"""
-	if language_code in ["es", "cat"]:
+	if language_code in ["es", "ca"]:
 		set_value("Game", "language", language_code)
 		save_config()
 	else:

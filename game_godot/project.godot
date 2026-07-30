@@ -56,7 +56,13 @@ right_mouse_click={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://src/translation/translation_chinchon.cat.translation", "res://src/translation/translation_chinchon.es.translation")
+locale/translation_remaps={
+"res://src/translation/tutorial/spanish/1.png": PackedStringArray("res://src/translation/tutorial/catalan/1.png:ca"),
+"res://src/translation/tutorial/spanish/2.png": PackedStringArray("res://src/translation/tutorial/catalan/2.png:ca"),
+"res://src/translation/tutorial/spanish/3.png": PackedStringArray("res://src/translation/tutorial/catalan/3.png:ca")
+}
+locale/translations=PackedStringArray("res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.ca.translation")
+locale/locale_filter_mode=0
 
 [rendering]
 

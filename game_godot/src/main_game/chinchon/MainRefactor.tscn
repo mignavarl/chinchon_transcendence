@@ -221,6 +221,7 @@ wait_time = 2.917
 [connection signal="mouse_entered" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_entered"]
 [connection signal="mouse_exited" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_exited"]
 [connection signal="pressed" from="UI_Ingame/Control/Restart" to="Systems/ChinchonManager" method="_on_restart_pressed"]
+[connection signal="button_up" from="UI_Ingame/Control/salir (BORRAR)" to="UI_Ingame" method="_on_salir_borrar_button_up"]
 [connection signal="left_mouse_button_clicked" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_clicked"]
 [connection signal="left_mouse_button_pressed" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_pressed"]
 [connection signal="left_mouse_button_release" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_release"]

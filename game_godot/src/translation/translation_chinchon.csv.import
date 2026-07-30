@@ -6,10 +6,10 @@ uid="uid://cclo71rpd85vw"
 
 [deps]
 
-files=["res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.cat.translation"]
+files=["res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.ca.translation"]
 
 source_file="res://src/translation/translation_chinchon.csv"
-dest_files=["res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.cat.translation"]
+dest_files=["res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.ca.translation"]
 
 [params]
 

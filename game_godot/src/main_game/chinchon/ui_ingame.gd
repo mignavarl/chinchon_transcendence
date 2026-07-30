@@ -25,3 +25,8 @@ func hide_scoreboard():
 	scores.visible = false
 	scoresbg.visible = false
 	
+
+#---BORRAR----DEBUG---------------------
+func _on_salir_borrar_button_up() -> void:
+	SceneLoader.change_scene("res://src/menus/bar.tscn", "Main")
+#---------------------------------------

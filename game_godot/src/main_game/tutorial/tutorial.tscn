@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://2gvxywmi8ae7"]
 
 [ext_resource type="Script" uid="uid://d2ri335crhsui" path="res://src/main_game/tutorial/tutorial.gd" id="1_4kmhl"]
-[ext_resource type="Texture2D" uid="uid://cj7cr8soh3b20" path="res://assets/Tutorial_chinchon/1.png" id="1_ph3nu"]
-[ext_resource type="Texture2D" uid="uid://bb0qeroaltw5a" path="res://assets/Tutorial_chinchon/2.png" id="2_4kmhl"]
-[ext_resource type="Texture2D" uid="uid://c71qy40gfxkgk" path="res://assets/Tutorial_chinchon/3.png" id="3_cq4me"]
+[ext_resource type="Texture2D" uid="uid://cj7cr8soh3b20" path="res://src/translation/tutorial/spanish/1.png" id="1_ph3nu"]
+[ext_resource type="Texture2D" uid="uid://bb0qeroaltw5a" path="res://src/translation/tutorial/spanish/2.png" id="2_4kmhl"]
+[ext_resource type="Texture2D" uid="uid://c71qy40gfxkgk" path="res://src/translation/tutorial/spanish/3.png" id="3_cq4me"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3nu"]
 bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
@@ -74,7 +74,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "Siguiente"
+text = "SIGUIENTE"
 
 [node name="Exit" type="Button" parent="1"]
 offset_left = -933.0
@@ -86,7 +86,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "Salir"
+text = "SALIR"
 
 [node name="2" type="Sprite2D" parent="."]
 visible = false
@@ -103,7 +103,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "Siguiente"
+text = "SIGUIENTE"
 
 [node name="Prev" type="Button" parent="2"]
 offset_left = -933.0
@@ -115,7 +115,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "Atrás"
+text = "ATRAS"
 
 [node name="3" type="Sprite2D" parent="."]
 visible = false
@@ -132,7 +132,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "Salir"
+text = "SALIR"
 
 [node name="Prev" type="Button" parent="3"]
 offset_left = -933.0
@@ -144,7 +144,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "Atrás"
+text = "ATRAS"
 
 [connection signal="button_up" from="1/Next" to="1" method="hide"]
 [connection signal="button_up" from="1/Next" to="2" method="show"]

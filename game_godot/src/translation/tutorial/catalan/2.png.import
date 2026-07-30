@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c71qy40gfxkgk"
-path="res://.godot/imported/3.png-013ae831c2b3468d257e1e024e56d54f.ctex"
+uid="uid://cofx2rxpwwofx"
+path="res://.godot/imported/2.png-14f3a210ca083ee5fb481a79742ed66c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tutorial_chinchon/3.png"
-dest_files=["res://.godot/imported/3.png-013ae831c2b3468d257e1e024e56d54f.ctex"]
+source_file="res://src/translation/tutorial/catalan/2.png"
+dest_files=["res://.godot/imported/2.png-14f3a210ca083ee5fb481a79742ed66c.ctex"]
 
 [params]
 

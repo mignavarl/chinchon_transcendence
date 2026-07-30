@@ -88,5 +88,5 @@ func _on_esp_button_up() -> void:
 
 
 func _on_cat_button_up() -> void:
-	TranslationServer.set_locale("cat")
-	ConfigManager.set_language("cat")
+	TranslationServer.set_locale("ca")
+	ConfigManager.set_language("ca")
