@@ -509,8 +509,17 @@ offset_top = 11.0
 offset_right = 1912.0
 offset_bottom = 61.0
 theme_override_font_sizes/font_size = 30
-text = "Volver"
+text = "Otra"
 script = ExtResource("16_t0ac2")
+
+[node name="salir (BORRAR)" type="Button" parent="UI_Ingame/Control"]
+layout_mode = 0
+offset_left = 1675.0
+offset_top = 72.0
+offset_right = 1923.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 30
+text = "SALIR (BORRAR)"
 
 [connection signal="left_mouse_button_clicked" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_clicked"]
 [connection signal="left_mouse_button_pressed" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_pressed"]
@@ -534,3 +543,4 @@ script = ExtResource("16_t0ac2")
 [connection signal="mouse_entered" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_entered"]
 [connection signal="mouse_exited" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_exited"]
 [connection signal="pressed" from="UI_Ingame/Control/Restart" to="Systems/ChinchonManager" method="_on_restart_pressed"]
+[connection signal="button_up" from="UI_Ingame/Control/salir (BORRAR)" to="UI_Ingame" method="_on_salir_borrar_button_up"]

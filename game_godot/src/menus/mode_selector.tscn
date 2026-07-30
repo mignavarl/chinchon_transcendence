@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dh2wnui7vwvy3"]
+[gd_scene load_steps=28 format=3 uid="uid://dh2wnui7vwvy3"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_je7ib"]
 [ext_resource type="Script" uid="uid://diq61mhi5ewt8" path="res://src/menus/modo_juego.gd" id="2_dfsd6"]
@@ -40,6 +40,58 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwsl0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4slxe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr84k"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1bob"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lhc4"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x37lj"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="ModeSelector" type="Node2D"]
 
@@ -180,7 +232,7 @@ theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxEmpty_h5086")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bji0f")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_br441")
-text = "FÁCIL"
+text = "FACIL"
 
 [node name="Label" type="Label" parent="ia_difficult/easy"]
 visible = false
@@ -252,7 +304,7 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxEmpty_djjhx")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_pwsl0")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_4slxe")
-text = "DIFÍCIL
+text = "DIFICIL
 "
 
 [node name="Label" type="Label" parent="ia_difficult/hard"]
@@ -324,6 +376,18 @@ offset_bottom = 96.0
 theme_override_font_sizes/font_size = 40
 text = "4"
 
+[node name="Exit" type="Button" parent="."]
+offset_left = 1713.0
+offset_top = 98.0
+offset_right = 1894.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qr84k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n1bob")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4lhc4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_x37lj")
+text = "VOLVER"
+
 [connection signal="button_up" from="play_mode/play" to="play_mode" method="hide"]
 [connection signal="button_up" from="play_mode/play" to="ia_difficult" method="show"]
 [connection signal="mouse_entered" from="play_mode/play" to="play_mode/play/Label" method="show"]
@@ -341,3 +405,4 @@ text = "4"
 [connection signal="button_up" from="ia_difficult/hard" to="ia_difficult" method="_on_dificil_button_up"]
 [connection signal="mouse_entered" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="show"]
 [connection signal="mouse_exited" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="hide"]
+[connection signal="button_up" from="Exit" to="play_mode" method="_on_exit_button_up"]

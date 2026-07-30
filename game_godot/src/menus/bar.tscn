@@ -1106,7 +1106,7 @@ skeleton = NodePath("../../Atrezo/Comida")
 
 [node name="Label3D" type="Label3D" parent="Tutorial"]
 transform = Transform3D(-0.58504814, 0, -1.19209076e-07, 0, 0.62365854, 0, 5.2307385e-08, 0, -0.9999981, -0.64848995, 0.57019234, 0.12968558)
-text = "TUTORIAL"
+text = "COMO_JUGAR"
 
 [node name="Anim_tuto" type="AnimationPlayer" parent="Tutorial"]
 libraries = {

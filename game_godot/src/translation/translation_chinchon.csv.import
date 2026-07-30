@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cclo71rpd85vw"
+
+[deps]
+
+files=["res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.cat.translation"]
+
+source_file="res://src/translation/translation_chinchon.csv"
+dest_files=["res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.cat.translation"]
+
+[params]
+
+compress=true
+delimiter=0

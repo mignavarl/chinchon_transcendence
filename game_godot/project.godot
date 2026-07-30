@@ -53,6 +53,10 @@ right_mouse_click={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://src/translation/translation_chinchon.cat.translation", "res://src/translation/translation_chinchon.es.translation")
+
 [rendering]
 
 textures/webp_compression/compression_method=0
