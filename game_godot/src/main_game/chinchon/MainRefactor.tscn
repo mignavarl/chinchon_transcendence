@@ -53,6 +53,127 @@
 
 [node name="Main" type="Node2D"]
 
+[node name="UI_Ingame" type="CanvasLayer" parent="." node_paths=PackedStringArray("names", "scores", "scoresbg")]
+layer = 100
+script = ExtResource("16_srxia")
+names = [NodePath("Control/PlayerName0"), NodePath("Control/PlayerName1"), NodePath("Control/PlayerName2"), NodePath("Control/PlayerName3")]
+scores = NodePath("Control/Scoreboard/RichTextLabel")
+scoresbg = NodePath("Control/Scoreboard/Panel")
+
+[node name="Control" type="Control" parent="UI_Ingame"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerName0" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -282.0
+offset_right = 174.0
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerName1" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 94.0
+offset_top = -16.5
+offset_right = 442.0
+offset_bottom = 16.5
+grow_vertical = 2
+rotation = 1.5707964
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerName2" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_top = 193.0
+offset_right = 174.0
+offset_bottom = 226.0
+grow_horizontal = 2
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerName3" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -16.0
+offset_right = -107.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scoreboard" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 67.0
+mouse_filter = 0
+text = "Scoreboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
+layout_mode = 0
+offset_left = 64.60216
+offset_top = 58.0
+offset_right = 371.0
+offset_bottom = 214.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI_Ingame/Control/Scoreboard"]
+layout_mode = 0
+offset_left = 64.60216
+offset_top = 58.0
+offset_right = 231.60216
+offset_bottom = 150.0
+text = "- Player 1 : 40 puntos
+- Player 1 : 40 puntos
+- Player 1 : 40 puntos
+- Player 1 : 40 puntos"
+
+[node name="Restart" type="Button" parent="UI_Ingame/Control"]
+layout_mode = 0
+offset_left = 1687.0
+offset_top = 11.0
+offset_right = 1912.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 30
+text = "Volver"
+script = ExtResource("16_t0ac2")
+
 [node name="Systems" type="Node" parent="."]
 
 [node name="CardManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player_hand_reference", "input_manager", "card_slot_reference")]

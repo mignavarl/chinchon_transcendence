@@ -26,6 +26,7 @@ func init_values(in_id, in_suit, in_value, in_img):
 	img = in_img
 
 func _on_area_2d_mouse_entered() -> void:
+	print("AAAAAAAAAA")
 	highlight_card(self, true)
 
 func _on_area_2d_mouse_exited() -> void:

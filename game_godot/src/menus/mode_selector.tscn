@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="4_q4cr1"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="5_65knd"]
 [ext_resource type="Script" uid="uid://dc18p7cw5xer3" path="res://src/menus/menu_solo_dificultad.gd" id="6_8g3us"]
+[ext_resource type="ButtonGroup" uid="uid://bhc41fjfbckyw" path="res://src/menus/but_group_AIs.tres" id="7_n1bob"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtpj7"]
 
@@ -200,12 +201,13 @@ theme_override_fonts/font = ExtResource("5_65knd")
 theme_override_font_sizes/font_size = 195
 text = "|"
 
-[node name="ia_difficult" type="Control" parent="."]
+[node name="ia_difficult" type="Control" parent="." node_paths=PackedStringArray("list_buttons")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_8g3us")
+list_buttons = [NodePath("Control/1"), NodePath("Control/2"), NodePath("Control/3")]
 
 [node name="Única" type="Button" parent="ia_difficult"]
 layout_mode = 0
@@ -349,32 +351,39 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 45
 text = "BOTS"
 
-[node name="2" type="Button" parent="ia_difficult/Control"]
+[node name="1" type="Button" parent="ia_difficult/Control"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 31.0
 offset_right = 84.0
 offset_bottom = 94.0
 theme_override_font_sizes/font_size = 40
-text = "2"
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("7_n1bob")
+text = "1"
 
-[node name="3" type="Button" parent="ia_difficult/Control"]
+[node name="2" type="Button" parent="ia_difficult/Control"]
 layout_mode = 0
 offset_left = 123.0
 offset_top = 33.0
 offset_right = 179.0
 offset_bottom = 96.0
 theme_override_font_sizes/font_size = 40
-text = "3"
+toggle_mode = true
+button_group = ExtResource("7_n1bob")
+text = "2"
 
-[node name="4" type="Button" parent="ia_difficult/Control"]
+[node name="3" type="Button" parent="ia_difficult/Control"]
 layout_mode = 0
 offset_left = 216.0
 offset_top = 33.0
 offset_right = 272.0
 offset_bottom = 96.0
 theme_override_font_sizes/font_size = 40
-text = "4"
+toggle_mode = true
+button_group = ExtResource("7_n1bob")
+text = "3"
 
 [node name="Exit" type="Button" parent="."]
 offset_left = 1713.0
@@ -405,4 +414,10 @@ text = "VOLVER"
 [connection signal="button_up" from="ia_difficult/hard" to="ia_difficult" method="_on_dificil_button_up"]
 [connection signal="mouse_entered" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="show"]
 [connection signal="mouse_exited" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="hide"]
+<<<<<<< HEAD
 [connection signal="button_up" from="Exit" to="play_mode" method="_on_exit_button_up"]
+=======
+[connection signal="toggled" from="ia_difficult/Control/1" to="ia_difficult" method="_on__toggled" binds= [1]]
+[connection signal="toggled" from="ia_difficult/Control/2" to="ia_difficult" method="_on__toggled" binds= [2]]
+[connection signal="toggled" from="ia_difficult/Control/3" to="ia_difficult" method="_on__toggled" binds= [3]]
+>>>>>>> 3c30aee0686acb83fb81e783d603357f9a8c836d
