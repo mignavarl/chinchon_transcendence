@@ -22,6 +22,9 @@ var current_round := 0
 
 static var deck_selected := "española"
 
+var CARD_SPACING  = 150
+var GROUP_SPACING = 220
+
 
 # ── Setup (llamado desde el lobby) ───────────────────────────────────────────
 func setup(cfg: GameConfig) -> void:
@@ -139,16 +142,22 @@ func end_round() -> void:
 		_display_combinations(hand_node, r)
 
 func _display_combinations(hand_node: Node2D, result: Dictionary) -> void:
-	const CARD_SPACING  = 150
-	const GROUP_SPACING = 220
-
 	var origin      = hand_node.get_hand_origin()
 	var rot         = hand_node.get_card_rotation()
 	var is_vertical = hand_node.hand_position in [
 		hand_node.HandPosition.LEFT,
 		hand_node.HandPosition.RIGHT
 	]
-
+	if is_vertical:
+		if hand_node.hand_position == hand_node.HandPosition.LEFT:
+			origin += Vector2(250, 0)
+		else:
+			origin += Vector2(-250, 0)
+	else:
+		if hand_node.hand_position == hand_node.HandPosition.BOTTOM:
+			origin += Vector2(0, -250)
+		else:
+			origin += Vector2(0, 250)
 	var total_span := 0.0
 	for i in range(result["groups"].size()):
 		total_span += max(result["groups"][i].size() - 1, 0) * CARD_SPACING
@@ -273,6 +282,7 @@ func _generate_deck() -> void:
 func _find_card_node(hand: Array, card_data) -> Node:
 	for node in hand:
 		if node.suit == card_data.suit and node.value == card_data.value:
+			hand.erase(node)
 			return node
 	return null
 
