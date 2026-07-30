@@ -106,8 +106,6 @@ func _on_action_taken(action: Dictionary, player: PlayerData) -> void:
 			card.flipped = (player.type != PlayerData.Type.HUMAN or not player.is_local)
 			player_hands[player.hand_idx].add_card_to_hand(card)
 			card_drawn_this_turn = true
-			# La IA encadena su siguiente acción sola desde AIAgent.
-			# El humano espera otro input; HumanAgent ya está en _waiting.
 		"discard":
 			_do_discard(action["card"], player)
 			turn_controller.advance()
