@@ -1,9 +1,13 @@
 extends Control
 
+@export var list_buttons : Array[Button]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass	
+	var i = ConfigManager.get_selected_bots()
+	
+	list_buttons[i-1].button_pressed = true
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,3 +25,11 @@ func _on_normal_button_up() -> void:
 
 func _on_hard_button_up() -> void:
 	pass # Replace with function body.
+
+
+
+func _on__toggled(toggled_on: bool, quantity: int) -> void:
+	if toggled_on:
+		print("Creamos => ", quantity)
+		ConfigManager.set_selected_bots(quantity)
+		print (ConfigManager.get_selected_bots())

@@ -57,7 +57,8 @@ func _ready() -> void:
 	human.is_local = true
 	num_players += 1
 	cfg.players.append(human)
-	cfg.players.append(create_bot("Paco"))
+	for i in ConfigManager.get_selected_bots():
+		cfg.players.append(create_bot("Paco"))
 	#cfg.players.append(create_bot("Manolo"))
 	#cfg.players.append(create_bot("El Anemias"))
 	setup(cfg)

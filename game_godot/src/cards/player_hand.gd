@@ -15,7 +15,7 @@ var player_hand = []
 var viewport_size: Vector2
 
 func _ready() -> void:
-	viewport_size = get_viewport().size
+	viewport_size = get_viewport().get_visible_rect().size
 
 func get_hand_origin() -> Vector2:
 	match hand_position:
