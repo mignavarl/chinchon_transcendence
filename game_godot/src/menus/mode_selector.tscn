@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dh2wnui7vwvy3"]
+[gd_scene load_steps=29 format=3 uid="uid://dh2wnui7vwvy3"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_je7ib"]
 [ext_resource type="Script" uid="uid://diq61mhi5ewt8" path="res://src/menus/modo_juego.gd" id="2_dfsd6"]
@@ -128,7 +128,6 @@ rotation = 0.06981317
 texture = ExtResource("4_q4cr1")
 
 [node name="play_mode" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -202,6 +201,7 @@ theme_override_font_sizes/font_size = 195
 text = "|"
 
 [node name="ia_difficult" type="Control" parent="." node_paths=PackedStringArray("list_buttons")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -414,10 +414,6 @@ text = "VOLVER"
 [connection signal="button_up" from="ia_difficult/hard" to="ia_difficult" method="_on_dificil_button_up"]
 [connection signal="mouse_entered" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="show"]
 [connection signal="mouse_exited" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="hide"]
-<<<<<<< HEAD
-[connection signal="button_up" from="Exit" to="play_mode" method="_on_exit_button_up"]
-=======
 [connection signal="toggled" from="ia_difficult/Control/1" to="ia_difficult" method="_on__toggled" binds= [1]]
 [connection signal="toggled" from="ia_difficult/Control/2" to="ia_difficult" method="_on__toggled" binds= [2]]
 [connection signal="toggled" from="ia_difficult/Control/3" to="ia_difficult" method="_on__toggled" binds= [3]]
->>>>>>> 3c30aee0686acb83fb81e783d603357f9a8c836d
