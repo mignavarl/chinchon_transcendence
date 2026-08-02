@@ -128,5 +128,6 @@ text = "|"
 
 [connection signal="mouse_entered" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_exited"]
+[connection signal="pressed" from="OnlineMode/make" to="OnlineMode" method="_on_make_pressed"]
 [connection signal="mouse_entered" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_exited"]

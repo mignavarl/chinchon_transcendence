@@ -9,3 +9,4 @@ enum Type { HUMAN, AI, NETWORK }
 @export var hand_idx: int 
 @export var score: int = 0
 @export var is_local: bool = false 
+@export var network_id: int = -1

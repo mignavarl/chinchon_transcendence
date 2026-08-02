@@ -27,8 +27,8 @@ var GROUP_SPACING = 220
 
 
 # ── Setup (llamado desde el lobby) ───────────────────────────────────────────
-func setup(cfg: GameConfig) -> void:
-	config = cfg
+func setup() -> void:
+	config = GameConfigHandler.take_config()
 	_build_agents()
 	turn_controller.setup(config.players)
 	turn_controller.turn_started.connect(_on_turn_started)
@@ -51,20 +51,21 @@ func _build_agents() -> void:
 
 # ── Inicio de partida ────────────────────────────────────────────────────────
 func _ready() -> void:
-	var cfg = GameConfig.new()
-	var human = PlayerData.new()
-	human.id = num_players
-	human.display_name = "Tú"
-	human.type = PlayerData.Type.HUMAN
-	human.hand_idx = num_players
-	human.is_local = true
-	num_players += 1
-	cfg.players.append(human)
-	for i in ConfigManager.get_selected_bots():
-		cfg.players.append(create_bot("Paco"))
-	#cfg.players.append(create_bot("Manolo"))
-	#cfg.players.append(create_bot("El Anemias"))
-	setup(cfg)
+	if (!GameConfigHandler.has_config()):
+		var cfg = GameConfig.new()
+		var human = PlayerData.new()
+		human.id = num_players
+		human.display_name = "Tú"
+		human.type = PlayerData.Type.HUMAN
+		human.hand_idx = num_players
+		human.is_local = true
+		num_players += 1
+		cfg.players.append(human)
+		for i in ConfigManager.get_selected_bots():
+			cfg.players.append(create_bot("Paco"))
+		GameConfigHandler.set_config(cfg)
+		
+	setup()
 	start_game()
 
 func start_game() -> void:
@@ -311,7 +312,7 @@ func _on_gente_button_up() -> void:
 	cfg.players.append(create_bot("Paco"))
 	cfg.players.append(create_bot("Manolo"))
 	cfg.players.append(create_bot("El Anemias"))
-	setup(cfg)
+	setup()
 	$"../JugarModo".visible = false
 	start_game()
 

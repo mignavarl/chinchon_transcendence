@@ -21,3 +21,7 @@ func _on_search_mouse_entered() -> void:
 
 func _on_search_mouse_exited() -> void:
 	$search/Label.visible = false
+
+
+func _on_make_pressed() -> void:
+	SceneLoader.change_scene("res://src/network/lobby_online.tscn", "OnlineMenu")

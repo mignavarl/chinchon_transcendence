@@ -4,6 +4,7 @@ extends Resource
 @export var players: Array[PlayerData] = []
 @export var deck_name: String = "española"
 @export var max_rounds: int = 1
+@export var is_online: bool = false
 
 # El lobby construye esto y lo pasa al GameManager
 # Ejemplo de uso en el lobby:
