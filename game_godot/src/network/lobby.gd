@@ -166,7 +166,7 @@ func _on_start_pressed() -> void:
 func _start_match(sorted_network_ids: Array[int]) -> void:
 	var config := _build_game_config(sorted_network_ids)
 	GameConfigHandler.set_config(config)
-	SceneLoader.change_scene("res://src/main_game/chinchon/MainRefactor.tscn", self.name)
+	SceneLoader.change_scene("res://src/main_game/chinchon/MainRefactor.tscn", "LobbyMenu")
 
 
 func _build_game_config(sorted_network_ids: Array[int]) -> GameConfig:
@@ -196,6 +196,7 @@ func _build_game_config(sorted_network_ids: Array[int]) -> GameConfig:
 	var config := GameConfig.new()
 	config.players = players
 	config.is_online = true
+	config.is_host = is_host
 	return config
 
 

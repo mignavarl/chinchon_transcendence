@@ -26,7 +26,6 @@ var CARD_SPACING  = 150
 var GROUP_SPACING = 220
 
 
-# ── Setup (llamado desde el lobby) ───────────────────────────────────────────
 func setup() -> void:
 	config = GameConfigHandler.take_config()
 	_build_agents()
@@ -34,24 +33,85 @@ func setup() -> void:
 	turn_controller.turn_started.connect(_on_turn_started)
 	deck.set_collision_mask(4)
 	slot.set_collision_mask(2)
-	
+
 	if config.is_online:
 		WebSocketClient.message_received.connect(_on_network_message)
 
-func _on_network_message(data: Dictionary) -> void:
-	if data.get("type") != "game_action":
-		return
+	if config.is_online and not config.is_host:
+		print("genero deck pero no shuffleo")
+		#_generate_deck(false)
+		_generate_deck(false)
+		_deck_sync_received = false
+		await _wait_for_deck_sync()
+	else:
+		print("genero deck y shuffleo")
+		#_generate_deck(true)
+		_generate_deck(true)
+		if config.is_online:
+			print("Envio el orden a todos")
+			_broadcast_deck_order()
+			await _wait_for_deck_sync()
 
-	var sender_id = data.get("from")
-	var agent = _find_network_agent_by_id(sender_id)
-	if agent:
-		agent.receive_remote_action(data["action"])
+	start_game()
+
+
+# ── Sincronización del mazo (solo online) ───────────────────────────────────
+
+var _deck_sync_received := false
+
+func _broadcast_deck_order() -> void:
+	var order: Array = []
+	for card in deck.cards:
+		order.append(card.id)
+	print(order)
+	WebSocketClient.send({
+		"type": "deck_sync",
+		"order": order
+	})
+
+
+func _wait_for_deck_sync() -> void:
+	while not _deck_sync_received:
+		await get_tree().process_frame
+
+
+func _apply_deck_order(order: Array) -> void:
+	var by_id := {}
+	for card in deck.cards:
+		by_id[card.id] = card
+
+	var new_order: Array = []
+	for id in order:
+		if by_id.has(id):
+			new_order.append(by_id[id])
+		else:
+			push_error("Carta recibida en deck_sync no encontrada localmente: %s" % id)
+
+	deck.cards = new_order
+	deck.top_card = deck.cards[0] if deck.cards.size() > 0 else null
+	#deck.update_visual()
+
+	_deck_sync_received = true
+
+
+func _on_network_message(data: Dictionary) -> void:
+	match data.get("type"):
+		"game_action":
+			var sender_id: int = data.get("from")
+			var agent := _find_network_agent_by_id(sender_id)
+			if agent:
+				agent.receive_remote_action(data["action"])
+ 
+		"deck_sync":
+			print(data["order"])
+			_apply_deck_order(data["order"])
 
 func _find_network_agent_by_id(network_id: int) -> NetworkAgent:
 	for agent in agents.values():
 		if agent is NetworkAgent and agent.remote_network_id == network_id:
 			return agent
 	return null
+
 
 func _build_agents() -> void:
 	for player in config.players:
@@ -86,13 +146,10 @@ func _ready() -> void:
 		GameConfigHandler.set_config(cfg)
 		
 	setup()
-	start_game()
 
 func start_game() -> void:
 	game_ended = false
 	current_round += 1
-	_generate_deck()
-	_generate_deck()
 	await _deal_cards()
 	var c = draw_card()
 	card_manager.animate_card_to_position(c, slot.position, slot.rotation)
@@ -127,7 +184,6 @@ func _on_action_taken(action: Dictionary, player: PlayerData) -> void:
 			push_error("No se encontró la carta %s en la mano del jugador %d" % [action["card_id"], player.id])
 			return
 		action["card"] = resolved_card
-	
 	match action["type"]:
 		"draw":
 			var card = draw_card() if action["source"] == "deck" else draw_discard()
@@ -294,9 +350,11 @@ func draw_discard() -> Node2D:
 	return slot.get_top_card()
 
 func _deal_cards() -> void:
+	print("deal cards")
 	for i in 7:
 		for player in config.players:
 			var c = draw_card()
+			print(c, " a ", player.display_name)
 			player_hands[player.hand_idx].add_card_to_hand(c)
 			await get_tree().create_timer(0.05).timeout
 
@@ -308,22 +366,25 @@ func _reshuffle_deck() -> void:
 	slot.empty_stack()
 	deck.suffle_stack()
 
-func _generate_deck() -> void:
-	for suit in card_database.SUITS:
-		for number in card_database.NUMBERS:
-			var img_path = "res://assets/cards/%s/%s_%d.png" % [deck_selected, suit["id"], number["value"]]
-			var card = {
-				"id":     "%s_%d" % [suit["id"], number["value"]],
-				"suit":   suit,
-				"number": number,
-				"img":    img_path,
-				"deck":   deck_selected,
-			}
-			var card_object = card_manager.instantiate_card(card)
-			card_object.flipped = true
-			card_object.position = deck.position
-			deck.add_card_to_stack(card_object)
-	deck.suffle_stack()
+func _generate_deck(shuffle: bool = true) -> void:
+	for copy_index in 2:
+		for suit in card_database.SUITS:
+			for number in card_database.NUMBERS:
+				var img_path = "res://assets/cards/%s/%s_%d.png" % [deck_selected, suit["id"], number["value"]]
+				var card = {
+					"id":     "%s_%d_c%d" % [suit["id"], number["value"], copy_index],
+					"suit":   suit,
+					"number": number,
+					"img":    img_path,
+					"deck":   deck_selected,
+				}
+				var card_object = card_manager.instantiate_card(card)
+				card_object.flipped = true
+				card_object.position = deck.position
+				deck.add_card_to_stack(card_object)
+
+	if shuffle:
+		deck.suffle_stack()
 
 func _find_card_node(hand: Array, card_data) -> Node:
 	for node in hand:
