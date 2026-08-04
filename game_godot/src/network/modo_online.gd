@@ -1,14 +1,17 @@
 extends Control
 
+# ASUNCIÓN: hay un LineEdit para el código de sala en algún lugar de esta escena.
+# Ajusta la ruta $search/CodeInput al nodo real si no coincide.
 
-# Called when the node enters the scene tree for the first time.
+@onready var code_input = %Code
+
 func _ready() -> void:
-	pass # Replace with function body.
+	$info.visible = false
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 
 func _on_make_mouse_entered() -> void:
 	$make/Label.visible = true
@@ -24,4 +27,16 @@ func _on_search_mouse_exited() -> void:
 
 
 func _on_make_pressed() -> void:
+	LobbyIntent.set_host_intent()
+	SceneLoader.change_scene("res://src/network/lobby_online.tscn", "OnlineMenu")
+
+
+func _on_search_pressed() -> void:
+	var code: String = code_input.text
+	if code.strip_edges().is_empty():
+		$info.text = "Introduce un código de sala"
+		$info.visible = true
+		return
+
+	LobbyIntent.set_join_intent(code)
 	SceneLoader.change_scene("res://src/network/lobby_online.tscn", "OnlineMenu")

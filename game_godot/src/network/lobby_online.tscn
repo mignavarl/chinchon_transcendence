@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://7t1pkuio3yu4"]
+[gd_scene load_steps=11 format=3 uid="uid://7t1pkuio3yu4"]
 
 [ext_resource type="Script" uid="uid://cvpts65asrbc2" path="res://src/network/lobby.gd" id="1_4uv2n"]
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_pygt8"]
 [ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="2_4uv2n"]
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="3_661dw"]
-[ext_resource type="Script" uid="uid://otkc2o121ql5" path="res://src/network/modo_online.gd" id="4_6miqp"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="5_unms0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01wsg"]
@@ -60,10 +59,10 @@ texture = ExtResource("3_661dw")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("4_6miqp")
 
 [node name="StartButton" type="Button" parent="OnlineMode"]
 unique_name_in_owner = true
+z_index = 155
 layout_mode = 0
 offset_left = 828.0
 offset_top = 695.0
@@ -100,11 +99,39 @@ text = "|"
 [node name="PlayerListContainer" type="VBoxContainer" parent="OnlineMode"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 723.0
-offset_top = 144.0
-offset_right = 1225.0
-offset_bottom = 915.0
+offset_left = 749.00006
+offset_top = 318.0
+offset_right = 1217.4424
+offset_bottom = 690.1771
 rotation = 0.077891186
+
+[node name="Label" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "HOLA"
+
+[node name="Label2" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "HOLA"
+
+[node name="Label3" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "HOLA"
+
+[node name="Label4" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "HOLA"
 
 [node name="StatusLabel" type="Label" parent="OnlineMode"]
 unique_name_in_owner = true
@@ -117,5 +144,23 @@ rotation = 0.08370376
 scale = Vector2(0.28136402, 0.28136402)
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 100
+text = "Conectando"
+autowrap_mode = 3
+
+[node name="RoomCodeLabel" type="Label" parent="OnlineMode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 690.0
+offset_top = 813.99994
+offset_right = 1689.0
+offset_bottom = 1058.0
+rotation = 0.08370376
+scale = Vector2(0.28136402, 0.28136402)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 195
 text = "Conectando"
+
+[connection signal="mouse_entered" from="OnlineMode/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="OnlineMode/StartButton" to="." method="_on_start_button_mouse_exited"]

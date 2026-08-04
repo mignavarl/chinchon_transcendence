@@ -34,6 +34,24 @@ func setup() -> void:
 	turn_controller.turn_started.connect(_on_turn_started)
 	deck.set_collision_mask(4)
 	slot.set_collision_mask(2)
+	
+	if config.is_online:
+		WebSocketClient.message_received.connect(_on_network_message)
+
+func _on_network_message(data: Dictionary) -> void:
+	if data.get("type") != "game_action":
+		return
+
+	var sender_id = data.get("from")
+	var agent = _find_network_agent_by_id(sender_id)
+	if agent:
+		agent.receive_remote_action(data["action"])
+
+func _find_network_agent_by_id(network_id: int) -> NetworkAgent:
+	for agent in agents.values():
+		if agent is NetworkAgent and agent.remote_network_id == network_id:
+			return agent
+	return null
 
 func _build_agents() -> void:
 	for player in config.players:
@@ -42,10 +60,12 @@ func _build_agents() -> void:
 			PlayerData.Type.HUMAN:
 				agent = HumanAgent.new(player)
 				player_hands[player.id].set_visibility(true)
+				if config.is_online and player.is_local:
+					agent.action_taken.connect(_broadcast_local_action)
 			PlayerData.Type.AI:
 				agent = AIAgent.new(player)
 			PlayerData.Type.NETWORK:
-				pass  #TODO: agent = NetworkAgent.new(player)
+				agent = NetworkAgent.new(player)
 		agent.action_taken.connect(_on_action_taken.bind(player))
 		agents[player.id] = agent
 
@@ -101,6 +121,13 @@ func _build_game_state(player: PlayerData) -> Dictionary:
 	}
 
 func _on_action_taken(action: Dictionary, player: PlayerData) -> void:
+	if action.get("type") in ["discard", "close"] and action.has("card_id") and not action.has("card"):
+		var resolved_card = _find_card_in_hand(action["card_id"], player)
+		if resolved_card == null:
+			push_error("No se encontró la carta %s en la mano del jugador %d" % [action["card_id"], player.id])
+			return
+		action["card"] = resolved_card
+	
 	match action["type"]:
 		"draw":
 			var card = draw_card() if action["source"] == "deck" else draw_discard()
@@ -115,6 +142,25 @@ func _on_action_taken(action: Dictionary, player: PlayerData) -> void:
 			game_ended = true
 			await get_tree().create_timer(0.2).timeout
 			end_round()
+
+func _broadcast_local_action(action: Dictionary) -> void:
+	var payload := action.duplicate()
+
+	if payload.has("card"):
+		payload["card_id"] = payload["card"].id
+		payload.erase("card")
+
+	WebSocketClient.send({
+		"type": "game_action",
+		"action": payload
+	})
+
+func _find_card_in_hand(card_id, player: PlayerData):
+	var hand = player_hands[player.hand_idx].player_hand
+	for card in hand:
+		if card.id == card_id:
+			return card
+	return null
 
 func _do_discard(card, player: PlayerData) -> void:
 	card.flipped = false
@@ -210,6 +256,7 @@ func _on_input_manager_left_mouse_button_clicked() -> void:
 		2:  # SLOT
 			if not card_drawn_this_turn:
 				agent.notify_draw("discard")
+
 
 func _on_input_manager_right_mouse_button_clicked() -> void:
 	var local_player = _get_local_player()
