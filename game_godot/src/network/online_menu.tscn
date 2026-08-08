@@ -51,9 +51,11 @@ texture = ExtResource("3_8lf63")
 
 [node name="OnlineMode" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_ornuy")
 
 [node name="make" type="Button" parent="OnlineMode"]
@@ -126,8 +128,31 @@ theme_override_fonts/font = ExtResource("5_ru88j")
 theme_override_font_sizes/font_size = 195
 text = "|"
 
+[node name="Code" type="LineEdit" parent="OnlineMode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 870.99994
+offset_top = 780.0
+offset_right = 1006.54266
+offset_bottom = 841.2846
+rotation = 0.07359239
+placeholder_text = "Code"
+
+[node name="info" type="Label" parent="OnlineMode"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 840.0
+offset_right = 862.0
+offset_bottom = 996.36584
+rotation = 0.064792946
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_ru88j")
+theme_override_font_sizes/font_size = 32
+text = "Debug"
+
 [connection signal="mouse_entered" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_exited"]
 [connection signal="pressed" from="OnlineMode/make" to="OnlineMode" method="_on_make_pressed"]
 [connection signal="mouse_entered" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_exited"]
+[connection signal="pressed" from="OnlineMode/search" to="OnlineMode" method="_on_search_pressed"]
