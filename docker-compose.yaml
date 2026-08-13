@@ -24,10 +24,40 @@ services:
     depends_on:
       godot:
         condition: service_healthy
+      # nginx resuelve el host "db_gateway" al arrancar, asi que si el
+      # gateway no existe todavia no levanta.
+      db_gateway:
+        condition: service_started
     volumes:
       - godot_data:/usr/share/nginx/html:ro
       - ./nginx:/etc/nginx/conf.d
       - ./nginx/certs:/etc/nginx/certs:ro
 
+  postgres:
+    image: postgres:16-alpine
+    container_name: chinchon_db
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # Sin puerto publicado: solo se llega desde la red interna de compose.
+
+  db_gateway:
+    build: ./db_gateway
+    container_name: chinchon_db_gateway
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Sin puerto publicado: nginx lo alcanza por la red interna de compose.
+
 volumes:
   godot_data:
+  pg_data:

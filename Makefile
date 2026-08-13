@@ -46,7 +46,7 @@ kill: down
 
 clean:
 	@echo $(RED)"Deleting Volumes... 🧹"$(NC)
-	docker compose -f srcs/docker-compose.yml down
+	docker compose down -v
 
 re: kill all
 
