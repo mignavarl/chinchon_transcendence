@@ -71,47 +71,47 @@ CREATE TABLE IF NOT EXISTS user_decks (
 -- PARTIDAS
 -- ==========================================================================
 
--- Una fila por partida, con los 4 asientos en columnas fijas porque el juego
--- nunca pasa de 4 jugadores.
---
--- playerN_id es NULL si ese asiento lo ocupa una IA o esta vacio; en ese caso
--- playerN_name guarda el nombre que se mostro en la mesa.
--- En el Chinchon gana el que MENOS puntos suma.
+-- Datos de la partida en si. Quien jugo y cuanto puntuo va en match_players,
+-- una fila por asiento.
 CREATE TABLE IF NOT EXISTS matches (
-    id           SERIAL PRIMARY KEY,
+    id         SERIAL PRIMARY KEY,
 
-    is_online    BOOLEAN NOT NULL DEFAULT FALSE,
-    max_rounds   INTEGER NOT NULL DEFAULT 1,
-    deck_id      TEXT REFERENCES decks(id) ON DELETE SET NULL,
+    is_online  BOOLEAN NOT NULL DEFAULT FALSE,
+    max_rounds INTEGER NOT NULL DEFAULT 1,
+    deck_id    TEXT REFERENCES decks(id) ON DELETE SET NULL,
 
-    player1_id   INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    player2_id   INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    player3_id   INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    player4_id   INTEGER REFERENCES users(id) ON DELETE SET NULL,
-
-    player1_name TEXT,
-    player2_name TEXT,
-    player3_name TEXT,
-    player4_name TEXT,
-
-    score1       INTEGER,
-    score2       INTEGER,
-    score3       INTEGER,
-    score4       INTEGER,
-
-    winner_id    INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    winner_seat  SMALLINT CHECK (winner_seat BETWEEN 1 AND 4),
-
-    started_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
-    ended_at     TIMESTAMPTZ
+    started_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    ended_at   TIMESTAMPTZ
 );
 
--- Para sacar el historial de un usuario hay que mirar los cuatro asientos,
--- asi que cada uno lleva su indice.
-CREATE INDEX IF NOT EXISTS idx_matches_player1 ON matches (player1_id);
-CREATE INDEX IF NOT EXISTS idx_matches_player2 ON matches (player2_id);
-CREATE INDEX IF NOT EXISTS idx_matches_player3 ON matches (player3_id);
-CREATE INDEX IF NOT EXISTS idx_matches_player4 ON matches (player4_id);
+-- Un asiento de una partida. Se corresponde con PlayerData del juego:
+-- seat es hand_idx + 1, kind es PlayerData.Type y score el acumulado final.
+--
+-- user_id es NULL si el asiento lo ocupa una IA o un invitado sin cuenta;
+-- name guarda siempre el nombre que se mostro en la mesa, asi el historial
+-- se lee aunque no haya usuario detras.
+--
+-- En el Chinchon gana el que MENOS puntos suma, y puede haber empate, por eso
+-- el ganador se marca aqui con is_winner en vez de una columna en matches.
+CREATE TABLE IF NOT EXISTS match_players (
+    match_id  INTEGER  NOT NULL REFERENCES matches(id) ON DELETE CASCADE,
+    seat      SMALLINT NOT NULL CHECK (seat BETWEEN 1 AND 4),
+    user_id   INTEGER  REFERENCES users(id) ON DELETE SET NULL,
+    name      TEXT     NOT NULL,
+    kind      TEXT     NOT NULL DEFAULT 'human'
+              CHECK (kind IN ('human', 'ai', 'network')),
+    score     INTEGER,
+    is_winner BOOLEAN  NOT NULL DEFAULT FALSE,
+
+    PRIMARY KEY (match_id, seat),
+    -- El mismo usuario no puede ocupar dos asientos. Los NULL no chocan entre
+    -- si, asi que varias IAs en la misma partida siguen valiendo.
+    UNIQUE (match_id, user_id)
+);
+
+-- El historial de un usuario es "sus filas en match_players".
+CREATE INDEX IF NOT EXISTS idx_match_players_user
+    ON match_players (user_id);
 
 
 -- ==========================================================================
