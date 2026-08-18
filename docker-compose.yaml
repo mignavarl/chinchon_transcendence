@@ -1,11 +1,8 @@
 services:
   godot:
     build: .
-    ports:
-      - "4141:4141"
-      - "4141:4141/udp"
-    tty: true
     container_name: godot-server
+    tty: true
     volumes:
       - godot_data:/godotapp
     healthcheck:
@@ -14,20 +11,68 @@ services:
       timeout: 5s
       retries: 20
       start_period: 30s
+    networks:
+      - transcendence_net
 
-  godot_webuild_server:
-    image: nginx:latest
-    container_name: godot_webuild_server
-    ports:
-      - "9090:443"
-    restart: unless-stopped
+  postgres:
+    image: postgres:16
+    container_name: transcendence_postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - transcendence_net
+
+  backend:
+    build: ./backend
+    container_name: transcendence_backend
     depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    ports:
+      - "8080:8080"
+    networks:
+      - transcendence_net
+
+  frontend:
+    build: ./frontend
+    container_name: transcendence_frontend
+    env_file:
+      - .env
+    environment:
+      BACKEND_URL: http://backend:8080
+      HTTPS_PORT: 9443
+    ports:
+      - "9090:80"
+      - "9443:443"
+    volumes:
+      - ./nginx/certs:/etc/nginx/ssl:ro
+      - godot_data:/usr/share/nginx/html:ro
+    depends_on:
+      backend:
+        condition: service_started
       godot:
         condition: service_healthy
-    volumes:
-      - godot_data:/usr/share/nginx/html:ro
-      - ./nginx:/etc/nginx/conf.d
-      - ./nginx/certs:/etc/nginx/certs:ro
+    networks:
+      - transcendence_net
 
 volumes:
   godot_data:
+  pgdata:
+
+networks:
+  transcendence_net:

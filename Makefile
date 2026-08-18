@@ -15,8 +15,8 @@ setup:
 	@echo $(CYAN)"Generating self-signed SSL certificate... 🔐"$(NC)
 	@mkdir -p ./nginx/certs
 	@openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-		-keyout ./nginx/certs/key.pem \
-		-out ./nginx/certs/cert.pem \
+		-keyout ./nginx/certs/selfsigned.key \
+		-out ./nginx/certs/selfsigned.crt \
 		-subj "/CN=localhost" 2>/dev/null
 	@echo $(GREEN)"Certificate generated in ./nginx/certs ✅"$(NC)
 

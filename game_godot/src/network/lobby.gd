@@ -48,12 +48,13 @@ func _ready() -> void:
 func _get_websocket_url() -> String:
 	if OS.has_feature("web"):
 		var host: String = JavaScriptBridge.eval("window.location.hostname", true)
+		var port: String = JavaScriptBridge.eval("window.location.port", true)
 		var protocol: String = JavaScriptBridge.eval("window.location.protocol", true)
 		var scheme := "wss" if protocol == "https:" else "ws"
-		return "%s://%s/ws/game" % [scheme, host]
+		var port_suffix := (":" + port) if port != "" else ""
+		return "%s://%s%s/ws/game" % [scheme, host, port_suffix]
 	else:
 		return "ws://localhost:8080/ws/game"
-
 
 func _on_socket_connected() -> void:
 	# En cuanto hay conexión, actuamos según lo decidido en la pantalla previa

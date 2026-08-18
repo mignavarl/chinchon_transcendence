@@ -1,0 +1,56 @@
+# =========================
+# REDIRECT HTTP TO HTTPS
+# =========================
+server {
+    listen 80;
+    server_name _;
+
+    return 301 https://$host:${HTTPS_PORT}$request_uri;
+}
+
+# =======================
+# SERVER HTTPS
+# =======================
+server {
+    listen 443 ssl;
+    server_name _;
+
+    ssl_certificate /etc/nginx/ssl/selfsigned.crt;
+    ssl_certificate_key /etc/nginx/ssl/selfsigned.key;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # =======================
+	# FRONTEND GODOT WEB
+	# =======================
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # =======================
+	# BACKEND api
+	# =======================
+    location /api/ {
+        proxy_pass $BACKEND_URL;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # =======================
+	# BACKEND websocket (juego online)
+	# =======================
+    location /ws/game {
+        proxy_pass $BACKEND_URL/ws/game;
+        proxy_http_version 1.1;
+
+        # Cabeceras necesarias para el "upgrade" de HTTP a WebSocket
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+    }
+}
