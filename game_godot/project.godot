@@ -23,6 +23,7 @@ WebSocketClient="*res://src/network/websocket_client.gd"
 GameConfigHandler="*res://src/main_game/game_config_handler.gd"
 LobbyIntent="*res://src/network/lobby_intent.gd"
 Database="*res://src/network/database.gd"
+Auth="*res://src/network/auth.gd"
 
 [display]
 

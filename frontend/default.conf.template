@@ -1,0 +1,68 @@
+# =========================
+# REDIRECT HTTP TO HTTPS
+# =========================
+server {
+    listen 80;
+    server_name _;
+
+    return 301 https://$host:${HTTPS_PORT}$request_uri;
+}
+
+# =======================
+# SERVER HTTPS
+# =======================
+server {
+    listen 443 ssl;
+    server_name _;
+
+    ssl_certificate /etc/nginx/ssl/selfsigned.crt;
+    ssl_certificate_key /etc/nginx/ssl/selfsigned.key;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # =======================
+	# FRONTEND GODOT WEB
+	# =======================
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # =======================
+	# BACKEND api
+	# =======================
+    location /api/ {
+        proxy_pass $BACKEND_URL;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # =======================
+	# DB GATEWAY (consultas del juego a Postgres)
+	# =======================
+    # El backend de Spring ya ocupa /api/, asi que el gateway cuelga de /db/.
+    # Ojo: un bloque location no hereda los add_header del server, asi que
+    # las cabeceras COOP/COEP de estas respuestas las pone el propio gateway.
+    location /db/ {
+        proxy_pass http://db_gateway:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # =======================
+	# BACKEND websocket (juego online)
+	# =======================
+    location /ws/game {
+        proxy_pass $BACKEND_URL/ws/game;
+        proxy_http_version 1.1;
+
+        # Cabeceras necesarias para el "upgrade" de HTTP a WebSocket
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+    }
+}

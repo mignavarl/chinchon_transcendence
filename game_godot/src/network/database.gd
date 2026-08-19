@@ -5,7 +5,7 @@ extends Node
 #
 # Autoload para hablar con la base de datos desde cualquier parte del juego.
 # El juego corre en el navegador, asi que no se conecta a Postgres
-# directamente: manda la SQL por HTTP al gateway (/api/query) y este la
+# directamente: manda la SQL por HTTP al gateway (/db/query) y este la
 # ejecuta y devuelve las filas.
 #
 # Uso:
@@ -44,7 +44,7 @@ func query(sql: String, params: Array, callback: Callable) -> void:
 				callback.call(data)
 	)
 
-	var url := _api_base() + "/api/query"
+	var url := _api_base() + "/db/query"
 	var headers := ["Content-Type: application/json"]
 	var body := JSON.stringify({ "sql": sql, "params": params })
 
@@ -59,7 +59,7 @@ func query(sql: String, params: Array, callback: Callable) -> void:
 func _api_base() -> String:
 	if OS.has_feature("web"):
 		return str(JavaScriptBridge.eval("window.location.origin", true))
-	return "https://localhost:9090"  # fallback para ejecutar desde el editor
+	return "https://localhost:9443"  # fallback para ejecutar desde el editor
 
 
 # =============================================================================

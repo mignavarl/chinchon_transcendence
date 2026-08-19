@@ -100,7 +100,20 @@ func get_deck(dic):
 	
 	dic[rk] = 1
 	selector.my_decks.push_back(get_dictionary_of_id(rk))
+	_save_deck(rk)
 	return true
+
+
+# Apunta la baraja en la base de datos. Un invitado sin cuenta juega igual,
+# pero la baraja se le queda solo en memoria hasta que cierre el navegador.
+func _save_deck(deck_id: String) -> void:
+	if not Auth.can_save():
+		return
+
+	Database.grant_deck(Auth.user_id, deck_id, func(res: Dictionary) -> void:
+		if not res.ok:
+			push_warning("no se pudo guardar la baraja %s: %s" % [deck_id, res.error])
+	)
 
 func get_dictionary_of_id(id):
 	for d in decks.DECKS:

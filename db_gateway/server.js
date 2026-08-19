@@ -1,9 +1,11 @@
 // Gateway entre el juego y Postgres.
 //
 // El juego corre en el navegador (WASM), asi que no puede abrir un socket TCP
-// contra Postgres directamente. Manda un POST a /api/query, nginx lo reenvia
+// contra Postgres directamente. Manda un POST a /db/query, nginx lo reenvia
 // aqui, y este servicio ejecuta la SQL contra la base de datos y devuelve
 // las filas en JSON.
+//
+// El prefijo es /db/ y no /api/ porque /api/ lo ocupa el backend de Spring.
 
 import Fastify from "fastify";
 import pg from "pg";
@@ -15,7 +17,7 @@ const app = Fastify({ logger: true });
 
 // Cabeceras obligatorias para Godot 4 web (SharedArrayBuffer / Threads).
 // nginx las pone en el bloque server, pero un bloque location con sus propios
-// add_header no hereda los de arriba, asi que /api/ se quedaria sin ellas.
+// add_header no hereda los de arriba, asi que /db/ se quedaria sin ellas.
 // Por eso las anadimos tambien aqui.
 app.addHook("onSend", async (_req, reply, payload) => {
 	reply.header("Cross-Origin-Opener-Policy", "same-origin");
@@ -24,7 +26,7 @@ app.addHook("onSend", async (_req, reply, payload) => {
 });
 
 // Comprueba que la base de datos responde.
-app.get("/api/health", async (_req, reply) => {
+app.get("/db/health", async (_req, reply) => {
 	try {
 		await pool.query("SELECT 1");
 		return { ok: true };
@@ -35,7 +37,7 @@ app.get("/api/health", async (_req, reply) => {
 });
 
 // La tuberia de consultas. Body: { sql: string, params?: any[] }
-app.post("/api/query", async (req, reply) => {
+app.post("/db/query", async (req, reply) => {
 	const { sql, params } = req.body ?? {};
 
 	if (typeof sql !== "string" || sql.length === 0) {
