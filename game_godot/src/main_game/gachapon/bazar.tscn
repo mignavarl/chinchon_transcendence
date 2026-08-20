@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=4 uid="uid://dxfakc65efyny"]
+[gd_scene load_steps=108 format=4 uid="uid://dxfakc65efyny"]
 
 [ext_resource type="Script" uid="uid://dog0herjaa64c" path="res://src/main_game/gachapon/bazar.gd" id="1_nuofq"]
 [ext_resource type="ArrayMesh" uid="uid://bhlrq3idg66u2" path="res://assets/Models/Furniture Kit/wall.obj" id="1_qispd"]
@@ -9,7 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://badrowc2ad7th" path="res://assets/Models/Furniture Kit/stairsOpenSingle.obj" id="4_lfv8h"]
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="4_ubr08"]
 [ext_resource type="ArrayMesh" uid="uid://vs2vx2g5g6qg" path="res://assets/Models/Furniture Kit/tableCoffeeGlass.obj" id="4_ukcyk"]
-[ext_resource type="Material" uid="uid://b2rr1s4m1aapd" path="res://materials/mat_shader.tres" id="5_ehlil"]
+[ext_resource type="Texture2D" uid="uid://bdgqr78v8efvg" path="res://assets/suelo_baldosa_marron.png" id="5_hqoqa"]
 [ext_resource type="ArrayMesh" uid="uid://dco805exysbdr" path="res://assets/Models/Furniture Kit/cardboardBoxOpen.obj" id="7_xdx7c"]
 [ext_resource type="Texture2D" uid="uid://hlt80oscmbnm" path="res://assets/cartel_helado.jpg" id="9_1hi3c"]
 [ext_resource type="ArrayMesh" uid="uid://0tiaog3b2peo" path="res://assets/Models/Furniture Kit/doorwayOpen.obj" id="9_xpobk"]
@@ -54,8 +54,15 @@ fog_light_energy = 2.53
 volumetric_fog_enabled = true
 adjustment_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk0hf"]
+albedo_color = Color(0.95793825, 0.7971717, 0.7090395, 1)
+albedo_texture = ExtResource("5_hqoqa")
+normal_scale = 0.2
+uv1_scale = Vector3(11.22, 20.651, 11.22)
+uv1_offset = Vector3(0.445, 0, 0)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_shc6l"]
-material = ExtResource("5_ehlil")
+material = SubResource("StandardMaterial3D_kk0hf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1c7l"]
 albedo_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
