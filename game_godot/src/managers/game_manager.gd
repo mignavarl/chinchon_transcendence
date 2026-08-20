@@ -252,6 +252,73 @@ func end_round() -> void:
 		var hand_node = player_hands[get_visual_slot_index(r["player"])]
 		_display_combinations(hand_node, r)
 
+	# La partida son max_rounds rondas: cuando se juega la ultima, se guarda.
+	if current_round >= config.max_rounds:
+		_save_match()
+
+
+# ── Guardado de la partida ──────────────────────────────────────────────────
+
+# Escribe la partida y sus asientos en la base de datos, y suma la victoria o
+# la derrota al usuario que juega en esta maquina.
+#
+# En el Chinchon gana el que MENOS puntos suma, y el score de PlayerData es el
+# acumulado de todas las rondas, asi que el ganador sale de comparar totales.
+# Puede haber empate y por eso is_winner va por asiento.
+#
+# En online cada cliente guarda su propia copia de la partida: por la red solo
+# viajan los nombres, un cliente no sabe el id de usuario de los demas y sus
+# asientos se apuntan sin usuario.
+func _save_match() -> void:
+	# Una partida de invitado no seria de nadie y no saldria en ningun
+	# historial, asi que no se guarda.
+	if not Auth.can_save():
+		return
+
+	var best_score := _best_score()
+	var seats: Array = []
+
+	for p in config.players:
+		seats.append({
+			"seat":      p.hand_idx + 1,
+			"user_id":   Auth.user_id if p.is_local else null,
+			"name":      p.display_name,
+			"kind":      _db_kind(p),
+			"score":     p.score,
+			"is_winner": p.score == best_score,
+		})
+
+	Database.save_match(config.is_online, config.max_rounds, deck_selected, seats,
+		func(res: Dictionary) -> void:
+			if not res.ok:
+				push_warning("no se pudo guardar la partida: %s" % res.error)
+	)
+
+	var local := _get_local_player()
+	if local == null:
+		return
+
+	Database.add_result(Auth.user_id, local.score == best_score, func(res: Dictionary) -> void:
+		if not res.ok:
+			push_warning("no se pudo guardar el resultado: %s" % res.error)
+	)
+
+
+func _best_score() -> int:
+	var best := config.players[0].score
+	for p in config.players:
+		if p.score < best:
+			best = p.score
+	return best
+
+
+# Los mismos nombres que acepta la columna kind de match_players.
+func _db_kind(player: PlayerData) -> String:
+	match player.type:
+		PlayerData.Type.AI:      return "ai"
+		PlayerData.Type.NETWORK: return "network"
+		_:                       return "human"
+
 func _display_combinations(hand_node: Node2D, result: Dictionary) -> void:
 	var origin      = hand_node.get_hand_origin()
 	var rot         = hand_node.get_card_rotation()

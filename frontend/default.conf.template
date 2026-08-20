@@ -38,6 +38,18 @@ server {
     }
 
     # =======================
+	# DB GATEWAY (consultas del juego a Postgres)
+	# =======================
+    # El backend de Spring ya ocupa /api/, asi que el gateway cuelga de /db/.
+    # Ojo: un bloque location no hereda los add_header del server, asi que
+    # las cabeceras COOP/COEP de estas respuestas las pone el propio gateway.
+    location /db/ {
+        proxy_pass http://db_gateway:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # =======================
 	# BACKEND websocket (juego online)
 	# =======================
     location /ws/game {

@@ -21,7 +21,8 @@ func _ready() -> void:
 			dic_legen.get_or_add(i["id"])
 		if i["id"] == "española":
 			selector.my_decks.push_back(i)
-	get_tree().change_scene_to_file("res://src/menus/main_menu.tscn")
+	# El menu queda detras del login: hasta que Auth no tiene token no se entra.
+	get_tree().change_scene_to_file("res://scenes/loginScene.tscn")
 	TranslationServer.set_locale("es")
 
 

@@ -1,3 +1,4 @@
 nginx/certs/
 *.import
 .env
+db_gateway/node_modules/

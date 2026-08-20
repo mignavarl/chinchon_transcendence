@@ -14,9 +14,13 @@ services:
     networks:
       - transcendence_net
 
+  # Una sola base de datos para todo: el backend de Spring y el db_gateway.
+  # init.sql solo se ejecuta la PRIMERA vez, cuando el volumen esta vacio.
+  # Si ya la habias levantado antes:  make clean && make
   postgres:
     image: postgres:16
     container_name: transcendence_postgres
+    restart: unless-stopped
     env_file:
       - .env
     environment:
@@ -25,11 +29,13 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 10
+    # Sin puerto publicado: solo se llega desde la red interna de compose.
     networks:
       - transcendence_net
 
@@ -45,6 +51,18 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     ports:
       - "8080:8080"
+    networks:
+      - transcendence_net
+
+  db_gateway:
+    build: ./db_gateway
+    container_name: chinchon_db_gateway
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Sin puerto publicado: nginx lo alcanza por la red interna de compose.
     networks:
       - transcendence_net
 
@@ -67,6 +85,10 @@ services:
         condition: service_started
       godot:
         condition: service_healthy
+      # nginx resuelve el host "db_gateway" al arrancar, asi que si el
+      # gateway no existe todavia no levanta.
+      db_gateway:
+        condition: service_started
     networks:
       - transcendence_net
 

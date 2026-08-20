@@ -75,6 +75,10 @@ public class AuthService {
     /**
      * Builds a new User entity.
      *
+     * El nombre visible arranca igual que el username porque en init.sql
+     * la columna "name" es NOT NULL y no tiene DEFAULT. El usuario puede
+     * cambiarlo despues desde el perfil.
+     *
      * @param username the username
      * @param encodedPassword the encoded password
      * @return a new User instance
@@ -82,6 +86,7 @@ public class AuthService {
     private User buildUser(String username, String encodedPassword) {
         return User.builder()
                 .username(username)
+                .name(username)
                 .password(encodedPassword)
                 .build();
     }

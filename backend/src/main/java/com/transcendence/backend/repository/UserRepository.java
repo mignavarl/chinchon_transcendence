@@ -10,7 +10,7 @@ import com.transcendence.backend.model.User;
  * Repository interface for accessing and managing User entities.
  * Extends JpaRepository to provide CRUD operations and query methods.
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     /**
      * Retrieves a user by their username.

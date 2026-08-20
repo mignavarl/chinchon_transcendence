@@ -2,6 +2,7 @@ package com.transcendence.backend.controller;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +34,17 @@ public class AuthController {
      */
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest request) {
-        authService.signup(request.username(), request.password());
+        if (isBlank(request.username()) || isBlank(request.password())) {
+            return error(HttpStatus.BAD_REQUEST, "Username and password are required");
+        }
+
+        try {
+            authService.signup(request.username(), request.password());
+        } catch (IllegalArgumentException e) {
+            // El unico motivo por el que signup() lanza es que el nombre ya exista.
+            return error(HttpStatus.CONFLICT, e.getMessage());
+        }
+
         return ResponseEntity.ok(Map.of("message", "User registered successfully"));
     }
 
@@ -45,9 +56,47 @@ public class AuthController {
      */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        User user = authService.login(request.username(), request.password());
+        if (isBlank(request.username()) || isBlank(request.password())) {
+            return error(HttpStatus.BAD_REQUEST, "Username and password are required");
+        }
+
+        User user;
+        try {
+            user = authService.login(request.username(), request.password());
+        } catch (IllegalArgumentException e) {
+            // Credenciales malas. Sin este catch Spring devolvia un 500 y el
+            // cliente no podia distinguir "password mal" de "backend caido".
+            return error(HttpStatus.UNAUTHORIZED, e.getMessage());
+        }
+
         String token = jwtService.generateToken(user.getUsername());
         return ResponseEntity.ok(Map.of("token", token));
+    }
+
+    // -------------------------------------------------------------------------
+    // Helper Methods
+    // -------------------------------------------------------------------------
+
+    /**
+     * Checks whether a request field is missing or contains only whitespace.
+     *
+     * @param value the field value to check
+     * @return true if the value is null or blank
+     */
+    private boolean isBlank(String value) {
+        return value == null || value.isBlank();
+    }
+
+    /**
+     * Builds an error response with the shape the client expects: a JSON
+     * object with a single "error" field.
+     *
+     * @param status the HTTP status to return
+     * @param message the message shown to the user
+     * @return the error response
+     */
+    private ResponseEntity<Map<String, String>> error(HttpStatus status, String message) {
+        return ResponseEntity.status(status).body(Map.of("error", message));
     }
 
     // -------------------------------------------------------------------------
