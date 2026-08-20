@@ -23,7 +23,7 @@ func _ready() -> void:
 			selector.my_decks.push_back(i)
 	# El menu queda detras del login: hasta que Auth no tiene token no se entra.
 	get_tree().change_scene_to_file("res://scenes/loginScene.tscn")
-	TranslationServer.set_locale("es")
+	TranslationServer.set_locale(ConfigManager.get_language())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

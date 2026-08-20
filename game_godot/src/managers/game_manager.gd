@@ -29,7 +29,7 @@ var GROUP_SPACING = 220
 func setup() -> void:
 	config = GameConfigHandler.take_config()
 	_build_agents()
-	turn_controller.setup(config.players)
+	turn_controller.setup(config.players, 0)
 	turn_controller.turn_started.connect(_on_turn_started)
 	deck.set_collision_mask(4)
 	slot.set_collision_mask(2)
@@ -37,23 +37,19 @@ func setup() -> void:
 	if config.is_online:
 		WebSocketClient.message_received.connect(_on_network_message)
 
+	start_game()
+
+func _deck_generation():
 	if config.is_online and not config.is_host:
-		print("genero deck pero no shuffleo")
-		#_generate_deck(false)
 		_generate_deck(false)
 		_deck_sync_received = false
 		await _wait_for_deck_sync()
 	else:
-		print("genero deck y shuffleo")
-		#_generate_deck(true)
 		_generate_deck(true)
 		if config.is_online:
 			print("Envio el orden a todos")
 			_broadcast_deck_order()
 			await _wait_for_deck_sync()
-
-	start_game()
-
 
 # ── Sincronización del mazo (solo online) ───────────────────────────────────
 
@@ -105,6 +101,12 @@ func _on_network_message(data: Dictionary) -> void:
 		"deck_sync":
 			print(data["order"])
 			_apply_deck_order(data["order"])
+			
+		"player_eliminated":
+			_apply_player_elimination(data["player_id"])
+ 
+		"next_round":
+			restart_game()
 
 func _find_network_agent_by_id(network_id: int) -> NetworkAgent:
 	for agent in agents.values():
@@ -112,6 +114,11 @@ func _find_network_agent_by_id(network_id: int) -> NetworkAgent:
 			return agent
 	return null
 
+func _find_player_by_id(player_id: int) -> PlayerData:
+	for p in config.players:
+		if p.id == player_id:
+			return p
+	return null
 
 func _build_agents() -> void:
 	for player in config.players:
@@ -148,6 +155,7 @@ func _ready() -> void:
 	setup()
 
 func start_game() -> void:
+	await _deck_generation()
 	game_ended = false
 	current_round += 1
 	await _deal_cards()
@@ -248,6 +256,8 @@ func end_round() -> void:
 
 	var results = round_controller.evaluate_round(config.players, hands_map)
 
+	_check_player_scores()
+
 	for r in results:
 		var hand_node = player_hands[get_visual_slot_index(r["player"])]
 		_display_combinations(hand_node, r)
@@ -256,6 +266,33 @@ func end_round() -> void:
 	if current_round >= config.max_rounds:
 		_save_match()
 
+func _check_player_scores():
+	for pl in turn_controller._players:
+		if pl.score > 20 and !pl.eliminated:
+			_eliminate_player(pl)
+
+func _eliminate_player(player: PlayerData) -> void:
+	print("eliminamos al jugador ", player.id)
+	if config.is_online and config.is_host:
+		WebSocketClient.send({
+			"type": "player_eliminated",
+			"player_id": player.id
+		})
+	_apply_player_elimination(player.id)
+ 
+ 
+func _advance_to_next_round() -> void:
+	if config.is_online and config.is_host:
+		WebSocketClient.send({ "type": "next_round" })
+
+
+func _apply_player_elimination(net_id : int):
+	var elim := _find_player_by_id(net_id)
+	
+	if elim == null:
+		return
+	elim.eliminated = true
+	turn_controller.remove_player(elim.id)
 
 # ── Guardado de la partida ──────────────────────────────────────────────────
 
@@ -430,8 +467,9 @@ func _deal_cards() -> void:
 	print("deal cards")
 	for i in 7:
 		for player in config.players:
+			if player.eliminated:
+				break
 			var c = draw_card()
-			print(c, " a ", player.display_name)
 			player_hands[get_visual_slot_index(player)].add_card_to_hand(c)
 			await get_tree().create_timer(0.05).timeout
 
@@ -503,4 +541,4 @@ func _on_gente_button_up() -> void:
 
 
 func _on_restart_pressed() -> void:
-	restart_game()
+	_advance_to_next_round()

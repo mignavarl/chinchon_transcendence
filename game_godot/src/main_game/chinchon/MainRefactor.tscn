@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cbnjphvfqof6n"]
 
-[ext_resource type="Texture2D" uid="uid://cg6ag3bhpvuv6" path="res://icon.svg" id="2_3axbq"]
+[ext_resource type="Texture2D" uid="uid://drxh7soh66wrr" path="res://assets/coin.png" id="2_3axbq"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://src/cards/card_manager.gd" id="2_huv64"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://src/cards/card.tscn" id="3_ykixw"]
 [ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://src/cards/card_slot.tscn" id="4_e4qjk"]
@@ -48,7 +48,6 @@ offset_bottom = -249.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
-text = "dhsaohids"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -57,9 +56,11 @@ visible = false
 layout_mode = 0
 offset_left = 110.0
 offset_top = -138.0
-offset_right = 238.0
-offset_bottom = -10.0
+offset_right = 904.0
+offset_bottom = 656.0
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3axbq")
+expand_mode = 1
 
 [node name="PlayerName1" type="Label" parent="UI_Ingame/Control"]
 layout_mode = 1
@@ -74,7 +75,6 @@ grow_vertical = 2
 rotation = 1.5707964
 pivot_offset = Vector2(170.105, 0)
 theme_override_font_sizes/font_size = 20
-text = "asdasdasd"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -85,6 +85,7 @@ offset_left = 108.604935
 offset_top = -166.89502
 offset_right = 236.60493
 offset_bottom = -38.89502
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3axbq")
 
 [node name="PlayerName2" type="Label" parent="UI_Ingame/Control"]
@@ -99,7 +100,6 @@ offset_bottom = 226.0
 grow_horizontal = 2
 pivot_offset = Vector2(170.105, 0)
 theme_override_font_sizes/font_size = 20
-text = "sdadsa"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -110,6 +110,7 @@ offset_left = 113.0
 offset_top = 44.0
 offset_right = 241.0
 offset_bottom = 172.0
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3axbq")
 
 [node name="PlayerName3" type="Label" parent="UI_Ingame/Control"]
@@ -128,7 +129,6 @@ grow_vertical = 2
 rotation = -1.5707964
 pivot_offset = Vector2(170.105, 0)
 theme_override_font_sizes/font_size = 20
-text = "saddsa"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -139,6 +139,7 @@ offset_left = 84.104965
 offset_top = -339.10498
 offset_right = 212.10497
 offset_bottom = -211.10498
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3axbq")
 
 [node name="Scoreboard" type="Label" parent="UI_Ingame/Control"]

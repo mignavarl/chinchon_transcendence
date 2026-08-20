@@ -10,3 +10,4 @@ enum Type { HUMAN, AI, NETWORK }
 @export var score: int = 0
 @export var is_local: bool = false 
 @export var network_id: int = -1
+@export var eliminated : bool = false
