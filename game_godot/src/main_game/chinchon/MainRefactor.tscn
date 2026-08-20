@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbnjphvfqof6n"]
+[gd_scene load_steps=15 format=3 uid="uid://cbnjphvfqof6n"]
 
+[ext_resource type="Texture2D" uid="uid://cg6ag3bhpvuv6" path="res://icon.svg" id="2_3axbq"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://src/cards/card_manager.gd" id="2_huv64"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://src/cards/card.tscn" id="3_ykixw"]
 [ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://src/cards/card_slot.tscn" id="4_e4qjk"]
@@ -8,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="8_huv64"]
 [ext_resource type="Script" uid="uid://bpl7oioqdhiik" path="res://src/managers/ui_manager.gd" id="8_oqeio"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://src/cards/card_database.gd" id="9_m1vig"]
-[ext_resource type="Texture2D" uid="uid://ch0pc8i64oxnk" path="res://assets/Tapete_chinchon_sin_marcas.png" id="11_v6aup"]
+[ext_resource type="Texture2D" uid="uid://b4vt340fldqqr" path="res://assets/Tapete_chinchon_sin_marcas.png" id="11_v6aup"]
 [ext_resource type="Script" uid="uid://4vlf2qnevda5" path="res://src/managers/turn_controller.gd" id="11_ykixw"]
 [ext_resource type="Script" uid="uid://j4ub65m4pykc" path="res://src/managers/round_controller.gd" id="12_ykixw"]
 [ext_resource type="Script" uid="uid://6rvvof3mgrsq" path="res://src/main_game/chinchon/ui_ingame.gd" id="16_srxia"]
@@ -16,12 +17,14 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="UI_Ingame" type="CanvasLayer" parent="." node_paths=PackedStringArray("names", "scores", "scoresbg")]
+[node name="UI_Ingame" type="CanvasLayer" parent="." node_paths=PackedStringArray("names", "scores", "scoresbg", "turn_controller", "game_manager")]
 layer = 100
 script = ExtResource("16_srxia")
 names = [NodePath("Control/PlayerName0"), NodePath("Control/PlayerName1"), NodePath("Control/PlayerName2"), NodePath("Control/PlayerName3")]
 scores = NodePath("Control/Scoreboard/RichTextLabel")
 scoresbg = NodePath("Control/Scoreboard/Panel")
+turn_controller = NodePath("../Systems/TurnController")
+game_manager = NodePath("../Systems/ChinchonManager")
 
 [node name="Control" type="Control" parent="UI_Ingame"]
 layout_mode = 3
@@ -45,8 +48,18 @@ offset_bottom = -249.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
+text = "dhsaohids"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="ActivePlayer0" type="TextureRect" parent="UI_Ingame/Control/PlayerName0"]
+visible = false
+layout_mode = 0
+offset_left = 110.0
+offset_top = -138.0
+offset_right = 238.0
+offset_bottom = -10.0
+texture = ExtResource("2_3axbq")
 
 [node name="PlayerName1" type="Label" parent="UI_Ingame/Control"]
 layout_mode = 1
@@ -61,8 +74,18 @@ grow_vertical = 2
 rotation = 1.5707964
 pivot_offset = Vector2(170.105, 0)
 theme_override_font_sizes/font_size = 20
+text = "asdasdasd"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="ActivePlayer1" type="TextureRect" parent="UI_Ingame/Control/PlayerName1"]
+visible = false
+layout_mode = 0
+offset_left = 108.604935
+offset_top = -166.89502
+offset_right = 236.60493
+offset_bottom = -38.89502
+texture = ExtResource("2_3axbq")
 
 [node name="PlayerName2" type="Label" parent="UI_Ingame/Control"]
 layout_mode = 1
@@ -76,8 +99,18 @@ offset_bottom = 226.0
 grow_horizontal = 2
 pivot_offset = Vector2(170.105, 0)
 theme_override_font_sizes/font_size = 20
+text = "sdadsa"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="ActivePlayer2" type="TextureRect" parent="UI_Ingame/Control/PlayerName2"]
+visible = false
+layout_mode = 0
+offset_left = 113.0
+offset_top = 44.0
+offset_right = 241.0
+offset_bottom = 172.0
+texture = ExtResource("2_3axbq")
 
 [node name="PlayerName3" type="Label" parent="UI_Ingame/Control"]
 layout_mode = 1
@@ -95,8 +128,18 @@ grow_vertical = 2
 rotation = -1.5707964
 pivot_offset = Vector2(170.105, 0)
 theme_override_font_sizes/font_size = 20
+text = "saddsa"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="ActivePlayer3" type="TextureRect" parent="UI_Ingame/Control/PlayerName3"]
+visible = false
+layout_mode = 0
+offset_left = 84.104965
+offset_top = -339.10498
+offset_right = 212.10497
+offset_bottom = -211.10498
+texture = ExtResource("2_3axbq")
 
 [node name="Scoreboard" type="Label" parent="UI_Ingame/Control"]
 layout_mode = 0

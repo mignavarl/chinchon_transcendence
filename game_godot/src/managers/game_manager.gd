@@ -119,7 +119,7 @@ func _build_agents() -> void:
 		match player.type:
 			PlayerData.Type.HUMAN:
 				agent = HumanAgent.new(player)
-				player_hands[_get_visual_slot_index(player)].set_visibility(true)
+				player_hands[get_visual_slot_index(player)].set_visibility(true)
 				if config.is_online and player.is_local:
 					agent.action_taken.connect(_broadcast_local_action)
 			PlayerData.Type.AI:
@@ -172,16 +172,16 @@ func _on_turn_started(player: PlayerData) -> void:
 
 func _build_game_state(player: PlayerData) -> Dictionary:
 	return {
-		"hand":        player_hands[_get_visual_slot_index(player)].player_hand,
+		"hand":        player_hands[get_visual_slot_index(player)].player_hand,
 		"top_discard": slot.top_card,
 		"tree":        get_tree(),
 	}
 
-func _get_visual_slot_index(player: PlayerData) -> int:
-	# player_hands[0] = Bottom, [1] = Left, [2] = Top, [3] = Right (tu orden actual)
+func get_visual_slot_index(player: PlayerData) -> int:
+	# player_hands[0] = Bottom, [1] = Left, [2] = Top, [3] = Right
 	var local_player := _get_local_player()
 	if local_player == null:
-		return player.hand_idx  # fallback: modo local, sin red, se queda como está
+		return player.hand_idx
 
 	var num_players := config.players.size()
 	var offset := (player.hand_idx - local_player.hand_idx + num_players) % num_players
@@ -198,7 +198,7 @@ func _on_action_taken(action: Dictionary, player: PlayerData) -> void:
 		"draw":
 			var card = draw_card() if action["source"] == "deck" else draw_discard()
 			card.flipped = (player.type != PlayerData.Type.HUMAN or not player.is_local)
-			player_hands[_get_visual_slot_index(player)].add_card_to_hand(card)
+			player_hands[get_visual_slot_index(player)].add_card_to_hand(card)
 			card_drawn_this_turn = true
 		"discard":
 			_do_discard(action["card"], player)
@@ -222,7 +222,7 @@ func _broadcast_local_action(action: Dictionary) -> void:
 	})
 
 func _find_card_in_hand(card_id, player: PlayerData):
-	var hand = player_hands[_get_visual_slot_index(player)].player_hand
+	var hand = player_hands[get_visual_slot_index(player)].player_hand
 	for card in hand:
 		if card.id == card_id:
 			return card
@@ -232,7 +232,7 @@ func _do_discard(card, player: PlayerData) -> void:
 	card.flipped = false
 	card_manager.animate_card_to_position(card, slot.position, slot.rotation)
 	slot.add_card_to_stack(card)
-	player_hands[_get_visual_slot_index(player)].remove_card_from_hand(card)
+	player_hands[get_visual_slot_index(player)].remove_card_from_hand(card)
 
 # ── Fin de ronda ─────────────────────────────────────────────────────────────
 func end_round() -> void:
@@ -244,12 +244,12 @@ func end_round() -> void:
 	# Construir mapa id→hand para el evaluador
 	var hands_map: Dictionary = {}
 	for player in config.players:
-		hands_map[player.id] = player_hands[_get_visual_slot_index(player)].player_hand
+		hands_map[player.id] = player_hands[get_visual_slot_index(player)].player_hand
 
 	var results = round_controller.evaluate_round(config.players, hands_map)
 
 	for r in results:
-		var hand_node = player_hands[_get_visual_slot_index(r["player"])]
+		var hand_node = player_hands[get_visual_slot_index(r["player"])]
 		_display_combinations(hand_node, r)
 
 func _display_combinations(hand_node: Node2D, result: Dictionary) -> void:
@@ -365,7 +365,7 @@ func _deal_cards() -> void:
 		for player in config.players:
 			var c = draw_card()
 			print(c, " a ", player.display_name)
-			player_hands[_get_visual_slot_index(player)].add_card_to_hand(c)
+			player_hands[get_visual_slot_index(player)].add_card_to_hand(c)
 			await get_tree().create_timer(0.05).timeout
 
 func _reshuffle_deck() -> void:
