@@ -1,6 +1,5 @@
 [gd_scene load_steps=14 format=3 uid="uid://cbnjphvfqof6n"]
 
-[ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_pi1jn"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://src/cards/card_manager.gd" id="2_huv64"]
 [ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://src/cards/card.tscn" id="3_ykixw"]
 [ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://src/cards/card_slot.tscn" id="4_e4qjk"]
@@ -9,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="8_huv64"]
 [ext_resource type="Script" uid="uid://bpl7oioqdhiik" path="res://src/managers/ui_manager.gd" id="8_oqeio"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://src/cards/card_database.gd" id="9_m1vig"]
+[ext_resource type="Texture2D" uid="uid://ch0pc8i64oxnk" path="res://assets/Tapete_chinchon_sin_marcas.png" id="11_v6aup"]
 [ext_resource type="Script" uid="uid://4vlf2qnevda5" path="res://src/managers/turn_controller.gd" id="11_ykixw"]
 [ext_resource type="Script" uid="uid://j4ub65m4pykc" path="res://src/managers/round_controller.gd" id="12_ykixw"]
 [ext_resource type="Script" uid="uid://6rvvof3mgrsq" path="res://src/main_game/chinchon/ui_ingame.gd" id="16_srxia"]
@@ -186,7 +186,7 @@ canvas = NodePath("../../UI_Ingame")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -42
 position = Vector2(960, 540)
-texture = ExtResource("1_pi1jn")
+texture = ExtResource("11_v6aup")
 
 [node name="Deck" parent="." instance=ExtResource("4_e4qjk")]
 z_index = -10

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dj4nwd2o254ou"]
+[gd_scene load_steps=16 format=3 uid="uid://dj4nwd2o254ou"]
 
 [ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="1_bdcqn"]
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="2_bjpxk"]
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="3_bdcqn"]
+[ext_resource type="Texture2D" uid="uid://34lw4nsfys73" path="res://assets/Tapete_vacio.png" id="4_4qdc3"]
 [ext_resource type="Texture2D" uid="uid://o45onhyflogx" path="res://assets/frentecarta.png" id="4_l0h4h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnxpo"]
@@ -151,6 +152,10 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("4_4qdc3")
+
 [node name="FondoMenu" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -164,7 +169,7 @@ offset_right = 671.5
 offset_bottom = 451.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.41568628, 0.21960784, 0.38039216)
+color = Color(0, 0.41568628, 0.21960784, 0)
 
 [node name="FondoCartas" type="ColorRect" parent="FondoMenu"]
 layout_mode = 1
