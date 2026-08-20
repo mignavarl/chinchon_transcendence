@@ -69,4 +69,6 @@ locale/locale_filter_mode=0
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/webp_compression/compression_method=0

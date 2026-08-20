@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2rr1s4m1aapd"]
 
-[ext_resource type="Texture2D" uid="uid://ck541p00e8jh" path="res://materials/moleanos-hq.webp" id="1_trksl"]
+[ext_resource type="Texture2D" uid="uid://bdgqr78v8efvg" path="res://assets/suelo_baldosa_marron.png" id="1_trksl"]
 
 [resource]
 albedo_color = Color(0.95793825, 0.7971717, 0.7090395, 1)
@@ -9,5 +9,5 @@ metallic = 0.58
 metallic_specular = 0.82
 roughness = 0.89
 normal_scale = 0.2
-uv1_scale = Vector3(2.92, 2.92, 2.92)
+uv1_scale = Vector3(11.22, 20.651, 11.22)
 uv1_offset = Vector3(0.445, 0, 0)

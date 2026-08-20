@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dh2wnui7vwvy3"]
+[gd_scene load_steps=56 format=3 uid="uid://dh2wnui7vwvy3"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_je7ib"]
 [ext_resource type="Script" uid="uid://diq61mhi5ewt8" path="res://src/menus/modo_juego.gd" id="2_dfsd6"]
@@ -24,23 +24,77 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tn1v6"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5086"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1bob"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bji0f"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4lhc4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_br441"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x37lj"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j6rt"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hx754"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f8vf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uktmq"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xn58r"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0hqx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_djjhx"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ye323"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwsl0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_outas"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4slxe"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8qjt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjakj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06s6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tigs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83y75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_duwk1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55bc7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ymnu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iukwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_moul0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ag7w0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ds3cq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e22n5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ta4r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hef7h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pprx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltit4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eygs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22oom"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4byq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq6n0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7k5sa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x68pt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwc3m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqssn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tctv8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2p20t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otkas"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr84k"]
 bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
@@ -128,6 +182,7 @@ rotation = 0.06981317
 texture = ExtResource("4_q4cr1")
 
 [node name="play_mode" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -201,7 +256,6 @@ theme_override_font_sizes/font_size = 195
 text = "|"
 
 [node name="ia_difficult" type="Control" parent="." node_paths=PackedStringArray("list_buttons")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -211,129 +265,35 @@ list_buttons = [NodePath("Control/1"), NodePath("Control/2"), NodePath("Control/
 
 [node name="Única" type="Button" parent="ia_difficult"]
 layout_mode = 0
-offset_left = 1414.0
-offset_top = 409.0
-offset_right = 1706.0
-offset_bottom = 526.0
-theme_override_font_sizes/font_size = 60
-text = "LA ÚNICA"
-
-[node name="easy" type="Button" parent="ia_difficult"]
-layout_mode = 0
-offset_left = 869.99994
-offset_top = 362.0
-offset_right = 1075.0
-offset_bottom = 457.0
-rotation = 0.061086524
-theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
-theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = SubResource("StyleBoxEmpty_h5086")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bji0f")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_br441")
-text = "FACIL"
-
-[node name="Label" type="Label" parent="ia_difficult/easy"]
-visible = false
-layout_mode = 0
-offset_left = 188.41867
-offset_top = 66.621574
-offset_right = 249.41867
-offset_bottom = 310.6216
-rotation = 1.5707964
-scale = Vector2(0.7, 0.8)
-theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 195
-text = "|"
-
-[node name="normal" type="Button" parent="ia_difficult"]
-layout_mode = 0
-offset_left = 819.0
-offset_top = 509.0
-offset_right = 1106.0
-offset_bottom = 604.0
-rotation = 0.06981317
-theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
-theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0j6rt")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_2f8vf")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xn58r")
-text = "NORMAL"
-
-[node name="Label" type="Label" parent="ia_difficult/normal"]
-visible = false
-layout_mode = 0
-offset_left = 314.87418
-offset_top = 73.21385
-offset_right = 375.87418
-offset_bottom = 317.21387
-rotation = 1.5707964
-scale = Vector2(0.7, 1.4)
-theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 195
-text = "|"
-
-[node name="hard" type="Button" parent="ia_difficult"]
-layout_mode = 0
-offset_left = 819.00006
-offset_top = 688.00006
-offset_right = 1080.0
-offset_bottom = 788.00006
-rotation = 0.07853982
-theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
-theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/icon_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/icon_hover_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/icon_hover_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
-theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_djjhx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_pwsl0")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4slxe")
-text = "DIFICIL
-"
-
-[node name="Label" type="Label" parent="ia_difficult/hard"]
-visible = false
-layout_mode = 0
-offset_left = 252.93054
-offset_top = 78.39687
-offset_right = 313.93054
-offset_bottom = 322.3969
-rotation = 1.5707964
-scale = Vector2(0.7, 1.1)
-theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 195
-text = "|"
-
-[node name="DificultadText" type="Label" parent="ia_difficult"]
-layout_mode = 0
-offset_left = 744.0
-offset_top = 193.0
-offset_right = 1237.0
-offset_bottom = 309.0
+offset_left = 799.0
+offset_top = 730.0
+offset_right = 1091.0
+offset_bottom = 847.0
 rotation = 0.08726646
 theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("5_65knd")
-theme_override_font_sizes/font_size = 92
-text = "DIFICULTAD"
+theme_override_font_sizes/font_size = 88
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n1bob")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4lhc4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x37lj")
+text = "JUGAR"
+
+[node name="Label" type="Label" parent="ia_difficult/Única"]
+visible = false
+layout_mode = 0
+offset_left = 365.6644
+offset_top = 83.4478
+offset_right = 426.6644
+offset_bottom = 327.4478
+rotation = 1.5707964
+scale = Vector2(0.7, 1.7)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 195
+text = "|"
 
 [node name="Control" type="Control" parent="ia_difficult"]
 anchors_preset = 0
@@ -344,46 +304,164 @@ offset_bottom = 223.0
 
 [node name="Label" type="Label" parent="ia_difficult/Control"]
 layout_mode = 0
-offset_left = 95.0
-offset_top = -40.0
-offset_right = 238.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 45
+offset_left = -471.0
+offset_top = 29.0
+offset_right = -253.0
+offset_bottom = 147.0
+rotation = 0.06981317
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 93
 text = "BOTS"
 
 [node name="1" type="Button" parent="ia_difficult/Control"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 31.0
-offset_right = 84.0
-offset_bottom = 94.0
-theme_override_font_sizes/font_size = 40
+offset_left = -414.0
+offset_top = 190.0
+offset_right = -358.0
+offset_bottom = 278.0
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.5727831, 0, 0.10466864, 1)
+theme_override_colors/font_hover_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_pressed_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_colors/icon_hover_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hx754")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_uktmq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d0hqx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ye323")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_outas")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_v8qjt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tjakj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_06s6h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5tigs")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_83y75")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_duwk1")
 toggle_mode = true
 button_pressed = true
 button_group = ExtResource("7_n1bob")
 text = "1"
 
+[node name="Label" type="Label" parent="ia_difficult/Control/1"]
+visible = false
+layout_mode = 0
+offset_left = 114.00006
+offset_top = 69.000015
+offset_right = 138.00006
+offset_bottom = 165.00002
+rotation = 1.6144296
+scale = Vector2(1.5, 1.7)
+theme_override_colors/font_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 76
+text = "|"
+
 [node name="2" type="Button" parent="ia_difficult/Control"]
 layout_mode = 0
-offset_left = 123.0
-offset_top = 33.0
-offset_right = 179.0
-offset_bottom = 96.0
-theme_override_font_sizes/font_size = 40
+offset_left = -424.0
+offset_top = 321.0
+offset_right = -368.0
+offset_bottom = 409.0
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_colors/font_hover_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_pressed_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_colors/icon_hover_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_55bc7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3ymnu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iukwg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_moul0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ag7w0")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ds3cq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_e22n5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1ta4r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hef7h")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_6pprx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ltit4")
 toggle_mode = true
 button_group = ExtResource("7_n1bob")
 text = "2"
 
+[node name="Label" type="Label" parent="ia_difficult/Control/2"]
+visible = false
+layout_mode = 0
+offset_left = 114.00006
+offset_top = 69.000015
+offset_right = 138.00006
+offset_bottom = 165.00002
+rotation = 1.6144296
+scale = Vector2(1.5, 1.7)
+theme_override_colors/font_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 76
+text = "|"
+
 [node name="3" type="Button" parent="ia_difficult/Control"]
 layout_mode = 0
-offset_left = 216.0
-offset_top = 33.0
-offset_right = 272.0
-offset_bottom = 96.0
-theme_override_font_sizes/font_size = 40
+offset_left = -434.0
+offset_top = 445.0
+offset_right = -378.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_colors/font_hover_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_pressed_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_colors/icon_hover_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.34901962, 0, 0.047058824, 1)
+theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8eygs")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_22oom")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4byq8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jq6n0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7k5sa")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_x68pt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_fwc3m")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_cqssn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tctv8")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_2p20t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_otkas")
 toggle_mode = true
 button_group = ExtResource("7_n1bob")
 text = "3"
+
+[node name="Label" type="Label" parent="ia_difficult/Control/3"]
+visible = false
+layout_mode = 0
+offset_left = 114.00006
+offset_top = 69.000015
+offset_right = 138.00006
+offset_bottom = 165.00002
+rotation = 1.6144296
+scale = Vector2(1.5, 1.7)
+theme_override_colors/font_color = Color(0.57254905, 0, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("5_65knd")
+theme_override_font_sizes/font_size = 76
+text = "|"
 
 [node name="Exit" type="Button" parent="."]
 offset_left = 1713.0
@@ -405,16 +483,15 @@ text = "VOLVER"
 [connection signal="mouse_entered" from="play_mode/online" to="play_mode/online/Label" method="show"]
 [connection signal="mouse_exited" from="play_mode/online" to="play_mode/online/Label" method="hide"]
 [connection signal="button_up" from="ia_difficult/Única" to="ia_difficult" method="_on_única_button_up"]
-[connection signal="button_up" from="ia_difficult/easy" to="ia_difficult" method="_on_easy_button_up"]
-[connection signal="mouse_entered" from="ia_difficult/easy" to="ia_difficult/easy/Label" method="show"]
-[connection signal="mouse_exited" from="ia_difficult/easy" to="ia_difficult/easy/Label" method="hide"]
-[connection signal="button_up" from="ia_difficult/normal" to="ia_difficult" method="_on_normal_button_up"]
-[connection signal="mouse_entered" from="ia_difficult/normal" to="ia_difficult/normal/Label" method="show"]
-[connection signal="mouse_exited" from="ia_difficult/normal" to="ia_difficult/normal/Label" method="hide"]
-[connection signal="button_up" from="ia_difficult/hard" to="ia_difficult" method="_on_dificil_button_up"]
-[connection signal="mouse_entered" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="show"]
-[connection signal="mouse_exited" from="ia_difficult/hard" to="ia_difficult/hard/Label" method="hide"]
+[connection signal="mouse_entered" from="ia_difficult/Única" to="ia_difficult/Única/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/Única" to="ia_difficult/Única/Label" method="hide"]
+[connection signal="mouse_entered" from="ia_difficult/Control/1" to="ia_difficult/Control/1/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/Control/1" to="ia_difficult/Control/1/Label" method="hide"]
 [connection signal="toggled" from="ia_difficult/Control/1" to="ia_difficult" method="_on__toggled" binds= [1]]
+[connection signal="mouse_entered" from="ia_difficult/Control/2" to="ia_difficult/Control/2/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/Control/2" to="ia_difficult/Control/2/Label" method="hide"]
 [connection signal="toggled" from="ia_difficult/Control/2" to="ia_difficult" method="_on__toggled" binds= [2]]
+[connection signal="mouse_entered" from="ia_difficult/Control/3" to="ia_difficult/Control/3/Label" method="show"]
+[connection signal="mouse_exited" from="ia_difficult/Control/3" to="ia_difficult/Control/3/Label" method="hide"]
 [connection signal="toggled" from="ia_difficult/Control/3" to="ia_difficult" method="_on__toggled" binds= [3]]
 [connection signal="button_up" from="Exit" to="play_mode" method="_on_exit_button_up"]
