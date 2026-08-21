@@ -51,7 +51,6 @@ glow_bloom = 0.1
 fog_enabled = true
 fog_light_color = Color(0.059572585, 0.049390562, 0.08697703, 1)
 fog_light_energy = 2.53
-volumetric_fog_enabled = true
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1dfpl"]
@@ -313,7 +312,7 @@ script = ExtResource("1_vry62")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48952544, 2.211445)
 
-[node name="suelo" type="StaticBody3D" parent="."]
+[node name="suelo" type="Node3D" parent="."]
 transform = Transform3D(555.46106, 0, 0, 0, 1, 0, 0, 0, -185.8622, 0, -1.1443539, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="suelo"]
@@ -407,7 +406,7 @@ environment = SubResource("Environment_svtp6")
 camera_attributes = SubResource("CameraAttributesPractical_1dfpl")
 compositor = SubResource("Compositor_qywvv")
 
-[node name="Fondo" type="Area3D" parent="."]
+[node name="Fondo" type="Node3D" parent="."]
 
 [node name="EdificioIzquierda" type="MeshInstance3D" parent="Fondo"]
 transform = Transform3D(0.71953374, 0, 0.6944575, 0, 1, 0, -0.6944575, 0, 0.71953374, -2.0268457, -1.187282, 0.7812357)
@@ -472,28 +471,28 @@ autoplay = "tokyo_drift"
 speed_scale = 6.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Fondo/CocheVerde"]
-transform = Transform3D(-2.6468952, 0, 0, 0, 2.1797419, 0, -1.1920929e-07, 0, -3.100081, -0.44183365, 0.5988333, 1.1133264)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -0.44183365, 0.5988333, 1.1133264)
 light_color = Color(1, 1, 0.41960785, 1)
 light_energy = 2.004
 spot_range = 1.3450084
 spot_angle = 41.29603
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Fondo/CocheVerde"]
-transform = Transform3D(-2.6468952, 0, 0, 0, 2.1797419, 0, -1.1920929e-07, 0, -3.100081, 0.4164832, 0.5988333, 1.1133264)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0.4164832, 0.5988333, 1.1133264)
 light_color = Color(1, 1, 0.41960785, 1)
 light_energy = 2.004
 spot_range = 1.3450084
 spot_angle = 41.29603
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Fondo/CocheVerde"]
-transform = Transform3D(2.6468952, 0, 0, 0, 0.97559094, 2.772241, 0, -1.9492298, 1.3875087, -0.44183373, 0.5988333, -1.440714)
+transform = Transform3D(1, 0, 0, 0, 0.44757178, 0.894248, 0, -0.894248, 0.44757178, -0.44183373, 0.5988333, -1.440714)
 light_color = Color(1, 0.19, 0.19, 1)
 light_energy = 0.5
 spot_range = 0.36522546
 spot_angle = 64.28212
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Fondo/CocheVerde"]
-transform = Transform3D(2.6468952, 0, 0, 0, 0.97559094, 2.772241, 0, -1.9492298, 1.3875087, 0.51290864, 0.5988333, -1.440714)
+transform = Transform3D(1, 0, 0, 0, 0.44757178, 0.894248, 0, -0.894248, 0.44757178, 0.51290864, 0.5988333, -1.440714)
 light_color = Color(1, 0.19, 0.19, 1)
 light_energy = 0.5
 spot_range = 0.36522546

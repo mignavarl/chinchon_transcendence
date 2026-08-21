@@ -25,6 +25,12 @@ func check_best_hand(cards: Array) -> Dictionary:
 			all_groups.append(group)
 	return find_best_combination(cards, all_groups)
 
+func try_attach_card(groups: Array, card)-> bool:
+	for group in groups:
+		if _can_attach(group, card):
+			_attach(group, card)
+			return true
+	return false
 
 func find_stairs(cards: Array, suit: String) -> Array:
 	var suited = cards.filter(func(c): return c.suit == suit)
@@ -59,12 +65,17 @@ func find_best_combination(cards: Array, all_groups: Array) -> Dictionary:
 	var best = {
 		"groups": [],
 		"leftover": cards.duplicate(),
-		"leftover_points": _sum_values(cards)
+		"leftover_points": sum_values(cards)
 	}
 	
 	_try_combinations(cards, all_groups, [], best)
 	return best
 
+func sum_values(cards: Array) -> int:
+	var total = 0
+	for c in cards:
+		total += c.value
+	return total
 
 func _try_combinations(cards: Array, remaining_groups: Array, chosen: Array, best: Dictionary):
 	var used = []
@@ -72,7 +83,7 @@ func _try_combinations(cards: Array, remaining_groups: Array, chosen: Array, bes
 		used.append_array(g)
 	
 	var leftover = cards.filter(func(c): return not used.has(c))
-	var points = _sum_values(leftover)
+	var points = sum_values(leftover)
 	
 	if points == 0:
 		points = -10
@@ -138,8 +149,44 @@ func _is_stair(group: Array) -> bool:
 			return true
 	return false
 
-func _sum_values(cards: Array) -> int:
-	var total = 0
-	for c in cards:
-		total += c.value
-	return total
+func _is_trio(group: Array) -> bool:
+	var first_value = group[0].value
+	for c in group:
+		if c.value != first_value:
+			return false
+	return true
+
+func _can_attach(group: Array, card) -> bool:
+	if group.is_empty():
+		return false
+	
+	if _is_trio(group):
+		if group[0].value != card.value:
+			return false
+		return true
+	else:
+		if group[0].suit != card.suit:
+			return false
+		return _is_next_in_stair(group, card) or _is_first_in_stair(group, card)
+
+func _is_next_in_stair(group: Array, card) -> bool:
+	var last_value = group[group.size() - 1].value
+	if last_value == 7:
+		return card.value == 10
+	return last_value + 1 == card.value
+
+func _is_first_in_stair(group: Array, card) -> bool:
+	var first_value = group[0].value
+	if first_value == 10:
+		return card.value == 17
+	return first_value - 1 == card.value
+
+
+func _attach(group: Array, card):
+	if _is_trio(group):
+		group.append(card)
+	else:
+		if _is_next_in_stair(group, card):
+			group.append(card)
+		else:
+			group.insert(0, card)

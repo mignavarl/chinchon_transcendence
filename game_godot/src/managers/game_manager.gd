@@ -1,6 +1,7 @@
 extends Node2D
 class_name GameManager
 
+signal round_closed
 
 # ── Exports de escena ────────────────────────────────────────────────────────
 @export var deck:         CardSlot
@@ -221,8 +222,8 @@ func _on_action_taken(action: Dictionary, player: PlayerData) -> void:
 			_do_discard(action["card"], player)
 			turn_controller.advance()
 		"close":
-			_do_discard(action["card"], player)
 			game_ended = true
+			_do_discard(action["card"], player)
 			await get_tree().create_timer(0.2).timeout
 			end_round()
 
@@ -246,13 +247,14 @@ func _find_card_in_hand(card_id, player: PlayerData):
 	return null
 
 func _do_discard(card, player: PlayerData) -> void:
-	card.flipped = false
+	card.flipped = game_ended
 	card_manager.animate_card_to_position(card, slot.position, slot.rotation)
 	slot.add_card_to_stack(card)
 	player_hands[get_visual_slot_index(player)].remove_card_from_hand(card)
 
 # ── Fin de ronda ─────────────────────────────────────────────────────────────
 func end_round() -> void:
+	round_closed.emit()
 	for hand_node in player_hands:
 		hand_node.show_hand()
 
@@ -451,6 +453,7 @@ func _display_combinations(hand_node: Node2D, result: Dictionary) -> void:
 			origin += Vector2(0, -250)
 		else:
 			origin += Vector2(0, 250)
+
 	var total_span := 0.0
 	for i in range(result["groups"].size()):
 		total_span += max(result["groups"][i].size() - 1, 0) * CARD_SPACING
@@ -461,7 +464,7 @@ func _display_combinations(hand_node: Node2D, result: Dictionary) -> void:
 
 	for group in result["groups"]:
 		for i in range(group.size()):
-			var card_node = _find_card_node(hand_node.player_hand, group[i])
+			var card_node = _find_card_node_anywhere(hand_node.player_hand, group[i], player_hands)
 			if card_node:
 				var offset = cursor + i * CARD_SPACING
 				var target = origin + (Vector2(0, offset) if is_vertical else Vector2(offset, 0))
@@ -583,6 +586,19 @@ func _find_card_node(hand: Array, card_data) -> Node:
 	for node in hand:
 		if node.suit == card_data.suit and node.value == card_data.value:
 			hand.erase(node)
+			return node
+	return null
+
+func _find_card_node_anywhere(hand: Array, card_data, all_hands: Array) -> Node:
+	var node = _find_card_node(hand, card_data)
+	if node:
+		return node
+	
+	for h in all_hands:
+		if h.player_hand == hand:
+			continue
+		node = _find_card_node(h.player_hand, card_data)
+		if node:
 			return node
 	return null
 

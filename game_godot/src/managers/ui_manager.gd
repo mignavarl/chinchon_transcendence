@@ -12,10 +12,11 @@ func _ready() -> void:
 	players = chinchon_manager.agents
 	
 	player_data =  _get_datas()
+	
 	canvas.setup_players(player_data)
 	canvas.hide_scoreboard()
 	for p in players.size():
-		canvas.show_player(player_data[p],p)
+		canvas.show_player(player_data[p])
 
 
 func _get_datas() -> Array[PlayerData]:
