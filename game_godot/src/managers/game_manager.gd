@@ -19,6 +19,12 @@ var agents: Dictionary = {}
 var game_ended  := true
 var card_drawn_this_turn := false
 var current_round := 0
+# True en cuanto queda un solo jugador vivo: la partida ya esta guardada y
+# no se juegan mas rondas.
+var match_over := false
+# Id de la fila de matches, una vez escrita. Online lo pone el anfitrion y
+# lo reparte por la sala, asi que acaba siendo el mismo en todas las maquinas.
+var saved_match_id := -1
 
 static var deck_selected := "española"
 
@@ -107,6 +113,9 @@ func _on_network_message(data: Dictionary) -> void:
  
 		"next_round":
 			restart_game()
+
+		"match_saved":
+			saved_match_id = int(data["match_id"])
 
 func _find_network_agent_by_id(network_id: int) -> NetworkAgent:
 	for agent in agents.values():
@@ -262,13 +271,17 @@ func end_round() -> void:
 		var hand_node = player_hands[get_visual_slot_index(r["player"])]
 		_display_combinations(hand_node, r)
 
-	# La partida son max_rounds rondas: cuando se juega la ultima, se guarda.
-	if current_round >= config.max_rounds:
+	# La partida se acaba cuando solo queda un jugador que no haya llegado
+	# a max_points. Las rondas no la terminan: se juegan las que hagan falta.
+	# El flag evita guardar dos veces si end_round se vuelve a entrar.
+	if not match_over and config.players.size() > 1 \
+			and turn_controller.active_player_count() <= 1:
+		match_over = true
 		_save_match()
 
 func _check_player_scores():
-	for pl in turn_controller._players:
-		if pl.score > 20 and !pl.eliminated:
+	for pl in config.players:
+		if pl.score >= config.max_points and !pl.eliminated:
 			_eliminate_player(pl)
 
 func _eliminate_player(player: PlayerData) -> void:
@@ -281,8 +294,19 @@ func _eliminate_player(player: PlayerData) -> void:
 	_apply_player_elimination(player.id)
  
  
+# Pasar a la ronda siguiente (el boton "Volver" de la mesa).
 func _advance_to_next_round() -> void:
-	if config.is_online and config.is_host:
+	if match_over:
+		return
+
+	if not config.is_online:
+		restart_game()
+		return
+
+	# Online la ronda la abre el anfitrion: manda "next_round" y el servidor
+	# se lo devuelve a todos, el incluido, asi que la mesa se reinicia a la
+	# vez en todas las maquinas. Al resto el boton no les hace nada.
+	if config.is_host:
 		WebSocketClient.send({ "type": "next_round" })
 
 
@@ -297,48 +321,102 @@ func _apply_player_elimination(net_id : int):
 # ── Guardado de la partida ──────────────────────────────────────────────────
 
 # Escribe la partida y sus asientos en la base de datos, y suma la victoria o
-# la derrota al usuario que juega en esta maquina.
+# la derrota a cada usuario que la haya jugado.
 #
-# En el Chinchon gana el que MENOS puntos suma, y el score de PlayerData es el
-# acumulado de todas las rondas, asi que el ganador sale de comparar totales.
-# Puede haber empate y por eso is_winner va por asiento.
+# ONLINE: la guarda SOLO el anfitrion, y sale UNA fila de matches con todos
+# los asientos identificados. El nombre y el user_id de cada jugador llegan
+# desde el lobby (el servidor los reparte al entrar en la sala), asi que la
+# partida aparece en el historial de todos, no solo en el del que la escribio.
+# Si guardara cada cliente saldrian tantas partidas como jugadores, cada una
+# con un solo asiento con usuario.
 #
-# En online cada cliente guarda su propia copia de la partida: por la red solo
-# viajan los nombres, un cliente no sabe el id de usuario de los demas y sus
-# asientos se apuntan sin usuario.
+# El id que devuelve el INSERT se reparte por la sala en "match_saved": es la
+# referencia comun para pedir despues los detalles de esa partida.
 func _save_match() -> void:
-	# Una partida de invitado no seria de nadie y no saldria en ningun
-	# historial, asi que no se guarda.
-	if not Auth.can_save():
+	if config.is_online and not config.is_host:
 		return
 
-	var best_score := _best_score()
 	var seats: Array = []
+	var results: Array = []
+	var seen_users := {}
+	var anyone_registered := false
 
-	for p in config.players:
+	# El asiento sale de la posicion en config.players, no de hand_idx: ese
+	# es un indice visual y match_players.seat solo admite de 1 a 4, asi que
+	# un hand_idx mayor tumbaria el INSERT entero, partida incluida.
+	for i in config.players.size():
+		var p: PlayerData = config.players[i]
+		var won := _is_winner(p)
+		var uid = _seat_user_id(p)
+
+		# match_players tiene UNIQUE (match_id, user_id): la misma cuenta no
+		# puede ocupar dos asientos. Pasa al probar con dos pestañas y el
+		# mismo login, y tumbaria el INSERT entero, asi que el segundo
+		# asiento se apunta sin usuario en vez de perder la partida.
+		if uid != null and seen_users.has(uid):
+			push_warning("la cuenta %d ocupa dos asientos, el segundo se guarda sin usuario" % uid)
+			uid = null
+
+		if uid != null:
+			seen_users[uid] = true
+			anyone_registered = true
+			results.append({ "user_id": uid, "won": won })
+
 		seats.append({
-			"seat":      p.hand_idx + 1,
-			"user_id":   Auth.user_id if p.is_local else null,
+			"seat":      i + 1,
+			"user_id":   uid,
 			"name":      p.display_name,
 			"kind":      _db_kind(p),
 			"score":     p.score,
-			"is_winner": p.score == best_score,
+			"is_winner": won,
 		})
 
-	Database.save_match(config.is_online, config.max_rounds, deck_selected, seats,
-		func(res: Dictionary) -> void:
-			if not res.ok:
-				push_warning("no se pudo guardar la partida: %s" % res.error)
-	)
-
-	var local := _get_local_player()
-	if local == null:
+	# Una partida en la que no juega ninguna cuenta no saldria en ningun
+	# historial, asi que no se guarda.
+	if not anyone_registered:
 		return
 
-	Database.add_result(Auth.user_id, local.score == best_score, func(res: Dictionary) -> void:
-		if not res.ok:
-			push_warning("no se pudo guardar el resultado: %s" % res.error)
+	Database.save_match(config.is_online, config.max_points, deck_selected, seats,
+		func(res: Dictionary) -> void:
+			if not res.ok:
+				push_error("no se pudo guardar la partida: %s" % res.error)
+				return
+
+			if res.rows.is_empty():
+				push_error("la partida se guardo pero no devolvio id")
+				return
+
+			saved_match_id = int(res.rows[0]["match_id"])
+			print("partida %d guardada con %d asientos" % [saved_match_id, res.rows.size()])
+
+			if config.is_online:
+				WebSocketClient.send({
+					"type": "match_saved",
+					"match_id": saved_match_id,
+				})
 	)
+
+	Database.add_results(results, func(res: Dictionary) -> void:
+		if not res.ok:
+			push_error("no se pudieron guardar los resultados: %s" % res.error)
+	)
+
+
+# El user_id con el que se apunta un asiento, o null si detras no hay cuenta
+# (una IA, o alguien jugando de invitado). En local el user_id no viaja por
+# ningun sitio, asi que el del jugador de esta maquina se coge de Auth.
+func _seat_user_id(player: PlayerData):
+	var uid := Auth.user_id if player.is_local else player.user_id
+	return uid if uid > 0 else null
+
+
+# Gana el que se queda sin llegar a max_points, que es justo el que no esta
+# eliminado cuando la partida acaba. Si en la ultima ronda pasan del limite
+# todos a la vez no queda nadie vivo, y entonces gana el que menos sume.
+func _is_winner(player: PlayerData) -> bool:
+	if turn_controller.active_player_count() > 0:
+		return not player.eliminated
+	return player.score == _best_score()
 
 
 func _best_score() -> int:
@@ -468,7 +546,7 @@ func _deal_cards() -> void:
 	for i in 7:
 		for player in config.players:
 			if player.eliminated:
-				break
+				continue
 			var c = draw_card()
 			player_hands[get_visual_slot_index(player)].add_card_to_hand(c)
 			await get_tree().create_timer(0.05).timeout

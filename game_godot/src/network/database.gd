@@ -196,12 +196,12 @@ func set_deck_selected(user_id: int, deck_id: String, callback: Callable) -> voi
 #
 # Va todo en UNA sentencia con un CTE a proposito: si se hiciera en dos
 # consultas y fallara la segunda, quedaria una partida sin jugadores.
-func save_match(is_online: bool, max_rounds: int, deck_id, players: Array, callback: Callable) -> void:
+func save_match(is_online: bool, max_points: int, deck_id, players: Array, callback: Callable) -> void:
 	if players.is_empty():
 		callback.call({ "ok": false, "error": "save_match sin jugadores" })
 		return
 
-	var params: Array = [is_online, max_rounds, deck_id]
+	var params: Array = [is_online, max_points, deck_id]
 	var tuples: PackedStringArray = []
 
 	for p in players:
@@ -220,7 +220,7 @@ func save_match(is_online: bool, max_rounds: int, deck_id, players: Array, callb
 
 	var sql := """
 		WITH nueva AS (
-		    INSERT INTO matches (is_online, max_rounds, deck_id, ended_at)
+		    INSERT INTO matches (is_online, max_points, deck_id, ended_at)
 		    VALUES ($1, $2, $3, now())
 		    RETURNING id
 		)
@@ -235,12 +235,36 @@ func save_match(is_online: bool, max_rounds: int, deck_id, players: Array, callb
 
 # Suma la partida al contador de victorias o derrotas del usuario.
 func add_result(user_id: int, won: bool, callback: Callable) -> void:
+	add_results([{ "user_id": user_id, "won": won }], callback)
+
+
+# Lo mismo pero para varios usuarios de una vez: es lo que hace falta al
+# terminar una partida online, donde el anfitrion apunta el resultado de
+# todos los que tenian cuenta.
+#
+# entries es un Array de diccionarios: [{ user_id = 3, won = true }, ...]
+# Los asientos sin cuenta (IA o invitado) no se pasan aqui.
+func add_results(entries: Array, callback: Callable) -> void:
+	if entries.is_empty():
+		callback.call({ "ok": true, "rows": [], "rowCount": 0 })
+		return
+
+	var params: Array = []
+	var tuples: PackedStringArray = []
+
+	for e in entries:
+		var n := params.size()
+		tuples.append("($%d::integer, $%d::boolean)" % [n + 1, n + 2])
+		params.append_array([e.get("user_id"), e.get("won", false)])
+
 	query("""
-		UPDATE users
-		   SET wins   = wins   + CASE WHEN $2 THEN 1 ELSE 0 END,
-		       losses = losses + CASE WHEN $2 THEN 0 ELSE 1 END
-		 WHERE id = $1 RETURNING wins, losses
-	""", [user_id, won], callback)
+		UPDATE users u
+		   SET wins   = u.wins   + CASE WHEN v.won THEN 1 ELSE 0 END,
+		       losses = u.losses + CASE WHEN v.won THEN 0 ELSE 1 END
+		  FROM (VALUES %s) AS v(user_id, won)
+		 WHERE u.id = v.user_id
+		RETURNING u.id, u.wins, u.losses
+	""" % ", ".join(tuples), params, callback)
 
 
 # Historial: una fila por partida jugada, con el puesto del usuario y los
@@ -269,6 +293,115 @@ func get_match(match_id: int, callback: Callable) -> void:
 		SELECT seat, user_id, name, kind, score, is_winner
 		  FROM match_players WHERE match_id = $1 ORDER BY seat
 	""", [match_id], callback)
+
+
+# Ficha completa de un usuario: lo suyo de la tabla users mas todo lo que se
+# puede sacar de las partidas que ha jugado. Devuelve SIEMPRE una fila (si no
+# ha jugado nada, los contadores van a 0), asi que se lee con res.rows[0].
+#
+# Columnas que trae:
+#   user_id, username, name, avatar_url, coins, deck_selected, created_at,
+#   last_seen                     -> la ficha del usuario
+#   wins, losses                  -> los contadores de users, que suben al
+#                                    terminar cada partida
+#   games_played, games_won, games_lost, win_rate
+#   online_games, offline_games
+#   best_score, worst_score, avg_score, total_points
+#                                 -> en el Chinchon el mejor score es el MENOR
+#   first_played, last_played
+#   current_streak, streak_is_win -> racha en curso y de que tipo es
+#   longest_win_streak
+#   favourite_deck, decks_owned
+#
+# wins/losses y games_won/games_lost cuentan lo mismo por dos caminos: los
+# primeros son el contador de users, los segundos salen de match_players. Si
+# no cuadran es que se perdio alguna escritura, asi que vale como chequeo.
+func get_user_stats(user_id: int, callback: Callable) -> void:
+	query("""
+		WITH historial AS (
+		    SELECT m.id, m.is_online, m.deck_id, m.ended_at,
+		           mp.score, mp.is_winner
+		      FROM match_players mp
+		      JOIN matches m ON m.id = mp.match_id
+		     WHERE mp.user_id = $1 AND m.ended_at IS NOT NULL
+		),
+		totales AS (
+		    SELECT count(*)                              AS games_played,
+		           count(*) FILTER (WHERE is_winner)     AS games_won,
+		           count(*) FILTER (WHERE NOT is_winner) AS games_lost,
+		           count(*) FILTER (WHERE is_online)     AS online_games,
+		           count(*) FILTER (WHERE NOT is_online) AS offline_games,
+		           min(score)                            AS best_score,
+		           max(score)                            AS worst_score,
+		           round(avg(score), 1)                  AS avg_score,
+		           coalesce(sum(score), 0)               AS total_points,
+		           min(ended_at)                         AS first_played,
+		           max(ended_at)                         AS last_played
+		      FROM historial
+		),
+		-- Racha en curso: las ultimas partidas seguidas con el mismo
+		-- resultado. En esa racha inicial el numero de fila global y el
+		-- numero de fila dentro de su resultado coinciden; en cuanto se
+		-- rompe, dejan de hacerlo.
+		numeradas AS (
+		    SELECT is_winner,
+		           row_number() OVER (ORDER BY ended_at DESC, id DESC) AS pos,
+		           row_number() OVER (PARTITION BY is_winner
+		                              ORDER BY ended_at DESC, id DESC) AS pos_tipo
+		      FROM historial
+		),
+		racha_actual AS (
+		    SELECT count(*)          AS current_streak,
+		           bool_or(is_winner) AS streak_is_win
+		      FROM numeradas
+		     WHERE pos = pos_tipo
+		),
+		-- Racha de victorias mas larga. Misma idea al reves: la resta de las
+		-- dos numeraciones es constante dentro de cada tramo seguido de
+		-- victorias, asi que agrupando por ella salen los tramos.
+		tramos AS (
+		    SELECT is_winner,
+		           row_number() OVER (ORDER BY ended_at, id)
+		             - row_number() OVER (PARTITION BY is_winner
+		                                  ORDER BY ended_at, id) AS tramo
+		      FROM historial
+		),
+		mejor_racha AS (
+		    SELECT coalesce(max(largo), 0) AS longest_win_streak
+		      FROM (SELECT count(*) AS largo
+		              FROM tramos WHERE is_winner GROUP BY tramo) t
+		),
+		baraja AS (
+		    SELECT deck_id AS favourite_deck
+		      FROM historial
+		     WHERE deck_id IS NOT NULL
+		     GROUP BY deck_id
+		     ORDER BY count(*) DESC, deck_id
+		     LIMIT 1
+		)
+		SELECT u.id AS user_id, u.username, u.name, u.avatar_url, u.coins,
+		       u.deck_selected, u.created_at, u.last_seen,
+		       u.wins, u.losses,
+		       t.games_played, t.games_won, t.games_lost,
+		       t.online_games, t.offline_games,
+		       CASE WHEN t.games_played = 0 THEN 0
+		            ELSE round(100.0 * t.games_won / t.games_played, 1)
+		       END AS win_rate,
+		       t.best_score, t.worst_score, t.avg_score, t.total_points,
+		       t.first_played, t.last_played,
+		       coalesce(r.current_streak, 0)     AS current_streak,
+		       coalesce(r.streak_is_win, false)  AS streak_is_win,
+		       ml.longest_win_streak,
+		       b.favourite_deck,
+		       (SELECT count(*) FROM user_decks ud WHERE ud.user_id = u.id)
+		           AS decks_owned
+		  FROM users u
+		  LEFT JOIN totales     t  ON true
+		  LEFT JOIN racha_actual r  ON true
+		  LEFT JOIN mejor_racha  ml ON true
+		  LEFT JOIN baraja       b  ON true
+		 WHERE u.id = $1
+	""", [user_id], callback)
 
 
 # En el Chinchon gana el que MENOS puntua, asi que la media va de menor a mayor.

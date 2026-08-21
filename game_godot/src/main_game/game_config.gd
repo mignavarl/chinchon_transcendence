@@ -3,7 +3,9 @@ extends Resource
 
 @export var players: Array[PlayerData] = []
 @export var deck_name: String = "española"
-@export var max_rounds: int = 1
+# La partida se acaba cuando solo queda un jugador por debajo de este
+# limite: el que llega a max_points queda eliminado.
+@export var max_points: int = 100
 @export var is_online: bool = false
 @export var is_host:bool =false
 

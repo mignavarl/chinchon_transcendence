@@ -7,11 +7,16 @@ extends Control
 # quiere crear sala o unirse a una existente. Flujo:
 #
 #  1. Se conecta al WebSocket.
-#  2. En cuanto conecta, manda "create_room" o "join_room" según el intent.
-#  3. Recibe "welcome" -> guarda my_network_id, room_code, is_host.
+#  2. En cuanto conecta, manda "create_room" o "join_room" con la identidad
+#     del jugador (username y user_id del login, vacíos si es invitado).
+#  3. Recibe "welcome" -> guarda my_network_id, room_code, is_host y quién
+#     estaba ya en la sala.
 #  4. "player_joined" / "player_left" -> actualiza lista de espera.
 #  5. Solo el host ve el botón "Empezar partida".
-#  6. Al pulsar empezar, se manda "start_game" con la lista de ids congelada.
+#  6. Al pulsar empezar, se manda "start_game". La plantilla la monta el
+#     servidor y vuelve en el "start_game" que recibe todo el mundo: así los
+#     asientos, los nombres y los user_id son los mismos en todas las máquinas
+#     y el anfitrión puede guardar UNA sola partida con todos identificados.
 # =============================================================================
 
 @export var num_ai_bots: int = 0
@@ -27,7 +32,9 @@ const MAX_PLAYERS_PER_ROOM := 4  # debe coincidir con Room.MAX_PLAYERS en el bac
 var my_network_id: int = -1
 var room_code: String = ""
 var is_host: bool = false
-var connected_ids: Array[int] = []
+# network_id -> { "id": int, "username": String, "user_id": int }
+# user_id es -1 para quien juega sin cuenta.
+var roster: Dictionary = {}
 var _game_starting: bool = false
 
 
@@ -57,15 +64,24 @@ func _get_websocket_url() -> String:
 		return "ws://localhost:8080/ws/game"
 
 func _on_socket_connected() -> void:
-	# En cuanto hay conexión, actuamos según lo decidido en la pantalla previa
+	# En cuanto hay conexión, actuamos según lo decidido en la pantalla previa.
+	# La identidad va en el mensaje de entrada: el servidor la guarda y la
+	# reparte, que es lo que permite ver nombres reales en la mesa y apuntar
+	# la partida a nombre de cada uno.
 	if LobbyIntent.is_host_intent():
 		status_label.text = "Creando sala..."
-		WebSocketClient.send({ "type": "create_room" })
+		WebSocketClient.send({
+			"type": "create_room",
+			"username": Auth.username,
+			"user_id": Auth.user_id,
+		})
 	else:
 		status_label.text = "Uniéndose a la sala %s..." % LobbyIntent.pending_join_code
 		WebSocketClient.send({
 			"type": "join_room",
-			"code": LobbyIntent.pending_join_code
+			"code": LobbyIntent.pending_join_code,
+			"username": Auth.username,
+			"user_id": Auth.user_id,
 		})
 
 
@@ -81,30 +97,30 @@ func _on_message_received(data: Dictionary) -> void:
 		"welcome":
 			my_network_id = data["id"]
 			room_code = data["room_code"]
-			is_host = LobbyIntent.is_host_intent()
+			# Quién es el anfitrión lo decide el servidor (el primero que
+			# entró), no la pantalla anterior.
+			is_host = bool(data.get("is_host", LobbyIntent.is_host_intent()))
 
-			if my_network_id not in connected_ids:
-				connected_ids.append(my_network_id)
+			# El servidor no me devuelve mi propia ficha en "welcome": mi
+			# nombre ya lo sé, y los demás lo reciben en "player_joined".
+			_remember_player({
+				"id": my_network_id,
+				"username": Auth.username,
+				"user_id": Auth.user_id,
+			})
+			for p in data.get("existing_players", []):
+				_remember_player(p)
 
-			var existing: Array = data.get("existing_players", [])
-			for id in existing:
-				var int_id := int(id)
-				if int_id not in connected_ids:
-					connected_ids.append(int_id)
- 
 			room_code_label.text = "Código de sala: %s" % room_code
 			start_button.visible = is_host
 			_refresh_player_list()
 
 		"player_joined":
-			var id: int = data["id"]
-			if id not in connected_ids:
-				connected_ids.append(id)
+			_remember_player(data)
 			_refresh_player_list()
 
 		"player_left":
-			var id: int = data["id"]
-			connected_ids.erase(id)
+			roster.erase(int(data["id"]))
 			_refresh_player_list()
 
 		"error":
@@ -114,11 +130,27 @@ func _on_message_received(data: Dictionary) -> void:
 			if _game_starting:
 				return
 			_game_starting = true
-			var ids: Array = data["player_ids"]
-			var frozen_ids: Array[int] = []
-			for i in ids:
-				frozen_ids.append(int(i))
-			_start_match(frozen_ids)
+			# La plantilla viene del servidor ya ordenada por id de jugador.
+			_start_match(data.get("players", []))
+
+
+# Guarda (o actualiza) la ficha de un jugador. Un invitado no manda nombre,
+# así que se le pone uno para que la mesa y el historial no salgan en blanco.
+func _remember_player(player: Dictionary) -> void:
+	var id := int(player.get("id", -1))
+	if id < 0:
+		return
+
+	var who := str(player.get("username", "")).strip_edges()
+	if who.is_empty():
+		who = "Jugador %d" % id
+
+	var uid = player.get("user_id")
+	roster[id] = {
+		"id": id,
+		"username": who,
+		"user_id": int(uid) if uid != null else -1,
+	}
 
 
 # ── UI ───────────────────────────────────────────────────────────────────────
@@ -127,13 +159,13 @@ func _refresh_player_list() -> void:
 	for child in player_list_container.get_children():
 		child.queue_free()
 
-	var sorted_ids := connected_ids.duplicate()
+	var sorted_ids := roster.keys()
 	sorted_ids.sort()
 
 	for id in sorted_ids:
 		var label := Label.new()
 		var suffix := " (tú)" if id == my_network_id else ""
-		label.text = "Jugador %d%s" % [id, suffix]
+		label.text = "%s%s" % [roster[id]["username"], suffix]
 		label.label_settings = LabelSettings.new()
 		#label.set("theme_override_colors/font_color", Color("2c2c2c"))
 		#label.add_theme_font_override("font", load("res://assets/Pangolin-Regular.ttf"))
@@ -142,46 +174,48 @@ func _refresh_player_list() -> void:
 		label.label_settings.font = load("res://assets/Pangolin-Regular.ttf")
 		player_list_container.add_child(label)
 
-	status_label.text = "Jugadores en sala: %d / %d" % [connected_ids.size(), MAX_PLAYERS_PER_ROOM]
+	status_label.text = "Jugadores en sala: %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
 
 	#if is_host:
-		#start_button.disabled = connected_ids.size() < 1
+		#start_button.disabled = roster.size() < 1
 
 
 # ── Inicio de partida ────────────────────────────────────────────────────────
 
 func _on_start_pressed() -> void:
-	print("enviamos msg")
 	if _game_starting:
 		return
-	
-	var sorted_ids := connected_ids.duplicate()
-	sorted_ids.sort()
 
-	WebSocketClient.send({
-		"type": "start_game",
-		"player_ids": sorted_ids
-	})
+	# Sin plantilla: la monta el servidor con quien haya en la sala y la
+	# devuelve en el "start_game" que recibimos todos.
+	WebSocketClient.send({ "type": "start_game" })
 
 
-func _start_match(sorted_network_ids: Array[int]) -> void:
-	var config := _build_game_config(sorted_network_ids)
+func _start_match(roster_from_server: Array) -> void:
+	var config := _build_game_config(roster_from_server)
 	GameConfigHandler.set_config(config)
 	SceneLoader.change_scene("res://src/main_game/chinchon/MainRefactor.tscn", "LobbyMenu")
 
 
-func _build_game_config(sorted_network_ids: Array[int]) -> GameConfig:
+# La plantilla llega del servidor ordenada por id de jugador, así que todas
+# las máquinas construyen la misma lista en el mismo orden: los asientos (y
+# con ellos los de match_players) coinciden.
+func _build_game_config(roster_from_server: Array) -> GameConfig:
 	var players: Array[PlayerData] = []
 	var hand_idx := 0
 
-	for net_id in sorted_network_ids:
+	for entry in roster_from_server:
+		var net_id := int(entry.get("id", -1))
+		var uid = entry.get("user_id")
+
 		var p := PlayerData.new()
 		p.id = players.size()
 		p.network_id = net_id
+		p.user_id = int(uid) if uid != null else -1
 		p.hand_idx = hand_idx
 		p.is_local = (net_id == my_network_id)
 		p.type = PlayerData.Type.HUMAN if p.is_local else PlayerData.Type.NETWORK
-		p.display_name = "Jugador %d" % net_id
+		p.display_name = str(entry.get("username", "Jugador %d" % net_id))
 		players.append(p)
 		hand_idx += 1
 

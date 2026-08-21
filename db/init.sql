@@ -77,7 +77,9 @@ CREATE TABLE IF NOT EXISTS matches (
     id         SERIAL PRIMARY KEY,
 
     is_online  BOOLEAN NOT NULL DEFAULT FALSE,
-    max_rounds INTEGER NOT NULL DEFAULT 1,
+    -- Limite de puntos con el que se jugo: al llegar a el un jugador queda
+    -- eliminado, y la partida acaba cuando solo queda uno por debajo.
+    max_points INTEGER NOT NULL DEFAULT 100,
     deck_id    TEXT REFERENCES decks(id) ON DELETE SET NULL,
 
     started_at TIMESTAMPTZ NOT NULL DEFAULT now(),
