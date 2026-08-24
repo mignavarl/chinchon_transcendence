@@ -42,8 +42,10 @@ func evaluate_round(players: Array[PlayerData], hands_map: Dictionary) -> Array[
 			if not placed:
 				still_leftover.append(card)
 		
-		results[i]["leftover"] = still_leftover
-		results[i]["points"] = _evaluator.sum_values(still_leftover)
+		var still_pts = _evaluator.sum_values(still_leftover)
+		if results[i]["points"] > still_pts:
+			results[i]["leftover"] = still_leftover
+			results[i]["points"] = still_pts
 	
 	# Marcar ganadores (mínimo de puntos)
 	for r in results:
