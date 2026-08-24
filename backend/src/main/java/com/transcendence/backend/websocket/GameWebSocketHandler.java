@@ -48,6 +48,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             case "game_action" -> handleGameAction(session, node);
             case "player_eliminated" -> handleBroadcastToAll(session, node);
             case "next_round" -> handleBroadcastToAll(session, node);
+            case "match_ended" -> handleBroadcastToAll(session, node);
             case "match_saved" -> handleBroadcastToAll(session, node);
             default -> System.out.println("Tipo de mensaje desconocido: " + type);
         }

@@ -115,6 +115,9 @@ func _on_network_message(data: Dictionary) -> void:
 		"next_round":
 			restart_game()
 
+		"match_ended":
+			_end_match()
+		
 		"match_saved":
 			saved_match_id = int(data["match_id"])
 
@@ -299,7 +302,10 @@ func _eliminate_player(player: PlayerData) -> void:
 # Pasar a la ronda siguiente (el boton "Volver" de la mesa).
 func _advance_to_next_round() -> void:
 	if match_over:
-		SceneLoader.change_scene("res://src/menus/bar.tscn", "Main")
+		if not config.is_online:
+			_end_match()
+		else:
+			WebSocketClient.send({"type": "match_ended"})
 		return
 		#TODO: enviar señal, que cierre la sala, que envíe victoria o derrota y que vuelva al bar
 
@@ -323,6 +329,11 @@ func _apply_player_elimination(net_id : int):
 	turn_controller.remove_player(elim.id)
 
 # ── Guardado de la partida ──────────────────────────────────────────────────
+
+func _end_match():
+	SceneLoader.change_scene("res://src/menus/bar.tscn", "Main")
+	pass
+
 
 # Escribe la partida y sus asientos en la base de datos, y suma la victoria o
 # la derrota a cada usuario que la haya jugado.
