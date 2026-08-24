@@ -299,7 +299,9 @@ func _eliminate_player(player: PlayerData) -> void:
 # Pasar a la ronda siguiente (el boton "Volver" de la mesa).
 func _advance_to_next_round() -> void:
 	if match_over:
+		SceneLoader.change_scene("res://src/menus/bar.tscn", "Main")
 		return
+		#TODO: enviar señal, que cierre la sala, que envíe victoria o derrota y que vuelva al bar
 
 	if not config.is_online:
 		restart_game()
