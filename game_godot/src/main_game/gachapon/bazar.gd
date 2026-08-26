@@ -37,6 +37,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			if code_index == KONAMI_CODE.size():
 				_trigger_konami_code()
 				code_index = 0 # Reset after triggering
+				$Gacha/MostradorGacha/Sprite3D.visible = false
+				$Gacha/MostradorGacha/AnimatedSprite3D.visible = true
+				$Gacha/MostradorGacha/AnimatedSprite3D.play("default")
+				
 		else:
 			# Incorrect input resets the sequence
 			code_index = 0
