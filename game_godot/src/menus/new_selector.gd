@@ -80,13 +80,3 @@ func search_key(key):
 			return n
 		n = n + 1
 	return own_keys.size()
-
-
-func _on_esp_button_up() -> void:
-	TranslationServer.set_locale("es")
-	ConfigManager.set_language("es")
-
-
-func _on_cat_button_up() -> void:
-	TranslationServer.set_locale("ca")
-	ConfigManager.set_language("ca")

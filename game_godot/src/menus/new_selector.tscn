@@ -298,26 +298,6 @@ text = ">
 "
 icon_alignment = 1
 
-[node name="esp" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1654.0
-offset_top = 55.0
-offset_right = 1842.0
-offset_bottom = 118.0
-theme_override_font_sizes/font_size = 40
-text = "ESPAÑOL"
-
-[node name="cat" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1652.0
-offset_top = 133.0
-offset_right = 1840.0
-offset_bottom = 196.0
-theme_override_font_sizes/font_size = 40
-text = "CATALÁN"
-
 [connection signal="button_up" from="FondoMenu/Nombre" to="." method="_on_nombre_button_up"]
 [connection signal="button_up" from="FondoMenu/Izquierda" to="." method="_on_izquierda_button_up"]
 [connection signal="button_up" from="FondoMenu/Derecha" to="." method="_on_derecha_button_up"]
-[connection signal="button_up" from="esp" to="." method="_on_esp_button_up"]
-[connection signal="button_up" from="cat" to="." method="_on_cat_button_up"]

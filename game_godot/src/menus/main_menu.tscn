@@ -1,8 +1,9 @@
-[gd_scene load_steps=119 format=4 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=120 format=4 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://src/managers/main_menu_manager.gd" id="1_vry62"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_le3na"]
 [ext_resource type="Texture2D" uid="uid://d307x5ljieuyp" path="res://assets/Models/Buildings/Textures/colormap.png" id="3_vry62"]
+[ext_resource type="Texture2D" uid="uid://bfds36rkc6p3y" path="res://assets/Gear.png" id="5_iql0f"]
 [ext_resource type="Texture2D" uid="uid://cnsfr6o5djsgx" path="res://assets/Models/Car Kit/Textures/colormap.png" id="5_orlvq"]
 [ext_resource type="Texture2D" uid="uid://pkc2ofc1psl6" path="res://assets/Models/Graveyard Kit/Textures/colormap.png" id="6_27lv6"]
 [ext_resource type="Texture2D" uid="uid://c7vpemxd71nkk" path="res://assets/Models/Citi Kit - Roads/Textures/colormap.png" id="7_5dc2o"]
@@ -513,7 +514,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_alvgy")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
-size = Vector3(1.1467896, 1.1081772, 1.123169)
+size = Vector3(1.2158508, 1.5711784, 1.1513062)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cankr"]
 resource_name = "colormap"
@@ -893,6 +894,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cmr44")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0uea"]
+size = Vector3(3.6665611, 4.4952164, 1.1960449)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03dir"]
 resource_name = "colormap"
 vertex_color_is_srgb = true
@@ -1110,20 +1114,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4xxgy")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_k0uea"]
-size = Vector3(3.8376312, 3.1066437, 1.1960449)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0uea"]
-albedo_color = Color(2.7431448, 2.7431448, 2.7431448, 1)
+albedo_color = Color(2.742865, 2.742865, 2.742865, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_iql0f"]
 material = SubResource("StandardMaterial3D_k0uea")
-text = "configuracio"
+text = "ajustes"
 font_size = 21
 uppercase = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orlvq"]
-albedo_color = Color(0.8477135, 0.90120465, 1.0904766, 1)
+albedo_color = Color(0.59339213, 0.79582506, 1.09, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_27lv6"]
 material = SubResource("StandardMaterial3D_orlvq")
@@ -2480,7 +2481,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 1.154384
 mesh = SubResource("ArrayMesh_sg04g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gacha"]
-transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8594879, -0.9661981, -0.75635815)
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.8940183, -0.73469746, -0.74228966)
 shape = SubResource("BoxShape3D_l6cm7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -2505,6 +2506,11 @@ pixel_size = 0.002
 texture = ExtResource("17_f43ey")
 
 [node name="CasasFondo" type="Area3D" parent="Fondo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.8863764)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fondo/CasasFondo"]
+transform = Transform3D(0.86143416, 0, -0.5078691, 0, 1, 0, 0.5078691, 0, 0.86143416, -0.7696147, 1.2882423, -26.259926)
+shape = SubResource("BoxShape3D_k0uea")
 
 [node name="Conjunto" type="MeshInstance3D" parent="Fondo/CasasFondo"]
 transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.9582524, -1.1733826, -27.604227)
@@ -2536,19 +2542,29 @@ transform = Transform3D(0.99999976, 0, 0.00036641955, 0, 0.6296011, 0, -0.000366
 mesh = SubResource("ArrayMesh_kowa0")
 skeleton = NodePath("../MeshInstance3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fondo/CasasFondo"]
-transform = Transform3D(0.86143416, 0, -0.5078691, 0, 1, 0, 0.5078691, 0, 0.86143416, -0.29917347, 0.593956, -25.98257)
-shape = SubResource("BoxShape3D_k0uea")
+[node name="Cartel" type="Node3D" parent="Fondo/CasasFondo"]
+transform = Transform3D(0.9811073, 0, -0.018999107, 0, 0.93686646, 0, 0.6158771, 0, 0.030266043, -0.4977432, 0.08522579, -25.197952)
 
-[node name="Node3D" type="Node3D" parent="Fondo/CasasFondo"]
-
-[node name="Ajustes" type="MeshInstance3D" parent="Fondo/CasasFondo/Node3D"]
+[node name="Letrero" type="MeshInstance3D" parent="Fondo/CasasFondo/Cartel"]
 transform = Transform3D(2.0985076, 0, -0.06835724, 0, 4.726635, 0, 1.3526036, 0, 0.1060534, -0.9247752, 2.7834659, -26.414957)
 mesh = SubResource("TextMesh_iql0f")
 
-[node name="Panel" type="MeshInstance3D" parent="Fondo/CasasFondo/Node3D"]
-transform = Transform3D(3.222617, 0, -0.041706614, 0, 1.6157814, 0, 2.1272655, 0, 0.063181795, -0.8892013, 2.8072302, -26.538393)
+[node name="Panel" type="MeshInstance3D" parent="Fondo/CasasFondo/Cartel"]
+transform = Transform3D(3.2226171, 0, -0.041706614, 0, 1.4999044, 0, 2.1272774, 0, 0.06318176, -0.8892002, 2.779544, -26.538452)
 mesh = SubResource("BoxMesh_27lv6")
+
+[node name="Sprite3D" type="Sprite3D" parent="Fondo/CasasFondo/Cartel"]
+transform = Transform3D(0.8130394, 0, 0, 0, 0.9885457, 0, 9.536743e-07, 0, 1.0001186, 0.2550894, 4.356942, -23.00821)
+modulate = Color(0, 4.415934, 4.415934, 1)
+texture = ExtResource("5_iql0f")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Fondo/CasasFondo/Cartel"]
+transform = Transform3D(0.27568346, 0, 0, 0, -1.1632369e-08, -0.27013442, 0, 0.26611757, -1.180795e-08, 0.24149027, 1.7280627, -22.871206)
+spot_range = 1.515
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Fondo/CasasFondo/Cartel"]
+transform = Transform3D(0.27568346, 0, 0, 0, -1.1632369e-08, -0.27013442, 0, 0.26611757, -1.180795e-08, -2.0698428, 1.7280627, -22.871206)
+spot_range = 1.515
 
 [node name="CasaAltaCerca" type="MeshInstance3D" parent="Fondo"]
 transform = Transform3D(0.6201351, 0, 0.7844951, 0, 1, 0, -0.7844951, 0, 0.6201351, -1.8698145, -1.1771796, -4.8639374)
@@ -2623,7 +2639,7 @@ mesh = SubResource("ArrayMesh_sofhu")
 [node name="Carretera" type="Node3D" parent="Fondo"]
 
 [node name="Carretera3" type="MeshInstance3D" parent="Fondo/Carretera"]
-transform = Transform3D(11.812604, 0, -3.036133, 0, 0.9078491, 0, 6.8552413, 0, 5.23171, -3.0208776, -1.1373445, -20.224676)
+transform = Transform3D(11.812604, 0, -2.453543, 0, 0.9078491, 0, 6.8552413, 0, 4.2278204, -4.593267, -1.1373445, -17.515215)
 mesh = SubResource("ArrayMesh_cumol")
 
 [node name="Rotonda" type="MeshInstance3D" parent="Fondo/Carretera"]
@@ -2742,7 +2758,7 @@ light_color = Color(0.9999997, 0.7803348, 0.53124887, 1)
 light_energy = 0.1
 
 [node name="Farola5" type="MeshInstance3D" parent="Fondo/Farolas"]
-transform = Transform3D(0.049502492, 0, -0.31979126, 0, 0.45876998, 0, 0.37454394, 0, 0.04226598, -0.4376306, -1.1781479, -25.219946)
+transform = Transform3D(0.08353838, 0, -0.5756451, 0, 0.76554096, 0, 0.632065, 0, 0.076081514, -0.08071333, -1.1781479, -19.155434)
 mesh = ExtResource("29_7mrvs")
 skeleton = NodePath("../..")
 

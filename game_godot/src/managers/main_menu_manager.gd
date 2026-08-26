@@ -51,14 +51,17 @@ func _on_gacha_mouse_exited() -> void:
 
 
 func _on_casas_fondo_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	pass # Replace with function body.
+	if event.is_action_pressed("mouse_click"):
+		SceneLoader.change_scene( "res://src/menus/ajustes.tscn", self.name)
 
 
 func _on_casas_fondo_mouse_entered() -> void:
 	$Fondo/Farolas/Farola5/OmniLight3D.light_energy = 0.30
 	$Fondo/Farolas/Farola5/OmniLight3D2.light_energy = 0.30
+	$Fondo/CasasFondo/Cartel/Sprite3D.flip_h = true
 
 
 func _on_casas_fondo_mouse_exited() -> void:
 	$Fondo/Farolas/Farola5/OmniLight3D.light_energy = 0.1
 	$Fondo/Farolas/Farola5/OmniLight3D2.light_energy = 0.1
+	$Fondo/CasasFondo/Cartel/Sprite3D.flip_h = false
