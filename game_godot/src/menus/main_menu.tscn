@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=4 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=119 format=4 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://src/managers/main_menu_manager.gd" id="1_vry62"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_le3na"]
@@ -513,7 +513,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_alvgy")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6cm7"]
-size = Vector3(1.4967041, 1.1081772, 1.123169)
+size = Vector3(1.1467896, 1.1081772, 1.123169)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cankr"]
 resource_name = "colormap"
@@ -1109,6 +1109,24 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4xxgy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0uea"]
+size = Vector3(3.8376312, 3.1066437, 1.1960449)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0uea"]
+albedo_color = Color(2.7431448, 2.7431448, 2.7431448, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_iql0f"]
+material = SubResource("StandardMaterial3D_k0uea")
+text = "configuracio"
+font_size = 21
+uppercase = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orlvq"]
+albedo_color = Color(0.8477135, 0.90120465, 1.0904766, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_27lv6"]
+material = SubResource("StandardMaterial3D_orlvq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11xen"]
 resource_name = "colormap"
@@ -2439,7 +2457,7 @@ cast_shadow = 2
 mesh = SubResource("ArrayMesh_4uinb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Play"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1622925, -0.7485504, 2.3841858e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3372498, -0.7485504, 2.9802322e-07)
 shape = SubResource("BoxShape3D_l6cm7")
 
 [node name="Gacha" type="Area3D" parent="."]
@@ -2486,37 +2504,51 @@ transform = Transform3D(0.091538124, 0, -0.05190022, 0, 0.091661654, 0, 0.004757
 pixel_size = 0.002
 texture = ExtResource("17_f43ey")
 
-[node name="CasasFondo" type="Node3D" parent="Fondo"]
+[node name="CasasFondo" type="Area3D" parent="Fondo"]
 
-[node name="CasaAlta1" type="MeshInstance3D" parent="Fondo/CasasFondo"]
+[node name="Conjunto" type="MeshInstance3D" parent="Fondo/CasasFondo"]
 transform = Transform3D(0.83911705, 0, -0.5439508, 0, 1, 0, 0.5439508, 0, 0.83911705, -1.9582524, -1.1733826, -27.604227)
 mesh = SubResource("ArrayMesh_vko1u")
 skeleton = NodePath("../../EdificioIzquierda")
 
-[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+[node name="CasaAlta2" type="MeshInstance3D" parent="Fondo/CasasFondo/Conjunto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0002012, 0, 0.0069732666)
 mesh = SubResource("ArrayMesh_ag4oh")
 skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+[node name="CasaAlta3" type="MeshInstance3D" parent="Fondo/CasasFondo/Conjunto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9808092, -0.004765272, 0.013847351)
 mesh = SubResource("ArrayMesh_qul63")
 skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+[node name="CasaAlta4" type="MeshInstance3D" parent="Fondo/CasasFondo/Conjunto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9661465, -0.004757762, 0.013370514)
 mesh = SubResource("ArrayMesh_s8t8s")
 skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1"]
+[node name="CasaPequeña" type="MeshInstance3D" parent="Fondo/CasasFondo/Conjunto"]
 transform = Transform3D(0.99999547, 0, 0.0030718148, 0, 1.5140674, 0, -0.0030718148, 0, 0.99999547, 3.9999914, -0.19740546, -0.49578857)
 mesh = SubResource("ArrayMesh_k0wae")
 skeleton = NodePath("../../../EdificioIzquierda")
 
-[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasasFondo/CasaAlta1/CasaPequeña"]
+[node name="Toldo" type="MeshInstance3D" parent="Fondo/CasasFondo/Conjunto/CasaPequeña"]
 transform = Transform3D(0.99999976, 0, 0.00036641955, 0, 0.6296011, 0, -0.00036641955, 0, 0.99999976, -0.006711006, 0.51639843, 0.47765732)
 mesh = SubResource("ArrayMesh_kowa0")
 skeleton = NodePath("../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fondo/CasasFondo"]
+transform = Transform3D(0.86143416, 0, -0.5078691, 0, 1, 0, 0.5078691, 0, 0.86143416, -0.29917347, 0.593956, -25.98257)
+shape = SubResource("BoxShape3D_k0uea")
+
+[node name="Node3D" type="Node3D" parent="Fondo/CasasFondo"]
+
+[node name="Ajustes" type="MeshInstance3D" parent="Fondo/CasasFondo/Node3D"]
+transform = Transform3D(2.0985076, 0, -0.06835724, 0, 4.726635, 0, 1.3526036, 0, 0.1060534, -0.9247752, 2.7834659, -26.414957)
+mesh = SubResource("TextMesh_iql0f")
+
+[node name="Panel" type="MeshInstance3D" parent="Fondo/CasasFondo/Node3D"]
+transform = Transform3D(3.222617, 0, -0.041706614, 0, 1.6157814, 0, 2.1272655, 0, 0.063181795, -0.8892013, 2.8072302, -26.538393)
+mesh = SubResource("BoxMesh_27lv6")
 
 [node name="CasaAltaCerca" type="MeshInstance3D" parent="Fondo"]
 transform = Transform3D(0.6201351, 0, 0.7844951, 0, 1, 0, -0.7844951, 0, 0.6201351, -1.8698145, -1.1771796, -4.8639374)
@@ -2749,3 +2781,6 @@ libraries = {
 [connection signal="input_event" from="Gacha" to="." method="_on_gacha_input_event"]
 [connection signal="mouse_entered" from="Gacha" to="." method="_on_gacha_mouse_entered"]
 [connection signal="mouse_exited" from="Gacha" to="." method="_on_gacha_mouse_exited"]
+[connection signal="input_event" from="Fondo/CasasFondo" to="." method="_on_casas_fondo_input_event"]
+[connection signal="mouse_entered" from="Fondo/CasasFondo" to="." method="_on_casas_fondo_mouse_entered"]
+[connection signal="mouse_exited" from="Fondo/CasasFondo" to="." method="_on_casas_fondo_mouse_exited"]

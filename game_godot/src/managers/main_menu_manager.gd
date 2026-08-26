@@ -9,7 +9,6 @@ func _process(delta: float) -> void:
 
 
 func _on_play_mouse_entered() -> void:
-	print("entro")
 	$Fondo/Farolas/Farola/OmniLight3D.light_energy = 0.15
 	$Fondo/Farolas/Farola/OmniLight3D2.light_energy = 0.15
 	$Fondo/Farolas/Farola4/OmniLight3D.light_energy = 0.15
@@ -18,7 +17,6 @@ func _on_play_mouse_entered() -> void:
 	#$Play/PlantaBaja.get_active_material(0).albedo_color = Color.DARK_ORCHID
 
 func _on_play_mouse_exited() -> void:
-	print("entro")
 	$Fondo/Farolas/Farola/OmniLight3D.light_energy = 0.1
 	$Fondo/Farolas/Farola/OmniLight3D2.light_energy = 0.1
 	$Fondo/Farolas/Farola4/OmniLight3D.light_energy = 0.1
@@ -40,7 +38,6 @@ func _on_gacha_input_event(camera: Node, event: InputEvent, event_position: Vect
 
 
 func _on_gacha_mouse_entered() -> void:
-	print("entro")
 	$Fondo/Farolas/Farola3/OmniLight3D.light_energy = 0.15
 	$Fondo/Farolas/Farola3/OmniLight3D2.light_energy = 0.15
 
@@ -48,7 +45,20 @@ func _on_gacha_mouse_entered() -> void:
 
 
 func _on_gacha_mouse_exited() -> void:
-	print("entro")
 	$Fondo/Farolas/Farola3/OmniLight3D.light_energy = 0.1
 	$Fondo/Farolas/Farola3/OmniLight3D2.light_energy = 0.1
 	#$Gacha/PlantaBaja.get_active_material(0).albedo_color = Color.WHITE
+
+
+func _on_casas_fondo_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_casas_fondo_mouse_entered() -> void:
+	$Fondo/Farolas/Farola5/OmniLight3D.light_energy = 0.30
+	$Fondo/Farolas/Farola5/OmniLight3D2.light_energy = 0.30
+
+
+func _on_casas_fondo_mouse_exited() -> void:
+	$Fondo/Farolas/Farola5/OmniLight3D.light_energy = 0.1
+	$Fondo/Farolas/Farola5/OmniLight3D2.light_energy = 0.1
