@@ -194,11 +194,11 @@ func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vec
 
 
 func _on_puerta_mouse_entered() -> void:
-	$AnimationPlayer.play("Exit_hover")
+	$AnimationPlayer2.play("Exit_hover")
 
 
 func _on_puerta_mouse_exited() -> void:
-	$AnimationPlayer.play_backwards("Exit_hover")
+	$AnimationPlayer2.play_backwards("Exit_hover")
 
 
 func _on_boton_guardar_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
