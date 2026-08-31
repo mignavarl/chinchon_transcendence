@@ -8,9 +8,11 @@ extends Node3D
 func _ready() -> void:
 	$Gacha/MostradorGacha/Caja.visible = false
 	$Gacha/MostradorGacha/Boton_guardar.visible = false
+	visible_coins()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#visible_coins()
 	pass
 
 # The Konami Code sequence using Godot 4 Key constants
@@ -184,7 +186,7 @@ func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position
 		$Gacha/MostradorGacha/Boton_guardar.visible = true
 		$AnimationPlayer.play("Gacha")
 		$Gacha/MostradorGacha/Caja/Baraja.visible = true
-		
+		visible_coins()
 
 func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
@@ -203,3 +205,11 @@ func _on_puerta_mouse_exited() -> void:
 func _on_boton_guardar_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
 		$AnimationPlayer.play("Back_gacha")
+
+func visible_coins() -> void:
+	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
+		if not res.ok:
+			push_warning("no se pudo conseguir el usuario")
+		var c = res.rows[0].coins
+		$Camera3D/Coin_points/Label3D.text = "x %d" % c
+	)

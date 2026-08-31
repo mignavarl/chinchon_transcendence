@@ -5492,7 +5492,7 @@ texture = ExtResource("5_u2h6r")
 [node name="Label3D" type="Label3D" parent="Camera3D/Coin_points"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45359707, -0.17457366, 0.52763414)
 pixel_size = 0.003
-text = "x 0"
+text = "lore"
 font_size = 39
 
 [node name="Suelo" type="MeshInstance3D" parent="."]
