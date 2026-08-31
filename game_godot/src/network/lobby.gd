@@ -243,3 +243,8 @@ func _on_start_button_mouse_entered() -> void:
 func _on_start_button_mouse_exited() -> void:
 	$OnlineMode/StartButton/Label.visible = false
 	pass # Replace with function body.
+
+
+func _on_exit_button_up() -> void:
+	SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
+	#TODO: desconectar al salir

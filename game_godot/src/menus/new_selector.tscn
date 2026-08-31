@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dj4nwd2o254ou"]
+[gd_scene load_steps=20 format=3 uid="uid://dj4nwd2o254ou"]
 
 [ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="1_bdcqn"]
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="2_bjpxk"]
@@ -130,6 +130,58 @@ border_width_top = 7
 border_width_right = 7
 border_width_bottom = 7
 border_color = Color(0.40530974, 0.047826767, 0.0808989, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qdc3"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76cdf"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx8u8"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jg4u0"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
 border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -298,6 +350,20 @@ text = ">
 "
 icon_alignment = 1
 
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1696.0
+offset_top = 62.0
+offset_right = 1899.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_4qdc3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_76cdf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sx8u8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jg4u0")
+text = "VOLVER"
+
 [connection signal="button_up" from="FondoMenu/Nombre" to="." method="_on_nombre_button_up"]
 [connection signal="button_up" from="FondoMenu/Izquierda" to="." method="_on_izquierda_button_up"]
 [connection signal="button_up" from="FondoMenu/Derecha" to="." method="_on_derecha_button_up"]
+[connection signal="button_up" from="exit" to="." method="_on_exit_button_up"]

@@ -80,3 +80,7 @@ func search_key(key):
 			return n
 		n = n + 1
 	return own_keys.size()
+
+
+func _on_exit_button_up() -> void:
+	SceneLoader.change_scene("res://src/menus/bar.tscn", self.name)

@@ -40,3 +40,7 @@ func _on_search_pressed() -> void:
 
 	LobbyIntent.set_join_intent(code)
 	SceneLoader.change_scene("res://src/network/lobby_online.tscn", "OnlineMenu")
+
+
+func _on_exit_button_up() -> void:
+	SceneLoader.change_scene("res://src/network/mode_selector.tscn", "OnlineMenu")

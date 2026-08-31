@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddbspw431exfy"]
+[gd_scene load_steps=15 format=3 uid="uid://ddbspw431exfy"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_68iuo"]
 [ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="2_jgvkh"]
@@ -15,6 +15,58 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbib8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g341f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vvro"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3th32"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0618h"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1nbf"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="OnlineMenu" type="Node2D"]
 
@@ -150,9 +202,22 @@ theme_override_fonts/font = ExtResource("5_ru88j")
 theme_override_font_sizes/font_size = 32
 text = "Debug"
 
+[node name="Exit" type="Button" parent="."]
+offset_left = 1698.0
+offset_top = 64.0
+offset_right = 1879.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_5vvro")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3th32")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0618h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v1nbf")
+text = "VOLVER"
+
 [connection signal="mouse_entered" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_exited"]
 [connection signal="pressed" from="OnlineMode/make" to="OnlineMode" method="_on_make_pressed"]
 [connection signal="mouse_entered" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_exited"]
 [connection signal="pressed" from="OnlineMode/search" to="OnlineMode" method="_on_search_pressed"]
+[connection signal="button_up" from="Exit" to="OnlineMode" method="_on_exit_button_up"]
