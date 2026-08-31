@@ -122,6 +122,9 @@ func _on_message_received(data: Dictionary) -> void:
 		"player_left":
 			roster.erase(int(data["id"]))
 			_refresh_player_list()
+			if int(data["id"]) == my_network_id:
+				WebSocketClient.disconnect_socket()
+				SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
 
 		"error":
 			status_label.text = data.get("message", "Error desconocido")
@@ -246,5 +249,10 @@ func _on_start_button_mouse_exited() -> void:
 
 
 func _on_exit_button_up() -> void:
-	SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
-	#TODO: desconectar al salir
+	WebSocketClient.send({
+		"type": "player_left",
+		"code": LobbyIntent.pending_join_code,
+		"username": Auth.username,
+		"id": my_network_id,
+	})
+	#SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)

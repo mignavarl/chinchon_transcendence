@@ -44,6 +44,7 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             case "create_room" -> handleCreateRoom(session, node);
             case "join_room" -> handleJoinRoom(session, node);
             case "start_game" -> handleStartGame(session);
+			case "player_left" -> handleClose(session, node, CloseStatus.GOING_AWAY);
             case "deck_sync" -> handleBroadcastToAll(session, node);
             case "game_action" -> handleGameAction(session, node);
             case "player_eliminated" -> handleBroadcastToAll(session, node);
@@ -53,6 +54,8 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
             default -> System.out.println("Tipo de mensaje desconocido: " + type);
         }
     }
+
+
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
@@ -74,6 +77,11 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
     // -------------------------------------------------------------------------
     // Handlers de cada tipo de mensaje
     // -------------------------------------------------------------------------
+
+	private void handleClose(WebSocketSession s, JsonNode n, CloseStatus status) throws Exception{
+		handleBroadcastToAll(s, n);
+		afterConnectionClosed(s,status);
+	}
 
     private void handleCreateRoom(WebSocketSession session, JsonNode node) throws Exception {
         Room room = roomManager.createRoom();

@@ -41,3 +41,7 @@ func send(data: Dictionary) -> void:
 
 func is_connected_to_server() -> bool:
 	return _connected
+	
+
+func disconnect_socket():
+	socket.close()
