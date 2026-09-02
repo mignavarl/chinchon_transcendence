@@ -1,0 +1,155 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnv1hip2u47hd"]
+
+[ext_resource type="Script" uid="uid://bd18us0ojc0w2" path="res://src/menus/profile.gd" id="1_4sxl8"]
+[ext_resource type="Texture2D" uid="uid://34lw4nsfys73" path="res://assets/Tapete_vacio.png" id="1_rpduy"]
+[ext_resource type="Texture2D" uid="uid://csevo3oy1ay35" path="res://scenes/1.png" id="2_r550s"]
+[ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="4_e8nqt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8l1f"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cwca"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gw6k"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1biak"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Profile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sxl8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_rpduy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 313.0
+offset_right = 647.0
+offset_bottom = 766.0
+theme_override_constants/separation = 20
+
+[node name="avatar" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_r550s")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="change" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
+text = "CAMBIAR_FOTO"
+text_overrun_behavior = 2
+autowrap_mode = 2
+autowrap_trim_flags = 192
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1705.0
+offset_top = 38.0
+offset_right = 1886.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
+text = "VOLVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 432.0
+offset_right = 1683.0
+offset_bottom = 592.0
+theme_override_constants/separation = 40
+
+[node name="labels" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label_user" type="Label" parent="HBoxContainer/labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 47
+text = "USUARIO"
+horizontal_alignment = 1
+
+[node name="Label_pass" type="Label" parent="HBoxContainer/labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 47
+text = "CONTRASEÑA"
+horizontal_alignment = 1
+
+[node name="edit" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="user" type="LineEdit" parent="HBoxContainer/edit"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 12
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 39
+
+[node name="pass" type="LineEdit" parent="HBoxContainer/edit"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 39
+
+[connection signal="button_up" from="VBoxContainer/change" to="." method="_on_change_avatar_button_up"]

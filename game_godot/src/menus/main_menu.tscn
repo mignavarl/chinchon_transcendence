@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=126 format=4 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://src/managers/main_menu_manager.gd" id="1_vry62"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_le3na"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pkc2ofc1psl6" path="res://assets/Models/Graveyard Kit/Textures/colormap.png" id="6_27lv6"]
 [ext_resource type="Texture2D" uid="uid://c7vpemxd71nkk" path="res://assets/Models/Citi Kit - Roads/Textures/colormap.png" id="7_5dc2o"]
 [ext_resource type="Texture2D" uid="uid://cslunkysba210" path="res://assets/Models/City Kit - Suburban/Textures/colormap.png" id="8_wrpmx"]
+[ext_resource type="Texture2D" uid="uid://csevo3oy1ay35" path="res://scenes/1.png" id="12_orlvq"]
 [ext_resource type="Texture2D" uid="uid://c4woh04y7eqfr" path="res://assets/BAR CHINCHÍN.png" id="17_f43ey"]
 [ext_resource type="ArrayMesh" uid="uid://coqca6rbekksh" path="res://assets/Models/Graveyard Kit/lightpost-double.obj" id="29_7mrvs"]
 [ext_resource type="ArrayMesh" uid="uid://br5arb0aovya6" path="res://assets/Models/City Kit - Suburban/planter.obj" id="30_k4vgl"]
@@ -2389,6 +2390,61 @@ _data = {
 &"play_animation": SubResource("Animation_hl5e0")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orlvq"]
+size = Vector2(97, 97)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iql0f"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orlvq"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27lv6"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dc2o"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_vry62")
 
@@ -2791,6 +2847,41 @@ libraries = {
 &"": SubResource("AnimationLibrary_6h3lr")
 }
 
+[node name="profile" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4341202, 0.48306167, 0.4433899)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="profile"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 0.05
+offset_left = -151.0
+offset_right = 151.0
+offset_bottom = 97.0
+grow_horizontal = 2
+
+[node name="avatar" type="TextureRect" parent="profile/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_orlvq")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Area2D" type="Area2D" parent="profile/HBoxContainer/avatar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="profile/HBoxContainer/avatar/Area2D"]
+position = Vector2(48.5, 48.5)
+shape = SubResource("RectangleShape2D_orlvq")
+
+[node name="Button" type="Button" parent="profile/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_iql0f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_orlvq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27lv6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5dc2o")
+text = "USER"
+
 [connection signal="input_event" from="Play" to="." method="_on_play_input_event"]
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]
@@ -2800,3 +2891,5 @@ libraries = {
 [connection signal="input_event" from="Fondo/CasasFondo" to="." method="_on_casas_fondo_input_event"]
 [connection signal="mouse_entered" from="Fondo/CasasFondo" to="." method="_on_casas_fondo_mouse_entered"]
 [connection signal="mouse_exited" from="Fondo/CasasFondo" to="." method="_on_casas_fondo_mouse_exited"]
+[connection signal="input_event" from="profile/HBoxContainer/avatar/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="button_up" from="profile/HBoxContainer/Button" to="." method="_on_button_button_up"]
