@@ -1,7 +1,10 @@
 extends Node3D
 
 
-
+func _ready() -> void:
+	$profile/HBoxContainer/user.text = Auth.username
+	#TODO: cambiar foto aqui
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,10 +70,10 @@ func _on_casas_fondo_mouse_exited() -> void:
 	$Fondo/CasasFondo/Cartel/Sprite3D.flip_h = false
 
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_user_button_up() -> void:
+	SceneLoader.change_scene("res://src/menus/profile.tscn", self.name)
+
+
+func _on_avatar_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
 		SceneLoader.change_scene("res://src/menus/profile.tscn", self.name)
-
-
-func _on_button_button_up() -> void:
-	SceneLoader.change_scene("res://src/menus/profile.tscn", self.name)
