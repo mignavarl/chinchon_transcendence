@@ -2,3 +2,9 @@ nginx/certs/
 *.import
 .env
 db_gateway/node_modules/
+
+# Mockup antiguo (Fastify/TypeScript/Prisma) que se dejo como referencia.
+# No es el backend real: el de verdad es el de Spring en backend/.
+backend_reference/
+.env.example.reference
+.env.bak.*

@@ -117,6 +117,37 @@ CREATE INDEX IF NOT EXISTS idx_match_players_user
 
 
 -- ==========================================================================
+-- AMIGOS
+-- ==========================================================================
+
+-- Lista de amigos, en un solo sentido: la fila (A, B) significa "A tiene a B
+-- en su lista". Para que sean amigos los dos hacen falta las dos filas.
+--
+-- Se hace asi porque la pantalla de perfil no tiene ningun sitio donde
+-- aceptar o rechazar peticiones: hay un LineEdit, un boton de anadir y una
+-- lista. Con filas dirigidas eso funciona tal cual y nadie se queda esperando
+-- a que le acepten. La consulta de la lista ya devuelve "is_mutual" por si
+-- algun dia se quiere pintar distinto a quien te ha anadido de vuelta.
+--
+-- El tope de 10 amigos NO esta aqui: un CHECK no puede contar filas de la
+-- propia tabla. Lo comprueba el gateway antes de insertar
+-- (db_gateway/friends_routes.js, MAX_FRIENDS).
+CREATE TABLE IF NOT EXISTS friends (
+    user_id   INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    friend_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    added_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+    PRIMARY KEY (user_id, friend_id),
+    CHECK (user_id <> friend_id)                   -- nadie es amigo de si mismo
+);
+
+-- La PRIMARY KEY ya sirve para "los amigos de X". Este indice es para el otro
+-- sentido, que es lo que necesita is_mutual y lo que haria falta para saber
+-- quien te tiene anadido.
+CREATE INDEX IF NOT EXISTS idx_friends_friend
+    ON friends (friend_id);
+
+
+-- ==========================================================================
 -- MENSAJES PRIVADOS (usuario -> usuario)
 -- ==========================================================================
 

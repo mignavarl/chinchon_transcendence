@@ -24,6 +24,7 @@ GameConfigHandler="*res://src/main_game/game_config_handler.gd"
 LobbyIntent="*res://src/network/lobby_intent.gd"
 Database="*res://src/network/database.gd"
 Auth="*res://src/network/auth.gd"
+ProfileApi="*res://src/network/profile_api.gd"
 
 [display]
 

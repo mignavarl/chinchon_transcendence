@@ -10,6 +10,10 @@
 import Fastify from "fastify";
 import pg from "pg";
 
+import { DEFAULT_AVATAR_URL } from "./avatars.js";
+import friendsRoutes from "./friends_routes.js";
+import profileRoutes from "./profile_routes.js";
+
 const { Pool } = pg;
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
@@ -57,6 +61,19 @@ app.post("/db/query", async (req, reply) => {
 		return { ok: false, error: String(err.message ?? err) };
 	}
 });
+
+// Rutas REST del perfil y de la lista de amigos.
+//
+// Estas NO reciben SQL: la consulta esta escrita en el servidor y de fuera
+// solo llegan valores, que van por $1, $2... Ademas piden token (el que firma
+// el backend de Spring al hacer login), asi que cada peticion sabe de quien
+// es sin que el cliente diga "soy el usuario 3".
+//
+// Se registran antes del listen() a proposito: una ruta anadida despues no
+// entraria. Heredan el hook onSend de arriba por estar en la misma instancia,
+// asi que las cabeceras COOP/COEP tambien salen en estas respuestas.
+app.register(profileRoutes, { pool });
+app.register(friendsRoutes, { pool, defaultAvatarUrl: DEFAULT_AVATAR_URL });
 
 const port = Number(process.env.GATEWAY_PORT ?? 3000);
 
