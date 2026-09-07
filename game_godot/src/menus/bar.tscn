@@ -2750,7 +2750,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i5gm6")
 
 [node name="Label3D" type="Label3D" parent="Play_table"]
 transform = Transform3D(0.9709593, 0, -0.23924538, 0, 1, 0, 0.23924527, 0, 0.97095984, -0.29654273, 0.5314796, -0.0587897)
-text = "JUGAR"
+text = "<jugar>"
 
 [node name="Vaso" type="MeshInstance3D" parent="Play_table"]
 transform = Transform3D(0.16594183, 0, -0.39674392, 0, 0.50587934, 0, 0.49025217, 0, 0.20715924, 0.05101332, 0.32846072, 0.13080516)
@@ -2800,7 +2800,7 @@ mesh = ExtResource("7_7r073")
 
 [node name="Label3D" type="Label3D" parent="CambioBarajas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5472089, -0.15524551, -0.66645217)
-text = "BARAJAS"
+text = "<barajas>"
 
 [node name="Sprite3D" type="Sprite3D" parent="CambioBarajas"]
 transform = Transform3D(0.1564082, 0, 0, 0, 0.15640819, 0, 0, 0, 0.9655244, 1.4951813, -0.68293047, -1.1775024)
@@ -2853,7 +2853,7 @@ skeleton = NodePath("../../Atrezo/Comida")
 
 [node name="Label3D" type="Label3D" parent="Tutorial"]
 transform = Transform3D(-0.58504814, 0, -1.19209076e-07, 0, 0.62365854, 0, 5.2307385e-08, 0, -0.9999981, -0.64848995, 0.57019234, 0.12968558)
-text = "COMO_JUGAR"
+text = "<tutorial>"
 
 [node name="Anim_tuto" type="AnimationPlayer" parent="Tutorial"]
 libraries = {

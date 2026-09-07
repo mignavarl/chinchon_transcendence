@@ -115,7 +115,7 @@ layout_mode = 0
 offset_left = 792.9999
 offset_top = 265.0
 offset_right = 1172.9999
-offset_bottom = 465.0
+offset_bottom = 468.92654
 rotation = 0.05235988
 theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
 theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
@@ -128,8 +128,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3qwrk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5kklk")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbib8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g341f")
-text = "CREAR
-SALA"
+text = "<crear_sala>"
+text_overrun_behavior = 2
+autowrap_mode = 3
 
 [node name="Label" type="Label" parent="OnlineMode/make"]
 visible = false
@@ -147,10 +148,10 @@ text = "|"
 
 [node name="search" type="Button" parent="OnlineMode"]
 layout_mode = 0
-offset_left = 760.0
-offset_top = 567.0
-offset_right = 1165.0
-offset_bottom = 767.0
+offset_left = 725.0
+offset_top = 524.99994
+offset_right = 1199.0186
+offset_bottom = 761.7884
 rotation = 0.05235988
 theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
 theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
@@ -163,8 +164,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3qwrk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5kklk")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbib8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g341f")
-text = "BUSCAR
-GENTE"
+text = "<buscar_gente>"
+text_overrun_behavior = 2
+autowrap_mode = 3
 
 [node name="Label" type="Label" parent="OnlineMode/search"]
 visible = false
@@ -188,7 +190,7 @@ offset_top = 780.0
 offset_right = 1006.54266
 offset_bottom = 841.2846
 rotation = 0.07359239
-placeholder_text = "Code"
+placeholder_text = "<codigo>"
 
 [node name="info" type="Label" parent="OnlineMode"]
 layout_mode = 0
@@ -212,7 +214,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5vvro")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3th32")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0618h")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v1nbf")
-text = "VOLVER"
+text = "<volver>"
 
 [connection signal="mouse_entered" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_exited"]

@@ -204,7 +204,7 @@ theme_override_font_sizes/font_size = 93
 theme_override_styles/normal = SubResource("StyleBoxEmpty_dtpj7")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rn5gk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wmi2i")
-text = "SOLO"
+text = "<solo>"
 
 [node name="Label" type="Label" parent="play_mode/play"]
 visible = false
@@ -222,10 +222,10 @@ text = "|"
 
 [node name="online" type="Button" parent="play_mode"]
 layout_mode = 0
-offset_left = 772.99994
-offset_top = 552.99994
-offset_right = 1153.0
-offset_bottom = 742.99994
+offset_left = 737.99994
+offset_top = 551.0
+offset_right = 1199.0
+offset_bottom = 741.0
 rotation = 0.05235988
 theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
 theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
@@ -238,7 +238,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_egeuh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fruxs")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_qsckq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tn1v6")
-text = "CON GENTE"
+text = "<con_gente>"
 
 [node name="Label" type="Label" parent="play_mode/online"]
 visible = false
@@ -279,7 +279,7 @@ theme_override_font_sizes/font_size = 88
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n1bob")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4lhc4")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_x37lj")
-text = "JUGAR"
+text = "<jugar>"
 
 [node name="Label" type="Label" parent="ia_difficult/Única"]
 visible = false
@@ -473,7 +473,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qr84k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n1bob")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4lhc4")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_x37lj")
-text = "VOLVER"
+text = "<volver>"
 
 [connection signal="button_up" from="play_mode/play" to="play_mode" method="hide"]
 [connection signal="button_up" from="play_mode/play" to="ia_difficult" method="show"]

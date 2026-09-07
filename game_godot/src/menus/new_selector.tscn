@@ -304,7 +304,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pnxpo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bdcqn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bjpxk")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5nvva")
-text = "NOMBRE BARAJA"
+text = "BARAJA"
 icon_alignment = 1
 
 [node name="Izquierda" type="Button" parent="FondoMenu"]
@@ -361,7 +361,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4qdc3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_76cdf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sx8u8")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jg4u0")
-text = "VOLVER"
+text = "<volver>"
 
 [connection signal="button_up" from="FondoMenu/Nombre" to="." method="_on_nombre_button_up"]
 [connection signal="button_up" from="FondoMenu/Izquierda" to="." method="_on_izquierda_button_up"]

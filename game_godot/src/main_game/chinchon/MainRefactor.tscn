@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbnjphvfqof6n"]
+[gd_scene load_steps=16 format=3 uid="uid://cbnjphvfqof6n"]
 
 [ext_resource type="Texture2D" uid="uid://drxh7soh66wrr" path="res://assets/coin.png" id="2_3axbq"]
 [ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://src/cards/card_manager.gd" id="2_huv64"]
@@ -9,11 +9,23 @@
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="8_huv64"]
 [ext_resource type="Script" uid="uid://bpl7oioqdhiik" path="res://src/managers/ui_manager.gd" id="8_oqeio"]
 [ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://src/cards/card_database.gd" id="9_m1vig"]
-[ext_resource type="Texture2D" uid="uid://b4vt340fldqqr" path="res://assets/Tapete_chinchon_sin_marcas.png" id="11_v6aup"]
+[ext_resource type="Texture2D" uid="uid://ch0pc8i64oxnk" path="res://assets/Tapete_chinchon_sin_marcas.png" id="11_v6aup"]
 [ext_resource type="Script" uid="uid://4vlf2qnevda5" path="res://src/managers/turn_controller.gd" id="11_ykixw"]
 [ext_resource type="Script" uid="uid://j4ub65m4pykc" path="res://src/managers/round_controller.gd" id="12_ykixw"]
 [ext_resource type="Script" uid="uid://6rvvof3mgrsq" path="res://src/main_game/chinchon/ui_ingame.gd" id="16_srxia"]
 [ext_resource type="Script" uid="uid://df5lnjh6ptuv8" path="res://scripts/play_button.gd" id="16_t0ac2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3axbq"]
+bg_color = Color(0.30912447, 0.3825062, 0.061130702, 1)
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.037501376, 0.1745409, 1.0829419e-07, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Main" type="Node2D"]
 
@@ -153,9 +165,18 @@ offset_top = 5.0
 offset_right = 233.0
 offset_bottom = 67.0
 mouse_filter = 0
-text = "Scoreboard"
+text = "<scoreboard>"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel_title" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 51.0
+offset_top = 11.0
+offset_right = 188.0
+offset_bottom = 51.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3axbq")
 
 [node name="Panel" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
 layout_mode = 0
@@ -168,12 +189,12 @@ offset_bottom = 214.0
 layout_mode = 0
 offset_left = 64.60216
 offset_top = 58.0
-offset_right = 231.60216
-offset_bottom = 150.0
-text = "- Player 1 : 40 puntos
-- Player 1 : 40 puntos
-- Player 1 : 40 puntos
-- Player 1 : 40 puntos"
+offset_right = 356.0
+offset_bottom = 185.0
+text = "- Player 1 : 40 <puntos>
+- Player 1 : 40 <puntos>
+- Player 1 : 40 <puntos>
+- Player 1 : 40 <puntos>"
 
 [node name="Restart" type="Button" parent="UI_Ingame/Control"]
 visible = false

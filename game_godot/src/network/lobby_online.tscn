@@ -132,7 +132,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3qwrk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5kklk")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbib8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g341f")
-text = "INICIAR"
+text = "<iniciar>"
 
 [node name="Label" type="Label" parent="OnlineMode/StartButton"]
 visible = false
@@ -162,28 +162,28 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 56
-text = "HOLA"
+text = "..."
 
 [node name="Label2" type="Label" parent="OnlineMode/PlayerListContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 56
-text = "HOLA"
+text = "..."
 
 [node name="Label3" type="Label" parent="OnlineMode/PlayerListContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 56
-text = "HOLA"
+text = "..."
 
 [node name="Label4" type="Label" parent="OnlineMode/PlayerListContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 56
-text = "HOLA"
+text = "..."
 
 [node name="StatusLabel" type="Label" parent="OnlineMode"]
 unique_name_in_owner = true
@@ -197,7 +197,7 @@ scale = Vector2(0.28136402, 0.28136402)
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 100
-text = "Conectando"
+text = "<conectando>"
 autowrap_mode = 3
 
 [node name="RoomCodeLabel" type="Label" parent="OnlineMode"]
@@ -212,7 +212,7 @@ scale = Vector2(0.28136402, 0.28136402)
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("5_unms0")
 theme_override_font_sizes/font_size = 195
-text = "Conectando"
+text = "<conectando>"
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
@@ -225,7 +225,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pygt8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4uv2n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_661dw")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6miqp")
-text = "VOLVER"
+text = "<volver>"
 
 [connection signal="mouse_entered" from="OnlineMode/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="OnlineMode/StartButton" to="." method="_on_start_button_mouse_exited"]

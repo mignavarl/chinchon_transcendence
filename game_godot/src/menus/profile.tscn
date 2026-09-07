@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://csevo3oy1ay35" path="res://scenes/1.png" id="2_r550s"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="4_e8nqt"]
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="5_e8nqt"]
+[ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="6_u8l1f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8l1f"]
 bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
@@ -61,9 +62,6 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd2ua"]
 bg_color = Color(0.21950099, 0.21950105, 0.21950087, 0.70980394)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bvko"]
-size = Vector2(177, 189)
-
 [node name="Profile" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -73,10 +71,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4sxl8")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="rug" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("1_rpduy")
 
 [node name="Exit" type="Button" parent="."]
@@ -90,21 +88,21 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
-text = "VOLVER"
+text = "<volver>"
 
 [node name="user_profile" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 255.0
-offset_top = 326.0
-offset_right = 304.0
-offset_bottom = 366.0
+offset_left = 247.0
+offset_top = 260.0
+offset_right = 296.0
+offset_bottom = 300.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="user_profile"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 32.0
-offset_right = 639.0
-offset_bottom = 295.0
+offset_left = 8.0
+offset_top = 35.0
+offset_right = 642.0
+offset_bottom = 298.0
 theme_override_constants/separation = 40
 
 [node name="labels" type="VBoxContainer" parent="user_profile/HBoxContainer"]
@@ -115,14 +113,14 @@ theme_override_constants/separation = 65
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 47
-text = "USUARIO"
+text = "<usuario>"
 horizontal_alignment = 1
 
 [node name="Label_avatar" type="Label" parent="user_profile/HBoxContainer/labels"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 47
-text = "AVATAR"
+text = "<avatar>"
 horizontal_alignment = 1
 
 [node name="edit" type="VBoxContainer" parent="user_profile/HBoxContainer"]
@@ -134,15 +132,14 @@ layout_mode = 2
 theme_override_constants/minimum_character_width = 12
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 39
-placeholder_text = "USUARIO"
 
-[node name="avatar" type="TextureRect" parent="user_profile"]
+[node name="avatar" type="TextureButton" parent="user_profile"]
 layout_mode = 0
 offset_left = 326.0
-offset_top = 99.0
+offset_top = 107.0
 offset_right = 507.0
-offset_bottom = 289.0
-texture = ExtResource("2_r550s")
+offset_bottom = 297.0
+texture_normal = ExtResource("2_r550s")
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="user_profile/avatar"]
@@ -154,13 +151,7 @@ offset_bottom = 189.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_wd2ua")
-text = "EDITAR"
-
-[node name="Area2D" type="Area2D" parent="user_profile/avatar"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="user_profile/avatar/Area2D"]
-position = Vector2(90.5, 94.5)
-shape = SubResource("RectangleShape2D_8bvko")
+text = "<editar>"
 
 [node name="act_user" type="Button" parent="user_profile"]
 layout_mode = 0
@@ -174,45 +165,186 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
-text = "ACTUALIZAR"
+text = "<actualizar"
 
 [node name="friends" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="friends"]
+[node name="bloc" type="TextureRect" parent="friends"]
 layout_mode = 0
 offset_left = 986.0
 offset_top = 155.0
 offset_right = 1666.0
-offset_bottom = 973.0
+offset_bottom = 899.0
 texture = ExtResource("5_e8nqt")
 
-[node name="Label" type="Label" parent="friends"]
+[node name="title" type="Label" parent="friends"]
 layout_mode = 0
-offset_left = 1240.0
-offset_top = 185.0
-offset_right = 1420.0
-offset_bottom = 249.0
+offset_left = 1222.0
+offset_top = 186.0
+offset_right = 1445.0
+offset_bottom = 266.0
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 51
-text = "AMIGOS"
+theme_override_font_sizes/font_size = 63
+text = "<amigos>"
 
 [node name="friends_list" type="VBoxContainer" parent="friends"]
 layout_mode = 0
-offset_left = 1133.0
-offset_top = 265.0
-offset_right = 1494.0
-offset_bottom = 683.0
+offset_left = 1134.0
+offset_top = 274.0
+offset_right = 1263.0
+offset_bottom = 838.0
 
 [node name="Label" type="Label" parent="friends/friends_list"]
 visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_colors/font_color = Color(0.28235295, 0.78431374, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 40
 
-[connection signal="input_event" from="user_profile/avatar/Area2D" to="." method="_on_area_avatar_input_event"]
+[node name="VBoxContainer" type="HBoxContainer" parent="friends"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 872.0
+offset_right = 1617.0
+offset_bottom = 957.0
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="line_friend" type="LineEdit" parent="friends/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 34
+placeholder_text = "<usuario>"
+max_length = 50
+expand_to_text_length = true
+
+[node name="add_friend" type="Button" parent="friends/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
+text = "<añadir>"
+
+[node name="max_friends" type="Label" parent="friends"]
+layout_mode = 0
+offset_left = 1208.0
+offset_top = 978.0
+offset_right = 1479.0
+offset_bottom = 1030.0
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 41
+text = "<max_amigos>"
+
+[node name="historial_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 698.0
+offset_right = 624.0
+offset_bottom = 815.0
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
+text = "<historial>"
+
+[node name="historial_menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="rug" type="TextureRect" parent="historial_menu"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_rpduy")
+
+[node name="left" type="Control" parent="historial_menu"]
+anchors_preset = 0
+offset_left = 325.0
+offset_top = 128.0
+offset_right = 365.0
+offset_bottom = 168.0
+
+[node name="bloc" type="TextureRect" parent="historial_menu/left"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 67.0
+offset_right = 651.0
+offset_bottom = 811.0
+texture = ExtResource("5_e8nqt")
+flip_h = true
+
+[node name="title" type="Label" parent="historial_menu/left"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 79.0
+offset_right = 421.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 63
+text = "<historial>"
+
+[node name="right" type="Control" parent="historial_menu"]
+anchors_preset = 0
+offset_left = 909.0
+offset_top = 154.0
+offset_right = 949.0
+offset_bottom = 194.0
+
+[node name="bloc" type="TextureRect" parent="historial_menu/right"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 44.0
+offset_right = 660.0
+offset_bottom = 788.0
+texture = ExtResource("5_e8nqt")
+
+[node name="title" type="Label" parent="historial_menu/right"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 79.0
+offset_right = 421.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 63
+text = "<puntuacion>"
+
+[node name="pencil" type="TextureRect" parent="historial_menu"]
+layout_mode = 0
+offset_left = 1233.0
+offset_top = 1011.00006
+offset_right = 1783.0
+offset_bottom = 1267.0
+rotation = -1.0646509
+texture = ExtResource("6_u8l1f")
+
+[node name="exit_historial" type="Button" parent="historial_menu"]
+layout_mode = 0
+offset_left = 1702.0
+offset_top = 121.0
+offset_right = 1883.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
+text = "<volver>"
+
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="user_profile/avatar" to="." method="_on_avatar_button_up"]
 [connection signal="button_up" from="user_profile/act_user" to="." method="_on_act_user_button_up"]
+[connection signal="button_up" from="friends/VBoxContainer/add_friend" to="." method="_on_add_friend_button_up"]
+[connection signal="button_up" from="historial_button" to="." method="_on_historial_button_button_up"]
+[connection signal="button_up" from="historial_menu/exit_historial" to="." method="_on_exit_historial_button_up"]

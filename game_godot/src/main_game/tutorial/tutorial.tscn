@@ -65,16 +65,16 @@ position = Vector2(960, 540)
 texture = ExtResource("1_ph3nu")
 
 [node name="Next" type="Button" parent="1"]
-offset_left = 651.0
+offset_left = 612.0
 offset_top = -431.0
-offset_right = 934.0
+offset_right = 959.0
 offset_bottom = -334.0
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "SIGUIENTE"
+text = "<siguiente>"
 
 [node name="Exit" type="Button" parent="1"]
 offset_left = -933.0
@@ -86,7 +86,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "SALIR"
+text = "<salir>"
 
 [node name="2" type="Sprite2D" parent="."]
 visible = false
@@ -94,16 +94,16 @@ position = Vector2(960, 540)
 texture = ExtResource("2_4kmhl")
 
 [node name="Next" type="Button" parent="2"]
-offset_left = 651.0
-offset_top = -431.0
-offset_right = 934.0
-offset_bottom = -334.0
+offset_left = 603.0
+offset_top = -433.0
+offset_right = 950.0
+offset_bottom = -336.0
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "SIGUIENTE"
+text = "<siguiente>"
 
 [node name="Prev" type="Button" parent="2"]
 offset_left = -933.0
@@ -115,7 +115,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "ATRAS"
+text = "<atras>"
 
 [node name="3" type="Sprite2D" parent="."]
 visible = false
@@ -132,7 +132,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "SALIR"
+text = "<salir>"
 
 [node name="Prev" type="Button" parent="3"]
 offset_left = -933.0
@@ -144,7 +144,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ph3nu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kmhl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cq4me")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6yjpi")
-text = "ATRAS"
+text = "<atras>"
 
 [connection signal="button_up" from="1/Next" to="1" method="hide"]
 [connection signal="button_up" from="1/Next" to="2" method="show"]

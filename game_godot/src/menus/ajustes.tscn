@@ -88,7 +88,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_2v5f4")
 theme_override_font_sizes/font_size = 85
-text = "IDIOMA"
+text = "<idioma>"
 horizontal_alignment = 1
 uppercase = true
 
@@ -100,7 +100,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
-text = "ESPAÑOL"
+text = "<español>"
 
 [node name="cat" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -110,7 +110,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
-text = "CATALÁN"
+text = "<catalan>"
 
 [node name="eus" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -120,7 +120,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
-text = "VASCO"
+text = "<euskera>"
 
 [node name="exit" type="Button" parent="."]
 layout_mode = 0
@@ -133,7 +133,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
-text = "VOLVER"
+text = "<volver>"
 
 [connection signal="button_up" from="Control/VBoxContainer/esp" to="." method="_on_esp_button_up"]
 [connection signal="button_up" from="Control/VBoxContainer/cat" to="." method="_on_cat_button_up"]
