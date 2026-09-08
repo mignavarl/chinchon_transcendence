@@ -165,7 +165,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
-text = "<actualizar"
+text = "<actualizar>"
 
 [node name="friends" type="Control" parent="."]
 anchors_preset = 0
@@ -309,16 +309,70 @@ offset_right = 660.0
 offset_bottom = 788.0
 texture = ExtResource("5_e8nqt")
 
-[node name="title" type="Label" parent="historial_menu/right"]
+[node name="stats" type="Control" parent="historial_menu/right"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="punt" type="Label" parent="historial_menu/right/stats"]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 79.0
-offset_right = 421.0
-offset_bottom = 159.0
+offset_left = 177.0
+offset_top = 53.0
+offset_right = 478.0
+offset_bottom = 133.0
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 63
+theme_override_font_sizes/font_size = 50
 text = "<puntuacion>"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="historial_menu/right/stats"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 121.0
+offset_right = 166.0
+offset_bottom = 161.0
+theme_override_constants/separation = 14
+
+[node name="login" type="Label" parent="historial_menu/right/stats/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 25
+text = "<login>"
+horizontal_alignment = 1
+
+[node name="match" type="Label" parent="historial_menu/right/stats/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 25
+text = "<partidas>"
+horizontal_alignment = 1
+
+[node name="num_match" type="Label" parent="historial_menu/right/stats/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+
+[node name="win" type="Label" parent="historial_menu/right/stats/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 25
+text = "<ganadas>"
+horizontal_alignment = 1
+
+[node name="num_win" type="Label" parent="historial_menu/right/stats/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
 
 [node name="pencil" type="TextureRect" parent="historial_menu"]
 layout_mode = 0
