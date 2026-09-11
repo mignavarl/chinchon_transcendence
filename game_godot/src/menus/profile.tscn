@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bd18us0ojc0w2" path="res://src/menus/profile.gd" id="1_4sxl8"]
 [ext_resource type="Texture2D" uid="uid://34lw4nsfys73" path="res://assets/Tapete_vacio.png" id="1_rpduy"]
-[ext_resource type="Texture2D" uid="uid://csevo3oy1ay35" path="res://scenes/1.png" id="2_r550s"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="4_e8nqt"]
+[ext_resource type="Texture2D" uid="uid://cedu5pma2lfaq" path="res://assets/carol_coin.png" id="4_u8l1f"]
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="5_e8nqt"]
 [ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="6_u8l1f"]
 
@@ -139,7 +139,8 @@ offset_left = 326.0
 offset_top = 107.0
 offset_right = 507.0
 offset_bottom = 297.0
-texture_normal = ExtResource("2_r550s")
+texture_normal = ExtResource("4_u8l1f")
+ignore_texture_size = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="user_profile/avatar"]
@@ -165,7 +166,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u8l1f")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0cwca")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
-text = "<actualizar"
+text = "<actualizar>"
 
 [node name="friends" type="Control" parent="."]
 anchors_preset = 0
@@ -257,6 +258,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
 text = "<historial>"
 
 [node name="historial_menu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -309,16 +311,63 @@ offset_right = 660.0
 offset_bottom = 788.0
 texture = ExtResource("5_e8nqt")
 
-[node name="title" type="Label" parent="historial_menu/right"]
+[node name="title_punt" type="Label" parent="historial_menu/right"]
 layout_mode = 0
 offset_left = 144.0
-offset_top = 79.0
-offset_right = 421.0
-offset_bottom = 159.0
+offset_top = 62.0
+offset_right = 509.0
+offset_bottom = 142.0
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 63
 text = "<puntuacion>"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="historial_menu/right/title_punt"]
+layout_mode = 0
+offset_left = -60.0
+offset_top = 87.0
+offset_right = 270.0
+offset_bottom = 127.0
+theme_override_constants/separation = 8
+
+[node name="partidas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 30
+text = "<partidas>"
+
+[node name="num_partidas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="ganadas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 30
+text = "<ganadas>"
+
+[node name="num_ganadas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="title_ranking" type="Label" parent="historial_menu/right"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 202.0
+offset_right = 464.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_e8nqt")
+theme_override_font_sizes/font_size = 63
+text = "RANKING"
 
 [node name="pencil" type="TextureRect" parent="historial_menu"]
 layout_mode = 0

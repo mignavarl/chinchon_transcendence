@@ -15,7 +15,7 @@ key,es,ca
 <codigo>,Código,Codi
 ,,
 <puntos>,PUNTOS,PUNT
-<scoreboard>,PUNTUACIÓN,PUNTUACIÓ
+<puntuacion>,PUNTUACIÓN,PUNTUACIÓ
 ,,
 <entrar>,ENTRAR,ENTRAR
 <crear_cuenta>,CREAR CUENTA,CREAR COMPTE
@@ -42,8 +42,9 @@ key,es,ca
 <avatar>,AVATAR,FOTO
 <editar>,EDITAR,EDITAR
 <max_amigos>,DEMASIADO POPULAR (máx. 10 amigos),MASSA POPULAR (màx. 10 amics)
-,,
-,,
+<amigos>,AMIGOS,AMICS
+<partidas>,Partidas:,Partides:
+<ganadas>,Victorias:,Guanyades:
 ,,
 ESPAÑOLA,ESPAÑOLA,ESPANYOL
 PIXEL,PIXEL,PIXEL

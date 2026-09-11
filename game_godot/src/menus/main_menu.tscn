@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pkc2ofc1psl6" path="res://assets/Models/Graveyard Kit/Textures/colormap.png" id="6_27lv6"]
 [ext_resource type="Texture2D" uid="uid://c7vpemxd71nkk" path="res://assets/Models/Citi Kit - Roads/Textures/colormap.png" id="7_5dc2o"]
 [ext_resource type="Texture2D" uid="uid://cslunkysba210" path="res://assets/Models/City Kit - Suburban/Textures/colormap.png" id="8_wrpmx"]
-[ext_resource type="Texture2D" uid="uid://csevo3oy1ay35" path="res://scenes/1.png" id="12_orlvq"]
+[ext_resource type="Texture2D" uid="uid://cedu5pma2lfaq" path="res://assets/carol_coin.png" id="12_orlvq"]
 [ext_resource type="Texture2D" uid="uid://c4woh04y7eqfr" path="res://assets/BAR CHINCHÍN.png" id="17_f43ey"]
 [ext_resource type="ArrayMesh" uid="uid://coqca6rbekksh" path="res://assets/Models/Graveyard Kit/lightpost-double.obj" id="29_7mrvs"]
 [ext_resource type="ArrayMesh" uid="uid://br5arb0aovya6" path="res://assets/Models/City Kit - Suburban/planter.obj" id="30_k4vgl"]
