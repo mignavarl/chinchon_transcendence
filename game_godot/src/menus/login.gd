@@ -71,3 +71,7 @@ func _set_busy(busy: bool, message: String) -> void:
 	login_button.disabled = busy
 	signup_button.disabled = busy
 	info.text = message
+
+
+func _on_privacity_button_up() -> void:
+	SceneLoader.change_scene("res://scripts/privacy.tscn", self.name)

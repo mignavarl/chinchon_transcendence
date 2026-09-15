@@ -22,7 +22,7 @@ func _ready() -> void:
 		if i["id"] == "española":
 			selector.my_decks.push_back(i)
 	# El menu queda detras del login: hasta que Auth no tiene token no se entra.
-	get_tree().change_scene_to_file("res://scenes/loginScene.tscn")
+	get_tree().change_scene_to_file("res://src/menus/loginScene.tscn")
 	TranslationServer.set_locale(ConfigManager.get_language())
 
 

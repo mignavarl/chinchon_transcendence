@@ -22,3 +22,7 @@ func _on_eus_button_up() -> void:
 
 func _on_exit_button_up() -> void:
 	SceneLoader.change_scene("res://src/menus/main_menu.tscn", self.name)
+
+
+func _on_privacity_button_up() -> void:
+	SceneLoader.change_scene("res://scripts/privacy.tscn", self.name)

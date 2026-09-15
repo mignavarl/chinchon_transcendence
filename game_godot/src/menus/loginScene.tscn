@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cowif8das3ppm"]
+[gd_scene load_steps=14 format=3 uid="uid://cowif8das3ppm"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_bg"]
 [ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="2_pencil"]
@@ -13,6 +13,58 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hover"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t6jl"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iecag"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6663"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yb7ad"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="LoginScene" type="Control"]
 layout_mode = 3
@@ -173,7 +225,22 @@ theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 34
 autowrap_mode = 2
 
+[node name="privacity" type="Button" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 912.0
+offset_right = 548.0
+offset_bottom = 1036.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8t6jl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iecag")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b6663")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_yb7ad")
+text = "<privacidad y servicios>"
+autowrap_mode = 2
+
 [connection signal="text_submitted" from="User" to="." method="_on_field_text_submitted"]
 [connection signal="text_submitted" from="Pass" to="." method="_on_field_text_submitted"]
 [connection signal="pressed" from="LoginButton" to="." method="_on_login_button_pressed"]
 [connection signal="pressed" from="SignupButton" to="." method="_on_signup_button_pressed"]
+[connection signal="button_up" from="privacity" to="." method="_on_privacity_button_up"]

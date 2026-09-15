@@ -1,0 +1,293 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbhw0duygfo0c"]
+
+[ext_resource type="Script" uid="uid://2ib5hpo4dnmr" path="res://scripts/privacy.gd" id="1_kaymx"]
+[ext_resource type="Texture2D" uid="uid://34lw4nsfys73" path="res://assets/Tapete_vacio.png" id="2_0lh5c"]
+[ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="3_53lxk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4q5e"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om2a8"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b521"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvju"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Privacy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kaymx")
+
+[node name="rug" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0lh5c")
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1692.0
+offset_top = 86.0
+offset_right = 1873.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4q5e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_om2a8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3b521")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_crvju")
+text = "<volver>"
+
+[node name="bloc" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 46.0
+offset_right = 1477.0
+offset_bottom = 1118.0
+texture = ExtResource("3_53lxk")
+
+[node name="Privacity" type="RichTextLabel" parent="bloc"]
+visible = false
+layout_mode = 0
+offset_left = 145.0
+offset_top = 37.0
+offset_right = 938.0
+offset_bottom = 956.0
+theme_override_colors/default_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
+text = "Política de privacidad de Chinchon
+Versión: 15 de september de 2026
+Esta política de privacidad se aplica al uso de Chinchon (Chinchon.com). Te informa sobre qué datos personales tratamos, con qué finalidad y sobre qué base jurídica, conforme al RGPD (Reglamento UE 2016/679) y la LOPDGDD. Esta política se actualizó por última vez en la fecha indicada al final del documento.
+
+1. Responsable del tratamiento y contacto
+1. El responsable del tratamiento a los efectos del Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD) es Chinchón S.L., con correo electrónico de contacto chinchon@gmail.com, para el sitio web Chinchon.com.
+2. Si tienes cualquier duda sobre esta política de privacidad o sobre el tratamiento de tus datos, puedes dirigirte en cualquier momento a la dirección de contacto indicada.
+
+2. Principios generales del tratamiento
+1. Tratamos los datos personales de nuestros usuarios únicamente en la medida en que sea necesario para ofrecer un sitio web funcional, así como nuestros contenidos y servicios.
+2. El tratamiento de datos personales de nuestros usuarios se realiza, con carácter general, únicamente previo consentimiento del usuario o sobre otra base jurídica legalmente admitida conforme al artículo 6 del RGPD.
+
+3. Alojamiento (hosting)
+1. Este sitio web está alojado en los servidores de Chinchón. Los datos personales recogidos en este sitio se almacenan en los servidores de dicho proveedor.
+2. Con el proveedor de hosting existe un contrato de encargado del tratamiento conforme al artículo 28 del RGPD.
+
+4. Archivos de registro del servidor
+1. El proveedor de Chinchon.com recoge y almacena automáticamente información en los llamados archivos de registro del servidor, que tu navegador nos transmite automáticamente.
+2. Estos son: tipo de navegador, sistema operativo utilizado, URL de referencia, nombre de host del equipo de acceso, hora de la solicitud al servidor y dirección IP. No se realiza una combinación de estos datos con otras fuentes de datos.
+
+5. Cookies y tecnologías de seguimiento
+1. Nuestro sitio web utiliza cookies. Las cookies técnicamente necesarias se instalan sin necesidad de consentimiento previo, conforme al artículo 22 de la LSSI-CE.
+2. Para el resto de cookies, por ejemplo con fines de análisis o marketing, solicitamos previamente tu consentimiento mediante un banner de cookies conforme al artículo 6.1.a RGPD. Puedes modificar tu elección en cualquier momento desde la configuración de cookies.
+
+6. Derechos de los interesados
+1. Dentro del marco de la normativa vigente, tienes derecho en todo momento a obtener información gratuita sobre tus datos personales almacenados, su origen, sus destinatarios y la finalidad del tratamiento.
+2. Además, tienes derecho a la rectificación, supresión, limitación del tratamiento y portabilidad de estos datos, así como derecho de oposición al tratamiento.
+
+7. Derecho de reclamación ante la autoridad de control
+1. En caso de infracción del RGPD, tienes derecho como interesado a presentar una reclamación ante una autoridad de control, en particular en el Estado miembro de tu residencia habitual, tu lugar de trabajo o el lugar de la supuesta infracción.
+2. En España, la autoridad de control competente es la Agencia Española de Protección de Datos (AEPD), con sede en Madrid.
+
+8. Conservación de los datos
+1. Conservamos tus datos personales únicamente durante el tiempo necesario para cumplir la finalidad para la que fueron recogidos, salvo que exista una obligación legal de conservación más prolongada.
+2. Transcurridos dichos plazos, tus datos se suprimen o se anonimizan de forma segura.
+
+9. Cambios en esta política de privacidad
+1. Nos reservamos el derecho a adaptar esta política de privacidad para que cumpla siempre con los requisitos legales vigentes o para reflejar cambios en nuestros servicios.
+2. En tu próxima visita a Chinchon.com se aplicará la nueva política de privacidad. La fecha de la última actualización aparece al final de esta página.
+
+¿Tienes dudas sobre esta política de privacidad? Escríbenos a chinchon@gmail.com. Este texto es una plantilla orientativa y no constituye asesoramiento jurídico; adáptala siempre a tu tratamiento real de datos.Este documento fue creado con el generador gratuito de Política de Privacidad Plantilla (https://politicadeprivacidadplantilla.com). Encontrarás más plantillas legales gratuitas a través de este Enlace (https://terminosycondicionesdeusoejemplo.com)."
+
+[node name="ToS" type="RichTextLabel" parent="bloc"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 37.0
+offset_right = 938.0
+offset_bottom = 956.0
+theme_override_colors/default_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
+text = "Términos de servicio
+Fecha de entrada en vigor: 15/09/2026
+
+1. Aceptación de los términos
+Estos Términos de servicio (\"Términos\") rigen su acceso y uso del sitio web https://www.chinchon.com y de cualquier servicio, producto y aplicación relacionados operados por Chinchón (\"nosotros\", \"nuestro\" o \"nos\"). Los servicios consisten en una plataforma de software como servicio (SaaS) a la que se accede a través de la web, dispositivos móviles o API, incluyendo cualquier documentación, integraciones y atención al cliente.
+
+Al acceder o utilizar nuestro sitio web o nuestros servicios, usted acepta quedar vinculado por estos Términos y por nuestra Política de privacidad. Si no está de acuerdo, no podrá utilizar nuestro sitio web ni nuestros servicios.
+
+2. Elegibilidad
+Debe tener al menos 18 años de edad, o haber alcanzado la mayoría de edad legal en su jurisdicción, y contar con la capacidad legal para celebrar un acuerdo vinculante. Al utilizar nuestros servicios, usted declara y garantiza que cumple con estos requisitos.
+
+Si utiliza nuestros servicios en nombre de una organización, declara que tiene la autoridad para vincular a dicha organización a estos Términos.
+
+3. Registro de cuenta
+Es posible que algunas funciones requieran la creación de una cuenta. Usted acepta proporcionar información precisa, actual y completa, así como mantener actualizada la información de su cuenta. Usted es responsable de proteger su contraseña y de todas las actividades que se realicen a través de su cuenta. Notifíquenos de inmediato a 42chinchon@gmail.com si sospecha de cualquier uso no autorizado.
+
+Podemos suspender, restringir o cancelar su cuenta a nuestra discreción ante cualquier infracción de estos Términos, sospecha de fraude, actividad ilegal o por cualquier otra razón comercial legítima. La cancelación de la cuenta puede conllevar la pérdida de acceso a los datos asociados, sujeto a las prácticas de retención descritas en nuestra Política de privacidad.
+
+4. Licencia de uso de nuestros servicios
+Siempre que cumpla con estos Términos, le concedemos una licencia limitada, no exclusiva, intransferible y revocable para acceder y utilizar nuestro sitio web y nuestros servicios para los fines previstos. Esta licencia no le permite:
+
+Revender, redistribuir, sublicenciar, arrendar o explotar comercialmente nuestros servicios o su contenido sin nuestro consentimiento previo por escrito.
+Realizar ingeniería inversa, descompilar, extraer datos mediante *scraping* o intentar extraer el código fuente o las ideas subyacentes, salvo en la medida permitida por la legislación aplicable.
+Utilizar medios automatizados (bots, *scrapers*, rastreadores) para acceder a nuestros servicios de una manera que exceda el uso humano razonable.
+Utilizar nuestros servicios para infringir leyes, vulnerar derechos o causar daños a personas o entidades.
+5. Usos prohibidos
+Usted acepta no utilizar nuestros servicios para:
+
+Realizar actividades ilegales, fraudulentas, engañosas o perjudiciales.
+Cargar o transmitir código malicioso, virus u otro software dañino.
+Acosar, amenazar, difamar o perjudicar a otros usuarios o a terceros.
+Infringir derechos de propiedad intelectual, privacidad, imagen pública o cualquier otro derecho.
+Intentar obtener acceso no autorizado a nuestros sistemas, a otras cuentas o a redes relacionadas.
+Interferir o alterar la integridad o el rendimiento de nuestros servicios.
+Recopilar u obtener información sobre otros usuarios sin su consentimiento.
+El incumplimiento de estas normas puede dar lugar a la suspensión o cancelación inmediata del servicio y puede ser denunciado ante las autoridades competentes.
+
+6. Disponibilidad del servicio, uso de la API y funciones beta
+Disponibilidad del servicio. Nos esforzamos por mantener el servicio disponible las 24 horas del día, los 7 días de la semana, pero no garantizamos un acceso ininterrumpido. Podemos realizar tareas de mantenimiento programado o actualizaciones de emergencia, o bien experimentar interrupciones causadas por proveedores de infraestructura, condiciones de la red o eventos fuera de nuestro control razonable. No ofrecemos un acuerdo de nivel de servicio (SLA) contractual de tiempo de actividad, a menos que se indique explícitamente en un acuerdo escrito por separado.
+
+API y límites de tasa. Si ofrecemos una API, usted acepta utilizarla respetando los límites de tasa publicados y únicamente para fines coherentes con estos términos. Podemos limitar, suspender o revocar el acceso a la API si usted supera los límites, hace un uso abusivo del servicio o afecta a otros usuarios. El comportamiento y los límites de la API pueden modificarse previo aviso razonable.
+
+Funciones beta y experimentales. Podemos poner a su disposición funciones etiquetadas como \"beta\", \"vista previa\" o \"experimental\". Estas funciones se proporcionan \"tal cual\", sin garantías de ningún tipo; pueden ser inestables y modificarse o eliminarse en cualquier momento. No dependa de funciones beta para cargas de trabajo en entornos de producción.
+
+Datos y contenido que usted proporciona. Usted conserva la propiedad de los datos que envía al servicio. Nos otorga una licencia no exclusiva, mundial y libre de regalías para alojar, procesar, transmitir y realizar copias de seguridad de sus datos, con el único fin de prestar y mejorar el servicio. Procesamos sus datos de conformidad con nuestra Política de privacidad.
+
+Exportación. Puede exportar sus datos mediante las herramientas que proporcionamos. Conservaremos sus datos durante un periodo razonable tras el cierre de la cuenta para permitir su exportación; transcurrido dicho plazo, es posible que se eliminen de forma permanente. Consulte nuestra Política de privacidad para obtener información detallada sobre los plazos de conservación.
+
+7. Propiedad intelectual
+Nuestro sitio web y nuestros servicios, incluidos todos los textos, gráficos, logotipos, software, diseños y otros contenidos (a excepción del Contenido del Usuario), son de nuestra propiedad o de nuestros licenciantes y están protegidos por las leyes de derechos de autor, marcas comerciales y otras leyes de propiedad intelectual. No le concedemos ningún derecho sobre nuestra propiedad intelectual, salvo la licencia limitada para utilizar los servicios tal como se describe en estas Condiciones.
+
+Marcas comerciales. \"Chinchón\" y nuestros logotipos son nuestras marcas comerciales. No puede utilizarlos sin nuestro consentimiento previo por escrito.
+
+Comentarios y sugerencias. Si nos envía sugerencias, ideas o comentarios, nos otorga una licencia no exclusiva, perpetua y libre de regalías para utilizarlos sin obligación ni atribución.
+
+8. Servicios y enlaces de terceros
+Nuestros servicios pueden integrarse con servicios de terceros o incluir enlaces a ellos (procesadores de pagos, herramientas de análisis, redes sociales, sitios asociados). No controlamos los servicios de terceros ni somos responsables de ellos. El uso que usted haga de los servicios de terceros se regirá por sus propias condiciones y políticas de privacidad.
+
+9. Exención de responsabilidad
+NUESTROS SERVICIOS SE PRESTAN \"TAL CUAL\" Y \"SEGÚN DISPONIBILIDAD\", SIN GARANTÍAS DE NINGÚN TIPO, YA SEAN EXPRESAS O IMPLÍCITAS, INCLUIDAS LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN DETERMINADO, AUSENCIA DE INFRACCIÓN O DE QUE LOS SERVICIOS SERÁN ININTERRUMPIDOS, SEGUROS O ESTARÁN LIBRES DE ERRORES.
+
+No garantizamos que la información de nuestro sitio web sea exacta, completa o actual. Podemos corregir o modificar el contenido en cualquier momento y sin previo aviso.
+
+Nota específica del sector: Si procesa datos personales de usuarios de la UE, el Reino Unido o California, es posible que se requieran condiciones contractuales adicionales (por ejemplo, un anexo de procesamiento de datos conforme al artículo 28 del RGPD). Los compromisos específicos del cliente en materia de SOC 2, ISO 27001, HIPAA u otros marcos de cumplimiento deben abordarse en un acuerdo escrito independiente.
+
+10. Limitación de responsabilidad
+EN LA MEDIDA MÁXIMA PERMITIDA POR LA LEY, NI NOSOTROS NI NUESTRAS FILIALES SEREMOS RESPONSABLES EN NINGÚN CASO DE DAÑOS INDIRECTOS, INCIDENTALES, ESPECIALES, DERIVADOS O PUNITIVOS, NI DE LA PÉRDIDA DE BENEFICIOS, INGRESOS, DATOS O FONDO DE COMERCIO, QUE SURJAN DEL USO DE NUESTROS SERVICIOS O ESTÉN RELACIONADOS CON ÉL, INCLUSO SI SE NOS HA ADVERTIDO DE LA POSIBILIDAD DE TALES DAÑOS. Nuestra responsabilidad total acumulada por todas las reclamaciones derivadas de o relacionadas con estos Términos o nuestros servicios no excederá la mayor de las siguientes cantidades: (a) el importe que nos haya pagado en los doce meses anteriores al evento que dio lugar a la reclamación, o (b) cien dólares estadounidenses (100 USD).
+
+Algunas jurisdicciones no permiten la exclusión o limitación de determinados daños. En dichas jurisdicciones, nuestra responsabilidad se limita al máximo permitido por la ley.
+
+11. Indemnización
+Usted acepta indemnizar, defender y eximir de responsabilidad a Chinchón y a nuestros funcionarios, directores, empleados, contratistas y agentes frente a cualquier reclamación, pérdida, responsabilidad, demanda, daño, coste o gasto (incluidos los honorarios razonables de abogados) que surja de o esté relacionado con (a) su uso de nuestros servicios, (b) su incumplimiento de estos Términos, (c) su violación de cualquier ley o derecho de terceros, o (d) cualquier contenido que usted envíe o transmita a través de nuestros servicios.
+
+12. Terminación
+Podemos suspender o cancelar su acceso a la totalidad o a cualquier parte de nuestros servicios en cualquier momento, con o sin causa, y con o sin previo aviso. Usted puede dejar de utilizar nuestros servicios en cualquier momento.
+
+Las secciones de estos Términos que por su naturaleza deban permanecer vigentes tras la terminación (incluidas las relativas a propiedad intelectual, exenciones de responsabilidad, limitación de responsabilidad, indemnización y legislación aplicable) seguirán vigentes.
+
+13. Legislación aplicable y resolución de disputas
+Estos Términos se rigen por las leyes de España, sin tener en cuenta sus principios de conflicto de leyes. La jurisdicción y competencia exclusivas para cualquier disputa derivada de estos Términos corresponderán a los tribunales situados en España, y usted acepta someterse a la jurisdicción personal de dichos tribunales.
+
+Le animamos a ponerse en contacto con nosotros primero a través de 42chinchon@gmail.com para resolver cualquier inquietud de manera informal antes de iniciar acciones legales.
+
+14. Cambios en estos Términos
+Podemos actualizar estos Términos periódicamente. Cuando lo hagamos, modificaremos la fecha de \"Entrada en vigor\" que aparece en la parte superior. Los cambios sustanciales se comunicarán cuando sea razonable (por ejemplo, mediante un aviso en nuestro sitio web o por correo electrónico si tiene una cuenta). El uso continuado de nuestros servicios tras un cambio implica su aceptación de los Términos actualizados.
+
+15. Disposiciones generales
+Acuerdo completo. Estos Términos, junto con nuestra Política de Privacidad y cualquier otro acuerdo expresamente incorporado por referencia, constituyen el acuerdo completo entre usted y nosotros en relación con nuestros servicios y prevalecen sobre cualquier acuerdo anterior.
+
+Divisibilidad. Si alguna disposición de estos Términos se considera inaplicable, las disposiciones restantes permanecerán en pleno vigor y efecto.
+
+Ausencia de renuncia. El hecho de que no ejerzamos algún derecho o disposición no se considerará una renuncia a los mismos.
+
+Cesión. Usted no podrá ceder estos Términos sin nuestro consentimiento previo por escrito. Nosotros podremos ceder estos Términos libremente.
+
+16. Contáctenos
+¿Tiene preguntas sobre estos Términos? Contáctenos en:
+
+Correo electrónico: 42chinchon@gmail.com
+Sitio web: https://www.chinchon.com"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 419.0
+offset_right = 410.0
+offset_bottom = 657.0
+theme_override_constants/separation = 50
+
+[node name="But_priv" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4q5e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_om2a8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3b521")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_crvju")
+text = "<privacidad>"
+
+[node name="But_ToS" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4q5e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_om2a8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3b521")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_crvju")
+text = "<servicio>"
+
+[connection signal="button_up" from="exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="VBoxContainer/But_priv" to="bloc/Privacity" method="show"]
+[connection signal="button_up" from="VBoxContainer/But_priv" to="bloc/ToS" method="hide"]
+[connection signal="button_up" from="VBoxContainer/But_ToS" to="bloc/Privacity" method="hide"]
+[connection signal="button_up" from="VBoxContainer/But_ToS" to="bloc/ToS" method="show"]
