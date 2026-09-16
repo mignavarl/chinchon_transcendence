@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cartas"
-run/main_scene="uid://bqufyn764fwj0"
+run/main_scene="uid://cowif8das3ppm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -13,6 +13,8 @@ extends Control
 func _ready() -> void:
 	info.text = ""
 	user_input.grab_focus()
+	TranslationServer.set_locale(ConfigManager.get_language())
+
 
 
 func _on_login_button_pressed() -> void:
@@ -54,9 +56,8 @@ func _on_login_done(res: Dictionary) -> void:
 		_set_busy(false, res.error)
 		pass_input.clear()
 		return
-
-	SceneLoader.change_scene("res://src/menus/main_menu.tscn", name)
-
+	#SceneLoader.change_scene("res://scripts/first.gd", self.name)
+	get_tree().change_scene_to_file("res://scenes/first.tscn")
 
 func _fields_ok(user: String, password: String) -> bool:
 	if user.is_empty() or password.is_empty():
