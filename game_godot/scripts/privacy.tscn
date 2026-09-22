@@ -286,6 +286,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3b521")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_crvju")
 text = "<servicio>"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1392.0
+offset_top = 1049.0
+offset_right = 1683.0
+offset_bottom = 1077.0
+theme_override_font_sizes/font_size = 20
+text = "*Solo disponible en castellano"
+
 [connection signal="button_up" from="exit" to="." method="_on_exit_button_up"]
 [connection signal="button_up" from="VBoxContainer/But_priv" to="bloc/Privacity" method="show"]
 [connection signal="button_up" from="VBoxContainer/But_priv" to="bloc/ToS" method="hide"]

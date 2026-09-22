@@ -4,10 +4,17 @@ extends Node3D
 @export var selector : Script
 @export var dic_decks : Script
 
+var coins = -1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Gacha/MostradorGacha/Caja.visible = false
 	$Gacha/MostradorGacha/Boton_guardar.visible = false
+	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
+		if not res.ok:
+			push_warning("no se pudo conseguir el usuario")
+		coins = res.rows[0].coins
+		)
 	visible_coins()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -181,11 +188,18 @@ func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position
 	if event.is_action_pressed("mouse_click"):
 		if !have_all():
 			return
+		if coins == 0:
+			return
 		randomizador()
 		$Gacha/MostradorGacha/Caja.visible = true
 		$Gacha/MostradorGacha/Boton_guardar.visible = true
 		$AnimationPlayer.play("Gacha")
 		$Gacha/MostradorGacha/Caja/Baraja.visible = true
+		coins -= 1
+		Database.add_coins(Auth.user_id, -1, func(res:Dictionary) -> void:
+			if not res.ok:
+				push_warning("no se pudo conseguir el usuario")
+			)
 		visible_coins()
 
 func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -207,9 +221,4 @@ func _on_boton_guardar_input_event(camera: Node, event: InputEvent, event_positi
 		$AnimationPlayer.play("Back_gacha")
 
 func visible_coins() -> void:
-	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
-		if not res.ok:
-			push_warning("no se pudo conseguir el usuario")
-		var c = res.rows[0].coins
-		$Camera3D/Coin_points/Label3D.text = "x %d" % c
-	)
+	$Camera3D/Coin_points/Label3D.text = "x %d" % coins
