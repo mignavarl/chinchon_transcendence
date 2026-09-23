@@ -3,7 +3,11 @@ extends Node3D
 
 func _ready() -> void:
 	$profile/HBoxContainer/user.text = Auth.username
-	#TODO: cambiar foto aqui
+	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
+		if not res.ok:
+			push_warning("no se pudo conseguir el usuario")
+		$profile/HBoxContainer/avatar.texture = load(res.rows[0].avatar_url)
+		)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

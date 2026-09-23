@@ -48,6 +48,16 @@ key,es,ca
 <amigos>,AMIGOS,AMICS
 <partidas>,Partidas:,Partides:
 <ganadas>,Victorias:,Guanyades:
+<iniciar_sesion>,Hay que iniciar sesion,Cal iniciar sessió
+<escribe_nombre>,Escribe un nombre,Escriu un nom
+<nombre_usado>,Ese nombre ya esta cogido,Aquest nom ja aquesta agafat
+<volver_sesion>,vuelve a iniciar sesion,torna a iniciar sessió
+<quitar_avatar>,Quitar avatar,Llevar avatar
+<quitar_amigo>,Quitar de la lista,Llevar de la llista
+<no_partidas>,Todavia no has jugado ninguna partida,Encara no has jugat cap partida
+,,
+,,
+,,
 ,,
 ESPAÑOLA,ESPAÑOLA,ESPANYOL
 PIXEL,PIXEL,PIXEL

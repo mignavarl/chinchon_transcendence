@@ -114,13 +114,13 @@ func _poner_avatar(url: String) -> void:
 # existe y devolvia null.
 func _on_act_user_button_up() -> void:
 	if not Auth.can_save():
-		_avisar(_label_user, "Hay que iniciar sesion")
+		_avisar(_label_user, "<iniciar_sesion>")
 		return
 
 	var nuevo := _line_user.text.strip_edges()
 
 	if nuevo.is_empty():
-		_avisar(_label_user, "Escribe un nombre")
+		_avisar(_label_user, "<escribe_nombre>")
 		return
 	if nuevo == Auth.username:
 		return
@@ -134,7 +134,7 @@ func _on_act_user_button_up() -> void:
 	# otro podria pillar el nombre.
 	if not await ProfileApi.is_username_free(nuevo):
 		_boton_act.disabled = false
-		_avisar(_label_user, "Ese nombre ya esta cogido")
+		_avisar(_label_user, "<nombre_usado>")
 		_line_user.text = Auth.username
 		return
 
@@ -153,7 +153,7 @@ func _on_act_user_button_up() -> void:
 	# partir de aqui cualquier ruta /me contestaria 403. Toca entrar otra vez.
 	_label_user.text = nuevo
 	if res.data.get("reauth_required", false):
-		_avisar(_label_user, "%s: vuelve a iniciar sesion" % nuevo)
+		_avisar(_label_user, "%s: " % nuevo + "<volver_sesion>")
 		Auth.logout()
 
 
@@ -161,7 +161,7 @@ func _on_act_user_button_up() -> void:
 
 func _on_avatar_button_up() -> void:
 	if not Auth.can_save():
-		_avisar(_label_user, "Hay que iniciar sesion")
+		_avisar(_label_user, "<iniciar_sesion>")
 		return
 
 	if _avatares.is_empty():
@@ -210,7 +210,7 @@ func _abrir_picker() -> void:
 	# sentido al NULL de la columna: "no ha elegido" y "eligio el primero" no
 	# son lo mismo.
 	var quitar := Button.new()
-	quitar.text = "Quitar avatar"
+	quitar.text = "<quitar_avatar>"
 	quitar.pressed.connect(func() -> void:
 		popup.hide()
 		await _quitar_avatar()
@@ -287,7 +287,7 @@ func _fila_amigo(amigo: Dictionary) -> HBoxContainer:
 
 	var quitar := Button.new()
 	quitar.text = "x"
-	quitar.tooltip_text = "Quitar de la lista"
+	quitar.tooltip_text = "<quitar_amigo>"
 	var friend_id := int(amigo.get("id", 0))
 	quitar.pressed.connect(func() -> void:
 		await _quitar_amigo(friend_id)
@@ -299,7 +299,7 @@ func _fila_amigo(amigo: Dictionary) -> HBoxContainer:
 
 func _on_add_friend_button_up() -> void:
 	if not Auth.can_save():
-		_avisar(_max_amigos, "Hay que iniciar sesion")
+		_avisar(_max_amigos, "<iniciar_sesion>")
 		return
 
 	var nombre := _line_friend.text.strip_edges()
@@ -376,7 +376,7 @@ func _on_historial_button_button_up() -> void:
 	var partidas: Array = res.data.get("rows", [])
 
 	if partidas.is_empty():
-		_fila_historial(_hist_partidas, "Todavia no has jugado ninguna partida", COLOR_BLOC)
+		_fila_historial(_hist_partidas, "<no_partidas>", COLOR_BLOC)
 		return
 
 	for partida in partidas:
