@@ -162,8 +162,8 @@ texture = ExtResource("2_3axbq")
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
-offset_right = 233.0
-offset_bottom = 67.0
+offset_right = 242.0
+offset_bottom = 69.0
 mouse_filter = 0
 text = "<scoreboard>"
 horizontal_alignment = 1
@@ -171,11 +171,15 @@ vertical_alignment = 1
 
 [node name="Panel_title" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
 show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
 layout_mode = 0
 offset_left = 51.0
 offset_top = 11.0
 offset_right = 188.0
 offset_bottom = 51.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_3axbq")
 
 [node name="Panel" type="Panel" parent="UI_Ingame/Control/Scoreboard"]

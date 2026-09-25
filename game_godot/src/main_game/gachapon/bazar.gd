@@ -4,7 +4,7 @@ extends Node3D
 @export var selector : Script
 @export var dic_decks : Script
 
-var coins = -1
+var coins = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +14,7 @@ func _ready() -> void:
 		if not res.ok:
 			push_warning("no se pudo conseguir el usuario")
 		coins = res.rows[0].coins
+		print("tengo ese dinero %d" % coins)
 		)
 	visible_coins()
 

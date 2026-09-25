@@ -6,7 +6,12 @@ func _ready() -> void:
 	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
 		if not res.ok:
 			push_warning("no se pudo conseguir el usuario")
-		$profile/HBoxContainer/avatar.texture = load(res.rows[0].avatar_url)
+		var avatar = load(res.rows[0].avatar_url)
+		print("mi avatar: %s" % avatar)
+		if not avatar:
+			pass
+		else:
+			$profile/HBoxContainer/avatar.texture = avatar
 		)
 	
 
