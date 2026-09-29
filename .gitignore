@@ -8,3 +8,4 @@ db_gateway/node_modules/
 backend_reference/
 .env.example.reference
 .env.bak.*
+tests/node_modules/

@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Representa una sala de juego identificada por un código corto (ej. "AB3K").
@@ -22,10 +23,9 @@ public class Room {
     /**
      * Un jugador dentro de la sala.
      *
-     * username y userId son los del login del cliente y viajan hasta la mesa:
-     * son los que el anfitrión acaba escribiendo en match_players cuando
-     * guarda la partida. Un invitado sin cuenta manda userId = null, y
-     * entonces su asiento se apunta sin usuario detrás.
+     * username y userId salen del token con el que se abrió el WebSocket
+     * (JwtHandshakeInterceptor), no de lo que diga el cliente. Viajan hasta la
+     * mesa y son los que se escriben en match_players al guardar la partida.
      */
     public record Member(WebSocketSession session, int playerId, String username, Integer userId) {
 
@@ -49,6 +49,14 @@ public class Room {
     // Una vez empezada no se admite a nadie más: llegaría sin mazo ni manos.
     private volatile boolean started;
 
+    // Quién jugaba cuando empezó la partida, en orden de asiento. Se guarda
+    // aparte porque el que se va a mitad sale de "members", pero su asiento
+    // tiene que seguir apareciendo en la partida guardada.
+    private volatile List<Member> roster = List.of();
+
+    // La partida solo se guarda una vez aunque llegue "match_result" dos veces.
+    private final AtomicBoolean saved = new AtomicBoolean(false);
+
     public Room(String code) {
         this.code = code;
     }
@@ -69,15 +77,47 @@ public class Room {
         return started;
     }
 
-    public void markStarted() {
+    public synchronized void markStarted() {
+        this.roster = List.copyOf(getMembers());
         this.started = true;
     }
 
-    public synchronized void addMember(WebSocketSession session, int playerId, String username, Integer userId) {
+    /** Los jugadores con los que empezó la partida, en orden de asiento. */
+    public List<Member> getRoster() {
+        return roster;
+    }
+
+    /** true solo la primera vez: quien lo consigue es quien guarda. */
+    public boolean claimSave() {
+        return saved.compareAndSet(false, true);
+    }
+
+    /** Devuelve el permiso si el guardado falló, para poder reintentarlo. */
+    public void releaseSave() {
+        saved.set(false);
+    }
+
+    public boolean isSaved() {
+        return saved.get();
+    }
+
+    /**
+     * Mete al jugador si cabe y la partida no ha empezado. Va sincronizado
+     * con markStarted() para que nadie se cuele entre la comprobación y el
+     * alta (dos que entran a la vez en una sala con un hueco, o uno que entra
+     * justo cuando el anfitrión pulsa empezar).
+     *
+     * @return false si la sala estaba llena o ya empezada
+     */
+    public synchronized boolean addMember(WebSocketSession session, int playerId, String username, Integer userId) {
+        if (started || members.size() >= MAX_PLAYERS) {
+            return false;
+        }
         members.put(session.getId(), new Member(session, playerId, username, userId));
         if (hostId == null) {
             hostId = playerId;
         }
+        return true;
     }
 
     public void removeMember(WebSocketSession session) {
@@ -96,6 +136,10 @@ public class Room {
     public boolean isHost(WebSocketSession session) {
         Integer playerId = getPlayerId(session);
         return playerId != null && playerId.equals(hostId);
+    }
+
+    public Integer getHostId() {
+        return hostId;
     }
 
     /** Los miembros ordenados por playerId: el orden de los asientos. */
@@ -117,7 +161,11 @@ public class Room {
             WebSocketSession s = m.session();
             try {
                 if ((exclude == null || !s.getId().equals(exclude.getId())) && s.isOpen()) {
-                    s.sendMessage(new TextMessage(payload));
+                    // sendMessage no admite dos envíos a la vez en la misma
+                    // sesión, y aquí pueden llegar desde hilos distintos.
+                    synchronized (s) {
+                        s.sendMessage(new TextMessage(payload));
+                    }
                 }
             } catch (IOException e) {
                 System.out.println("Error enviando mensaje en sala " + code + ": " + e.getMessage());

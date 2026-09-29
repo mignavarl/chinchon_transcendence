@@ -5,17 +5,30 @@ extends Node3D
 @export var dic_decks : Script
 
 var coins = 0
+# Mientras hay una tirada en camino no se admite otra: el servidor ya lo
+# impediria, pero asi no se cobran dos clics rapidos por error.
+var _rolling := false
+
+# Color de las particulas de la caja segun la rareza que ha tocado.
+const RARITY_COLORS := {
+	"common":    Color(0.35, 0.903, 1.0, 0.18),
+	"uncommon":  Color(0.0, 0.752, 0.48, 0.161),
+	"rare":      Color(1.0, 0.349, 0.354, 0.2),
+	"legendary": Color(2.432, 2.077, 0.499, 0.184),
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Gacha/MostradorGacha/Caja.visible = false
 	$Gacha/MostradorGacha/Boton_guardar.visible = false
-	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
-		if not res.ok:
-			push_warning("no se pudo conseguir el usuario")
-		coins = res.rows[0].coins
-		print("tengo ese dinero %d" % coins)
-		)
+	visible_coins()
+	if not Auth.is_logged_in():
+		return
+	var res: Dictionary = await Database.get_me()
+	if not res.ok:
+		push_warning("no se pudo conseguir el usuario: %s" % res.error)
+		return
+	coins = int(res.data.rows[0].coins)
 	visible_coins()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,19 +86,13 @@ func _trigger_konami_code() -> void:
 
 
 
-func get_keys_unowned(dict):
-	var keys = []
-	for d in dict.keys():
-		if !dict[d]:
-			keys.push_back(d)
-	return keys
-
-func get_deck(dic):
-	var elegible_keys = get_keys_unowned(dic)
-	var r = randi() % elegible_keys.size()
-	var rk = elegible_keys[r]
+# Pinta en la caja la baraja que ha tocado y la apunta en memoria. Que la
+# tiene ya lo apunto el servidor al tirar; esto es solo lo que se ve.
+func show_deck(rk: String, rarity: String) -> void:
 	print("rk = ", rk)
-	
+	var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
+	light_effeccts.albedo_color = RARITY_COLORS.get(rarity, RARITY_COLORS["common"])
+
 	var img_oro = "res://assets/cards/%s/oros_1.png" % [rk]
 	var card_oro = load(img_oro)
 	var material_oro = $Gacha/MostradorGacha/Caja/Baraja/Oros.get_surface_override_material(0)
@@ -109,98 +116,54 @@ func get_deck(dic):
 	var material_basto = $Gacha/MostradorGacha/Caja/Baraja/Bastos.get_surface_override_material(0)
 	material_basto.albedo_texture = card_basto
 	$Gacha/MostradorGacha/Caja/Baraja/Bastos.set_surface_override_material(0, material_basto)
-	
-	dic[rk] = 1
-	selector.my_decks.push_back(get_dictionary_of_id(rk))
-	_save_deck(rk)
-	return true
+
+	var dic = _dic_for_rarity(rarity)
+	if dic != null:
+		dic[rk] = 1
+	var deck = get_dictionary_of_id(rk)
+	if deck != null and not selector.my_decks.has(deck):
+		selector.my_decks.push_back(deck)
 
 
-# Apunta la baraja en la base de datos. Un invitado sin cuenta juega igual,
-# pero la baraja se le queda solo en memoria hasta que cierre el navegador.
-func _save_deck(deck_id: String) -> void:
-	if not Auth.can_save():
-		return
-
-	Database.grant_deck(Auth.user_id, deck_id, func(res: Dictionary) -> void:
-		if not res.ok:
-			push_warning("no se pudo guardar la baraja %s: %s" % [deck_id, res.error])
-	)
+func _dic_for_rarity(rarity: String):
+	match rarity:
+		"common":    return dic_decks.dic_common
+		"uncommon":  return dic_decks.dic_uncommon
+		"rare":      return dic_decks.dic_rare
+		"legendary": return dic_decks.dic_legen
+	return null
 
 func get_dictionary_of_id(id):
 	for d in decks.DECKS:
 		if d["id"] == id:
 			return d
 
-func randomizador():
-	var rarity = randi() % 100 + 1
-	var elegible
-	if rarity <= 50:
-		elegible = get_keys_unowned(dic_decks.dic_common)
-		if elegible.size() == 0:
-			randomizador()
-			return
-		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
-		light_effeccts.albedo_color = Color(0.35, 0.903, 1.0, 0.18)
-		get_deck(dic_decks.dic_common)
-	elif rarity <= 75:
-		elegible = get_keys_unowned(dic_decks.dic_uncommon)
-		if elegible.size() == 0:
-			randomizador()
-			return
-		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
-		light_effeccts.albedo_color = Color(0.0, 0.752, 0.48, 0.161)
-		get_deck(dic_decks.dic_uncommon)
-	elif rarity <= 93:
-		elegible = get_keys_unowned(dic_decks.dic_rare)
-		if elegible.size() == 0:
-			randomizador()
-			return
-		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
-		light_effeccts.albedo_color = Color(1.0, 0.349, 0.354, 0.2)
-		get_deck(dic_decks.dic_rare)
-	elif rarity <= 100:
-		elegible = get_keys_unowned(dic_decks.dic_legen)
-		if elegible.size() == 0:
-			randomizador()
-			return
-		var light_effeccts = $Gacha/MostradorGacha/Caja/CPUParticles3D.mesh.get_material()
-		light_effeccts.albedo_color = Color(2.432, 2.077, 0.499, 0.184)
-		get_deck(dic_decks.dic_legen)
-
-
-func have_all():
-	for i in dic_decks.dic_common:
-		if !dic_decks.dic_common[i]:
-			return true
-	for i in dic_decks.dic_uncommon:
-		if !dic_decks.dic_uncommon[i]:
-			return true
-	for i in dic_decks.dic_rare:
-		if !dic_decks.dic_rare[i]:
-			return true
-	for i in dic_decks.dic_legen:
-		if !dic_decks.dic_legen[i]:
-			return true
-	return false
-
-
+# Tirar del gachapon. El sorteo y el cobro los hace el servidor en la misma
+# transaccion (POST /db/me/gacha): si lo hiciera el cliente, cualquiera podria
+# elegir baraja o no pagar la moneda.
 func _on_mostrador_2_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_click"):
-		if !have_all():
+		if _rolling or coins <= 0 or not Auth.is_logged_in():
 			return
-		if coins == 0:
+		_rolling = true
+		var res: Dictionary = await Database.roll_gacha()
+		_rolling = false
+
+		if not res.ok:
+			# 409: sin monedas o ya las tiene todas. No se le ha cobrado nada.
+			if res.data.get("reason", "") == "no_coins":
+				coins = 0
+				visible_coins()
+			push_warning("no se pudo tirar: %s" % res.error)
 			return
-		randomizador()
+
+		var row: Dictionary = res.data.rows[0]
+		coins = int(row.coins)
+		show_deck(str(row.deck_id), str(row.rarity))
 		$Gacha/MostradorGacha/Caja.visible = true
 		$Gacha/MostradorGacha/Boton_guardar.visible = true
 		$AnimationPlayer.play("Gacha")
 		$Gacha/MostradorGacha/Caja/Baraja.visible = true
-		coins -= 1
-		Database.add_coins(Auth.user_id, -1, func(res:Dictionary) -> void:
-			if not res.ok:
-				push_warning("no se pudo conseguir el usuario")
-			)
 		visible_coins()
 
 func _on_puerta_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:

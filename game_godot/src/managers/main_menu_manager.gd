@@ -3,17 +3,17 @@ extends Node3D
 
 func _ready() -> void:
 	$profile/HBoxContainer/user.text = Auth.username
-	Database.get_user(Auth.user_id, func(res:Dictionary) -> void:
-		if not res.ok:
-			push_warning("no se pudo conseguir el usuario")
-		var avatar = load(res.rows[0].avatar_url)
-		print("mi avatar: %s" % avatar)
-		if not avatar:
-			pass
-		else:
-			$profile/HBoxContainer/avatar.texture = avatar
-		)
-	
+	if not Auth.is_logged_in():
+		return
+	var res: Dictionary = await Database.get_me()
+	if not res.ok:
+		push_warning("no se pudo conseguir el usuario: %s" % res.error)
+		return
+	# Del catalogo (res://) o subido por el usuario (/db/avatars/...).
+	var avatar := await ProfileApi.load_avatar(str(res.data.rows[0].avatar_url))
+	if avatar:
+		$profile/HBoxContainer/avatar.texture = avatar
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

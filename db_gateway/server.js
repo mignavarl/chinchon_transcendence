@@ -1,17 +1,23 @@
 // Gateway entre el juego y Postgres.
 //
 // El juego corre en el navegador (WASM), asi que no puede abrir un socket TCP
-// contra Postgres directamente. Manda un POST a /db/query, nginx lo reenvia
-// aqui, y este servicio ejecuta la SQL contra la base de datos y devuelve
-// las filas en JSON.
+// contra Postgres directamente. Habla por HTTP con este servicio (nginx le
+// reenvia todo lo de /db/) y aqui estan escritas las consultas.
+//
+// Aqui NO se ejecuta SQL que venga de fuera. Antes habia un POST /db/query que
+// corria la SQL que mandase el navegador, sin token: cualquiera podia darse
+// monedas, inventarse partidas o borrar tablas. Cada cosa que el juego
+// necesita es ahora una ruta con su consulta fija y su token.
 //
 // El prefijo es /db/ y no /api/ porque /api/ lo ocupa el backend de Spring.
 
 import Fastify from "fastify";
 import pg from "pg";
 
+import avatarUploadRoutes from "./avatar_upload.js";
 import { DEFAULT_AVATAR_URL } from "./avatars.js";
 import friendsRoutes from "./friends_routes.js";
+import gameRoutes from "./game_routes.js";
 import profileRoutes from "./profile_routes.js";
 
 const { Pool } = pg;
@@ -40,29 +46,7 @@ app.get("/db/health", async (_req, reply) => {
 	}
 });
 
-// La tuberia de consultas. Body: { sql: string, params?: any[] }
-app.post("/db/query", async (req, reply) => {
-	const { sql, params } = req.body ?? {};
-
-	if (typeof sql !== "string" || sql.length === 0) {
-		reply.code(400);
-		return { ok: false, error: "falta el campo 'sql'" };
-	}
-	if (params !== undefined && !Array.isArray(params)) {
-		reply.code(400);
-		return { ok: false, error: "'params' tiene que ser un array" };
-	}
-
-	try {
-		const result = await pool.query(sql, params ?? []);
-		return { ok: true, rows: result.rows, rowCount: result.rowCount };
-	} catch (err) {
-		reply.code(500);
-		return { ok: false, error: String(err.message ?? err) };
-	}
-});
-
-// Rutas REST del perfil y de la lista de amigos.
+// Rutas REST: perfil, amigos, juego (barajas, gachapon, partidas) y avatares.
 //
 // Estas NO reciben SQL: la consulta esta escrita en el servidor y de fuera
 // solo llegan valores, que van por $1, $2... Ademas piden token (el que firma
@@ -74,6 +58,8 @@ app.post("/db/query", async (req, reply) => {
 // asi que las cabeceras COOP/COEP tambien salen en estas respuestas.
 app.register(profileRoutes, { pool });
 app.register(friendsRoutes, { pool, defaultAvatarUrl: DEFAULT_AVATAR_URL });
+app.register(gameRoutes, { pool, defaultAvatarUrl: DEFAULT_AVATAR_URL });
+app.register(avatarUploadRoutes, { pool });
 
 const port = Number(process.env.GATEWAY_PORT ?? 3000);
 

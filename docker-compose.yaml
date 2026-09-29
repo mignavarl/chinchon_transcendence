@@ -52,8 +52,9 @@ services:
       # Firma los tokens con esto; el db_gateway los verifica con el mismo
       # valor (alli entra por env_file). Los dos tienen que coincidir.
       JWT_SECRET: ${JWT_SECRET:-change-in-production-change-in-production}
-    ports:
-      - "8080:8080"
+    # Sin puerto publicado: todo entra por nginx (HTTPS), que lo alcanza por
+    # la red interna. Publicar el 8080 dejaba la API y el WebSocket en HTTP
+    # plano, saltandose el TLS.
     networks:
       - transcendence_net
 
@@ -65,6 +66,9 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    # Los avatares que suben los usuarios (db_gateway/avatar_upload.js).
+    volumes:
+      - avatars:/data/avatars
     # Sin puerto publicado: nginx lo alcanza por la red interna de compose.
     networks:
       - transcendence_net
@@ -98,6 +102,7 @@ services:
 volumes:
   godot_data:
   pgdata:
+  avatars:
 
 networks:
   transcendence_net:

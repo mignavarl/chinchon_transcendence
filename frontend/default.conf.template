@@ -44,6 +44,9 @@ server {
     # Ojo: un bloque location no hereda los add_header del server, asi que
     # las cabeceras COOP/COEP de estas respuestas las pone el propio gateway.
     location /db/ {
+        # Por encima del 1 MB que admite el gateway para los avatares: asi el
+        # que corta es el gateway y contesta con JSON, no nginx con HTML.
+        client_max_body_size 2m;
         proxy_pass http://db_gateway:3000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;

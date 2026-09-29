@@ -6,9 +6,10 @@ extends Control
 # Al entrar en esta escena ya se sabe (via LobbyIntent) si el jugador
 # quiere crear sala o unirse a una existente. Flujo:
 #
-#  1. Se conecta al WebSocket.
-#  2. En cuanto conecta, manda "create_room" o "join_room" con la identidad
-#     del jugador (username y user_id del login, vacíos si es invitado).
+#  1. Se conecta al WebSocket con el token del login. Sin sesión no se
+#     puede jugar online: el servidor rechaza la conexión.
+#  2. En cuanto conecta, manda "create_room" o "join_room". Quién es cada uno
+#     lo sabe el servidor por el token, no hace falta decírselo.
 #  3. Recibe "welcome" -> guarda my_network_id, room_code, is_host y quién
 #     estaba ya en la sala.
 #  4. "player_joined" / "player_left" -> actualiza lista de espera.
@@ -33,7 +34,6 @@ var my_network_id: int = -1
 var room_code: String = ""
 var is_host: bool = false
 # network_id -> { "id": int, "username": String, "user_id": int }
-# user_id es -1 para quien juega sin cuenta.
 var roster: Dictionary = {}
 var _game_starting: bool = false
 
@@ -42,12 +42,17 @@ func _ready() -> void:
 	WebSocketClient.connected.connect(_on_socket_connected)
 	WebSocketClient.disconnected.connect(_on_socket_disconnected)
 	WebSocketClient.message_received.connect(_on_message_received)
+	WebSocketClient.connection_failed.connect(_on_connection_failed)
 
 	start_button.pressed.connect(_on_start_pressed)
 	start_button.visible = false
 
+	if not Auth.is_logged_in():
+		status_label.text = "Inicia sesión para jugar online."
+		return
+
 	status_label.text = "Conectando..."
-	WebSocketClient.connect_to_server(_get_websocket_url())
+	WebSocketClient.connect_to_server(_get_websocket_url(), Auth.token)
 
 
 # ── Conexión ─────────────────────────────────────────────────────────────────
@@ -61,32 +66,34 @@ func _get_websocket_url() -> String:
 		var port_suffix := (":" + port) if port != "" else ""
 		return "%s://%s%s/ws/game" % [scheme, host, port_suffix]
 	else:
-		return "ws://localhost:8080/ws/game"
+		# Desde el editor también se entra por nginx: el backend no publica
+		# ningún puerto propio.
+		return "wss://localhost:9443/ws/game"
 
 func _on_socket_connected() -> void:
 	# En cuanto hay conexión, actuamos según lo decidido en la pantalla previa.
-	# La identidad va en el mensaje de entrada: el servidor la guarda y la
-	# reparte, que es lo que permite ver nombres reales en la mesa y apuntar
-	# la partida a nombre de cada uno.
+	# La identidad no va en el mensaje: el servidor la sacó del token al
+	# conectar, y es la que reparte a los demás y la que apunta en la partida.
 	if LobbyIntent.is_host_intent():
 		status_label.text = "Creando sala..."
-		WebSocketClient.send({
-			"type": "create_room",
-			"username": Auth.username,
-			"user_id": Auth.user_id,
-		})
+		WebSocketClient.send({ "type": "create_room" })
 	else:
 		status_label.text = "Uniéndose a la sala %s..." % LobbyIntent.pending_join_code
 		WebSocketClient.send({
 			"type": "join_room",
 			"code": LobbyIntent.pending_join_code,
-			"username": Auth.username,
-			"user_id": Auth.user_id,
 		})
 
 
 func _on_socket_disconnected() -> void:
 	status_label.text = "Conexión perdida."
+	start_button.disabled = true
+
+
+# El servidor no aceptó la conexión. Lo normal es que la sesión haya caducado
+# (el token dura 24h), así que se pide volver a entrar.
+func _on_connection_failed() -> void:
+	status_label.text = "No se pudo conectar. Vuelve a iniciar sesión."
 	start_button.disabled = true
 
 
@@ -101,12 +108,12 @@ func _on_message_received(data: Dictionary) -> void:
 			# entró), no la pantalla anterior.
 			is_host = bool(data.get("is_host", LobbyIntent.is_host_intent()))
 
-			# El servidor no me devuelve mi propia ficha en "welcome": mi
-			# nombre ya lo sé, y los demás lo reciben en "player_joined".
+			# Mi ficha tal y como la ve el servidor (sacada del token), que
+			# es la misma que reciben los demás en "player_joined".
 			_remember_player({
 				"id": my_network_id,
-				"username": Auth.username,
-				"user_id": Auth.user_id,
+				"username": data.get("username", Auth.username),
+				"user_id": data.get("user_id", Auth.user_id),
 			})
 			for p in data.get("existing_players", []):
 				_remember_player(p)
@@ -137,8 +144,8 @@ func _on_message_received(data: Dictionary) -> void:
 			_start_match(data.get("players", []))
 
 
-# Guarda (o actualiza) la ficha de un jugador. Un invitado no manda nombre,
-# así que se le pone uno para que la mesa y el historial no salgan en blanco.
+# Guarda (o actualiza) la ficha de un jugador. Si por lo que sea no llega
+# nombre, se le pone uno para que la mesa no salga en blanco.
 func _remember_player(player: Dictionary) -> void:
 	var id := int(player.get("id", -1))
 	if id < 0:

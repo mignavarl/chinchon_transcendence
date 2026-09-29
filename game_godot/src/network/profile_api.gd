@@ -8,7 +8,7 @@ extends Node
 #
 # No confundir con los otros dos autoloads de red:
 #   Auth     (auth.gd)     -> login y registro, guarda el token
-#   Database (database.gd) -> manda SQL en crudo a /db/query
+#   Database (database.gd) -> barajas, monedas, gachapon y partidas offline
 #   ProfileApi (esto)      -> rutas REST de verdad, la SQL esta en el servidor
 #
 # Aqui NO se manda SQL: se pide un recurso con el metodo que toca y el servidor
@@ -95,7 +95,7 @@ func get_avatar_catalog() -> Dictionary:
 	return await request(HTTPClient.METHOD_GET, "/db/profile/avatars")
 
 
-# PUT: pone el avatar. Es PUT y no PATCH porque el avatar es un solo valor:
+# PUT: pone un avatar del catalogo. Es PUT y no PATCH porque el avatar es un solo valor:
 # lo que mandas pasa a ser el estado completo, y repetir la llamada deja lo
 # mismo. avatar_id tiene que ser uno de los del catalogo.
 func set_avatar(avatar_id: String) -> Dictionary:
@@ -107,6 +107,78 @@ func set_avatar(avatar_id: String) -> Dictionary:
 # Contesta 204 (sin cuerpo), asi que solo hay que mirar res.ok.
 func reset_avatar() -> Dictionary:
 	return await request(HTTPClient.METHOD_DELETE, "/db/profile/me/avatar")
+
+
+# PUT: sube una imagen propia como avatar. bytes es el fichero tal cual y
+# mime "image/png", "image/jpeg" o "image/webp". Maximo 1 MB. Si va bien,
+# data.rows[0].avatar_url es la ruta nueva ("/db/avatars/..."), que se pinta
+# con load_avatar().
+# 400 si el fichero no es la imagen que dice, 413 si pasa de 1 MB, 415 si el
+# tipo no es de los admitidos.
+func upload_avatar(bytes: PackedByteArray, mime: String) -> Dictionary:
+	var http := HTTPRequest.new()
+	add_child(http)
+	if not OS.has_feature("web"):
+		http.set_tls_options(TLSOptions.client_unsafe())
+
+	var headers := PackedStringArray(["Content-Type: " + mime])
+	if Auth.is_logged_in():
+		headers.append("Authorization: Bearer " + Auth.token)
+
+	var err := http.request_raw(_api_base() + "/db/profile/me/avatar/upload",
+		headers, HTTPClient.METHOD_PUT, bytes)
+	if err != OK:
+		http.queue_free()
+		return { "ok": false, "status": 0, "data": {}, "error": MENSAJES[0] }
+
+	var done: Array = await http.request_completed
+	http.queue_free()
+	if done[0] != HTTPRequest.RESULT_SUCCESS:
+		return { "ok": false, "status": 0, "data": {}, "error": MENSAJES[0] }
+	return _parse(done[1], done[3])
+
+
+# Convierte un avatar_url en una textura, sea del catalogo o subido.
+#   "res://..."        -> viene dentro del juego, se carga con load()
+#   "/db/avatars/..."  -> subido por un usuario, se descarga del gateway
+# Devuelve null si no se pudo cargar. Las descargadas se guardan en memoria:
+# el nombre del fichero cambia en cada subida, asi que nunca se quedan viejas.
+var _avatar_cache := {}
+
+func load_avatar(url: String) -> Texture2D:
+	if url.begins_with("res://"):
+		return load(url) as Texture2D
+	if not url.begins_with("/db/avatars/"):
+		return null
+	if _avatar_cache.has(url):
+		return _avatar_cache[url]
+
+	var http := HTTPRequest.new()
+	add_child(http)
+	if not OS.has_feature("web"):
+		http.set_tls_options(TLSOptions.client_unsafe())
+	if http.request(_api_base() + url) != OK:
+		http.queue_free()
+		return null
+
+	var done: Array = await http.request_completed
+	http.queue_free()
+	if done[0] != HTTPRequest.RESULT_SUCCESS or done[1] != 200:
+		return null
+
+	var image := Image.new()
+	var body: PackedByteArray = done[3]
+	var err := ERR_FILE_UNRECOGNIZED
+	match url.get_extension():
+		"png":  err = image.load_png_from_buffer(body)
+		"jpg":  err = image.load_jpg_from_buffer(body)
+		"webp": err = image.load_webp_from_buffer(body)
+	if err != OK:
+		return null
+
+	var texture := ImageTexture.create_from_image(image)
+	_avatar_cache[url] = texture
+	return texture
 
 
 # =============================================================================

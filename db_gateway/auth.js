@@ -61,10 +61,12 @@ export function requireUser(pool) {
 			return reply.code(401).send({ ok: false, error: "hace falta iniciar sesion" });
 		}
 
+		// De paso se apunta last_seen: cualquier peticion con token cuenta como
+		// "sigue conectado", que es lo que usa la lista de amigos.
 		let rows;
 		try {
 			({ rows } = await pool.query(
-				"SELECT id, username FROM users WHERE username = $1",
+				"UPDATE users SET last_seen = now() WHERE username = $1 RETURNING id, username",
 				[username],
 			));
 		} catch (err) {

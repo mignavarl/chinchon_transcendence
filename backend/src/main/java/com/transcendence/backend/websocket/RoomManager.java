@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Gestiona el ciclo de vida de las salas: creación con código único,
- * búsqueda por código, y limpieza cuando quedan vacías.
+ * búsqueda por código, y limpieza cuando quedan vacías o acaba la partida.
  */
 @Component
 public class RoomManager {
@@ -22,14 +22,14 @@ public class RoomManager {
      * Crea una sala nueva con un código único y la registra.
      */
     public Room createRoom() {
-        String code;
-        do {
-            code = generateCode();
-        } while (rooms.containsKey(code));
-
-        Room room = new Room(code);
-        rooms.put(code, room);
-        return room;
+        while (true) {
+            Room room = new Room(generateCode());
+            // putIfAbsent y no containsKey + put: dos salas creadas a la vez
+            // no pueden quedarse con el mismo código.
+            if (rooms.putIfAbsent(room.getCode(), room) == null) {
+                return room;
+            }
+        }
     }
 
     public Room getRoom(String code) {
@@ -45,7 +45,17 @@ public class RoomManager {
      */
     public void removeIfEmpty(Room room) {
         if (room != null && room.isEmpty()) {
-            rooms.remove(room.getCode());
+            rooms.remove(room.getCode(), room);
+        }
+    }
+
+    /**
+     * Elimina la sala aunque quede gente dentro: al acabar la partida el
+     * código deja de valer y nadie puede volver a entrar en ella.
+     */
+    public void removeRoom(Room room) {
+        if (room != null) {
+            rooms.remove(room.getCode(), room);
         }
     }
 

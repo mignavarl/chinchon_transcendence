@@ -16,7 +16,7 @@ import { requireUser } from "./auth.js";
 const MAX_FRIENDS = 10;
 
 // Se considera conectado si ha dado senales de vida hace menos de esto.
-// Database.touch_last_seen() es lo que actualiza la columna.
+// La columna la actualiza requireUser (auth.js) en cada peticion con token.
 //
 // Va en segundos y como parametro de la consulta (make_interval), no pegado al
 // string: asi en este fichero no hay ni un valor interpolado dentro de la SQL.

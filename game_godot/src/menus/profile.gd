@@ -90,20 +90,22 @@ func _cargar_perfil() -> void:
 
 
 # Carga la textura del avatar. Las rutas del catalogo son res:// de cosas que
-# ya vienen dentro del juego, asi que basta con load(). Si el fichero no
-# estuviera, se deja la textura que trae la escena en vez de dejarlo en blanco.
+# ya vienen dentro del juego; las subidas por el usuario ("/db/avatars/...")
+# se descargan del gateway. De las dos se encarga ProfileApi.load_avatar().
+# Si no se pudiera cargar, se deja la textura que trae la escena en vez de
+# dejarlo en blanco.
 func _poner_avatar(url: String) -> void:
 	if url.is_empty():
 		return
 
 	_mi_avatar_url = url
 
-	if not ResourceLoader.exists(url):
+	if url.begins_with("res://") and not ResourceLoader.exists(url):
 		push_warning("el avatar %s no existe en el export" % url)
 		return
 
-	var tex := load(url)
-	if tex is Texture2D:
+	var tex := await ProfileApi.load_avatar(url)
+	if tex:
 		_avatar.texture_normal = tex
 
 

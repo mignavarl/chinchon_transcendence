@@ -1,12 +1,8 @@
 // Rutas REST del perfil.
 //
-// A diferencia de /db/query, que recibe SQL desde el navegador, aqui la SQL
-// esta escrita en este fichero y lo unico que llega de fuera son los valores,
-// siempre por $1, $2... Ademas todas las rutas /me piden token.
+// La SQL esta escrita en este fichero y lo unico que llega de fuera son los
+// valores, siempre por $1, $2... Ademas todas las rutas /me piden token.
 //
-// Las consultas grandes (stats e historial) son las mismas que ya estaban en
-// game_godot/src/network/database.gd: get_user_stats() y get_match_history().
-// Si hay que tocarlas, tocarlas en los dos sitios o dejar solo este.
 //
 // Metodos:
 //   GET    /db/profile/me                  ficha + estadisticas
@@ -14,11 +10,13 @@
 //   POST   /db/profile/me/username         renombrar (comprueba que este libre)
 //   PUT    /db/profile/me/avatar           pone un avatar del catalogo
 //   DELETE /db/profile/me/avatar           lo deja por defecto
+//   (subir una imagen propia esta en avatar_upload.js)
 //   GET    /db/profile/me/history?limit=   ultimas partidas
 //   GET    /db/profile/avatars             catalogo (publico)
 //   HEAD   /db/profile/username/:name      200 cogido / 404 libre
 
 import { requireUser } from "./auth.js";
+import { removeUploadedAvatar } from "./avatar_upload.js";
 import { AVATARS, AVATAR_BY_ID, DEFAULT_AVATAR_URL } from "./avatars.js";
 
 const USERNAME_RE = /^[A-Za-z0-9_-]{3,20}$/;
@@ -27,14 +25,13 @@ const NAME_MAX = 32;
 const HISTORY_LIMIT_DEFAULT = 10;
 const HISTORY_LIMIT_MAX = 50;
 
-// Copiada de Database.get_user_stats(). Devuelve SIEMPRE una fila: si el
+// Ficha con estadisticas. Devuelve SIEMPRE una fila: si el
 // usuario no ha jugado nada, los contadores van a 0.
 //
 // Los ::int y ::float8 no son decorado: count() y sum() devuelven bigint, y
 // round(avg(...)) devuelve numeric, y node-postgres manda los dos como STRING
 // en el JSON (para no perder precision en JS). Sin el cast, al cliente le
 // llegaria "3" en vez de 3 y en GDScript habria que hacer int() a cada campo.
-// Es el mismo truco que ya usaba Database.get_unread_count() con count(*)::int.
 const SQL_STATS = `
 	WITH historial AS (
 	    SELECT m.id, m.is_online, m.deck_id, m.ended_at,
@@ -116,7 +113,7 @@ const SQL_STATS = `
 	 WHERE u.id = $1
 `;
 
-// Copiada de Database.get_match_history(). "rivales" es un array JSON que
+// Historial. "rivales" es un array JSON que
 // monta Postgres con los demas asientos de la partida.
 const SQL_HISTORY = `
 	SELECT m.id, m.is_online, m.deck_id, m.started_at, m.ended_at,
@@ -255,13 +252,24 @@ export default async function profileRoutes(app, options) {
 		// string, para que en este fichero no haya ni un valor interpolado.
 		params.push(DEFAULT_AVATAR_URL);
 		const { rows, rowCount } = await pool.query(
-			`UPDATE users SET ${sets.join(", ")}
-			  WHERE id = $1
-			 RETURNING id, username, name,
-			           coalesce(avatar_url, $${params.length}) AS avatar_url,
-			           avatar_url IS NULL AS avatar_is_default`,
+			`UPDATE users u SET ${sets.join(", ")}
+			   FROM (SELECT avatar_url FROM users WHERE id = $1 FOR UPDATE) prev
+			  WHERE u.id = $1
+			 RETURNING u.id, u.username, u.name,
+			           coalesce(u.avatar_url, $${params.length}) AS avatar_url,
+			           u.avatar_url IS NULL AS avatar_is_default,
+			           prev.avatar_url AS old_url`,
 			params,
 		);
+
+		// Si antes tenia uno subido y lo ha cambiado, el fichero ya no se usa.
+		const oldUrl = rows[0]?.old_url;
+		for (const row of rows) {
+			delete row.old_url;
+		}
+		if ("avatar" in body) {
+			await removeUploadedAvatar(oldUrl, req.log);
+		}
 
 		return { ok: true, rows, rowCount };
 	});
@@ -344,11 +352,19 @@ export default async function profileRoutes(app, options) {
 		}
 
 		const { rows, rowCount } = await pool.query(
-			`UPDATE users SET avatar_url = $2
-			  WHERE id = $1
-			 RETURNING id, username, avatar_url, false AS avatar_is_default`,
+			`UPDATE users u SET avatar_url = $2
+			   FROM (SELECT avatar_url FROM users WHERE id = $1 FOR UPDATE) prev
+			  WHERE u.id = $1
+			 RETURNING u.id, u.username, u.avatar_url, false AS avatar_is_default,
+			           prev.avatar_url AS old_url`,
 			[req.userId, avatar.url],
 		);
+
+		const oldUrl = rows[0]?.old_url;
+		for (const row of rows) {
+			delete row.old_url;
+		}
+		await removeUploadedAvatar(oldUrl, req.log);
 
 		return { ok: true, rows, rowCount };
 	});
@@ -360,7 +376,14 @@ export default async function profileRoutes(app, options) {
 	// siendo distinguibles, y si algun dia cambia el de por defecto, cambia
 	// para todos los que no eligieron.
 	app.delete("/db/profile/me/avatar", authed, async (req, reply) => {
-		await pool.query("UPDATE users SET avatar_url = NULL WHERE id = $1", [req.userId]);
+		const { rows } = await pool.query(
+			`UPDATE users u SET avatar_url = NULL
+			   FROM (SELECT avatar_url FROM users WHERE id = $1 FOR UPDATE) prev
+			  WHERE u.id = $1
+			 RETURNING prev.avatar_url AS old_url`,
+			[req.userId],
+		);
+		await removeUploadedAvatar(rows[0]?.old_url, req.log);
 		// 204: borrado hecho, no hay cuerpo que devolver.
 		return reply.code(204).send();
 	});

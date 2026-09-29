@@ -7,8 +7,9 @@ extends Node
 # El juego corre en el navegador, asi que la peticion va por HTTP al mismo
 # origen que sirve la pagina y nginx hace de proxy hacia el backend.
 #
-# No confundir con Database (database.gd): aquel habla con el db_gateway y
-# manda SQL en crudo, este solo hace login/registro y guarda el token JWT.
+# No confundir con Database (database.gd): aquel habla con el db_gateway
+# (barajas, monedas, partidas), este solo hace login/registro y guarda el
+# token JWT.
 #
 # Uso:
 #   Auth.login("miguel", "1234", func(res):
@@ -28,8 +29,9 @@ var token: String = ""
 var username: String = ""
 
 # Id de la fila en la tabla users. El backend de Spring solo devuelve el
-# token, asi que se pregunta aparte al db_gateway: es lo que hace falta para
-# guardar barajas y partidas. -1 mientras no haya nadie dentro.
+# token, asi que se pregunta aparte al db_gateway (GET /db/me, con el token).
+# Solo sirve para saber si hay cuenta: el servidor nunca se fia de un id que
+# mande el cliente, lo saca del token. -1 mientras no haya nadie dentro.
 var user_id: int = -1
 
 
@@ -72,17 +74,17 @@ func _on_login_response(res: Dictionary, user: String, callback: Callable) -> vo
 	token = str(res.data.get("token", ""))
 	username = user
 	# Antes de dar la entrada por buena se resuelve el id, que a partir de
-	# aqui ya se juega y hace falta para guardar.
-	Database.get_user_by_username(user, _on_user_row.bind(res, callback))
-
-
-func _on_user_row(db_res: Dictionary, res: Dictionary, callback: Callable) -> void:
-	if db_res.ok and not db_res.rows.is_empty():
-		user_id = int(db_res.rows[0]["id"])
+	# aqui ya se juega y hace falta para guardar. Va con el token recien
+	# guardado, asi que es la fila del que acaba de entrar y de nadie mas.
+	var me: Dictionary = await Database.get_me()
+	var rows: Array = me.data.get("rows", []) if me.ok else []
+	if not rows.is_empty():
+		user_id = int(rows[0]["id"])
 	else:
 		# Se entra igual: el token vale, pero sin id no se guarda nada.
 		user_id = -1
-		push_warning("no se pudo resolver el id de %s, no se guardaran barajas ni partidas" % username)
+		push_warning("no se pudo resolver el id de %s (%s), no se guardaran barajas ni partidas"
+			% [username, me.get("error", "sin filas")])
 
 	logged_in.emit(username)
 	callback.call(res)
