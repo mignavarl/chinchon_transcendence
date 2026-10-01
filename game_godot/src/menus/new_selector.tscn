@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dj4nwd2o254ou"]
 
 [ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="1_bdcqn"]
-[ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="2_bjpxk"]
+[ext_resource type="Script" uid="uid://gmqq6y275hy0" path="res://src/menus/login.gd" id="2_4qdc3"]
 [ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="3_bdcqn"]
 [ext_resource type="Texture2D" uid="uid://34lw4nsfys73" path="res://assets/Tapete_vacio.png" id="4_4qdc3"]
 [ext_resource type="Texture2D" uid="uid://o45onhyflogx" path="res://assets/frentecarta.png" id="4_l0h4h"]
@@ -196,7 +196,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bdcqn")
-dic_decks = ExtResource("2_bjpxk")
+dic_decks = ExtResource("2_4qdc3")
 chinchon_man = ExtResource("3_bdcqn")
 
 [node name="ColorRect" type="TextureRect" parent="."]

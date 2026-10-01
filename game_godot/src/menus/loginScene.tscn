@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cowif8das3ppm"]
+[gd_scene load_steps=16 format=3 uid="uid://cowif8das3ppm"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_bg"]
+[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="2_b6663"]
 [ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="2_pencil"]
 [ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="3_bloc"]
+[ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="3_yb7ad"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="4_font"]
 [ext_resource type="Script" uid="uid://gmqq6y275hy0" path="res://src/menus/login.gd" id="5_login"]
 
@@ -74,6 +76,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_login")
+selector = ExtResource("2_b6663")
+decks = ExtResource("3_yb7ad")
 
 [node name="rug_chinchon" type="Sprite2D" parent="."]
 z_index = -42
