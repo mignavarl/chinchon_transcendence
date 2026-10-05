@@ -42,7 +42,7 @@ var _mi_avatar_url := ""
 # Contenedores del historial. No estan en profile.tscn: el panel solo trae los
 # dos blocs y sus titulos, asi que las filas se cuelgan de aqui al arrancar.
 var _hist_partidas: VBoxContainer
-var _hist_puntos: VBoxContainer
+#var _hist_puntos: VBoxContainer
 
 
 func _ready() -> void:
@@ -155,7 +155,9 @@ func _on_act_user_button_up() -> void:
 	# partir de aqui cualquier ruta /me contestaria 403. Toca entrar otra vez.
 	_label_user.text = nuevo
 	if res.data.get("reauth_required", false):
-		_avisar(_label_user, "%s: " % nuevo + "<volver_sesion>")
+		_avisar(_label_user, "<volver_sesion>")
+		$Exit.disabled = true
+		$Exit.text = "<volver_sesion>"
 		Auth.logout()
 
 
@@ -345,7 +347,7 @@ func _quitar_amigo(friend_id: int) -> void:
 # lineas de los dos lados queden a la misma altura.
 func _montar_historial() -> void:
 	_hist_partidas = _columna_historial($historial_menu/left, 30.0, 600.0)
-	_hist_puntos = _columna_historial($historial_menu/right, 40.0, 560.0)
+	#_hist_puntos = _columna_historial($historial_menu/right, 40.0, 560.0)
 
 
 func _columna_historial(padre: Control, x: float, ancho: float) -> VBoxContainer:
@@ -382,15 +384,16 @@ func _on_historial_button_button_up() -> void:
 		return
 
 	for partida in partidas:
-		_fila_historial(_hist_partidas, _describir_partida(partida), COLOR_BLOC)
+		_fila_historial(_hist_partidas, _describir_partida(partida, "%d" % int(partida.get("score", 0))),
+			COLOR_ONLINE if partida.get("is_winner", false) else COLOR_OFFLINE)
 		# En el Chinchon gana el que MENOS puntua, asi que el color va por
 		# is_winner y no por el numero.
-		_fila_historial(_hist_puntos, "%d" % int(partida.get("score", 0)),
-			COLOR_ONLINE if partida.get("is_winner", false) else COLOR_OFFLINE)
+		#_fila_historial(_hist_puntos, "%d" % int(partida.get("score", 0)),
+		#	COLOR_ONLINE if partida.get("is_winner", false) else COLOR_OFFLINE)
 
 
 # "12/03  online  vs Ana, Luis"
-func _describir_partida(partida: Dictionary) -> String:
+func _describir_partida(partida: Dictionary, texto: String) -> String:
 	var trozos: PackedStringArray = []
 
 	trozos.append(_fecha_corta(str(partida.get("ended_at", ""))))
@@ -403,7 +406,7 @@ func _describir_partida(partida: Dictionary) -> String:
 		for rival in rivales:
 			nombres.append(str(rival.get("name", "?")))
 		trozos.append("vs " + ", ".join(nombres))
-
+	trozos.append(texto)
 	return "  ".join(trozos)
 
 

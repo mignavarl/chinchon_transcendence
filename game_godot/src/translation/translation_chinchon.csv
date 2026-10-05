@@ -8,6 +8,7 @@ key,es,ca
 <con_gente>,CON GENTE,AMB ALTRES
 ,,
 ,,
+,,
 <crear_sala>,CREAR SALA,CREAR SALA
 <buscar_gente>,BUSCAR GENTE,BUSCAR JUGADORS
 <conectando>,CONECTANDO,CONNECTANT
@@ -17,13 +18,14 @@ key,es,ca
 <puntos>,PUNTOS,PUNT
 <puntuacion>,PUNTUACIÓN,PUNTUACIÓ
 ,,
+,,
 <entrar>,ENTRAR,ENTRAR
 <crear_cuenta>,CREAR CUENTA,CREAR COMPTE
 <contraseña>,CONTRASEÑA,CONTRASENYA
 ,,
 <salir>,SALIR,SORTIR
 <siguiente>,SIGUIENTE,SEGÜENT
-<atraas>,ATRÁS,ENRERE
+<atras>,ATRÁS,ENRERE
 <volver>,VOLVER,TORNAR
 <privacidad y servicios>,Política de Privacidad y Términos de Servicio,Política de Privacitat i Termes de Servei
 <privacidad>,Política de Privacidad,Política de Privacitat
@@ -51,7 +53,7 @@ key,es,ca
 <iniciar_sesion>,Hay que iniciar sesion,Cal iniciar sessió
 <escribe_nombre>,Escribe un nombre,Escriu un nom
 <nombre_usado>,Ese nombre ya esta cogido,Aquest nom ja aquesta agafat
-<volver_sesion>,vuelve a iniciar sesion,torna a iniciar sessió
+<volver_sesion>,Recarga la página,Recàrrega la pàgina
 <quitar_avatar>,Quitar avatar,Llevar avatar
 <quitar_amigo>,Quitar de la lista,Llevar de la llista
 <no_partidas>,Todavia no has jugado ninguna partida,Encara no has jugat cap partida

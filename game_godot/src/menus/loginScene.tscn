@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cowif8das3ppm"]
+[gd_scene load_steps=17 format=3 uid="uid://cowif8das3ppm"]
 
 [ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_bg"]
 [ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="2_b6663"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="3_yb7ad"]
 [ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="4_font"]
 [ext_resource type="Script" uid="uid://gmqq6y275hy0" path="res://src/menus/login.gd" id="5_login"]
+[ext_resource type="Texture2D" uid="uid://bxygeqcykwsyc" path="res://assets/reverso.png" id="5_yb7ad"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_normal"]
 
@@ -91,6 +92,17 @@ offset_top = 193.0
 offset_right = 1490.0
 offset_bottom = 889.0
 
+[node name="Card" type="TextureRect" parent="atrezzo_login"]
+layout_mode = 0
+offset_left = 365.0
+offset_top = -127.999985
+offset_right = 552.48346
+offset_bottom = 150.17442
+rotation = 0.2268928
+texture = ExtResource("5_yb7ad")
+expand_mode = 3
+stretch_mode = 4
+
 [node name="pencil" type="TextureRect" parent="atrezzo_login"]
 layout_mode = 0
 offset_left = 300.0
@@ -113,13 +125,13 @@ texture = ExtResource("3_bloc")
 layout_mode = 0
 offset_left = 760.0
 offset_top = 200.0
-offset_right = 1260.0
-offset_bottom = 310.0
-rotation = 0.06
+offset_right = 1215.2087
+offset_bottom = 314.0
+rotation = 0.08726646
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 90
-text = "<entrar>"
+text = "CHINCHÓN"
 
 [node name="UserLabel" type="Label" parent="."]
 layout_mode = 0
