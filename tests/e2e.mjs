@@ -331,7 +331,7 @@ const sections = {
 		}
 		eq(Number(psql(`SELECT count(*) FROM match_players WHERE user_id = ${u.id}`)[0][0]), 0, "los invalidos no guardan nada");
 
-		const [[w0, l0]] = psql(`SELECT wins, losses FROM users WHERE id = ${u.id}`);
+		const [[w0, l0, c0]] = psql(`SELECT wins, losses, coins FROM users WHERE id = ${u.id}`);
 		const r = await api("POST", "/db/matches", { token: u.token, body: good });
 		eq(r.status, 201, "partida valida");
 		const matchId = r.json.rows[0].match_id;
@@ -341,7 +341,8 @@ const sections = {
 		eq(psql(`SELECT seat, coalesce(user_id::text, 'null'), name, kind, score, is_winner FROM match_players WHERE match_id = ${matchId} ORDER BY seat`),
 			[["1", String(u.id), "Tú", "human", "12", "t"], ["2", "null", "Paco", "ai", "80", "f"]],
 			"asientos: solo el del token lleva usuario");
-		eq(psql(`SELECT wins, losses FROM users WHERE id = ${u.id}`), [[String(Number(w0) + 1), l0]], "victoria sumada");
+		eq(psql(`SELECT wins, losses, coins FROM users WHERE id = ${u.id}`),
+			[[String(Number(w0) + 1), l0, String(Number(c0) + 1)]], "victoria y moneda sumadas");
 		eq(Number(psql(`SELECT count(*) FROM match_players WHERE user_id = ${other.id}`)[0][0]), 0, "al otro no se le apunta nada");
 
 		const h = await api("GET", "/db/profile/me/history", { token: u.token });
@@ -351,6 +352,13 @@ const sections = {
 		const r2 = await api("POST", "/db/matches", { token: u.token, body: { ...good, deck_id: "no_existe" } });
 		eq(r2.status, 201, "partida con baraja inventada");
 		eq(psql(`SELECT coalesce(deck_id, 'null') FROM matches WHERE id = ${r2.json.rows[0].match_id}`), [["null"]], "baraja inventada guardada como null");
+
+		// Invertimos los ganadores: el usuario autenticado pierde y el asiento IA gana.
+		// Ya hubo dos victorias (good y r2), asi que el saldo debe seguir en c0 + 2.
+		const losing = { ...good, players: good.players.map((p) => ({ ...p, is_winner: !p.is_winner })) };
+		const r3 = await api("POST", "/db/matches", { token: u.token, body: losing });
+		eq(r3.status, 201, "partida perdida");
+		eq(psql(`SELECT coins FROM users WHERE id = ${u.id}`), [[String(Number(c0) + 2)]], "la derrota no concede moneda");
 	},
 
 	async avatar() {
@@ -469,8 +477,8 @@ const sections = {
 
 	async wsmatch() {
 		const { a, b, ca, cb, idA, idB } = await startedRoom();
-		const [[wa0, la0]] = psql(`SELECT wins, losses FROM users WHERE id = ${a.id}`);
-		const [[wb0, lb0]] = psql(`SELECT wins, losses FROM users WHERE id = ${b.id}`);
+		const [[wa0, la0, ca0]] = psql(`SELECT wins, losses, coins FROM users WHERE id = ${a.id}`);
+		const [[wb0, lb0, cb0]] = psql(`SELECT wins, losses, coins FROM users WHERE id = ${b.id}`);
 		const result = {
 			type: "match_result", max_points: 100, deck_id: "pixel",
 			seats: [{ id: idA, score: 104, is_winner: false }, { id: idB, score: 37, is_winner: true }],
@@ -511,12 +519,15 @@ const sections = {
 		eq(psql(`SELECT seat, user_id, name, kind, score, is_winner FROM match_players WHERE match_id = ${matchId} ORDER BY seat`),
 			[["1", String(a.id), a.username, "human", "104", "f"], ["2", String(b.id), b.username, "human", "37", "t"]],
 			"asientos con las cuentas de los tokens");
-		eq(psql(`SELECT wins, losses FROM users WHERE id = ${a.id}`), [[wa0, String(Number(la0) + 1)]], "derrota de A");
-		eq(psql(`SELECT wins, losses FROM users WHERE id = ${b.id}`), [[String(Number(wb0) + 1), lb0]], "victoria de B");
+		eq(psql(`SELECT wins, losses, coins FROM users WHERE id = ${a.id}`),
+			[[wa0, String(Number(la0) + 1), ca0]], "derrota de A sin moneda");
+		eq(psql(`SELECT wins, losses, coins FROM users WHERE id = ${b.id}`),
+			[[String(Number(wb0) + 1), lb0, String(Number(cb0) + 1)]], "victoria de B con moneda");
 
 		wsSend(ca, result);
 		eq((await wsWait(ca, ofType("error"), "error al repetir")).code, "ALREADY_SAVED", "guardar dos veces");
 		eq(Number(psql(`SELECT count(*) FROM match_players WHERE user_id = ${a.id}`)[0][0]), 1, "solo una partida para A");
+		eq(psql(`SELECT coins FROM users WHERE id IN (${a.id}, ${b.id}) ORDER BY id`), [[ca0], [String(Number(cb0) + 1)]], "el reenvio no duplica monedas");
 		closeAll(ca, cb);
 	},
 

@@ -274,7 +274,8 @@ export default async function gameRoutes(app, options) {
 			await client.query(
 				`UPDATE users
 				    SET wins   = wins   + CASE WHEN $2 THEN 1 ELSE 0 END,
-				        losses = losses + CASE WHEN $2 THEN 0 ELSE 1 END
+				        losses = losses + CASE WHEN $2 THEN 0 ELSE 1 END,
+				        coins  = coins  + CASE WHEN $2 THEN 1 ELSE 0 END
 				  WHERE id = $1`,
 				[req.userId, won],
 			);
