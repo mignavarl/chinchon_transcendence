@@ -27,6 +27,8 @@ key,es,ca,eu
 <siguiente>,SIGUIENTE,SEGÜENT,JARRAITU
 <atras>,ATRÁS,ENRERE,ATZERA
 <volver>,VOLVER,TORNAR,ITZULI
+<partida_ganada>,¡Has ganado la partida!,Has guanyat la partida!,Partida irabazi duzu!
+<partida_perdida>,Has perdido la partida,Has perdut la partida,Partida galdu duzu
 <privacidad y servicios>,Política de Privacidad y Términos de Servicio,Política de Privacitat i Termes de Servei,Pribatasun politika eta zerbitasun-baldintzak
 <privacidad>,Política de Privacidad,Política de Privacitat,Pribatasun politika 
 <servicio>,Términos de Servicio,Termes de Servei,Zerbitasun-baldintzak
