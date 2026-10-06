@@ -345,6 +345,7 @@ func _quitar_amigo(friend_id: int) -> void:
 # van en dos VBoxContainer que se crean aqui: uno para las partidas y otro
 # para las puntuaciones. Comparten separacion y altura de fila para que las
 # lineas de los dos lados queden a la misma altura.
+
 func _montar_historial() -> void:
 	_hist_partidas = _columna_historial($historial_menu/left, 30.0, 600.0)
 	#_hist_puntos = _columna_historial($historial_menu/right, 40.0, 560.0)
@@ -370,7 +371,7 @@ func _on_historial_button_button_up() -> void:
 	# Se marca antes de pedirlo para que dar dos veces seguidas no lance dos
 	# peticiones.
 	_historial_cargado = true
-
+	
 	var res: Dictionary = await ProfileApi.get_history(HISTORIAL_FILAS)
 	if not res.ok:
 		_historial_cargado = false
@@ -382,6 +383,8 @@ func _on_historial_button_button_up() -> void:
 	if partidas.is_empty():
 		_fila_historial(_hist_partidas, "<no_partidas>", COLOR_BLOC)
 		return
+	
+	_mostrar_puntuacion()
 
 	for partida in partidas:
 		_fila_historial(_hist_partidas, _describir_partida(partida, "%d" % int(partida.get("score", 0))),
@@ -390,7 +393,7 @@ func _on_historial_button_button_up() -> void:
 		# is_winner y no por el numero.
 		#_fila_historial(_hist_puntos, "%d" % int(partida.get("score", 0)),
 		#	COLOR_ONLINE if partida.get("is_winner", false) else COLOR_OFFLINE)
-
+		
 
 # "12/03  online  vs Ana, Luis"
 func _describir_partida(partida: Dictionary, texto: String) -> String:
@@ -427,6 +430,12 @@ func _fila_historial(columna: VBoxContainer, texto: String, color: Color) -> Lab
 	columna.add_child(fila)
 	return fila
 
+func _mostrar_puntuacion() -> void:
+	var profile: Dictionary = await ProfileApi.get_profile()
+	var partidas = int(profile.data.rows[0].games_played)
+	var ganadas = int(profile.data.rows[0].games_won)
+	$historial_menu/right/title_punt/HBoxContainer/partidas/num_partidas.text = str(partidas)
+	$historial_menu/right/title_punt/HBoxContainer/ganadas/num_ganadas.text = str(ganadas)
 
 func _on_exit_historial_button_up() -> void:
 	$historial_menu.visible = false

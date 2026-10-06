@@ -51,9 +51,12 @@ const MENSAJES := {
 # PERFIL
 # =============================================================================
 
-# GET: la ficha del usuario con todas las estadisticas (partidas, victorias,
-# racha, mejor puntuacion, baraja favorita...). Trae UNA fila en data.rows[0],
-# incluso si no ha jugado nunca (los contadores van a 0).
+# GET: la ficha del usuario con todas las estadisticas: 
+# user_id, username, name, avatar_url, avatar_is_default, coins, deck_selected, create_at, 
+# last_seen, wins, losses, games_played, games_won, games_lost, online_games, offline_games,
+# win_rate, best_score, worst_score, avg_score, total_points, first_played, last_played,
+# current_streak, streak_is_win, longest_win_streak, favourite_deck y decks_owned. 
+# Trae UNA fila en data.rows[0], incluso si no ha jugado nunca (los contadores van a 0).
 func get_profile() -> Dictionary:
 	return await request(HTTPClient.METHOD_GET, "/db/profile/me")
 

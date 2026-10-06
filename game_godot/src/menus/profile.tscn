@@ -260,7 +260,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
 text = "<historial>"
 
 [node name="historial_menu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -315,9 +314,9 @@ texture = ExtResource("5_e8nqt")
 
 [node name="title_punt" type="Label" parent="historial_menu/right"]
 layout_mode = 0
-offset_left = 144.0
+offset_left = 148.0
 offset_top = 62.0
-offset_right = 509.0
+offset_right = 513.0
 offset_bottom = 142.0
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
@@ -326,34 +325,42 @@ text = "<puntuacion>"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="historial_menu/right/title_punt"]
 layout_mode = 0
-offset_left = -60.0
-offset_top = 87.0
-offset_right = 270.0
-offset_bottom = 127.0
-theme_override_constants/separation = 8
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 451.0
+offset_bottom = 120.0
+theme_override_constants/separation = 60
 
-[node name="partidas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+[node name="partidas" type="HBoxContainer" parent="historial_menu/right/title_punt/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="partidas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer/partidas"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 30
 text = "<partidas>"
 
-[node name="num_partidas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+[node name="num_partidas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer/partidas"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
-[node name="ganadas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+[node name="ganadas" type="HBoxContainer" parent="historial_menu/right/title_punt/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ganadas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer/ganadas"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 30
 text = "<ganadas>"
 
-[node name="num_ganadas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer"]
+[node name="num_ganadas" type="Label" parent="historial_menu/right/title_punt/HBoxContainer/ganadas"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
