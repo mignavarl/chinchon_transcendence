@@ -46,6 +46,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MatchResult" type="Label" parent="UI_Ingame/Control"]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -55.0
+offset_right = 420.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.071, 0.047, 0.031, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PlayerName0" type="Label" parent="UI_Ingame/Control"]
 layout_mode = 1
 anchors_preset = 7
@@ -235,7 +255,7 @@ card_manager_reference = NodePath("../CardManager")
 card_slot_reference = NodePath("../../CardSlot")
 player_hand_reference = NodePath("../../PlayerHand")
 
-[node name="ChinchonManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("deck", "slot", "card_manager", "player_hands", "turn_controller", "round_controller")]
+[node name="ChinchonManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("deck", "slot", "card_manager", "player_hands", "turn_controller", "round_controller", "match_result_label")]
 script = ExtResource("8_huv64")
 deck = NodePath("../../Deck")
 slot = NodePath("../../CardSlot")
@@ -245,6 +265,7 @@ card_scene = ExtResource("3_ykixw")
 card_database = ExtResource("9_m1vig")
 turn_controller = NodePath("../TurnController")
 round_controller = NodePath("../RoundController")
+match_result_label = NodePath("../../UI_Ingame/Control/MatchResult")
 
 [node name="TurnController" type="Node" parent="Systems"]
 script = ExtResource("11_ykixw")

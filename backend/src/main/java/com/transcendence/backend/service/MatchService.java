@@ -77,8 +77,8 @@ public class MatchService {
 
             if (userId != null) {
                 jdbc.update(
-                        "UPDATE users SET wins = wins + ?, losses = losses + ? WHERE id = ?",
-                        s.winner() ? 1 : 0, s.winner() ? 0 : 1, userId);
+                        "UPDATE users SET wins = wins + ?, losses = losses + ?, coins = coins + ? WHERE id = ?",
+                        s.winner() ? 1 : 0, s.winner() ? 0 : 1, s.winner() ? 1 : 0, userId);
             }
         }
 

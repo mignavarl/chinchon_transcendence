@@ -17,7 +17,8 @@ func _on_cat_button_up() -> void:
 
 
 func _on_eus_button_up() -> void:
-	pass
+	TranslationServer.set_locale("eu")
+	ConfigManager.set_language("eu")
 
 
 func _on_exit_button_up() -> void:

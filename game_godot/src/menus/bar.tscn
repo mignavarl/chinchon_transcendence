@@ -2687,6 +2687,17 @@ _data = {
 [node name="Bar" type="Node3D"]
 script = ExtResource("1_bwlfd")
 
+# Overlay de resultado que bar.gd muestra al volver de una partida.
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.071, 0.047, 0.031, 1)
+theme_override_colors/font_shadow_color = Color(0.071, 0.047, 0.031, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250543, 0.5572236, -0.051690515, 0.8287521, -0.046176672, 1.2538521, 0.14345884)
 light_color = Color(1, 0.7092379, 0.44074774, 1)
