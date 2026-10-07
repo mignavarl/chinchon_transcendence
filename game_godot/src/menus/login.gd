@@ -80,8 +80,6 @@ func create_decks():
 			dic_rare.get_or_add(i["id"])
 		elif  i["rarity"] == "legendary":
 			dic_legen.get_or_add(i["id"])
-		if i["id"] == "española":
-			selector.my_decks.push_back(i)
 
 
 func _fields_ok(user: String, password: String) -> bool:

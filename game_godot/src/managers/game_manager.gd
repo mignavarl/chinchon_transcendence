@@ -13,6 +13,7 @@ signal round_closed
 
 @export var turn_controller:  TurnController
 @export var round_controller: RoundController
+@export var match_result: Control
 @export var match_result_label: Label
 
 # ── Estado ───────────────────────────────────────────────────────────────────
@@ -288,14 +289,16 @@ func end_round() -> void:
 
 func _show_match_result() -> void:
 	var local_player := _get_local_player()
-	if local_player == null or match_result_label == null:
+	if local_player == null or match_result == null:
 		return
 
+	$"../../UI_Ingame/Control/Restart".visible = false
 	var won := _is_winner(local_player)
 	var result_key := "<partida_ganada>" if won else "<partida_perdida>"
 	match_result_label.text = tr(result_key)
 	match_result_label.add_theme_color_override("font_color", Color("#a9e66e") if won else Color("#f07868"))
-	match_result_label.visible = true
+	match_result.visible = true
+	
 
 func _check_player_scores():
 	for pl in config.players:
