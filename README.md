@@ -78,14 +78,19 @@ Once the team was divided into these two areas, we started organizing our work u
 Throughout the development process, we maintained continuous communication using mainly Whatsapp, while holding regular online meetings in person to discuss progress, resolve blockers, and coordinate the integration of each component.
 
 # Technical Stack
-
+/// ask ///
 
 # Database Schema
 
 # Features List
 
 # Modules
+/// ask/// 
+copiar del canva 
+https://canva.link/i4wvg9jypdkdrlg 
 
 # Individual Contributions
 
 # Resources
+/// ask ///
+copiar de catjitsu xd
