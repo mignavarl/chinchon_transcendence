@@ -52,6 +52,14 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ColorRect" type="ColorRect" parent="UI_Ingame/Control/MatchResult"]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 350.0
+offset_right = 1312.0
+offset_bottom = 759.0
+color = Color(0.14901961, 0.38039216, 0.14901961, 0.92156863)
+
 [node name="MatchResultLabel" type="Label" parent="UI_Ingame/Control/MatchResult"]
 z_index = 10
 layout_mode = 0
@@ -60,14 +68,51 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 520.0
-offset_top = 465.0
+offset_top = 422.77
 offset_right = 1360.0
-offset_bottom = 575.0
+offset_bottom = 532.77026
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.071, 0.047, 0.031, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_coin" type="Control" parent="UI_Ingame/Control/MatchResult"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="coin" type="TextureRect" parent="UI_Ingame/Control/MatchResult/win_coin"]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 549.0
+offset_right = 1038.0
+offset_bottom = 639.15
+texture = ExtResource("2_oqeio")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="+1" type="Label" parent="UI_Ingame/Control/MatchResult/win_coin"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 828.41
+offset_top = 516.465
+offset_right = 952.41
+offset_bottom = 626.46576
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.071, 0.047, 0.031, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 48
+text = "+ 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=126 format=4 uid="uid://cgohku6dvbnpc"]
+[gd_scene load_steps=127 format=4 uid="uid://cgohku6dvbnpc"]
 
 [ext_resource type="Script" uid="uid://ch2pfws7awwdo" path="res://src/managers/main_menu_manager.gd" id="1_vry62"]
 [ext_resource type="Material" uid="uid://bg5gqv8q0k47f" path="res://materials/mat_suelo.tres" id="2_le3na"]
 [ext_resource type="Texture2D" uid="uid://d307x5ljieuyp" path="res://assets/Models/Buildings/Textures/colormap.png" id="3_vry62"]
+[ext_resource type="Texture2D" uid="uid://nm2x7j2t0fe" path="res://assets/bazar_cartel.png" id="4_27lv6"]
 [ext_resource type="Texture2D" uid="uid://bfds36rkc6p3y" path="res://assets/Gear.png" id="5_iql0f"]
 [ext_resource type="Texture2D" uid="uid://cnsfr6o5djsgx" path="res://assets/Models/Car Kit/Textures/colormap.png" id="5_orlvq"]
 [ext_resource type="Texture2D" uid="uid://pkc2ofc1psl6" path="res://assets/Models/Graveyard Kit/Textures/colormap.png" id="6_27lv6"]
@@ -2531,6 +2532,11 @@ mesh = SubResource("ArrayMesh_8hwe3")
 [node name="PlantaAlta" type="MeshInstance3D" parent="Gacha/PlantaBaja"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 0.53973085, 0.0038766786)
 mesh = SubResource("ArrayMesh_rl6wr")
+
+[node name="Sprite3D" type="Sprite3D" parent="Gacha/PlantaBaja/PlantaAlta"]
+transform = Transform3D(0.10443754, 0, 0.0016057491, 0, 0.09202163, 0, -0.00016769757, 0, 0.99999875, -0.022979267, 0.30541173, 0.4803523)
+pixel_size = 0.002
+texture = ExtResource("4_27lv6")
 
 [node name="Tejado" type="MeshInstance3D" parent="Gacha/PlantaBaja"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.006567497, 1.1543849, 0.0038766786)

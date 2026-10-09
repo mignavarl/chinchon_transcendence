@@ -297,6 +297,8 @@ func _show_match_result() -> void:
 	var result_key := "<partida_ganada>" if won else "<partida_perdida>"
 	match_result_label.text = tr(result_key)
 	match_result_label.add_theme_color_override("font_color", Color("#a9e66e") if won else Color("#f07868"))
+	if won:
+		$"../../UI_Ingame/Control/MatchResult/win_coin".visible = true
 	match_result.visible = true
 	
 

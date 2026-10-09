@@ -262,4 +262,4 @@ func _on_exit_button_up() -> void:
 		"username": Auth.username,
 		"id": my_network_id,
 	})
-	#SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
+	SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
