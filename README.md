@@ -85,7 +85,58 @@ Throughout the development process, we maintained continuous communication using
 # Features List
 
 # Modules
+
+## Web
+
+### Major
+- **Use a framework for both the frontend and backend**: Godot Engine is used as the frontend framework for the game while ///ask /// is used as the backend framework for the API and server-side functionality.
+
+- **Allow users to interact with other users**. We implement a basic system where you can send and receive messages between users, view user info and add/remove friends from a list. 
+
+- **Implement real-time features using WebSockets or similar technology**: Real-time multiplayer communication using WebSockets through Godot's High-Level Multiplayer API. 
 /// ask/// 
+- A public API to interact with the database with a secured API key, rate limiting, documentation, and at least 5 endpoints [gtaza-ca, kde-la-c, ldel-val]:The project includes a Django REST API that provides controlled access to persistent application data through multiple endpoints. API access is protected through authentication mechanisms, with rate limiting applied to prevent abuse. The API is documented to make its endpoints and expected requests easier to understand and consume.
+
+### Minor
+
+- **Use an ORM for the database**
+
+- **Custom-made design system with reusable components, including a proper color palette, typography and icons**
+- **File upload and management system** /// ask ///
+
+## Accesibility and Internationalization
+
+### Minor
+- **Support for multiple languages (at least 3 languages)**. We have translated our project to catalan and euskera, since this is mainly a spanish game.
+/// ask ///
+- **Support for additional browsers**: Compatibility with Google Chrome, Mozilla Firefox.
+
+## User Management
+
+### Major
+
+- **Standard user management and authentication**. Users can update their information, upload an avatar or choose from our defaults, add friends and see their online status and have access to their personal info page.
+
+### Minor
+
+- **Game statistics and match history**: track iser game statistics, display match history, show achievements and progrssions, with an integrated leaderboard.
+
+## Artificial Intelligence
+
+### Major
+- **Introduce AI Opponents for games**. The opponent uses a deterministic decision-making system with controlled variation. Its actions are selected according to the current game state and available cards, giving it consistent behavior while introducing enough randomness to prevent every match from playing out identically.
+
+## Gaming and User Experience
+
+### Major
+- **Implement a complete web-based game where users can play against each other**: Complete multiplayer gameplay implemented with Godot's frontend and High-Level Multiplayer API over WebSockets.
+
+- **Remote players - Enable players on separate computers to play the same game in real-time**: Room-based multiplayer system allowing up to four players on different computers to play in real time over the same local network.
+
+- **Multiplayer game (more than two players)**. We support up to 4 players simultaneously with proper synchronization across all clients.
+
+- **Implement advanced 3D graphics using a library like Three.js or Babylon.js**. We created an immersive 3D environment implementing advanced rendering techniques and ensuring smooth performance and user interaction.
+----
 copiar del canva 
 https://canva.link/i4wvg9jypdkdrlg 
 
