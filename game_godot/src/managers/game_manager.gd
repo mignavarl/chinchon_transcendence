@@ -98,6 +98,7 @@ func _apply_deck_order(order: Array) -> void:
 
 
 func _on_network_message(data: Dictionary) -> void:
+	print(data)
 	match data.get("type"):
 		"game_action":
 			var sender_id: int = data.get("from")
@@ -108,7 +109,10 @@ func _on_network_message(data: Dictionary) -> void:
 		"deck_sync":
 			print(data["order"])
 			_apply_deck_order(data["order"])
-			
+		
+		"player_left":
+			print("se ha desconectado un jugador")
+		
 		"player_eliminated":
 			_apply_player_elimination(data["player_id"])
  
@@ -307,7 +311,6 @@ func _advance_to_next_round() -> void:
 		else:
 			WebSocketClient.send({"type": "match_ended"})
 		return
-		#TODO: enviar señal, que cierre la sala, que envíe victoria o derrota y que vuelva al bar
 
 	if not config.is_online:
 		restart_game()
