@@ -20,12 +20,12 @@ key,es,ca,eu
 ,,,
 ,,,
 <entrar>,ENTRAR,ENTRAR,SARTU
-<crear_cuenta>,CREAR CUENTA,CREAR COMPTE,KONTUA SARTU
+<crear_cuenta>,CREAR CUENTA,CREAR COMPTE,KONTUA SORTU
 <contraseña>,CONTRASEÑA,CONTRASENYA,PASAHITZA
-<entrando>,Entrando…,,
-<creando_cuenta>,Creando cuenta...,,
-<cuenta_creada>,Cuenta creada. Entrando…,,
-<pon_user_pass>,Escribe usuario y contraseña,,
+<entrando>,Entrando…,Entrant…,Satrzen…
+<creando_cuenta>,Creando cuenta...,Creant compte,Kontua sartzen…
+<cuenta_creada>,Cuenta creada. Entrando…,Compte creat. Entrant…,Kontua sortuta. Sartzen…
+<pon_user_pass>,Escribe usuario y contraseña,Escriu usuari i contrasenya,Idatzi erabiltzailea eta pasahitza
 ,,,
 ,,,
 <salir>,SALIR,SORTIR,ATERA
@@ -37,7 +37,7 @@ key,es,ca,eu
 <privacidad y servicios>,Política de Privacidad y Términos de Servicio,Política de Privacitat i Termes de Servei,Pribatasun politika eta zerbitasun-baldintzak
 <privacidad>,Política de Privacidad,Política de Privacitat,Pribatasun politika 
 <servicio>,Términos de Servicio,Termes de Servei,Zerbitasun-baldintzak
-<solo_castellano>,*Solo disponible en castellano,,
+<solo_castellano>,*Solo disponible en castellano,*Només disponible en castellà,*Bakarrik gaztelainaz
 ,,,
 <guardar_baraja>,GUARDAR BARAJA,DESA LA BARALLA,GORDE KARTAK
 ,,,
@@ -65,15 +65,15 @@ key,es,ca,eu
 <quitar_avatar>,Quitar avatar,Llevar avatar,Profileko irudia kendu
 <quitar_amigo>,Quitar de la lista,Llevar de la llista,Zerrendatik  kendu
 <no_partidas>,Todavia no has jugado ninguna partida,Encara no has jugat cap partida,Oraindik ez duzu partidarik jokatu
-<sin_sesion>,Sin sesión,,
+<sin_sesion>,Sin sesión,Sense sessió,Saiorik gabe
 ,,,
-<introduce_codigo>,Introduce un código de sala,,
-<uniendo_sala>,Uniéndose a la sala,,
-<creando_sala>,Creando sala…,,
-<conexion_perdida>,Conexión perdida,,
-<no_conectar>,No se pudo conectar. Vuelve a iniciar sesión.,,
-<error_desconocido>,Error desconocido,,
-<jugadores_sala>,Jugadores en la sala,,
+<introduce_codigo>,Introduce un código de sala,Introdueix un codi de sala,Sartu areto-kode bat
+<uniendo_sala>,Uniéndose a la sala,Unint-se a la sala,Aretora konektatzen…
+<creando_sala>,Creando sala…,Creant sala…,Aretoa sortzen…
+<conexion_perdida>,Conexión perdida,Connexió perduda,Konexio galduta
+<no_conectar>,No se pudo conectar. Vuelve a iniciar sesión.,no es va poder connectar. Torna a iniciar sessió.,Ezin izan zen konektatu. Hasi berriro saioa.
+<error_desconocido>,Error desconocido,Error desconegut,Errore ezezaguna
+<jugadores_sala>,Jugadores en la sala,Jugadors a la sala,Jokalari aretoan
 ,,,
 ,,,
 ,,,
