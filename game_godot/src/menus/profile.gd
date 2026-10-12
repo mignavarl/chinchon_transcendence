@@ -44,6 +44,9 @@ var _mi_avatar_url := ""
 var _hist_partidas: VBoxContainer
 #var _hist_puntos: VBoxContainer
 
+var file_access_web: FileAccessWeb = FileAccessWeb.new()
+var image_type: String = ".jpg"
+
 
 func _ready() -> void:
 	_max_amigos.visible = false
@@ -66,7 +69,8 @@ func _ready() -> void:
 
 	await _cargar_perfil()
 	await _cargar_amigos()
-
+	
+	file_access_web.loaded.connect(_on_file_loaded)
 
 # =============================================================================
 # PERFIL
@@ -221,6 +225,14 @@ func _abrir_picker() -> void:
 	)
 	caja.add_child(quitar)
 
+	var subir := Button.new()
+	subir.text = "<subir_avatar>"
+	subir.pressed.connect(func() -> void:
+		popup.hide()
+		_subir_avatar()
+	)
+	caja.add_child(subir)
+
 	add_child(popup)
 	popup.popup_centered()
 	# El popup se monta cada vez, asi que se tira al cerrarlo y no se van
@@ -249,7 +261,40 @@ func _quitar_avatar() -> void:
 	# defecto: se vuelve a pedir la ficha, que ya lo resuelve con el coalesce.
 	await _cargar_perfil()
 
+func _subir_avatar() -> void:
+	file_access_web.open(image_type)
+	pass
 
+func _on_file_loaded(file_name: String, type: String, base64_data: String) -> void:
+	var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	raw_draw(type, raw_data)
+
+func raw_draw(type: String, data: PackedByteArray) -> void:
+	var image := Image.new()
+	var error: int = _load_image(image, type, data)
+	
+	if not error:
+		$user_profile/avatar.texture = _create_texture_from(image)
+		await ProfileApi.upload_avatar(data, type)
+	else:
+		push_error("Error %s id" % error)
+
+func _load_image(image: Image, type: String, data: PackedByteArray) -> int:
+	match type:
+		"image/png":
+			return image.load_png_from_buffer(data)
+		"image/jpeg":
+			return image.load_jpg_from_buffer(data)
+		"image/webp":
+			return image.load_webp_from_buffer(data)
+		_:
+			return Error.FAILED
+
+func _create_texture_from(image: Image) -> ImageTexture:
+	var texture = ImageTexture.new()
+	texture.set_image(image)
+	return texture
+	
 # =============================================================================
 # AMIGOS
 # =============================================================================
