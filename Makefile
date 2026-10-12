@@ -18,12 +18,11 @@ all: setup
 # si el contenedor esta vivo antes de decir que la web esta disponible.
 url:
 	@game=$$(docker compose port frontend 443 2>/dev/null | cut -d: -f2); \
-	api=$$(docker compose port backend 8080 2>/dev/null | cut -d: -f2); \
 	if [ -z "$$(docker compose ps --status running -q frontend)" ]; then \
 		echo $(YELLOW)"Nothing is up yet, launch it with: make ⚠️"$(NC); \
 	else \
 		echo $(CYAN)"Game: https://localhost:$$game 🎮"$(NC); \
-		echo $(CYAN)"API:  http://localhost:$$api/api 🔌"$(NC); \
+		echo $(CYAN)"API:  https://localhost:$$game/api 🔌"$(NC); \
 		echo $(MAGENTA)"El certificado es autofirmado: el navegador avisa, hay que aceptarlo"$(NC); \
 	fi
 

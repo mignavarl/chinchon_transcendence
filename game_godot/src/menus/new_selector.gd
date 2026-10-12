@@ -9,13 +9,11 @@ var own_keys
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	own_keys = get_keys_owned()
+	var data = await Database.get_my_decks()
+	own_keys = data.data.rows
 	deck = search_deck_in_use(chinchon_man.deck_selected)
 	change_deck(deck)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func search_deck_in_use(name_deck):
 	for i in own_keys:
@@ -38,13 +36,6 @@ func change_deck(deck):
 	card = load(img_path)
 	$FondoMenu/FondoCartas/Bastos.texture = card
 
-func get_keys_owned():
-	var keys = []
-	for i in my_decks:
-		print(i)
-		if i:
-			keys.push_back(i)
-	return keys
 
 func _on_nombre_button_up() -> void:
 	chinchon_man.change_deck(deck.id)

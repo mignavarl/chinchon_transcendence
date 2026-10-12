@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="2_mwvnm"]
 [ext_resource type="ArrayMesh" uid="uid://c53xwjknl74cr" path="res://assets/Models/Buildings/door-white-glass.obj" id="3_6rhx6"]
 [ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="3_fr4ia"]
-[ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="4_ubr08"]
+[ext_resource type="Script" uid="uid://gmqq6y275hy0" path="res://src/menus/login.gd" id="4_u2h6r"]
 [ext_resource type="ArrayMesh" uid="uid://vs2vx2g5g6qg" path="res://assets/Models/Furniture Kit/tableCoffeeGlass.obj" id="4_ukcyk"]
 [ext_resource type="Texture2D" uid="uid://bdgqr78v8efvg" path="res://assets/suelo_baldosa_marron.png" id="5_hqoqa"]
-[ext_resource type="Texture2D" uid="uid://drxh7soh66wrr" path="res://assets/coin.png" id="5_u2h6r"]
+[ext_resource type="Texture2D" uid="uid://cedu5pma2lfaq" path="res://assets/carol_coin.png" id="5_u2h6r"]
 [ext_resource type="Texture2D" uid="uid://d307x5ljieuyp" path="res://assets/Models/Buildings/Textures/colormap.png" id="7_r7rgu"]
 [ext_resource type="ArrayMesh" uid="uid://dco805exysbdr" path="res://assets/Models/Furniture Kit/cardboardBoxOpen.obj" id="7_xdx7c"]
 [ext_resource type="Texture2D" uid="uid://hlt80oscmbnm" path="res://assets/cartel_helado.jpg" id="9_1hi3c"]
@@ -5463,7 +5463,7 @@ _data = {
 script = ExtResource("1_nuofq")
 decks = ExtResource("2_mwvnm")
 selector = ExtResource("3_fr4ia")
-dic_decks = ExtResource("4_ubr08")
+dic_decks = ExtResource("4_u2h6r")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-0.8303625, -0.034687474, 0.5561429, 0, -0.9980606, -0.062250543, 0.5572236, -0.051690515, 0.8287521, -0.046176672, 2.1379442, 1.9303211)
@@ -5485,7 +5485,7 @@ transform = Transform3D(0.28696427, -0.00063531846, 1.5625912e-09, 3.1406708e-09
 mesh = SubResource("PlaneMesh_n4bef")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D/Coin_points"]
-transform = Transform3D(0.99884343, 0, -0.04808274, 0, 1, 0, 0.04808274, 0, 0.99884343, 0.24165285, -0.14896584, 0.47537374)
+transform = Transform3D(1.498265, 0, -0.07212411, 0, 1.5, 0, 0.07212411, 0, 1.498265, 0.22900188, -0.14896584, 0.47680497)
 pixel_size = 0.0003
 texture = ExtResource("5_u2h6r")
 

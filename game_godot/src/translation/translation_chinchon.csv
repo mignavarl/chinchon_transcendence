@@ -1,58 +1,91 @@
 key,es,ca,eu
-<jugar>,JUGAR,JUGAR,
-<barajas>,BARAJAS,BARALLES,
-<tutorial>,CÓMO JUGAR,COM JUGAR,
+<jugar>,JUGAR,JUGAR,JOKATU
+<barajas>,BARAJAS,BARALLES,KARTAK
+<tutorial>,CÓMO JUGAR,COM JUGAR,NOLA JOKATU
 ,,,
 ,,,
-<solo>,SOLO,SOL,
-<con_gente>,CON GENTE,AMB ALTRES,
+<solo>,SOLO,SOL,BAKARRIK
+<con_gente>,CON GENTE,AMB ALTRES,JENDEAREKIN
 ,,,
 ,,,
-<crear_sala>,CREAR SALA,CREAR SALA,
-<buscar_gente>,BUSCAR GENTE,BUSCAR JUGADORS,
-<conectando>,CONECTANDO,CONNECTANT,
-<iniciar>,INICIAR,COMENÇA,
-<codigo>,Código,Codi,
 ,,,
-<puntos>,PUNTOS,PUNT,
-<scoreboard>,PUNTUACIÓN,PUNTUACIÓ,
+<crear_sala>,CREAR SALA,CREAR SALA,SORTU ARETOA
+<buscar_gente>,BUSCAR GENTE,BUSCAR JUGADORS,AURKITU JENDEA
+<conectando>,CONECTANDO,CONNECTANT,KONEKTATZEN
+<iniciar>,INICIAR,COMENÇA,HASI
+<codigo>,Código,Codi,Kodea
 ,,,
-<entrar>,ENTRAR,ENTRAR,
-<crear_cuenta>,CREAR CUENTA,CREAR COMPTE,
-<contraseña>,CONTRASEÑA,CONTRASENYA,
-,,,
-<salir>,SALIR,SORTIR,
-<siguiente>,SIGUIENTE,SEGÜENT,
-<atras>,ATRÁS,ENRERE,
-<volver>,VOLVER,TORNAR,
-,,,
-<guardar_baraja>,GUARDAR BARAJA,DESA LA BARALLA,
+<puntos>,PUNTOS,PUNT,PUNTUAK
+<puntuacion>,PUNTUACIÓN,PUNTUACIÓ,PUNTUAZIOA
 ,,,
 ,,,
-<ajustes>,AJUSTES,AJUSTIS,
-<idioma>,IDIOMA,IDIOMA,
-<español>,ESPAÑOL,ESPANYOL,
-<catalan>,CATALÁN,CATALÁ,
-<euskera>,EUSKERA,BASC,
+<entrar>,ENTRAR,ENTRAR,SARTU
+<crear_cuenta>,CREAR CUENTA,CREAR COMPTE,KONTUA SARTU
+<contraseña>,CONTRASEÑA,CONTRASENYA,PASAHITZA
+<entrando>,Entrando…,,
+<creando_cuenta>,Creando cuenta...,,
+<cuenta_creada>,Cuenta creada. Entrando…,,
+<pon_user_pass>,Escribe usuario y contraseña,,
 ,,,
-<usuario>,USUARIO,USUARI,
-<añadir>,AÑADIR,AFEGIR,
-<actualizar>,ACTUALIZAR,ACTUALITZAR,
-<historial>,HISTORIAL,HISTORIAL,
-<avatar>,AVATAR,FOTO,
-<editar>,EDITAR,EDITAR,
-<max_amigos>,DEMASIADO POPULAR (máx. 10 amigos),MASSA POPULAR (màx. 10 amics),
-<partidas>,Partidas:,,
-<ganadas>,Victorias:,,
 ,,,
-ESPAÑOLA,ESPAÑOLA,ESPANYOL,
-PIXEL,PIXEL,PIXEL,
-DECK_42,DECK 42,DECK 42,
-LUIGI,LUIGI,LUIGI,
-POP STARS,ESTRELLAS POP,ESTRELLES DEL POP,
-BICHOS,BICHOS,BUGES,
-LUIGI_HD,LUIGI HD,LUIGI HD,
-PAJAROS,PÁJAROS,OCELLS,
-DARK_INDIE,INDIES OSCUROS,INDIE FOSC,
-LIGHT_INDIE,INDIES CLAROS,INDIE LLUMUNNÓS,
-CUTRE,CUTRE,XARÓ,
+<salir>,SALIR,SORTIR,ATERA
+<siguiente>,SIGUIENTE,SEGÜENT,JARRAITU
+<atras>,ATRÁS,ENRERE,ATZERA
+<volver>,VOLVER,TORNAR,ITZULI
+<partida_ganada>,¡Has ganado la partida!,Has guanyat la partida!,Partida irabazi duzu!
+<partida_perdida>,Has perdido la partida,Has perdut la partida,Partida galdu duzu
+<privacidad y servicios>,Política de Privacidad y Términos de Servicio,Política de Privacitat i Termes de Servei,Pribatasun politika eta zerbitasun-baldintzak
+<privacidad>,Política de Privacidad,Política de Privacitat,Pribatasun politika 
+<servicio>,Términos de Servicio,Termes de Servei,Zerbitasun-baldintzak
+<solo_castellano>,*Solo disponible en castellano,,
+,,,
+<guardar_baraja>,GUARDAR BARAJA,DESA LA BARALLA,GORDE KARTAK
+,,,
+,,,
+<ajustes>,AJUSTES,AJUSTIS,KONFIGURAZIOA
+<idioma>,IDIOMA,IDIOMA,HIZKUNTZA
+<español>,ESPAÑOL,ESPANYOL,GAZTELANIA
+<catalan>,CATALAN,CATALÁ,KATALAN
+<euskera>,EUSKERA,BASC,EUSKARA
+,,,
+<usuario>,USUARIO,USUARI,ERABILTZAILE
+<añadir>,AÑADIR,AFEGIR,GEHITU
+<actualizar>,ACTUALIZAR,ACTUALITZAR,EGUNERATU
+<historial>,HISTORIAL,HISTORIAL,HISTORIA
+<avatar>,AVATAR,FOTO,IRUDIA
+<editar>,EDITAR,EDITAR,EDITATU
+<max_amigos>,DEMASIADO POPULAR (max. 10 amigos),MASSA POPULAR (max. 10 amics),OSPETSUEGIA (10 lagun gehienez)
+<amigos>,AMIGOS,AMICS,LAGUNAK
+<partidas>,Partidas:,Partides:,PARTIDAK:
+<ganadas>,Victorias:,Guanyades:,GARAIPENAK:
+<iniciar_sesion>,Hay que iniciar sesion,Cal iniciar sessió,Saioa hasi behar da
+<escribe_nombre>,Escribe un nombre,Escriu un nom,Izen bat idatzi
+<nombre_usado>,Ese nombre ya esta cogido,Aquest nom ja aquesta agafat,Izen hori hartuta dago
+<volver_sesion>,Recarga la página,Recórrega la página,Web-orrialde kargatu
+<quitar_avatar>,Quitar avatar,Llevar avatar,Profileko irudia kendu
+<quitar_amigo>,Quitar de la lista,Llevar de la llista,Zerrendatik  kendu
+<no_partidas>,Todavia no has jugado ninguna partida,Encara no has jugat cap partida,Oraindik ez duzu partidarik jokatu
+<sin_sesion>,Sin sesión,,
+,,,
+<introduce_codigo>,Introduce un código de sala,,
+<uniendo_sala>,Uniéndose a la sala,,
+<creando_sala>,Creando sala…,,
+<conexion_perdida>,Conexión perdida,,
+<no_conectar>,No se pudo conectar. Vuelve a iniciar sesión.,,
+<error_desconocido>,Error desconocido,,
+<jugadores_sala>,Jugadores en la sala,,
+,,,
+,,,
+,,,
+,,,
+ESPAÑOLA,ESPAÑOLA,ESPANYOL,KARTA ESPAINOLAK
+PIXEL,PIXEL,PIXEL,PIXEL
+DECK_42,DECK 42,DECK 42,DECK 42
+LUIGI,LUIGI,LUIGI,LUIGI
+POP STARS,ESTRELLAS POP,ESTRELLES DEL POP,POPA IZARRAK
+BICHOS,BICHOS,BUGES,ZOMORROAK
+LUIGI_HD,LUIGI HD,LUIGI HD,LUIGI HD
+PAJAROS,PÁJAROS,OCELLS,TXORIAK
+DARK_INDIE,INDIES OSCUROS,INDIE FOSC,INDIE ILUNAK
+LIGHT_INDIE,INDIES CLAROS,INDIE LLUMUNÓS,INDIE ARGIAK
+CUTRE,CUTRE,XARÓ,UTZIA

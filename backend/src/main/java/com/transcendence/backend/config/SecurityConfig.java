@@ -71,7 +71,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()   // Signup/Login allowed
                 .requestMatchers("/api/health").permitAll()    // Health check allowed
-        		.requestMatchers("/ws/game").permitAll()       // WebSocket handshake allowed
+        		// El WebSocket SI pide login, pero no aqui: el navegador no puede
+        		// mandar la cabecera Authorization al abrirlo, asi que el token
+        		// llega como subprotocolo y lo comprueba JwtHandshakeInterceptor.
+        		.requestMatchers("/ws/game").permitAll()
                 .anyRequest().authenticated()                  // Everything else requires JWT
         );
 

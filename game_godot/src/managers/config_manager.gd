@@ -104,12 +104,12 @@ func has_value(section: String, key: String) -> bool:
 # --- IDIOMA ---
 
 func set_language(language_code: String) -> void:
-	"""Establece el idioma ("es" o "en")"""
-	if language_code in ["es", "ca"]:
+	"""Establece el idioma disponible en el catálogo de traducciones."""
+	if language_code in ["es", "ca", "eu"]:
 		set_value("Game", "language", language_code)
 		save_config()
 	else:
-		print("Error: Idioma no válido. Use 'es' o 'en'")
+		print("Error: Idioma no válido. Use 'es', 'ca' o 'eu'")
 
 func get_language() -> String:
 	"""Obtiene el idioma actual"""
