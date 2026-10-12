@@ -89,8 +89,7 @@ func _apply_deck_order(order: Array) -> void:
 	for id in order:
 		if by_id.has(id):
 			new_order.append(by_id[id])
-		else:
-			push_error("Carta recibida en deck_sync no encontrada localmente: %s" % id)
+
 
 	deck.cards = new_order
 	deck.top_card = deck.cards[0] if deck.cards.size() > 0 else null
@@ -100,7 +99,6 @@ func _apply_deck_order(order: Array) -> void:
 
 
 func _on_network_message(data: Dictionary) -> void:
-	print(data)
 	match data.get("type"):
 		"game_action":
 			var sender_id: int = data.get("from")
@@ -113,7 +111,10 @@ func _on_network_message(data: Dictionary) -> void:
 			_apply_deck_order(data["order"])
 		
 		"player_left":
-			_end_match()
+			var id : int = data["id"]
+			var pl :=  _find_player_by_net_id(id)
+			if pl.eliminated == false:
+				_end_match()
 		
 		"player_eliminated":
 			_apply_player_elimination(data["player_id"])
@@ -138,6 +139,13 @@ func _find_player_by_id(player_id: int) -> PlayerData:
 		if p.id == player_id:
 			return p
 	return null
+
+func _find_player_by_net_id(player_id: int) -> PlayerData:
+	for p in config.players:
+		if p.network_id == player_id:
+			return p
+	return null
+
 
 func _build_agents() -> void:
 	for player in config.players:
