@@ -19,6 +19,7 @@ import { DEFAULT_AVATAR_URL } from "./avatars.js";
 import friendsRoutes from "./friends_routes.js";
 import gameRoutes from "./game_routes.js";
 import profileRoutes from "./profile_routes.js";
+import rankingRoutes from "./ranking_routes.js";
 
 const { Pool } = pg;
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -46,7 +47,8 @@ app.get("/db/health", async (_req, reply) => {
 	}
 });
 
-// Rutas REST: perfil, amigos, juego (barajas, gachapon, partidas) y avatares.
+// Rutas REST: perfil, amigos, juego (barajas, gachapon, partidas), ranking
+// y avatares.
 //
 // Estas NO reciben SQL: la consulta esta escrita en el servidor y de fuera
 // solo llegan valores, que van por $1, $2... Ademas piden token (el que firma
@@ -59,6 +61,7 @@ app.get("/db/health", async (_req, reply) => {
 app.register(profileRoutes, { pool });
 app.register(friendsRoutes, { pool, defaultAvatarUrl: DEFAULT_AVATAR_URL });
 app.register(gameRoutes, { pool, defaultAvatarUrl: DEFAULT_AVATAR_URL });
+app.register(rankingRoutes, { pool, defaultAvatarUrl: DEFAULT_AVATAR_URL });
 app.register(avatarUploadRoutes, { pool });
 
 const port = Number(process.env.GATEWAY_PORT ?? 3000);
