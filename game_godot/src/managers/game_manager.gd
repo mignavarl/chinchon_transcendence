@@ -111,7 +111,7 @@ func _on_network_message(data: Dictionary) -> void:
 			_apply_deck_order(data["order"])
 		
 		"player_left":
-			print("se ha desconectado un jugador")
+			_end_match()
 		
 		"player_eliminated":
 			_apply_player_elimination(data["player_id"])
