@@ -19,6 +19,8 @@ func evaluate_round(players: Array[PlayerData], hands_map: Dictionary) -> Array[
 	var min_points := INF
 
 	for player in players:
+		if player.eliminated:
+			continue
 		var hand = hands_map[player.id]
 		var eval = _evaluator.check_best_hand(hand)
 		var pts  = eval["leftover_points"]
