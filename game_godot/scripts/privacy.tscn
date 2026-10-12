@@ -93,7 +93,6 @@ offset_bottom = 1118.0
 texture = ExtResource("3_53lxk")
 
 [node name="Privacity" type="RichTextLabel" parent="bloc"]
-visible = false
 layout_mode = 0
 offset_left = 145.0
 offset_top = 37.0
@@ -148,6 +147,7 @@ Esta política de privacidad se aplica al uso de Chinchon (Chinchon.com). Te inf
 ¿Tienes dudas sobre esta política de privacidad? Escríbenos a chinchon@gmail.com. Este texto es una plantilla orientativa y no constituye asesoramiento jurídico; adáptala siempre a tu tratamiento real de datos.Este documento fue creado con el generador gratuito de Política de Privacidad Plantilla (https://politicadeprivacidadplantilla.com). Encontrarás más plantillas legales gratuitas a través de este Enlace (https://terminosycondicionesdeusoejemplo.com)."
 
 [node name="ToS" type="RichTextLabel" parent="bloc"]
+visible = false
 layout_mode = 0
 offset_left = 145.0
 offset_top = 37.0
@@ -290,10 +290,10 @@ text = "<servicio>"
 layout_mode = 0
 offset_left = 1392.0
 offset_top = 1049.0
-offset_right = 1683.0
+offset_right = 1917.0
 offset_bottom = 1077.0
 theme_override_font_sizes/font_size = 20
-text = "*Solo disponible en castellano"
+text = "<solo_castellano>"
 
 [connection signal="button_up" from="exit" to="." method="_on_exit_button_up"]
 [connection signal="button_up" from="VBoxContainer/But_priv" to="bloc/Privacity" method="show"]

@@ -22,6 +22,11 @@ key,es,ca,eu
 <entrar>,ENTRAR,ENTRAR,SARTU
 <crear_cuenta>,CREAR CUENTA,CREAR COMPTE,KONTUA SARTU
 <contraseña>,CONTRASEÑA,CONTRASENYA,PASAHITZA
+<entrando>,Entrando…,,
+<creando_cuenta>,Creando cuenta...,,
+<cuenta_creada>,Cuenta creada. Entrando…,,
+<pon_user_pass>,Escribe usuario y contraseña,,
+,,,
 ,,,
 <salir>,SALIR,SORTIR,ATERA
 <siguiente>,SIGUIENTE,SEGÜENT,JARRAITU
@@ -32,6 +37,7 @@ key,es,ca,eu
 <privacidad y servicios>,Política de Privacidad y Términos de Servicio,Política de Privacitat i Termes de Servei,Pribatasun politika eta zerbitasun-baldintzak
 <privacidad>,Política de Privacidad,Política de Privacitat,Pribatasun politika 
 <servicio>,Términos de Servicio,Termes de Servei,Zerbitasun-baldintzak
+<solo_castellano>,*Solo disponible en castellano,,
 ,,,
 <guardar_baraja>,GUARDAR BARAJA,DESA LA BARALLA,GORDE KARTAK
 ,,,
@@ -59,6 +65,15 @@ key,es,ca,eu
 <quitar_avatar>,Quitar avatar,Llevar avatar,Profileko irudia kendu
 <quitar_amigo>,Quitar de la lista,Llevar de la llista,Zerrendatik  kendu
 <no_partidas>,Todavia no has jugado ninguna partida,Encara no has jugat cap partida,Oraindik ez duzu partidarik jokatu
+<sin_sesion>,Sin sesión,,
+,,,
+<introduce_codigo>,Introduce un código de sala,,
+<uniendo_sala>,Uniéndose a la sala,,
+<creando_sala>,Creando sala…,,
+<conexion_perdida>,Conexión perdida,,
+<no_conectar>,No se pudo conectar. Vuelve a iniciar sesión.,,
+<error_desconocido>,Error desconocido,,
+<jugadores_sala>,Jugadores en la sala,,
 ,,,
 ,,,
 ,,,

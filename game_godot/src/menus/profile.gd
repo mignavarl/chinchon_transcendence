@@ -460,7 +460,7 @@ func _avisar(donde: Label, texto: String) -> void:
 # Sin sesion no se puede pedir nada, asi que se deja claro en pantalla en vez
 # de ensenar los placeholders de la escena como si fueran datos.
 func _sin_sesion() -> void:
-	_label_user.text = "Sin sesion"
+	_label_user.text = "<sin_sesion>"
 	_line_user.editable = false
 	_boton_act.disabled = true
 	_boton_add.disabled = true

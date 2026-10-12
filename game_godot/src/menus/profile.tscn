@@ -260,6 +260,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
 text = "<historial>"
 
 [node name="historial_menu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

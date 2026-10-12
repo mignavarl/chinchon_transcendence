@@ -48,10 +48,10 @@ func _ready() -> void:
 	start_button.visible = false
 
 	if not Auth.is_logged_in():
-		status_label.text = "Inicia sesión para jugar online."
+		status_label.text = "<iniciar_sesion>"
 		return
 
-	status_label.text = "Conectando..."
+	status_label.text = "<conectando>"
 	WebSocketClient.connect_to_server(_get_websocket_url(), Auth.token)
 
 
@@ -75,10 +75,13 @@ func _on_socket_connected() -> void:
 	# La identidad no va en el mensaje: el servidor la sacó del token al
 	# conectar, y es la que reparte a los demás y la que apunta en la partida.
 	if LobbyIntent.is_host_intent():
-		status_label.text = "Creando sala..."
+		status_label.text = "<creando_sala>"
 		WebSocketClient.send({ "type": "create_room" })
 	else:
-		status_label.text = "Uniéndose a la sala %s..." % LobbyIntent.pending_join_code
+		var text: String = "<uniendo_sala>"
+		text = text + " %s..." % LobbyIntent.pending_join_code
+		status_label.text = text
+		#status_label.text = "Uniéndose a la sala %s..." % LobbyIntent.pending_join_code
 		WebSocketClient.send({
 			"type": "join_room",
 			"code": LobbyIntent.pending_join_code,
@@ -86,14 +89,14 @@ func _on_socket_connected() -> void:
 
 
 func _on_socket_disconnected() -> void:
-	status_label.text = "Conexión perdida."
+	status_label.text = "<conexion_perdida>"
 	start_button.disabled = true
 
 
 # El servidor no aceptó la conexión. Lo normal es que la sesión haya caducado
 # (el token dura 24h), así que se pide volver a entrar.
 func _on_connection_failed() -> void:
-	status_label.text = "No se pudo conectar. Vuelve a iniciar sesión."
+	status_label.text = "<no_conectar>"
 	start_button.disabled = true
 
 
@@ -118,7 +121,10 @@ func _on_message_received(data: Dictionary) -> void:
 			for p in data.get("existing_players", []):
 				_remember_player(p)
 
-			room_code_label.text = "Código de sala: %s" % room_code
+			var text: String = "<codigo>"
+			text = text + ": %s" % room_code
+			room_code_label.text = text
+			#room_code_label.text = "Código de sala: %s" % room_code
 			start_button.visible = is_host
 			_refresh_player_list()
 
@@ -134,7 +140,7 @@ func _on_message_received(data: Dictionary) -> void:
 				SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
 
 		"error":
-			status_label.text = data.get("message", "Error desconocido")
+			status_label.text = data.get("message", "<error_desconocido>")
 
 		"start_game":
 			if _game_starting:
@@ -184,7 +190,10 @@ func _refresh_player_list() -> void:
 		label.label_settings.font = load("res://assets/Pangolin-Regular.ttf")
 		player_list_container.add_child(label)
 
-	status_label.text = "Jugadores en sala: %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
+	var text: String = "<jugadores_sala>"
+	text = text + ": %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
+	status_label.text = text
+	#status_label.text = "Jugadores en sala: %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
 
 	#if is_host:
 		#start_button.disabled = roster.size() < 1

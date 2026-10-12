@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 				emit_signal("right_mouse_button_clicked")
 		ClickState.PENDING:
 			if Input.is_action_just_released("mouse_click"):
-				print("click")
 				emit_signal("left_mouse_button_clicked")
 				#raycast_at_cursor()
 				click_state = ClickState.IDLE
@@ -47,7 +46,6 @@ func _process(delta: float) -> void:
 					click_state = ClickState.DRAGGING
 		ClickState.DRAGGING:
 			if Input.is_action_just_released("mouse_click"):
-				print("suelto drag")
 				emit_signal("left_mouse_button_release")
 				click_state = ClickState.IDLE
 			else:

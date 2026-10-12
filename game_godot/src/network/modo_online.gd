@@ -34,7 +34,7 @@ func _on_make_pressed() -> void:
 func _on_search_pressed() -> void:
 	var code: String = code_input.text
 	if code.strip_edges().is_empty():
-		$info.text = "Introduce un código de sala"
+		$info.text = "<introduce_codigo>"
 		$info.visible = true
 		return
 
