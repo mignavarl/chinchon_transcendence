@@ -269,3 +269,5 @@ func _on_exit_button_up() -> void:
 		"username": Auth.username,
 		"id": my_network_id,
 	})
+	if my_network_id == -1 and room_code.is_empty():
+		SceneLoader.change_scene("res://src/network/online_menu.tscn", self.name)
