@@ -260,7 +260,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
 text = "<historial>"
 
 [node name="historial_menu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -379,6 +378,13 @@ theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("4_e8nqt")
 theme_override_font_sizes/font_size = 63
 text = "RANKING"
+
+[node name="BoxRanking" type="VBoxContainer" parent="historial_menu/right"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 289.0
+offset_right = 197.0
+offset_bottom = 329.0
 
 [node name="pencil" type="TextureRect" parent="historial_menu"]
 layout_mode = 0

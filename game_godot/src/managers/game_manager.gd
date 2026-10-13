@@ -99,7 +99,7 @@ func _apply_deck_order(order: Array) -> void:
 
 
 func _on_network_message(data: Dictionary) -> void:
-	print(data)
+	print(data) 
 	match data.get("type"):
 		"game_action":
 			var sender_id: int = data.get("from")

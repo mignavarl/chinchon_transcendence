@@ -232,6 +232,12 @@ func get_history(limit: int = 10) -> Dictionary:
 	return await request(HTTPClient.METHOD_GET,
 		"/db/profile/me/history?limit=%d" % limit)
 
+# =============================================================================
+# RANKING
+# =============================================================================
+func get_ranking(limit: int = 5) -> Dictionary:
+	return await request(HTTPClient.METHOD_GET,
+		"/db/ranking?scope=global&limit=%d" % limit)
 
 # =============================================================================
 # INTERNO

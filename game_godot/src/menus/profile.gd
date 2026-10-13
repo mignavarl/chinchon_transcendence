@@ -38,11 +38,12 @@ var _mi_avatar_url := ""
 @onready var _line_friend: LineEdit = $friends/VBoxContainer/line_friend
 @onready var _boton_add: Button = $friends/VBoxContainer/add_friend
 @onready var _max_amigos: Label = $friends/max_friends
+@onready var _box_ranking: VBoxContainer = $historial_menu/right/BoxRanking
 
 # Contenedores del historial. No estan en profile.tscn: el panel solo trae los
 # dos blocs y sus titulos, asi que las filas se cuelgan de aqui al arrancar.
 var _hist_partidas: VBoxContainer
-#var _hist_puntos: VBoxContainer
+#var _box_ranking: VBoxContainer
 
 var file_access_web: FileAccessWeb = FileAccessWeb.new()
 var image_type: String = ".jpg"
@@ -399,7 +400,7 @@ func _quitar_amigo(friend_id: int) -> void:
 
 func _montar_historial() -> void:
 	_hist_partidas = _columna_historial($historial_menu/left, 30.0, 600.0)
-	#_hist_puntos = _columna_historial($historial_menu/right, 40.0, 560.0)
+	#_box_ranking = _columna_historial($historial_menu/right, 40.0, 560.0)
 
 
 func _columna_historial(padre: Control, x: float, ancho: float) -> VBoxContainer:
@@ -436,6 +437,7 @@ func _on_historial_button_button_up() -> void:
 		return
 	
 	_mostrar_puntuacion()
+	_show_ranking()
 
 	for partida in partidas:
 		_fila_historial(_hist_partidas, _describir_partida(partida, "%d" % int(partida.get("score", 0))),
@@ -487,6 +489,13 @@ func _mostrar_puntuacion() -> void:
 	var ganadas = int(profile.data.rows[0].games_won)
 	$historial_menu/right/title_punt/HBoxContainer/partidas/num_partidas.text = str(partidas)
 	$historial_menu/right/title_punt/HBoxContainer/ganadas/num_ganadas.text = str(ganadas)
+
+func _show_ranking() -> void:
+	var res: Dictionary = await ProfileApi.get_ranking(5)
+	var rank: Array = res.data.get("rows", [])
+	for i in rank:
+		_fila_historial(_box_ranking, i.username, COLOR_BLOC)
+	
 
 func _on_exit_historial_button_up() -> void:
 	$historial_menu.visible = false

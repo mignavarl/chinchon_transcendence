@@ -121,7 +121,7 @@ func _on_message_received(data: Dictionary) -> void:
 			for p in data.get("existing_players", []):
 				_remember_player(p)
 
-			var text: String = "<codigo>"
+			var text: String = "Codigo"
 			text = text + ": %s" % room_code
 			room_code_label.text = text
 			#room_code_label.text = "Código de sala: %s" % room_code
@@ -190,10 +190,8 @@ func _refresh_player_list() -> void:
 		label.label_settings.font = load("res://assets/Pangolin-Regular.ttf")
 		player_list_container.add_child(label)
 
-	var text: String = "<jugadores_sala>"
-	text = text + ": %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
-	status_label.text = text
-	#status_label.text = "Jugadores en sala: %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
+	
+	status_label.text = "Jugadores en sala: %d / %d" % [roster.size(), MAX_PLAYERS_PER_ROOM]
 
 	#if is_host:
 		#start_button.disabled = roster.size() < 1
