@@ -1,5 +1,9 @@
 *This project has been created as part of the 42 curriculum by mignavar, dlopez-l, asaiz-lo, mcaro-ro and cde-migu. *
 
+<p align="center">
+  <img src="assets/500x223.png" alt="Chinchon logo">
+</p>
+
 # Description
 Inspired by our own culture and traditions, we decided to make this final project of the 42 curriculum based in a game we love to play, specially in the sumer: Chinchon.
 
@@ -87,6 +91,13 @@ For the backend, we chose Spring Boot as the main framework. It provides the RES
 The backend is containerized using Docker, with the different services running independently and communicating through the appropriate network protocols. This architecture makes the application easier to deploy and maintain while allowing the game server and web API to scale or evolve independently.
 
 # Database Schema
+
+<p align="center">
+	<a href="https://excalidraw.com/#json=UAMlRDNOquvo4NbqDjOYc,-5DIA0vtVQM5K_-HXFhlPg">
+  		<img src="assets/database_schema.jpeg" alt="database schema">
+	</a>
+</p>
+
 
 # Features List
 - **Full single-player experience**. Play Chinchón against an AI opponent
