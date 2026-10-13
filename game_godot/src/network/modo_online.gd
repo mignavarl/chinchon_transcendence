@@ -43,4 +43,4 @@ func _on_search_pressed() -> void:
 
 
 func _on_exit_button_up() -> void:
-	SceneLoader.change_scene("res://src/network/mode_selector.tscn", "OnlineMenu")
+	SceneLoader.change_scene("res://src/menus/mode_selector.tscn", "OnlineMenu")
