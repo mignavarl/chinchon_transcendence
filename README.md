@@ -1,7 +1,7 @@
 *This project has been created as part of the 42 curriculum by mignavar, dlopez-l, asaiz-lo, mcaro-ro and cde-migu. *
 
 <p align="center">
-  <img src="assets/500x223.png" alt="Chinchon logo">
+  <img src="assets/tapete_chinchon.png" alt="Chinchon logo">
 </p>
 
 # Description
