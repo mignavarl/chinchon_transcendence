@@ -90,11 +90,13 @@ public class GameWebSocketHandler extends TextWebSocketHandler {
         Room room = sessionRoom.remove(session.getId());
         if (room != null) {
             Integer playerId = room.getPlayerId(session);
+			boolean isHost = room.isHost(session);
             room.removeMember(session);
 
             ObjectNode left = mapper.createObjectNode();
             left.put("type", "player_left");
             left.put("id", playerId);
+	        left.put("is_host", isHost);
             room.broadcast(left.toString(), null);
 
             roomManager.removeIfEmpty(room);

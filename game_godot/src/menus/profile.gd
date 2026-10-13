@@ -122,7 +122,8 @@ func _on_act_user_button_up() -> void:
 	if not Auth.can_save():
 		_avisar(_label_user, "<iniciar_sesion>")
 		return
-
+	
+		
 	var nuevo := _line_user.text.strip_edges()
 
 	if nuevo.is_empty():
@@ -154,7 +155,7 @@ func _on_act_user_button_up() -> void:
 
 	if res.data.get("unchanged", false):
 		return
-
+	
 	# El token lleva dentro el nombre viejo, asi que ya no vale para nada: a
 	# partir de aqui cualquier ruta /me contestaria 403. Toca entrar otra vez.
 	_label_user.text = nuevo
@@ -163,6 +164,7 @@ func _on_act_user_button_up() -> void:
 		$Exit.disabled = true
 		$Exit.text = "<volver_sesion>"
 		Auth.logout()
+		
 
 
 # --- Cambiar el avatar -------------------------------------------------------
@@ -263,16 +265,20 @@ func _quitar_avatar() -> void:
 
 func _subir_avatar() -> void:
 	file_access_web.open(image_type)
-	pass
+
 
 func _on_file_loaded(file_name: String, type: String, base64_data: String) -> void:
+	print("archivo: ", file_name, " | type: ", type, " | b64 len: ", base64_data.length())
+	print("b64 empieza por: ", base64_data.substr(0, 30))
 	var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	print("bytes: ", raw_data.size(), " | primeros: ", raw_data.slice(0, 8))
 	raw_draw(type, raw_data)
 
 func raw_draw(type: String, data: PackedByteArray) -> void:
 	var image := Image.new()
 	var error: int = _load_image(image, type, data)
-	
+	print("resultado load: ", error_string(error))
+
 	if not error:
 		$user_profile/avatar.texture = _create_texture_from(image)
 		await ProfileApi.upload_avatar(data, type)

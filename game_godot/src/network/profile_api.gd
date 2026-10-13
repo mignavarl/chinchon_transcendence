@@ -133,11 +133,12 @@ func upload_avatar(bytes: PackedByteArray, mime: String) -> Dictionary:
 	if err != OK:
 		http.queue_free()
 		return { "ok": false, "status": 0, "data": {}, "error": MENSAJES[0] }
-
+ 
 	var done: Array = await http.request_completed
 	http.queue_free()
 	if done[0] != HTTPRequest.RESULT_SUCCESS:
 		return { "ok": false, "status": 0, "data": {}, "error": MENSAJES[0] }
+	print("HTTP ", done[1], " -> ", done[3].get_string_from_utf8())
 	return _parse(done[1], done[3])
 
 

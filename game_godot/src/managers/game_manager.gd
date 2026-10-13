@@ -99,6 +99,7 @@ func _apply_deck_order(order: Array) -> void:
 
 
 func _on_network_message(data: Dictionary) -> void:
+	print(data)
 	match data.get("type"):
 		"game_action":
 			var sender_id: int = data.get("from")
@@ -113,7 +114,8 @@ func _on_network_message(data: Dictionary) -> void:
 		"player_left":
 			var id : int = data["id"]
 			var pl :=  _find_player_by_net_id(id)
-			if pl.eliminated == false:
+			var is_host:bool = data["is_host"]
+			if pl.eliminated == false or is_host:
 				_end_match()
 		
 		"player_eliminated":

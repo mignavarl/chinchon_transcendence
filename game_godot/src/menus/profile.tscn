@@ -402,54 +402,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_6gw6k")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1biak")
 text = "<volver>"
 
-[node name="historial_menu_right_stats#HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 121.0
-offset_right = 166.0
-offset_bottom = 161.0
-theme_override_constants/separation = 14
-
-[node name="historial_menu_right_stats_HBoxContainer#login" type="Label" parent="."]
-layout_mode = 0
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 25
-text = "<login>"
-horizontal_alignment = 1
-
-[node name="historial_menu_right_stats_HBoxContainer#match" type="Label" parent="."]
-layout_mode = 0
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 25
-text = "<partidas>"
-horizontal_alignment = 1
-
-[node name="historial_menu_right_stats_HBoxContainer#num_match" type="Label" parent="."]
-layout_mode = 0
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 25
-text = "0"
-horizontal_alignment = 1
-
-[node name="historial_menu_right_stats_HBoxContainer#win" type="Label" parent="."]
-layout_mode = 0
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 25
-text = "<ganadas>"
-horizontal_alignment = 1
-
-[node name="historial_menu_right_stats_HBoxContainer#num_win" type="Label" parent="."]
-layout_mode = 0
-theme_override_colors/font_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("4_e8nqt")
-theme_override_font_sizes/font_size = 25
-text = "0"
-horizontal_alignment = 1
-
 [connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
 [connection signal="button_up" from="user_profile/avatar" to="." method="_on_avatar_button_up"]
 [connection signal="button_up" from="user_profile/act_user" to="." method="_on_act_user_button_up"]
