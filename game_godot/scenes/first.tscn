@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://x27ifq6hefad" path="res://scripts/first.gd" id="1_pquk8"]
 [ext_resource type="Script" uid="uid://dtjhoxp8ujvkb" path="res://scripts/rarity__database.gd" id="2_ilill"]
-[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://scripts/new_selector.gd" id="3_ilill"]
+[ext_resource type="Script" uid="uid://8lel2ywk7mbk" path="res://src/menus/new_selector.gd" id="3_ilill"]
 
 [node name="First" type="Control"]
 layout_mode = 3

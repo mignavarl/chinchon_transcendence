@@ -1,0 +1,232 @@
+[gd_scene load_steps=15 format=3 uid="uid://7t1pkuio3yu4"]
+
+[ext_resource type="Script" uid="uid://drcqcedgo773v" path="res://src/network/lobby.gd" id="1_4uv2n"]
+[ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_pygt8"]
+[ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="2_4uv2n"]
+[ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="3_661dw"]
+[ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="5_unms0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01wsg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3qwrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kklk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbib8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g341f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pygt8"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uv2n"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_661dw"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6miqp"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LobbyMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4uv2n")
+
+[node name="rug_chinchon" type="Sprite2D" parent="."]
+z_index = -42
+position = Vector2(960, 540)
+texture = ExtResource("1_pygt8")
+
+[node name="atrezzo_menu_online" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 424.0
+offset_top = 193.0
+offset_right = 1490.0
+offset_bottom = 889.0
+
+[node name="pencil" type="TextureRect" parent="atrezzo_menu_online"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = -133.99998
+offset_right = 850.00024
+offset_bottom = 122.000015
+rotation = 1.282817
+texture = ExtResource("2_4uv2n")
+
+[node name="bloc" type="TextureRect" parent="atrezzo_menu_online"]
+layout_mode = 0
+offset_left = 215.00006
+offset_top = -56.0
+offset_right = 899.0
+offset_bottom = 723.0
+rotation = 0.06981317
+texture = ExtResource("3_661dw")
+
+[node name="OnlineMode" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="OnlineMode"]
+unique_name_in_owner = true
+z_index = 155
+layout_mode = 0
+offset_left = 828.0
+offset_top = 695.0
+offset_right = 1233.0
+offset_bottom = 895.0
+rotation = 0.05235988
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_01wsg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3qwrk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5kklk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbib8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g341f")
+text = "<iniciar>"
+
+[node name="Label" type="Label" parent="OnlineMode/StartButton"]
+visible = false
+layout_mode = 0
+offset_left = 406.3559
+offset_top = 129.91103
+offset_right = 467.3559
+offset_bottom = 373.91104
+rotation = 1.5707964
+scale = Vector2(0.7, 1.7)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="PlayerListContainer" type="VBoxContainer" parent="OnlineMode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 749.00006
+offset_top = 318.0
+offset_right = 1217.4424
+offset_bottom = 690.1771
+rotation = 0.077891186
+
+[node name="Label" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "..."
+
+[node name="Label2" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "..."
+
+[node name="Label3" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "..."
+
+[node name="Label4" type="Label" parent="OnlineMode/PlayerListContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 56
+text = "..."
+
+[node name="StatusLabel" type="Label" parent="OnlineMode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 969.0
+offset_top = 173.00002
+offset_right = 1968.0
+offset_bottom = 417.0
+rotation = 0.08370376
+scale = Vector2(0.28136402, 0.28136402)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 100
+text = "<conectando>"
+autowrap_mode = 3
+
+[node name="RoomCodeLabel" type="Label" parent="OnlineMode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 690.0
+offset_top = 813.99994
+offset_right = 2631.7788
+offset_bottom = 1058.0
+rotation = 0.08370376
+scale = Vector2(0.28136402, 0.28136402)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_unms0")
+theme_override_font_sizes/font_size = 160
+text = "<conectando>"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1708.0
+offset_top = 74.0
+offset_right = 1889.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_pygt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4uv2n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_661dw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6miqp")
+text = "<volver>"
+
+[connection signal="mouse_entered" from="OnlineMode/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="OnlineMode/StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]

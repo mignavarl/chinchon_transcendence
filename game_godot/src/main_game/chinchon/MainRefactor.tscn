@@ -1,0 +1,376 @@
+[gd_scene load_steps=16 format=3 uid="uid://cbnjphvfqof6n"]
+
+[ext_resource type="Script" uid="uid://cq8txsa45jka4" path="res://src/cards/card_manager.gd" id="2_huv64"]
+[ext_resource type="Texture2D" uid="uid://cedu5pma2lfaq" path="res://assets/carol_coin.png" id="2_oqeio"]
+[ext_resource type="PackedScene" uid="uid://bdfsrti3n613m" path="res://src/cards/card.tscn" id="3_ykixw"]
+[ext_resource type="PackedScene" uid="uid://debgndyhxa17s" path="res://src/cards/card_slot.tscn" id="4_e4qjk"]
+[ext_resource type="Script" uid="uid://b84blfs3pjsto" path="res://src/cards/player_hand.gd" id="5_pddc6"]
+[ext_resource type="Script" uid="uid://bsuoep5kdo5ig" path="res://src/managers/input_manager.gd" id="6_cughx"]
+[ext_resource type="Script" uid="uid://cse5nq4a5pgr0" path="res://src/managers/game_manager.gd" id="8_huv64"]
+[ext_resource type="Script" uid="uid://bpl7oioqdhiik" path="res://src/managers/ui_manager.gd" id="8_oqeio"]
+[ext_resource type="Script" uid="uid://dpbsidew5quxu" path="res://src/cards/card_database.gd" id="9_m1vig"]
+[ext_resource type="Texture2D" uid="uid://ch0pc8i64oxnk" path="res://assets/Tapete_chinchon_sin_marcas.png" id="11_v6aup"]
+[ext_resource type="Script" uid="uid://4vlf2qnevda5" path="res://src/managers/turn_controller.gd" id="11_ykixw"]
+[ext_resource type="Script" uid="uid://j4ub65m4pykc" path="res://src/managers/round_controller.gd" id="12_ykixw"]
+[ext_resource type="Script" uid="uid://6rvvof3mgrsq" path="res://src/main_game/chinchon/ui_ingame.gd" id="16_srxia"]
+[ext_resource type="Script" uid="uid://df5lnjh6ptuv8" path="res://scripts/play_button.gd" id="16_t0ac2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3axbq"]
+bg_color = Color(0.30912447, 0.3825062, 0.061130702, 1)
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.037501376, 0.1745409, 1.0829419e-07, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Main" type="Node2D"]
+
+[node name="UI_Ingame" type="CanvasLayer" parent="." node_paths=PackedStringArray("names", "scores", "scoresbg", "turn_controller", "game_manager")]
+layer = 100
+script = ExtResource("16_srxia")
+names = [NodePath("Control/PlayerName0"), NodePath("Control/PlayerName1"), NodePath("Control/PlayerName2"), NodePath("Control/PlayerName3")]
+scores = NodePath("Control/Scoreboard/RichTextLabel")
+scoresbg = NodePath("Control/Scoreboard/Panel")
+turn_controller = NodePath("../Systems/TurnController")
+game_manager = NodePath("../Systems/ChinchonManager")
+
+[node name="Control" type="Control" parent="UI_Ingame"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MatchResult" type="Control" parent="UI_Ingame/Control"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="UI_Ingame/Control/MatchResult"]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 350.0
+offset_right = 1312.0
+offset_bottom = 759.0
+color = Color(0.14901961, 0.38039216, 0.14901961, 0.92156863)
+
+[node name="MatchResultLabel" type="Label" parent="UI_Ingame/Control/MatchResult"]
+z_index = 10
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 520.0
+offset_top = 422.77
+offset_right = 1360.0
+offset_bottom = 532.77026
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.071, 0.047, 0.031, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_coin" type="Control" parent="UI_Ingame/Control/MatchResult"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="coin" type="TextureRect" parent="UI_Ingame/Control/MatchResult/win_coin"]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 549.0
+offset_right = 1038.0
+offset_bottom = 639.15
+texture = ExtResource("2_oqeio")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="+1" type="Label" parent="UI_Ingame/Control/MatchResult/win_coin"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 828.41
+offset_top = 516.465
+offset_right = 952.41
+offset_bottom = 626.46576
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.071, 0.047, 0.031, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 48
+text = "+ 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Salir" type="Button" parent="UI_Ingame/Control/MatchResult"]
+layout_mode = 0
+offset_left = 838.06
+offset_top = 656.155
+offset_right = 1086.0641
+offset_bottom = 719.155
+theme_override_font_sizes/font_size = 30
+text = "<volver>"
+
+[node name="PlayerName0" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -282.0
+offset_right = 174.0
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ActivePlayer0" type="TextureRect" parent="UI_Ingame/Control/PlayerName0"]
+visible = false
+z_index = -10
+layout_mode = 0
+offset_left = 115.365
+offset_top = -126.785
+offset_right = 909.365
+offset_bottom = 667.21497
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_oqeio")
+expand_mode = 1
+
+[node name="PlayerName1" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 94.0
+offset_top = -16.5
+offset_right = 442.0
+offset_bottom = 16.5
+grow_vertical = 2
+rotation = 1.5707964
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ActivePlayer1" type="TextureRect" parent="UI_Ingame/Control/PlayerName1"]
+visible = false
+z_index = -10
+layout_mode = 0
+offset_left = 116.365
+offset_top = -134.245
+offset_right = 910.365
+offset_bottom = 659.755
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_oqeio")
+
+[node name="PlayerName2" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_top = 193.0
+offset_right = 174.0
+offset_bottom = 226.0
+grow_horizontal = 2
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ActivePlayer2" type="TextureRect" parent="UI_Ingame/Control/PlayerName2"]
+visible = false
+z_index = -10
+layout_mode = 0
+offset_left = 237.0
+offset_top = 147.67
+offset_right = 1031.0011
+offset_bottom = 941.67
+rotation = 3.1415927
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_oqeio")
+
+[node name="PlayerName3" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -16.0
+offset_right = -107.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(170.105, 0)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ActivePlayer3" type="TextureRect" parent="UI_Ingame/Control/PlayerName3"]
+visible = false
+z_index = -10
+layout_mode = 0
+offset_left = 109.295
+offset_top = -124.355
+offset_right = 903.295
+offset_bottom = 669.645
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_oqeio")
+
+[node name="Scoreboard" type="Label" parent="UI_Ingame/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 242.0
+offset_bottom = 69.0
+mouse_filter = 0
+text = "<puntuacion>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel_title" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+layout_mode = 0
+offset_left = 51.0
+offset_top = 11.0
+offset_right = 188.0
+offset_bottom = 51.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_3axbq")
+
+[node name="Panel" type="Panel" parent="UI_Ingame/Control/Scoreboard"]
+layout_mode = 0
+offset_left = 64.60216
+offset_top = 58.0
+offset_right = 371.0
+offset_bottom = 214.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI_Ingame/Control/Scoreboard"]
+layout_mode = 0
+offset_left = 64.60216
+offset_top = 58.0
+offset_right = 356.0
+offset_bottom = 185.0
+text = "- Player 1 : 40 <puntos>
+- Player 1 : 40 <puntos>
+- Player 1 : 40 <puntos>
+- Player 1 : 40 <puntos>"
+
+[node name="Restart" type="Button" parent="UI_Ingame/Control"]
+visible = false
+layout_mode = 0
+offset_left = 848.0
+offset_top = 646.0
+offset_right = 1084.0
+offset_bottom = 696.0
+theme_override_font_sizes/font_size = 30
+text = "Siguiente ronda"
+script = ExtResource("16_t0ac2")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="CardManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player_hand_reference", "input_manager", "card_slot_reference")]
+script = ExtResource("2_huv64")
+player_hand_reference = NodePath("../../PlayerHand")
+input_manager = NodePath("../InputManager")
+card_slot_reference = NodePath("../../CardSlot")
+card_scene = ExtResource("3_ykixw")
+
+[node name="InputManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("card_manager_reference", "card_slot_reference", "player_hand_reference")]
+script = ExtResource("6_cughx")
+card_manager_reference = NodePath("../CardManager")
+card_slot_reference = NodePath("../../CardSlot")
+player_hand_reference = NodePath("../../PlayerHand")
+
+[node name="ChinchonManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("deck", "slot", "card_manager", "player_hands", "turn_controller", "round_controller", "match_result", "match_result_label")]
+script = ExtResource("8_huv64")
+deck = NodePath("../../Deck")
+slot = NodePath("../../CardSlot")
+card_manager = NodePath("../CardManager")
+player_hands = [NodePath("../../PlayerHand"), NodePath("../../LeftHand"), NodePath("../../TopHand"), NodePath("../../RightHand")]
+card_scene = ExtResource("3_ykixw")
+card_database = ExtResource("9_m1vig")
+turn_controller = NodePath("../TurnController")
+round_controller = NodePath("../RoundController")
+match_result = NodePath("../../UI_Ingame/Control/MatchResult")
+match_result_label = NodePath("../../UI_Ingame/Control/MatchResult/MatchResultLabel")
+
+[node name="TurnController" type="Node" parent="Systems"]
+script = ExtResource("11_ykixw")
+
+[node name="RoundController" type="Node" parent="Systems"]
+script = ExtResource("12_ykixw")
+
+[node name="UIManager" type="Node" parent="Systems" node_paths=PackedStringArray("chinchon_manager", "canvas")]
+script = ExtResource("8_oqeio")
+chinchon_manager = NodePath("../ChinchonManager")
+canvas = NodePath("../../UI_Ingame")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -42
+position = Vector2(960, 540)
+texture = ExtResource("11_v6aup")
+
+[node name="Deck" parent="." instance=ExtResource("4_e4qjk")]
+z_index = -10
+position = Vector2(854, 540)
+
+[node name="CardSlot" parent="." instance=ExtResource("4_e4qjk")]
+z_index = -10
+position = Vector2(1064, 540)
+
+[node name="LeftHand" type="Node2D" parent="."]
+script = ExtResource("5_pddc6")
+hand_position = 2
+card_scene = ExtResource("3_ykixw")
+
+[node name="RightHand" type="Node2D" parent="."]
+script = ExtResource("5_pddc6")
+hand_position = 3
+card_scene = ExtResource("3_ykixw")
+
+[node name="TopHand" type="Node2D" parent="."]
+script = ExtResource("5_pddc6")
+hand_position = 1
+card_scene = ExtResource("3_ykixw")
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("5_pddc6")
+card_scene = ExtResource("3_ykixw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.917
+
+[connection signal="button_up" from="UI_Ingame/Control/MatchResult/Salir" to="UI_Ingame" method="_on_salir_borrar_button_up"]
+[connection signal="mouse_entered" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_entered"]
+[connection signal="mouse_exited" from="UI_Ingame/Control/Scoreboard" to="Systems/UIManager" method="_on_scoreboard_mouse_exited"]
+[connection signal="pressed" from="UI_Ingame/Control/Restart" to="UI_Ingame" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI_Ingame/Control/Restart" to="Systems/ChinchonManager" method="_on_restart_pressed"]
+[connection signal="left_mouse_button_clicked" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_clicked"]
+[connection signal="left_mouse_button_pressed" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_pressed"]
+[connection signal="left_mouse_button_release" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_left_mouse_button_release"]
+[connection signal="right_mouse_button_clicked" from="Systems/InputManager" to="Systems/ChinchonManager" method="_on_input_manager_right_mouse_button_clicked"]

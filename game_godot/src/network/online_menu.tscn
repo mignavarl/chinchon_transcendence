@@ -1,0 +1,243 @@
+[gd_scene load_steps=15 format=3 uid="uid://ddbspw431exfy"]
+
+[ext_resource type="Texture2D" uid="uid://cpy3w0mb7x0p4" path="res://assets/Tapete_chinchon.png" id="1_68iuo"]
+[ext_resource type="Texture2D" uid="uid://b4sqvcoawrc2i" path="res://assets/pencil.webp" id="2_jgvkh"]
+[ext_resource type="Texture2D" uid="uid://kn61kfahfaoh" path="res://assets/bloc.png" id="3_8lf63"]
+[ext_resource type="Script" uid="uid://otkc2o121ql5" path="res://src/network/modo_online.gd" id="4_ornuy"]
+[ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="5_ru88j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01wsg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3qwrk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kklk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbib8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g341f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vvro"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3th32"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0618h"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1nbf"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OnlineMenu" type="Node2D"]
+
+[node name="rug_chinchon" type="Sprite2D" parent="."]
+z_index = -42
+position = Vector2(960, 540)
+texture = ExtResource("1_68iuo")
+
+[node name="atrezzo_menu_online" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 424.0
+offset_top = 193.0
+offset_right = 1490.0
+offset_bottom = 889.0
+
+[node name="pencil" type="TextureRect" parent="atrezzo_menu_online"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = -133.99998
+offset_right = 850.00024
+offset_bottom = 122.000015
+rotation = 1.282817
+texture = ExtResource("2_jgvkh")
+
+[node name="bloc" type="TextureRect" parent="atrezzo_menu_online"]
+layout_mode = 0
+offset_left = 215.00006
+offset_top = -56.0
+offset_right = 899.0
+offset_bottom = 723.0
+rotation = 0.06981317
+texture = ExtResource("3_8lf63")
+
+[node name="OnlineMode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ornuy")
+
+[node name="make" type="Button" parent="OnlineMode"]
+layout_mode = 0
+offset_left = 792.9999
+offset_top = 265.0
+offset_right = 1172.9999
+offset_bottom = 468.92654
+rotation = 0.05235988
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_hover_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_ru88j")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_01wsg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3qwrk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5kklk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbib8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g341f")
+text = "<crear_sala>"
+text_overrun_behavior = 2
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="OnlineMode/make"]
+visible = false
+layout_mode = 0
+offset_left = 404.7167
+offset_top = 175.05867
+offset_right = 465.7167
+offset_bottom = 428.83484
+rotation = 1.5707964
+scale = Vector2(0.7, 1.7)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_ru88j")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="search" type="Button" parent="OnlineMode"]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 524.99994
+offset_right = 1199.0186
+offset_bottom = 761.7884
+rotation = 0.05235988
+theme_override_colors/font_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.29954728, 0.29954752, 0.29954734, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+theme_override_colors/font_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/font_outline_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_normal_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_focus_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_hover_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_colors/icon_disabled_color = Color(0.23529412, 0.23529412, 0.23529412, 1)
+theme_override_fonts/font = ExtResource("5_ru88j")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_01wsg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3qwrk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5kklk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbib8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g341f")
+text = "<buscar_gente>"
+text_overrun_behavior = 2
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="OnlineMode/search"]
+visible = false
+layout_mode = 0
+offset_left = 412.0209
+offset_top = 180.68413
+offset_right = 473.0209
+offset_bottom = 424.68414
+rotation = 1.5707964
+scale = Vector2(0.7, 1.7)
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_ru88j")
+theme_override_font_sizes/font_size = 195
+text = "|"
+
+[node name="Code" type="LineEdit" parent="OnlineMode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 870.99994
+offset_top = 780.0
+offset_right = 1006.54266
+offset_bottom = 841.2846
+rotation = 0.07359239
+placeholder_text = "<codigo>"
+
+[node name="info" type="Label" parent="OnlineMode"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 840.0
+offset_right = 862.0
+offset_bottom = 996.36584
+rotation = 0.064792946
+theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_ru88j")
+theme_override_font_sizes/font_size = 32
+text = "Debug"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 1698.0
+offset_top = 64.0
+offset_right = 1879.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_5vvro")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3th32")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0618h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_v1nbf")
+text = "<volver>"
+
+[connection signal="mouse_entered" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_entered"]
+[connection signal="mouse_exited" from="OnlineMode/make" to="OnlineMode" method="_on_make_mouse_exited"]
+[connection signal="pressed" from="OnlineMode/make" to="OnlineMode" method="_on_make_pressed"]
+[connection signal="mouse_entered" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_entered"]
+[connection signal="mouse_exited" from="OnlineMode/search" to="OnlineMode" method="_on_search_mouse_exited"]
+[connection signal="pressed" from="OnlineMode/search" to="OnlineMode" method="_on_search_pressed"]
+[connection signal="button_up" from="Exit" to="OnlineMode" method="_on_exit_button_up"]

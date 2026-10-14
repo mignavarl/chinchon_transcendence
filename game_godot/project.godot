@@ -8,16 +8,27 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Cartas"
-run/main_scene="uid://bqufyn764fwj0"
+run/main_scene="uid://cowif8das3ppm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneLoader="*res://scenes/scene_loader.tscn"
+SceneLoader="*res://src/scene_loader/scene_loader.tscn"
+ConfigManager="*res://src/managers/config_manager.gd"
+WebSocketClient="*res://src/network/websocket_client.gd"
+GameConfigHandler="*res://src/main_game/game_config_handler.gd"
+LobbyIntent="*res://src/network/lobby_intent.gd"
+Database="*res://src/network/database.gd"
+Auth="*res://src/network/auth.gd"
+ProfileApi="*res://src/network/profile_api.gd"
 
 [display]
 
@@ -53,6 +64,18 @@ right_mouse_click={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={
+"res://src/translation/tutorial/spanish/1.png": PackedStringArray("res://src/translation/tutorial/catalan/1.png:ca", "res://src/translation/tutorial/euskera/1.png:eu"),
+"res://src/translation/tutorial/spanish/2.png": PackedStringArray("res://src/translation/tutorial/catalan/2.png:ca", "res://src/translation/tutorial/euskera/2.png:eu"),
+"res://src/translation/tutorial/spanish/3.png": PackedStringArray("res://src/translation/tutorial/catalan/3.png:ca", "res://src/translation/tutorial/euskera/3.png:eu")
+}
+locale/translations=PackedStringArray("res://src/translation/translation_chinchon.es.translation", "res://src/translation/translation_chinchon.ca.translation", "res://src/translation/translation_chinchon.eu.translation")
+locale/locale_filter_mode=0
+
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/webp_compression/compression_method=0

@@ -1,0 +1,9 @@
+{
+  "name": "chinchon-e2e",
+  "private": true,
+  "type": "module",
+  "description": "Pruebas de punta a punta contra el stack levantado (make).",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

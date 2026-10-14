@@ -1,0 +1,208 @@
+[gd_scene load_steps=12 format=3 uid="uid://ii3tn8lraf2f"]
+
+[ext_resource type="Script" uid="uid://cwtq6uq8yflbq" path="res://src/menus/ajustes.gd" id="1_tbaqm"]
+[ext_resource type="Texture2D" uid="uid://34lw4nsfys73" path="res://assets/Tapete_vacio.png" id="2_e5o5m"]
+[ext_resource type="FontFile" uid="uid://ce0ogdyqyyj58" path="res://assets/Pangolin-Regular.ttf" id="3_2v5f4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la38u"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ids3c"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yhrp"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d54td"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbaqm"]
+bg_color = Color(0, 0.27450982, 0.09803922, 0.9411765)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5o5m"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v5f4"]
+bg_color = Color(8.5432083e-07, 0.42249125, 0.16676846, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rvdi"]
+bg_color = Color(1.3085548e-07, 0.13760024, 0.0346159, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0.14919037, 0.06755128, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Ajustes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbaqm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_e5o5m")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 280.0
+offset_right = 739.0
+offset_bottom = 776.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2v5f4")
+theme_override_font_sizes/font_size = 85
+text = "<idioma>"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="esp" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2v5f4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
+text = "<español>"
+
+[node name="cat" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2v5f4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
+text = "<catalan>"
+
+[node name="eus" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2v5f4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
+text = "<euskera>"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1685.0
+offset_top = 38.0
+offset_right = 1888.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_la38u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ids3c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3yhrp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d54td")
+text = "<volver>"
+
+[node name="privacity" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1190.0
+offset_top = 490.0
+offset_right = 1629.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_tbaqm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e5o5m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2v5f4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_2rvdi")
+text = "<privacidad y servicios>"
+autowrap_mode = 2
+
+[connection signal="button_up" from="Control/VBoxContainer/esp" to="." method="_on_esp_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/cat" to="." method="_on_cat_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/eus" to="." method="_on_eus_button_up"]
+[connection signal="button_up" from="exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="privacity" to="." method="_on_privacity_button_up"]
